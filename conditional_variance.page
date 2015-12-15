@@ -1,0 +1,64 @@
+---
+title: Conditional Variance
+categories: Statistics
+icon: /img/icons/inferential-statistics.png
+...
+
+<section class="primary">
+
+# Summary
+
+In a manner similar to [Conditional Expectation](conditional_expectation), we define conditional variance as
+$$ \text{Var}(X\;|\;Y) = E[(X - E[X\;|\;Y])^2\;|\;Y], $$ or, alternatively, as
+$$ \text{Var}(X\;|\;Y) = E[X^2\;|\;Y] - (E[X\;|\;Y])^2. $$
+In other words, the variance is the same as before, except now all expectations are conditional.
+
+</section>
+
+<section class="primary">
+
+# Variance via Conditioning
+
+We can solve for the unconditional variance via the conditional variance as follows:
+$$ \text{Var}(X) = E[\text{Var}(X\;|\;Y)] + \text{Var}(E[X\;|\;Y]). $$
+
+<div class="proof">
+
+Note that
+$$\begin{align*}
+  E[\text{Var}(X\;|\;Y)] &= E[E[X^2\;|\;Y]] - E[(E[X\;|\;Y)^2] \\
+                         &= E[X^2] - E[(E[X\;|\;Y])^2].
+\end{align*}$$
+By our formula for [expectation via conditioning](conditional_expectation#expectation-via-conditioning), we see
+that $E[E[X\;|\;Y]] = E[X]$. Therefore 
+$$\begin{align*}
+  \text{Var}(E[X\;|\;Y]) &= E[(E[X\;|\;Y])^2] - (E[E[X\;|\;Y]])^2 \\
+                         &= E[(E[X\;|\;Y])^2] - (E[X])^2. 
+\end{align*}$$
+Thus, adding the two equations together, we have
+$$\begin{align*}
+  E[\text{Var}(X\;|\;Y)] + \text{Var}(E[X\;|\;Y]) &= E[X^2] - E[(E[X\;|\;Y])^2] + E[(E[X\;|\;Y])^2] - (E[X])^2 \\
+                                                  &= E[X^2] - (E[X])^2                                         \\
+                                                  &= \text{Var}(X). 
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Conditional Expectation](conditional_expectation)
+- [Variance](variance)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

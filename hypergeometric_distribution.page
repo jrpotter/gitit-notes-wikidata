@@ -1,0 +1,63 @@
+---
+title: Hypergeometric Distribution
+categories: Statistics
+icon: /img/icons/random-variables.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Hypergeometric PDFs](/img/graphs/statistics/hypergeometric-pdf.png)
+
+Suppose that a sample of size $n$ is to be chosen randomly (without replacement) from an urn containing $N$ balls,
+of which $m$ are white and $N-m$ are black. If we let $X$ denote the number of white balls selected, then
+
+$$ \bbps{X=i} = \frac{\binom{m}{i}\binom{N-m}{n-i}}{\binom{N}{n}},\quad i=0,1,\ldots,n. $$
+
+A random variable $X$ whose probability mass function is given by the above for some values of $n, N, m$ is said to
+be a **hypergeometric** random variable.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Expectation
+
+The expected value of a hypergeometric random variable $X$ with parameters $(n, N, m)$ is 
+$$ E[X] = \frac{nm}{N}. $$
+
+</section>
+
+<section class="primary">
+
+# Variance
+
+The variance of a hypergeometric random variable $X$ with parameters $(n, N, m)$ is
+$$ \text{Var}(X) = np(1-p)\left(1 - \frac{n-1}{N-1}\right). $$
+
+</section>
+
+<section class="primary">
+
+# Binomial Approximation
+
+The expectation of a hypergeometric random variable is approximately $np$ when the selection of the balls is done with 
+replacement (since this is the number of white balls binomial with parameters $n$ and $p$. In addition if $N$ is large 
+in relation to $n$ (so that $(N - n)/(N - 1)$ is approximately equal to $1$), then
+$$ \text{Var}(X) \approx np(1 - p). $$
+Therefore the number of while balls chosen approximately has the same mass function of a binomial random variable.
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

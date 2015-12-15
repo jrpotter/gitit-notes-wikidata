@@ -1,0 +1,151 @@
+---
+title: Line Integrals
+categories: Calculus Complex
+icon: /img/icons/line-integrals.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Over Vector Field](/img/diagrams/calculus/line-integral-vector-field.png)
+
+We define the **line integral** over continuous vector fields, which serve as the basis of vector calculus, as the amount of 
+work (i.e. the physics quantity) along the curve. More generally, the line integral is a summation of the dot product between
+the force applied on a particular point and the tangential component of the curve at said point. More specifically,
+let $\pmb{F}$ be a continuous vector field defined on a smooth curve $C$ given by a vector function 
+$\pmb{r}(t), a \leq t \leq b$. Then the line integral of $\pmb{F}$ along $C$ is
+$$ \int_C \pmb{F} \cdot d\pmb{r} = \int_a^b \pmb{F}(\pmb{r}(t)) \cdot \pmb{r}'(t)\;dt = \int_C \pmb{F} \cdot \pmb{T}\;ds. $$
+
+We note that unlike path integrals with respect to arc length, reversing the direction of the line integral over a curve $C$ 
+yields a negative value since the unit tangent vector $\pmb{T}$ is replaced by its negative when $C$ is replaced by $-C$.
+
+</div>
+
+<div class="proof">
+
+As a reminder, we note that work can be evaluated by $W = \pmb{F} \cdot \pmb{D}$, where $\pmb{D} = \overrightarrow{PQ}$ is
+the displacement vector and $\pmb{F}$ is a constant force moving an object from point $P$ to point $Q$. We prove the case
+for force fields of $\bbr^3$, with the understanding that the proof in $\bbr^2$ is analogous.
+
+Now suppose that $\pmb{F} = P\pmb{i} + Q\pmb{j} + R\pmb{k}$ is a continuous force field on $\bbr^3$. Given some curve $C$,
+we can divide $C$ into subarcs $P_{i-1}P_i$ with lengths $\Delta{s_i}$ by dividing the parameter interval $[a, b]$ into
+subintervals of equal width. Choose a point $P_i^*(x_i^*, y_i^*, z_i^*)$ on the $\spscript{i}{th}$ subarc corresponding
+to the parameter value $t_i^*$. If $\Delta{s_i}$ is small, then as the particle moves from $P_{i-1}$ to $P_i$ along the
+curve, it proceeds approximately in the direction of $\pmb{T}(t_i^*)$, the unit tangent vector at $P_i^*$. Thus the work
+done by the force $\pmb{F}$ in moving the particle from $P_{i-1}$ to $P_i$ is approximately
+$$ 
+  \pmb{F}(x_i^*, y_i^*, z_i^*) \cdot \left[ \Delta{s_i}\pmb{T}(t_i^*) \right] = 
+  \left[\pmb{F}(x_i^*, y_i^*, z_i^*)\cdot\pmb{T}(t_i^*)\right]\Delta{s_i}
+$$
+and the total work done in moving the particle along $C$ is approximately
+$$ \sum_{i=1}^n \left[\pmb{F}(x_i^*, y_i^*, _i^*) \cdot \pmb{T}(x_i^*, y_i^*, z_i^*)\right]\Delta{s_i} $$
+where $\pmb{T}(x, y, z)$ is the unit tangent vector at the point $(x, y, z)$ on $C$. Intuitively, we see that these approximations
+ought to become better as $n$ becomes larger. Therefore we define the work $W$ done by the force field $\pmb{F}$ as the
+limit of the Riemann sums, namely,
+$$ W = \int_C \pmb{F}(x, y, z) \cdot \pmb{T}(x, y, z)\;ds = \int_C \pmb{F} \cdot \pmb{T}\;ds. $$
+Lastly, if the curve $C$ is given by vector equation $\pmb{r}(t) = x(t)\pmb{i} + y(t)\pmb{j} + z(t)\pmb{k},\;\;$ then
+$\pmb{T}(t) = \pmb{r}'(t)/\left|\pmb{r}'(t)\right|,\;\;$ so
+$$ 
+  W = \int_C \left[ \pmb{F}(\pmb{r}(t)) \cdot \frac{\pmb{r}'(t)}{\left|\pmb{r}'(t)\right|}\right]\left|\pmb{r}'(t)\right|\;dt
+    = \int_a^b \pmb{F}(\pmb{r}(t)) \cdot \pmb{r}'(t)\;dt. \;
+$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Path Integral Variants
+
+Path integrals also go by the name of line integrals, and, as such, we'd expect there to be some relation between the two.
+In fact, the **line integrals of $\;f$ along $C$ with respect to $x$ and $y$** (as opposed to with arc length) do closely
+relate to line integrals over vector spaces. They are defined respectively as:
+$$\begin{gather*}
+  \int_C \;f(x, y)\;dx = \int_a^b \;f(x(t), y(t))x'(t)\;dt \\
+  \int_C \;f(x, y)\;dy = \int_a^b \;f(x(t), y(t))y'(t)\;dt,
+\end{gather*}$$
+extending to higher dimensions in the obvious way. It frequently happens that line integrals with respect to $x$ and $y$
+occur together, leading to the abbreviation
+$$ \int_C P(x, y)\;dx + \int_C Q(x, y)\;dy = \int_C P(x, y)\;dx + Q(x, y)\;dy. $$
+This leads to the following relation:
+$$ \int_C \pmb{F} \cdot d\pmb{r} = \int_C P(x, y)\;dx + Q(x, y)\;dy. $$
+
+<div class="proof">
+
+First, note the definitions are derived from the [Chain Rule](chain_rule). That is, we see that 
+$$ dx = x'(t)dt \;\text{ and }\; dy = y'(t)dt. $$ Next, notice that
+
+$$\begin{align*} 
+  \int_C \pmb{F} \cdot d\pmb{r} 
+    &=  \int_a^b \pmb{F}(\pmb{r}(t)) \cdot \pmb{r}'(t)\;dt                    \\
+    &= \int_a^b (P\pmb{i} + Q\pmb{j}) \cdot (x'(t)\pmb{i} + y'(t)\pmb{j})\;dt \\
+    &= \int_a^b \left[P(x(t), y(t)) x'(t) + Q(x(t), y(t))\right]\;dt
+\end{align*}$$
+which is equivalent to the abbreviation established above.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Complex Variables
+
+In a similar manner to the [path integral variants](#path-integral-variants), we define the line integral of a continuous function
+$u$ along the range of a smooth curve $\gamma$ by
+$$ \int_\gamma u(z)\;dz = \int_a^b u(\gamma(t))\gamma'(t)\;dt. $$
+
+<section class="secondary">
+
+## Upper Bound
+
+Suppose $\gamma$ is a smooth curve and $u$ is a continuous function on the range of $\gamma$. Then
+$$ 
+  \abs{\int_{\gamma} u(z)\;dz} \leq \left(\mathop{\text{max}}_{z \;\in\; \gamma} \abs{u(z)} \right) 
+                                    \text{length}(\gamma) 
+$$
+where $$ \text{length}(\gamma) = \int_a^b \abs{\gamma'(t)}\;dt. $$
+
+<div class="proof">
+
+Let $g$ be a complex-valued continuous function on $[a, b]$. We need to show that
+$$ \abs{\int_a^b g(t)\;dt} \leq \int_a^b \abs{g(t)}\;dt. $$
+This inequality is obviously true if $\int_a^b g(t)\;dt = 0$, we we assume that $\int_a^b g(t)\;dt \neq 0$. Let 
+$$ \theta = \text{Arg}\left(\int_a^b g(t)\;dt\right) $$ and define $h(t) = e^{-i\theta}g(t)$ for $a \leq t \leq b$.
+Therefore
+$$ 0 < \abs{\int_a^b g(t)\;dt} = e^{-i\theta}\int_a^b g(t)\;dt = \int_a^b e^{-i\theta}g(t)\;dt = \int_a^b h(t)\;dt, $$
+where the first equality follows from the fact that for some complex number $z$, 
+$$ z = \abs{z}e^{i\theta} \Rightarrow ze^{-i\theta} = \abs{z}. $$
+Thus,
+$$
+  \abs{\int_a^b g(t)\;dt} = \text{Re} \int_a^b h(t)\;dt
+                          = \int_a^b (\text{Re}\;h(t))\;dt
+                          \leq \int_a^b \abs{h(t)}\;dt
+                          = \int_a^b \abs{g(t)}\;dt.
+$$
+This then tells us that
+$$\begin{align*}
+  \abs{\int_\gamma u(z)\;dz} &= \abs{\int_a^b u(\gamma(t))\gamma'(t)\;dt}        \\
+                             &= \int_a^b \abs{u(\gamma(t))}\abs{\gamma'(t)}\;dt.
+\end{align*}$$
+Because of the vector interpretation of complex numbers, we get that 
+$$ \text{length}(\gamma) = \int_a^b \abs{\gamma'(t)}\;dt $$
+and our result follows immediately.
+
+</div>
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.  
+
+</section>

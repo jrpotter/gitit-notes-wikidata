@@ -1,0 +1,122 @@
+---
+title: Cross Product
+categories: Linear Algebra Calculus
+icon: /img/icons/angles.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Cross Product Animation](/img/diagrams/linear/cross-product.gif)
+
+The cross product of two vectors $\vec{a}$ and $\vec{b}$ in three-dimensional space is itself a vector orthogonal to 
+both $\vec{a}$ and $\vec{b}$ as defined below:
+
+If $\vec{a} = \langle a_1, a_2, a_3 \rangle$ and $\vec{b} \langle b_1, b_2, b_3 \rangle$, then the **cross product**
+of $\vec{a}$ and $\vec{b}$ is the vector 
+$$ \crossp{a}{b} = \langle a_2b_3 - a_3b_2, a_3b_1 - a_1b_3, a_1b_2 - a_2b_1 \rangle. $$
+
+Perhaps more insightful, consider two perpendicular unit vectors $\vec{v}_1$ and $\vec{v}_2$ in $\bbr^3$. Form the basis 
+$\beta = (\vec{v}_1, \vec{v}_2, \vec{v}_3)$ of $\bbr^3$, where $\vec{v}_3 = \vec{v}_1 \times \vec{v}_2$. Note that 
+$\vec{v}_3$ is perpendicular to both $\vec{v}_1$ and $\vec{v}_2$ and is a unit vector. Now consider the $\beta$-matrix 
+$B$ of the linear transformation $T(\vec{x}) = \vec{v}_1 \times \vec{x}$. Then
+$$ 
+  B = \begin{bmatrix}1 & 0 & 0 \\ 0 & 0 & -1 \\ 0 & 1 & 0 \end{bmatrix}
+      \begin{bmatrix}0 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix}
+$$
+which we can interpret as the orthogonal projection onto the $c_2-c_3$ plane followed by a rotation
+through $\pi/2$ about the $c_1$ axis, counterclockwise as viewed from the positive $c_1$ axis.
+
+<div class="proof">
+
+We construct $B$ column by column as follows:
+$$ 
+  B = \begin{bmatrix} 
+                         &                      &                      \\
+    \bcoor{T(\vec{v}_1)} & \bcoor{T(\vec{v}_2)} & \bcoor{T(\vec{v}_3)} \\
+                         &                      &
+  \end{bmatrix}.
+$$
+We have $T(\vec{v}_1) = \vec{v}_1 \times \vec{v}_1 = \vec{0}$, $T(\vec{v}_2) = \vec{v}_1 \times \vec{v}_2
+= \vec{v}_3$, and $T(\vec{v}_3) = \vec{v}_1 \times \vec{v}_3 = -\vec{v}_2$, so that
+$$
+  \bcoor{T(\vec{v}_1)} = \begin{bmatrix} 0 \\  0 \\ 0 \end{bmatrix}, \quad
+  \bcoor{T(\vec{v}_2)} = \begin{bmatrix} 0 \\  0 \\ 1 \end{bmatrix}, \quad
+  \bcoor{T(\vec{v}_3)} = \begin{bmatrix} 0 \\ -1 \\ 0 \end{bmatrix}.
+$$
+Thus
+$$ 
+  B = \begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & -1 & 0 \end{bmatrix}
+    = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 0 & -1 \\ 0 & 1 & 0 \end{bmatrix}
+      \begin{bmatrix} 0 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix}.
+$$
+We see that the matrix on the far right is indeed a projection onto the $c_2-c_3$ plane, since the $x$ component is annihilated.
+More explicitly,
+$$ 
+  \begin{bmatrix} 0 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{bmatrix}
+  \begin{bmatrix} x \\ y \\ z \end{bmatrix} = \begin{bmatrix} 0 \\ y \\ z \end{bmatrix}.
+$$
+Next we note that any matrix
+$$ \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix} $$
+represents a rotation, and the left matrix (to that of the above projection matrix) maintains the $c_1$ component
+and rotates around the $c_1$ axis as expected.
+
+</div>
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Properties
+
+Other useful properties for vectors $\vec{a},\vec{b}$, and $\vec{c}$ and scalar $k$ follows:
+
+1. *Anticommutativity:* $$ \crossp{a}{b} = -\crossp{b}{a}. $$
+2. *Scalar Multiplication:* $$ (k\vec{a})\times\vec{b} = k(\crossp{a}{b}) = \vec{a} \times (k\vec{b}). $$
+3. *Distribution (Left Hand):* $$ \vec{a} \times (\vec{b} + \vec{c}) = \crossp{a}{b} + \crossp{a}{c}. $$
+4. *Distribution (Right Hand):* $$ (\vec{a} + \vec{b}) \times \vec{c} = \crossp{a}{c} + \crossp{b}{c}. $$
+5. *Dot Commutativity:* $$ \vec{a} \cdot (\crossp{b}{c}) = (\crossp{a}{b}) \cdot \vec{c}. $$
+6. *Triple Cross:* $$ \vec{a} \times (\crossp{b}{c}) = (\dotp{a}{c})\vec{b} - (\dotp{a}{b})\vec{c}. $$
+
+</section>
+
+<section class="primary">
+
+# Angle Interpretation
+
+It $\theta$ is the angle between $\vec{a}$ and $\vec{b}$ such that $0 \leq \theta \leq \pi$, then
+$$ \norm{\crossp{a}{b}} = \norm{\vec{a}}\norm{\vec{b}}\sin{\theta}\text{.} $$
+
+<div class="proof">
+
+From the definitions of the cross product and length of a vector, we have
+$$\begin{align*}
+  \norm{\crossp{a}{b}}^2 &= (a_2b_3 - a_3b_2)^2 + (a_3b_1 - a_1b_3)^2 + (a_1b_2 - a_2b_1)^2                    \\
+                         &= a_2^2b_3^2 - 2a_2a_3b_2b_3 + a_3^2b_2^2 + a_3^2b_1^2 - 2a_1a_3b_1b_3 + a_1^2b_3^2
+                            + a_1^2b_2^2 - 2a_1a_2b_1b_2 + a_2^2b_1^2                                          \\
+                         &= (a_1^2 + a_2^2 + a_3^2)(b_1^2 + b_2^2 + b_3^2) - (a_1b_1 + a_2b_2 + a_3b_3)^2      \\
+                         &= \norm{\vec{a}}^2\norm{\vec{b}}^2 - (\dotp{a}{b})^2                                 \\
+                         &= \norm{\vec{a}}^2\norm{\vec{b}}^2 - \norm{\vec{a}}^2\norm{\vec{b}}^2\cos^2\theta    \\
+                         &= \norm{\vec{a}}^2\norm{\vec{b}}^2(1 - \cos^2\theta)                                 \\
+                         &= \norm{\vec{a}}^2\norm{\vec{b}}^2\sin^2\theta
+\end{align*}$$
+Noting $\sqrt{\sin^2\theta} = \sin{\theta}$ since $\sin{\theta} \geq 0$ when $0 \leq \theta \leq \pi$, we have
+$$ \norm{\crossp{a}{b}} = \norm{a}\norm{b}\sin{\theta}\text{.} $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Bretscher, Otto (2008). Linear Algebra with Applications (4th ed.). Pearson. ISBN 978-0-13-600926-9.
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

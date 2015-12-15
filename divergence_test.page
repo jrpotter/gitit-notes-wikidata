@@ -1,0 +1,39 @@
+---
+title: Divergence Test
+categories: Calculus
+icon: /img/icons/sequences-2.png
+...
+
+<section class="primary">
+
+# Summary
+
+We note that for a series to converge, the values being summed must approach 0. More precisely, if the series 
+$$ \sum_{n=1}^{\infty}a_n \text{ is convergent, then } \xlimit{n}{\infty} a_n = 0. $$    
+
+Given this, stating the contrapositive allows us to reason on whether a series is divergent. That is, if 
+$$ \xlimit{n}{\infty} a_n = \text{ DNE }\text{ or } \xlimit{n}{\infty} a_n \neq 0, $$ then the series 
+$\sum_{n=1}^{\infty} a_n$ is divergent.
+
+<div class="proof">  
+  
+Let $s_n = \inflate[+]{a}{n}$. Then $a_n = s_n - s_{n-1}$. Since $\sum a_n$ is convergent, the sequence $\{s_n\}$ is 
+convergent. Let $\xlimit{n}{\infty} s_n = s$. Since $n - 1 \rightarrow \infty$ as $n \rightarrow \infty$, we also have 
+$\xlimit{n}{\infty} s_{n-1} = s$. Therefore  
+$$\begin{align*}
+  \xlimit{n}{\infty} a_n &= \xlimit{n}{\infty}(s_n - s_{n-1})                   \\
+                         &= \xlimit{n}{\infty} s_n - \xlimit{n}{\infty} s_{n-1} \\
+                         &= s - s = 0.
+\end{align*}$$
+  
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

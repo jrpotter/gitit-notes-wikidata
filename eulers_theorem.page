@@ -1,0 +1,66 @@
+---
+title: Euler's Theorem
+categories: Abstract Algebra
+icon: /img/icons/arithmetic.png
+...
+
+<section class="primary">
+
+# Summary
+
+First, define $\phi(n)$ as the number of nonzero elements of $\bbz_n$ that are not [zero divisors](rings#divisors-of-zero)
+(i.e. the nonzero numbers that are relatively prime to $n$). This function $\phi: \bbz^+ \rightarrow \bbz^+$ is the 
+**Euler phi-function**. If $a$ is an integer relatively prime to $n$, then $a^{\phi(n)} - 1$ is divisible by $n$, 
+that is, $$ a^{\phi(n)} \equiv 1 \;(\text{mod}\;n). $$ This is a particularly useful function as it not only generalizes 
+[Fermat's Little Theorem](#little_theorem_of_fermat), but also provides the [expositional group](congruence_equations) 
+$G_n$ used in congruence equations.
+
+<div class="proof">
+
+Now, if $a$ is relatively prime to $n$, then the coset $a + n\bbz$ of $n\bbz$ containing $a$ contains an integer
+$b < n$ relatively prime to $n$ (this follows from the fact that if $a < n$, then $b = n$, and otherwise if
+$a > n$, $b = a - mn$ for some $m \in \bbz$). Since multiplication modulo $n$ is well-defined, we have
+$$ a^{\phi(n)} \equiv b^{\phi(n)} \;(\text{mod}\;n). $$
+$b$ is then an element of our above group $G_n$ of order $\phi(n)$ since it is not a divisor of $0$ (because $b$ is 
+relatively prime to $n$[^1]). Since all elements of a group have an order that divides the order of the group,
+$$ b^{\phi(n)} \equiv 1 \;(\text{mod}\;n), $$ implying that the same applies for $a$ as well.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Little Theorem of Fermat
+
+The Little Theorem of Fermat states that if $a \in \bbz$ and $p$ is a prime not dividing $a$, then $p$ divides
+$a^{p-1} - 1$, that is, $a^{p-1} \equiv 1 \;(\text{mod }p)$ for $a \not\equiv 0 \;(\text{mod }p)$. It then logically
+follows that if $a \in \bbz$, then $a^p \equiv a \;(\text{mod}\;p)$ for any prime $p$.
+
+<div class="proof">
+
+We note that the field $\bbz_p$ for some prime $p$, has elements $1, 2, 3, \ldots, p-1$ that form a group of order $p-1$
+under multiplication modulo $p$[^1]. Since the order of any element in a group divides the order of the group, we see
+that for $b \neq 0$ and $b \in \bbz_p$, we have $b^{p-1} = 1$ in $\bbz_p$. Using the fact that $\bbz_p$ is isomorphic
+to the ring of cosets of the form $a + p\bbz$, we see at once that for any $a \in \bbz$ not in the coset
+$0 + p\bbz$, we must have $$ a^{p-1} \equiv 1 \;(\text{mod}\;p). $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Congruence Equations](congruence_equations)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Fraleigh, John B. (2003). A First Course In Abstract Algebra (7th ed.). Pearson. ISBN 978-0201763904.
+
+</section>

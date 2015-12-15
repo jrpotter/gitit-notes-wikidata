@@ -1,0 +1,99 @@
+---
+title: TNB Frames
+categories: Calculus
+icon: /img/icons/geometric-constructions.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![TNB Frame](/img/diagrams/calculus/tnb-frame.png)
+
+The **TNB Frames** (**t**angent, **n**ormal, and **b**inormal vectors) of a function describe said function completely along its 
+curve. Note each vector in the frame are orthogonal to each other, which makes intuitive sense as these vectors form a
+three-dimensional "coordinate" grid at a point.
+
+We note first that the **unit tangent vector** or $\pmb{T}(t)$ is the vector tangent to a curve at point $t$ with length
+$1$. This vector describes the direction of the curve at a given moment in time, and is calculated as follows:
+$$ \pmb{T}(t) = \frac{\pmb{r}'(t)}{\left|\pmb{r}'(t)\right|}. $$
+
+Orthogonal to this vector and pointing in the direction the curve is moving is the **principal unit normal vector**, 
+$\pmb{N}(t)$, calculated by $$ \pmb{N}(t) = \frac{\pmb{T}'(t)}{\left|\pmb{T}'(t)\right|}. $$
+
+Lastly, the **binormal vector**, which is the vector perpendicular to both $\pmb{T}$ and $\pmb{N}$ is calculated by
+$$ \pmb{B}(t) = \pmb{T}(t) \times \pmb{N}(t) $$
+and is also a unit vector.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Normal Vector
+
+We note the two properties of a normal vector (orthogonality and direction) follows from the following two facts:
+
+1. If $\left|\pmb{r}(t)\right| = c$ (a constant), then $\pmb{r}'(t)$ is orthogonal to $\pmb{r}(t)$ for all $t$.<br />  
+   <div class="proof">
+   Since 
+   $$ \pmb{r}(t) \cdot \pmb{r}(t) = \left|\pmb{r}(t)\right|^2 = c^2 $$
+   and $c^2$ is a constant, then
+   $$ 
+     0 = \leibniz{t}[\pmb{r}(t)\cdot\pmb{r}(t)] 
+       = \pmb{r}'(t)\cdot\pmb{r}(t) + \pmb{r}(t)\cdot\pmb{r}'(t) 
+       = 2(\pmb{r}'(t) \cdot \pmb{r}(t)). 
+   $$
+   Thus $\pmb{r}'(t) \cdot \pmb{r}(t) = 0$, meaning $\pmb{r}'(t)$ is orthogonal to $\pmb{r}(t)$.
+   </div><br />
+
+2. The second derivative of a space curve points towards the direction the curve is bending towards.<br />  
+   <div class="proof">
+   Consider the projections onto the $x$, $y$, and $z$ planes of the curve. This amounts to looking at
+   the components of the space curve separately. We note the second derivative of a function corresponds
+   to the concavity of the curve; that is, if the function is concave upward, the second derivative is
+   positive. Likewise, it the function is concave downward, the second derivative is negative. Thus, the
+   second derivative of the vector function must satisfy this property for each of the component functions
+   of the space curve, meaning it points towards the direction the curve is bending towards.
+   </div><br />
+
+The normal vector is unique since there is only one such unit vector that satisfies both these properties: the
+vector that is orthogonal to the tangent unit vector and points towards the center of the osculating circle
+at the given point.
+
+</section>
+
+<section class="primary">
+
+# Planes
+
+<div class="block">
+
+![Osculating Circle](/img/diagrams/calculus/osculating-circle.png)
+
+The plane determined by the normal and binormal vectors $\pmb{N}$ and $\pmb{B}$ at a point $P$ on the curve
+$C$ is called the **normal plane** of $C$ at $P$. This is the plane with normal vector $\pmb{T}$ and vectors
+$\pmb{N}$ and $\pmb{B}$ in the plane.
+
+The plane determined by the vectors $\pmb{T}$ and $\pmb{N}$ is called the **osculating plane** of $C$ at $P$. This
+is the plane with normal vector $\pmb{B}$ and the vectors $\pmb{T}$ and $\pmb{N}$ in the plane. 
+
+The circle that lies in the osculating place of $C$ at $P$, has the same tangent as $C$ at $P$, lies on the concave 
+side of $C$ (toward which $\pmb{N}$ points), and has radius $\rho = 1/\kappa$ is called the **osculating circle** of $C$ 
+at $P$. It is the circle that best describes how $C$ behaves near $P$; it shares the same tangent, normal, and 
+[curvature](curvature) at $P$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

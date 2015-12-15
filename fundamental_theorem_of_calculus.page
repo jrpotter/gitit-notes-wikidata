@@ -1,0 +1,152 @@
+---
+title: Fundamental Theorem of Calculus
+categories: Calculus
+icon: /img/icons/triple-integral.png
+...
+
+<section class="primary">
+
+# Summary
+
+The Fundamental Theorem of Calculus of single integrals comes in two parts. The first establishes a connection between
+differential and integral calculus, stating that they are inverse operations of one another. The second, often coined the
+Net Change Theorem, allows us to evaluate an integral by its antiderivative along just the endpoints of the interval.
+
+Analogues in other slightly different topics also exist. We note that the 
+[fundamental theorem for line integrals](#line-integrals) is very similar to the Net Change Theorem, but applied within
+the context of a [conservative vector field](conservative_vector_field). Similarly, the idea of evaluating along only
+the boundaries is a concept also formulated by [Green's Theorem](greens_theorem), in which the boundary of a given region 
+is the line integral surrounding the region.
+
+In addition, this idea of inverted operations allows reasoning about concepts like "partial integration" as well, noting
+that we can invert a partial derivative by integrating with respect to the differential, and maintaining a constant that
+may contain other variables.
+
+</section>
+
+<section class="primary">
+
+# Integrals: Part One
+
+<div class="block">
+
+![As Inverse Operations](/img/graphs/calculus/fundamental-theorem-of-calculus.png)
+
+If $f$ is continuous on $[a, b]$, then the function $g$ defined by $$ g(x) = \int_a^x f(t)dt $$ for $a \leq x \leq b$ is 
+continuous on $[a, b]$, differentiable on $(a, b)$, and $g'(x) = f(x)$. We note the lower bound is irrelevant since
+a derivative is a rate of change. That is, 
+$$ f_1(x) = \int_a^x g(x) \text{ and } f_2(x) = \int_b^x g(x) $$
+differ by a constant, namely 
+$$ f_2(x) - f_1(x) = \int_a^b g(x), $$
+and so have the same derivative.
+
+</div>
+
+<div class="proof">
+
+If $x$ and $x+h$ are in $(a, b)$, then
+$$\begin{align*}
+  g(x+h)-g(x) &= \int_a^{x+h}f(t)dt-\int_a^xf(t)dt                                  \\
+              &= \left(\int_a^xf(t)dt + \int_x^{x+h}f(t)dt\right)-\int_a^{x}f(t)dt  \\
+              &= \int_x^{x+h}f(t)dt
+\end{align*}$$
+
+Therefore, for $h \neq 0$,
+
+$$ \frac{g(x+h)-g(x)}{h} = \frac{1}{h}\int_x^{x+h}f(t)dt. $$
+
+Next, assume $h > 0$ (a similar argument holds for $h < 0$). Since $f$ is continuous on $[x, x+h]$, the 
+[Extreme Value Theorem](extreme_value_theorem)  states numbers $u, v\in [x, x+h]$ exist such that $f(u)=m$ and 
+$f(v)=M$ where $m$ and $M$ are absolute minimum and maximum values of $f$ in $[x, x+h]$. Note 
+
+$$\begin{align*}
+  &\quad\; mh \;\leq\; \int_x^{x+h}f(t)dt \;\leq\; Mh               \\
+  &\Rightarrow f(u)h \;\leq\; \int_x^{x+h}f(t)dt \;\leq\; f(v)h     \\
+  &\Rightarrow f(u) \leq \frac{1}{h}\int_x^{x+h}f(t)dt \leq f(v)    \\
+  &\Rightarrow f(u) \leq \frac{g(x+h)-g(x)}{h} \leq f(v).\; (1)
+\end{align*}$$ 
+
+Now let $h\rightarrow 0$ which means $u\rightarrow x$ and $v\rightarrow x$ since $u, v\in [x, x+h]$. Therefore 
+$$ \xlimit{h}{0}\;f(u) = \xlimit{u}{x}\;f(u)=f(x) \text{ and } \xlimit{h}{0}\;f(v)=\xlimit{v}{x}\;f(v)=f(x). $$
+Then by equation $(1)$ and the [Squeeze Theorem](squeeze_theorem), $$ g'(x) = \xlimit{h}{0}\frac{g(x+h)-g(x)}{h} = f(x). $$
+If $x=a$ or $x=b$, we consider $g'(x)$ as a one sided-limit. Regardless, because $g$ is differentiable, then $g$ is 
+continuous on $[a,b]$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Integrals: Part Two
+
+If $f$ is continuous on $[a, b]$, then $\int_a^b f(x)dx = F(b)-F(a)$ where $F$ is any antiderivative of $f$; that is, a 
+function such that $F' = f$.
+
+<div class="proof">
+
+Let $g(x)=\int_a^xf(t)dt$, and note from [part one](#part-one) that $g'(x) = f(x)$. If $F$ is any other antiderivative 
+of $f$ on $[a, b]$, then $F$ and $g$ differ by a constant[^1], that is,
+
+$$F(x) = g(x) + C\text{ for }a < x < b.\; (1)$$
+     
+But both $F$ and $g$ are continuous on $[a, b]$ and so, by taking limits of both sides of $(1)$ (as $x\rightarrow a^{+}$ and $x\rightarrow b^{-}$), we see that it also holds when $x = a$ and $x = b$. Also note $g(a) = \int_a^a f(t)dt = 0$. Therefore, via 
+$(1)$ with $x=b$ and $x=a$, we have
+     
+$$\begin{align*}
+  F(b)-F(a) &= [g(b) + C] - [g(a) + C] \\
+            &= g(b)-g(a)               \\
+            &= g(b)                    \\
+            &= \int_a^bf(t)dt.
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Line Integrals
+
+Let $C$ be a smooth curve given by the vector function $\pmb{r}(t), a \leq t \leq b$. Let $f$ be a differentiable function of two
+or three variables whose gradient vector $\nabla f$ is continuous on $C$. Then
+$$ \int_C \nabla f \cdot d\pmb{r} = f(\pmb{r}(b)) - f(\pmb{r}(a)). $$
+Note the similarities between the above and the [Net Change Theorem](#integrals-part-two). Stated more loosely, the
+fundamental theorem for line integrals states that we can evaluate the line integral of a 
+[conservative vector field](conservative_vector_field) simply by knowing the value of $\;f$ at the endpoints of $C$.
+
+<div class="proof">
+
+By the use of the [Chain Rule](chain_rule) and the [Net Change Theorem](#integrals-part-two), we see that
+$$\begin{align*}
+  \int_C \nabla f \cdot d\pmb{r} 
+    &= \int_a^b \nabla f(\pmb{r}(t)) \cdot \pmb{r}'(t)\;dt                                                                     \\
+    &= \int_a^b \left(\pleibniz[f]{x}\leibniz[x]{t} + \pleibniz[f]{y}\leibniz[y]{t} + \pleibniz[f]{z}\leibniz[z]{t}\right)\;dt \\
+    &= \int_a^b \leibniz{t}\;f(\pmb{r}(t))\;dt                                                                                 \\
+    &= f(\pmb{r}(b)) - f(\pmb{r}(a)).
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Differentiation](differentiation)
+- [Integration](integration)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>
+
+<!-- Footnotes -->
+
+[^1]: [Constant Differences](integration_techniques#constants)

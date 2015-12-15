@@ -1,0 +1,63 @@
+---
+title: Alternating Series Test
+categories: Calculus
+icon: /img/icons/sequences-2.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![](/img/graphs/calculus/alternating-harmonic-series.png)
+
+If the alternating series $$ \sum_{n=1}^{\infty} (-1)^{n-1} b_n = b_1 - b_2 + b_3 - b_4 + \cdots + b_n > 0 $$ satisfies
+$b_{n+1} \leq b_n$ for all $n$ and $\xlimit{n}{\infty}b_n = 0$, then the series is convergent.
+
+</div>
+
+<div class="proof">
+
+We first consider the even partial sums, noting that $s_2 = b_1 - b_2 \geq 0$, $s_4 = s_2 + (b_3 - b_4) \geq s_2$, and, 
+in general, $$ s_{2n} = s_{2n-2} + (b_{2n-1} - b_{2n}) \geq s_{2n-2}\text{.} $$ Thus $0 \leq s_2 \leq s_4 \leq \cdots 
+\leq s_{2n} \leq \cdots$ But we also note $s_{2n} = b_1 - (b_2 - b_3) - (b_4 - b_5) - \cdots - (b_{2n-2} - b_{2n-1}) - 
+b_{2n}$. Every term in parenthesis is positive so $s_{2n} \leq b_1$ for all $n$. Thus the sequence $\{s_{2n}\}$ of 
+even partial sums is increasing, bounded above, and by the [Monotonic Sequence Theorem](monotonic_sequence_theorem), 
+convergent to a limit $s$.
+
+Considering the limit of the odd partial sums:
+$$\begin{align*}
+  \xlimit{n}{\infty} s_{2n+1} &= \xlimit{n}{\infty} (s_{2n} + b_{2n+1})                  \\
+                              &= \xlimit{n}{\infty} s_{2n} + \xlimit{n}{\infty} b_{2n+1} \\
+                              &= s + 0 = s\text{.}
+\end{align*}$$
+Since both even and odd partial sums convege to $s$, we have $\xlimit{n}{\infty} s_n = s$, and so the series is convergent.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Estimation Theorem
+    
+If $s = \sum (-1)^{n-1}b_n$ is the sum of an alternating series that satisfies $0 \leq b_{n+1} \leq b_n$ and 
+$\xlimit{n}{\infty} b_n = 0$, then $$ \left|R_n \right| = \left|s - s_n \right| \leq b_{n+1}. $$
+
+<div class="proof"> 
+
+We know from the proof of the Alternating Series Test that $s$ lies between any two consecutive partial sums $s_n$ and 
+$s_{n+1}$. It follows that $$ \left|s - s_n\right| \leq \left|s_{n+1} - s_n \right| = b_{n+1}. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

@@ -1,0 +1,85 @@
+---
+title: Computation Theory
+categories: Computation
+icon: /img/icons/binary-tree.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Alan Turing](/img/portraits/turing.jpg)
+
+Computation Theory is a subject focused on the computability, or lack thereof, of certain problems and the minimal constructs
+needed to come to a solution. It follows a progression of language complexity, from regular languages to context-free grammars,
+and lastly to unrestricted grammars which we see correspond to finite automata, pushdown automata, and Turing machines
+respectively. Though attempted, a more general computer has not yet been found- it seems the Turing machine represents
+a semblance of stability in the necessary components of a computer.
+
+In addition, computation theory focuses on what problems are and are not computable, as well as the classification of
+algorithms used to solve certain types of problems. For instance, any polynomial-time algorithm can be rendered as
+the computation of the closure of a set under some relations of fixed arity.
+
+Lastly, an emphasis on efficiency is placed when computing a problem (e.g. the infamous $P \neq NP$). It is undetermined as to 
+whether certain problems can be solved faster (such as the Traveling Salesman Problem), but the search for some conclusion
+remains a leading area of research, despite the lack of answers hitherto.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Regular Languages
+
+<div class="extract" data-target="/regular_languages">
+
+- [Finite Automata](finite_automata)
+- [Languages](languages)
+- [Pumping Theorem](pumping_theorems)
+- [Regular Languages](regular_languages)
+- [Thompson's Construction Algorithm](thompsons_construction_algorithm)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Context-Free Grammars
+
+<div class="extract" data-target="/context_free_grammars">
+
+- [Context-Free Grammars](context_free_grammars)
+- [Pumping Theorem](pumping_theorems)
+- [Pushdown Automata](pushdown_automata)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Turing Machines
+
+<div class="extract" data-target="/turing_machines">
+
+- [Church-Turing Thesis](church_turing_thesis)
+- [Halting Problem](halting_problem)
+- [Turing Machines](turing_machines)
+- [Universal Turing Machines](universal_turing_machines)
+- [Unrestricted Grammars](unrestricted_grammars)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Papadimitriou & Lewis (1998). Elements of the Theory of Computation (2nd ed.). Prentice-Hall. ISBN 0-13-262478-8
+
+</section>

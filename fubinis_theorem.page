@@ -1,0 +1,39 @@
+---
+title: Fubini's Theorem
+categories: Calculus
+icon: /img/icons/triple-integral.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Sample Region](/img/diagrams/calculus/iterated-integrals.png)
+
+When exploring integration in higher dimensions, we can perform the technique of iterated integrals - evaluating
+integrals that are nested deeper first and working outward, keeping variables constant if we are not integrating with
+respect to them. This is very similar to the idea of [partial differentiation](partial_derivatives),and, as such, we'd
+expect a similar concept to arise that parallels [Clairaut's Theorem](clairauts_theorem).
+
+Fubini's Theorem does tell us that integrating over a rectangular region can be done in any order. For geometric intuition,
+we consider finding the volume of the area underneath a curve $z = f(x, y)$. We note it should not matter what the cross-sections
+we integrate over is; and thus the order in which we integrate should be independent of the volume.
+
+More specifically, if $\;f$ is continuous on the rectangle $R = \{(x, y) : a \leq x \leq b, c \leq y \leq d\}$, then
+$$ \iint_R f(x, y)dA = \int_a^b \int_c^d f(x, y)dy dx = \int_c^d \int_a^b f(x, y)dx dy. $$
+Generally speaking, the above is true if we assume that $\;f$ is bounded on $R$, $\;f$ is discontinuous only on a finite
+number of smooth curves, and the iterated integrals exist.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.  
+
+</section>

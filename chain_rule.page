@@ -1,0 +1,158 @@
+---
+title: Chain Rule
+categories: Calculus
+icon: /img/icons/taking-derivatives.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Tree Diagram](/img/diagrams/calculus/chain-tree.png)
+
+The chain rule specifies how to differentiate a function that is composed of another function. That is,
+given a number of **independent** variables defined in terms of **intermediate** variables, the chain rule
+specifies the derivative with respect to the **dependent** variable.
+
+In the most basic case, if $g$ is differentiable at $x$ and $\;f$ is differentiable at $g(x)$, then the composite function 
+$F = f \circ g$ defined by $F(x)=f(g(x))$ is differentiable at $x$ and $F'$ is given by the product 
+$$ F'(x) = f'(g(x)) \cdot g'(x). $$
+
+For higher dimensional derivatives (i.e. those that consist of more than one variable), we can refer to the tree on the
+right as a template for differentiation. Simply apply all differentiations that yield the dependent variable desired and
+add them together (intuitively, all dependent differentials propagate upward towards the parent differential and should
+be summed).
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Statement
+
+If $g$ is differentiable at $x$ and $f$ is differentiable at $g(x)$, then the composite function $F = f \circ g$ 
+defined by $F(x) = f(g(x))$ is differentiable at $x$ and $F'$ is given by the product $$F'(x)=f'(g(x))\cdot g'(x).$$
+
+<div class="proof"> 
+
+Suppose $u = g(x)$ is differentiable at $a$ and $y = f(u)$ is differentiable at $b = g(a)$. 
+Let $\Delta x, \Delta u$, and $\Delta y$ be an increment of $x, u$, and $y$ respectively. As an aside, if $y_1=f(x_1)$ 
+and $x_1$ changes from $a_1$ to $a_1 + \Delta x_1$, then
+$$ \Delta y_1 = f(a_1+\Delta x_1)-f(a_1)\text{ and } f'(a_1) = \xlimit{x_1}{0}\frac{\Delta y_1}{\Delta x_1} $$
+
+If we let 
+$$ \epsilon = \frac{\Delta y_1}{\Delta x_1} - f'(a_1)\text{, then } \xlimit{x_1}{0}\epsilon = f'(a_1)-f'(a_1) = 0 $$
+
+Also note
+$$
+  \epsilon = \frac{\Delta y_1}{\Delta x_1} - f'(a_1) \Rightarrow \Delta y_1=f'(a_1)\Delta x_1 +
+  \epsilon\Delta x_1\text{ where } \epsilon \rightarrow 0\text{ as }\Delta x_1 \rightarrow 0
+$$
+
+Now, we can say
+$$\begin{gather*}
+  \Delta u = g'(a)\Delta x + \epsilon_1\Delta x = [g'(a)+\epsilon_1]\Delta x\text{ where } \epsilon_1
+             \rightarrow 0\text{ as }\Delta x\rightarrow 0,                                            \\
+  \Delta y = f'(b)\Delta u + \epsilon_2\Delta u = [f'(b)+\epsilon_2]\Delta u\text{ where } \epsilon_2
+             \rightarrow 0\text{ as }\Delta u\rightarrow 0.
+\end{gather*}$$
+
+Substituting, we find $\Delta y=[f'(b)+\epsilon_2][g'(a)+\epsilon_1]\Delta x\;$ which implies 
+$\frac{\Delta y}{\Delta x} = [f'(b)+\epsilon_2][g'(a)+\epsilon_1]$. As $\Delta x\rightarrow 0$, $\Delta u\rightarrow 0$ 
+which implies both $\epsilon_1\rightarrow 0$ and $\epsilon_2\rightarrow 0$ as $\Delta x\rightarrow 0$. Therefore 
+$$ \leibniz[y]{x} = \xlimit{x}{0}[f'(b)+\epsilon_2][g'(a)+\epsilon_1] = f'(b)g'(a) = f'(g(a))g'(a). $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Single Independent
+
+Suppose that $z = f(x, y)$ is a differentiable function of $x$ and $y$, where $x = g(t)$ and $y = h(t)$ are
+both differentiable functions of $t$. Then $z$ is a differentiable function of $t$ and
+
+$$ \leibniz[z]{t} = \pleibniz[f]{x}\leibniz[x]{t} + \pleibniz[f]{y}\leibniz[y]{t}. $$
+
+<div class="proof">
+
+A change of $\Delta t$ in $t$ produces changes of $\Delta x$ in $x$ and $\Delta y$ in $y$. These in turn
+product a change of $\Delta z$ in $z$. By definition of [differentiability]() of functions of two variables
+
+$$ \Delta z = \pleibniz[f]{x}\Delta{x} + \pleibniz[f]{y}\Delta{y} + \epsilon_1\Delta{x} + \epsilon_2\Delta{y} $$
+
+where $\epsilon_1 \rightarrow 0$ and $\epsilon_2 \rightarrow 0$ as $(\Delta{x}, \Delta{y}) \rightarrow (0, 0)$. Note 
+if the functions $\epsilon_1$ or $\epsilon_2$ are not defined at $(0, 0)$, we define them to be $0$ there. For
+a clearer understanding of the role of epsilon, refer to the proof of the chain rule above. Now, dividing
+both sides of the equation by $\Delta{t}$, we have
+
+$$ 
+  \frac{\Delta{z}}{\Delta{t}} = \pleibniz[f]{x}\frac{\Delta{x}}{\Delta{t}} 
+                              + \pleibniz[f]{y}\frac{\Delta{y}}{\Delta{t}}
+                              + \epsilon_1\frac{\Delta{x}}{\Delta{t}}
+                              + \epsilon_2\frac{\Delta{y}}{\Delta{t}}.
+$$
+
+If we now let $\Delta{t} \rightarrow 0$, then $\Delta{x} = g(t + \Delta{t}) - g(t) \rightarrow 0$ because $g$ is
+differentiable and therefore continuous. Similarly, $\Delta{y} \rightarrow 0$. This, in turn, means $\epsilon_1 \rightarrow 0$
+and $\epsilon_2 \rightarrow 0$, so
+
+$$\begin{align*}
+\leibniz[z]{t} &= \xlimit{\Delta{t}}{0} \frac{\Delta{z}}{\Delta{t}}                                              \\
+               &= \pleibniz[f]{x}\xlimit{\Delta{t}}{0}\frac{\Delta{x}}{\Delta{t}}
+                + \pleibniz[f]{y}\xlimit{\Delta{t}}{0}\frac{\Delta{y}}{\Delta{t}}
+                + \left(\xlimit{\Delta{t}}{0} \epsilon_1\right)\xlimit{\Delta{t}}{0} \frac{\Delta{x}}{\Delta{t}}
+                + \left(\xlimit{\Delta{t}}{0} \epsilon_2\right)\xlimit{\Delta{t}}{0} \frac{\Delta{y}}{\Delta{t}} \\
+               &= \pleibniz[f]{x}\leibniz[x]{t} + \pleibniz[f]{y}\leibniz[y]{t} 
+                + 0 \cdot \leibniz[x]{t} + 0 \cdot \leibniz[y]{t}                                                \\
+               &= \pleibniz[f]{x}\leibniz[x]{t} + \pleibniz[f]{y}\leibniz[y]{t}.
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Generalized Independence
+
+Suppose that $u$ is a differentiable function of the $n$ variables $\inflate{x}{n}$ and each $x_j$ is a differentiable
+function of the $m$ variables $\inflate{t}{m}$. Then $u$ is a function of $\inflate{t}{m}$ and
+
+$$ 
+  \pleibniz[u]{t_i} = \pleibniz[u]{x_1}\pleibniz[x_1]{t_i} 
+                    + \pleibniz[u]{x_2}\pleibniz[x_2]{t_i}
+                    + \cdots
+                    + \pleibniz[u]{x_n}\pleibniz[x_n]{t_i}.
+$$
+
+For instance, consider $z = f(x, y)$ is a differentiable function of $x$ and $y$, where $x = g(s, t)$ and $y = h(s, t)$ are
+differentiable functions of $s$ and $t$. Then
+$$ \pleibniz[z]{s} = \pleibniz[z]{x}\pleibniz[x]{s} + \pleibniz[z]{y}\pleibniz[y]{s} $$
+and
+$$ \pleibniz[z]{t} = \pleibniz[z]{x}\pleibniz[x]{t} + \pleibniz[z]{y}\pleibniz[y]{t}. $$
+
+Intuitively speaking, we note this actually is the same as the first case, since the variable not being
+differentiated is considered a constant.
+
+</section>
+
+<section class="primary">
+
+# See Also 
+
+- [Rules of Differentiation](rules_of_differentiation)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.  
+
+</section>

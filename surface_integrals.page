@@ -1,0 +1,113 @@
+---
+title: Surface Integrals
+categories: Calculus
+icon: /img/icons/surface-integrals.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Surface Integral](/img/diagrams/calculus/surface-integral.png)
+
+In the same way a [line integral](line_integral) is a generalization of an ordinary integral over an interval, a 
+surface integral is a generalization of a double integral over a region. Similarly, in the same way a line integral
+is defined over continuous scalar functions (a [path integral](path_integral)) and continuous vector fields,
+surface integrals are also defined over surfaces and vector fields. We say the **surface integral of $\;f$ over
+the surface $S$** is
+$$ \iint_S f(x, y, z)\;dS = \iint_D\;f(\pmb{r}(u, v))\left|\pmb{r}_u \times \pmb{r}_v\right|dA $$
+where $\pmb{r}_u$ and $\pmb{r}_v$ are the partials of $\pmb{r}$, the vector equation of $\;f$. In addition, the 
+components of the partials must be continuous and $\pmb{r}_u$ and $\pmb{r}_v$ should be nonzero and nonparallel
+in the interior of some region $D$.
+
+</div>
+
+<div class="proof">
+
+Suppose a surface $S$ has vector equation
+$$ \pmb{r}(u, v) = x(u, v)\pmb{i} + y(u, v)\pmb{j} + z(u, v)\pmb{k}\quad (u, v) \in D. $$
+Assuming the parameter domain $D$ is a rectangle, we can divide it into subrectangles $R_{ij}$ with
+dimensions $\Delta{u}$ and $\Delta{v}$. Evaluating $f$ at a point $P_{ij}^*$ in each subrectangle and
+multiplying by the area $\Delta{S_{ij}}$ of the patch, we form the Riemann sum
+$$ \sum_{i=1}^m \sum_{j=1}^n \; f(P_{ij}^*)\Delta{S_{ij}}. $$
+Note by our discussion of [surface area](surface_area) that
+$$ \Delta{S_{ij}} = \left|\pmb{r}_u \times \pmb{r}_v\right|\Delta{u}\Delta{v}. $$
+The proof follows.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Oriented Surfaces
+
+If it is possible to choose a unit normal vector $\pmb{n}$ at every such point $(x, y, z)$ so that $\pmb{n}$ varies
+continuously over $S$, then $S$ is an **oriented surface** and the given choice of $\pmb{n}$ provides $S$ with an 
+**orientation**. To find this normal vector, we simply consider
+$$ \pmb{n} = \frac{\pmb{r}_u \times \pmb{r}_v}{\norm{\pmb{r}_u \times \pmb{r}_v}} \;\; $$
+where the opposite orientation is given by $-\pmb{n}$.
+By convention, a closed surface has **positive orientation** outward from the surface.
+
+</section>
+
+<section class="primary">
+
+# Vector Fields
+
+<div class="block">
+
+![Flux](/img/diagrams/calculus/flux.png)
+
+In the same way we provided a physical interpretation of line integrals (i.e. work), we can also provide a physical interpretation
+of surface integrals (i.e. **flux**). That is, suppose that $S$ is an oriented surface with unit normal vector $\pmb{n}$ and
+imagine a fluid with density $\rho(x, y, z)$ and velocity field $\pmb{v}(x, y, z)$ flowing through $S$. Then the rate of
+flow per unit area is $\rho\pmb{v}$. Since the region can be approximated to smaller and smaller approximate planes
+(see [surface area](surface_area)), then the amount of flow in the direction of the normal must be
+$$ (\rho\pmb{v}\cdot\pmb{n})A(S_{ij}) $$ where $A(S_{ij})$ is the area of some small patch of the surface. 
+If we let $\pmb{F} = \rho\pmb{v}$, then $\pmb{F}$ is a vector field on $\bbr^3$ and the above equation, which we can
+apply to arbitrarily small patches, yields the surface integral of our vector field. 
+
+That is, if $\pmb{F}$ is a continuous vector field defined on an oriented surface $S$ with unit normal vector $\pmb{n}$,
+then the **surface integral of $\pmb{F}$ over $S$** is
+$$ \iint_S\pmb{F}\cdot d\pmb{S} = \iint_S\pmb{F}\cdot\pmb{n}\;dS = \iint_D\pmb{F}\cdot(\pmb{r}_u\times\pmb{r}_v)\;dA. \; $$
+
+</div>
+
+<div class="proof">
+
+Here we prove the last equality listed above (since the rest of the above is the *definition* of the surface integral).
+Now if $S$ is given by a vector function $\pmb{r}(u, v)$, then
+$$ \pmb{n} = \frac{\pmb{r}_u \times \pmb{r}_v}{\norm{\pmb{r}_u \times \pmb{r}_v}} \;\; $$
+Therefore
+$$\begin{align*}
+  \iint_S \pmb{F} \cdot d\pmb{S} 
+    &= \iint_S \pmb{F} \cdot \frac{\pmb{r}_u \times \pmb{r}_v}{\norm{\pmb{r}_u \times \pmb{r}_v}}\;dS                         \\
+    &= \iint_D \left[\pmb{F}(\pmb{r}(u, v)) \cdot \frac{\pmb{r}_u \times \pmb{r}_v}{\norm{\pmb{r}_u \times \pmb{r}_v}}\right]
+               \norm{\pmb{r}_u \times \pmb{r}_v}\;dA                                                                          \\
+    &= \iint_D \pmb{F} \cdot (\pmb{r}_u \times \pmb{r}_v)\;dA.
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Divergence Theorem](divergence_theorem)
+- [Green's Theorem](greens_theorem)
+- [Stoke's Theorem](stokes_theorem)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

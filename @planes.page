@@ -1,0 +1,46 @@
+---
+title: @Planes
+categories: Calculus
+icon: /img/icons/geometric-constructions.png
+...
+
+<section class="primary">
+
+# Distance from Point
+
+The formula for the distance $D$ from a point $P_1(x_1, y_1, z_1)$ to the plane is
+
+$$ D = \frac{\left|ax_1 + by_1 + cz_1 + d\right|}{\sqrt{a^2 + b^2 + c^2}}. $$
+
+<div class="proof">
+
+Let $P_0(x_0, y_0, z_0)$ be any point in the given plane and let $\vec{b}$ be the vector corresponding to
+$\overrightarrow{P_0P_1}$. Then
+
+$$ \vec{b} = \langle x_1 - x_0, y_1 - y_0, z_1 - z_0 \rangle. $$
+
+The distance $D$ from $P_1$ to the plane is equal to the absolute value of the scalar projection of $\vec{b}$
+onto the normal vector $\vec{n} = \langle a, b, c \rangle$. Thus
+
+$$\begin{align*}
+  D &= \left|\text{comp}_n\vec{b}\right| = \frac{1}{\vec{n}}\left|\dotp{n}{b}\right|         \\
+    &= \frac{\left|a(x_1-x_0) + b(y_1 - y_0) + c(z_1 - z_0)\right|}{\sqrt{a^2 + b^2 + c^2}}  \\
+    &= \frac{\left|(ax_1 + by_1 + cz_1) - (ax_0 + by_0 + cz_0)\right|}{\sqrt{a^2 + b^2 + c^2}}
+\end{align*}$$
+
+Since $P_0$ lies in the plane, its coordinates satisfy the equation of the plane and so we have
+$ax_0 + by_0 + cz_0 + d = 0$. Thus the formula for $D$ can be written as
+
+$$ D = \frac{\left|ax_1 + by_1 + cz_1 + d\right|}{\sqrt{a^2 + b^2 + c^2}}. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

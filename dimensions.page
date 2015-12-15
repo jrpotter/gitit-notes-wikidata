@@ -1,0 +1,115 @@
+---
+title: Dimensions
+categories: Linear Algebra
+icon: /img/icons/alternate-bases.png
+...
+
+<section class="primary">
+
+# Summary
+
+The rigorous definition of a dimension enabled algebraic manipulation of matrices higher than order three, which were previously
+difficult to understand since one cannot (reasonably) geometrically imagine a higher dimension.
+Consider a [subspace](subspaces) $V$ of $\bbr^n$. The number of vectors in a basis of $V$ is called the **dimension** of $V$, 
+denoted by $\text{dim}(V)$. Similarly, we denote the dimension of a linear space to be the number of elements in its bases.
+It also enables us to reason about bases in the following way:
+
+Consider a subspace $V$ of $\bbr^n$ with $\text{dim}(V) = m$.
+
+1. We can find *at most* $m$ linearly independent vectors in $V$.<br />   
+   <div class="proof">  
+   Consider linearly independent vectors $\inflate{\vec{v}}{p}$ in $V$, and let $\inflate{\vec{w}}{m}$ be a basis of $V$. 
+   Since the vectors $\inflate{\vec{w}}{m}$ span $V$, we have $p \leq m$, by 
+  [basis equivalence](bases_of_vector_spaces#equivalence), as claimed.
+   </div><br />
+
+2. We need *at least* $m$ vectors to span $V$.<br />  
+   <div class="proof">
+   Let $\inflate{\vec{v}}{m}$ be a basis of $V$, and let $\inflate{\vec{w}}{q}$ span $V$. Since $\inflate{\vec{v}}{m}$ 
+   forms a basis, they are linearly independent. Then by [basis equivalence](bases_of_vector_spaces#equivalence), $q \geq m$.
+   </div><br />
+
+3. If $m$ vectors in $V$ are linearly independent, then they form a basis of $V$.<br />  
+   <div class="proof">
+   Consider linearly independent vectors $\inflate{\vec{v}}{m}$ in $V$. We have to show that the vectors $\inflate{\vec{v}}{m}$ 
+   span $V$. If $\vec{v}$ is any vector in $V$, then the $m+1$ vectors $\inflate{\vec{v}}{m}, \vec{v}$ will be linearly dependent 
+   by part (1). Since vectors $\inflate{\vec{v}}{m}$ are linearly independent and therefore nonredundant, vector $\vec{v}$ must be 
+   redundant, meaning it is a linear combination of $\inflate{\vec{v}}{m}$. Since $\vec{v}$ is an arbitrary vector in $V$,
+   we have shown that vectors $\inflate{\vec{v}}{m}$ span $V$, as claimed.
+   </div><br />
+
+4. If $m$ vectors in $V$ span $V$, then they form a basis of $V$.<br />  
+   <div class="proof">
+   Consider vectors $\inflate{\vec{v}}{m}$ that span $V$, and let $\inflate{\vec{w}}{m}$ be a basis of $V$. 
+   We must show that $\inflate{\vec{v}}{m}$ are linearly independent. For the sake of contradiction, suppose they weren't. 
+   Then for some $\vec{v_i}$,
+   $$ \text{span}(\inflate{\vec{v}}{i}, \ldots, \vec{v_m}) = \text{span}(\inflate{\vec{v}}{m-1})\text{,} $$
+   where the right hand side of the equation has been relabeled after the removal of $\vec{v}_i$. But then we
+   are saying $m-1$ vectors span $V$ and by [basis equivalence](bases_of_vector_spaces#equivalence), $m-1 \geq m$ 
+   which is a contradiction. Thus $\inflate{\vec{v}}{m}$ must be linearly independent, and therefore form a basis of $V$.
+   </div>
+
+</section>
+
+<section class="primary">
+
+# Finite Dimensionality
+
+A linear space $V$ is called **finite dimensional** if it has a (finite) basis $\inflate{\;f}{n}$,
+so that we can define it dimension $\text{dim}(V) = n$. Otherwise the space is called **infinite dimensional**.
+A linear space $V$ is **finitely generated** if it can be spanned by finitely many elements.
+
+<section class="secondary">
+
+## Subspace Inheritance
+
+If $W$ is a subspace of an $n$-dimensional linear space $V$, then $W$ is finite-dimensional as well, and 
+$\text{dim}(W) \leq n$.
+   
+<div class="proof">
+
+Let $W$ be an $n$-dimensional [linear space](linear_spaces) and $W \leq N$. Let $m$ be the largest number of 
+[linearly independent](linear_independence) vectors we can find in $W$. Thus, choose linearly independent vectors 
+$\inflate{\vec{w}}{m}$ to be a basis of $W$. Thus $W$ is finite dimensional and $\text{dim}(W) = m \leq n$.
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Finite Generation
+
+A linear space $V$ is finitely generated if and only if it is finite dimensional; if elements 
+$\inflate{g}{n}$ span $V$, then $\text{dim}(V) \leq n$.<br />  
+
+<div class="proof">
+
+Let $V$ be a linear space.  
+$\forward$ Suppose $V$ is finitely generated. Let $m$ be the minimum number of vectors required to span
+$V$, $\inflate{g}{m}$. Then by [properties of dimension](dimensions#properties),  $(\inflate{g}{m})$ forms a basis of $V$.  
+$\backward$ If $V$ is finite dimensional, then $V$ has basis $(\inflate{g}{r})$ where
+$r = \text{dim}(V)$. Thus $V$ is finitely generated.<br />  
+We note if $V$ has basis $(\inflate{g}{r})$, then $r \leq m$, again by the [properties of dimensions](dimensions#properties).
+
+</div>
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Bases](bases)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Bretscher, Otto (2008). Linear Algebra with Applications (4th ed.). Pearson. ISBN 978-0-13-600926-9.
+
+</section>
+

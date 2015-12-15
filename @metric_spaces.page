@@ -1,0 +1,31 @@
+---
+title: @Metric Spaces
+categories: Abstract Algebra Analysis Stub
+icon: /img/icons/arithmetic.png
+...
+
+<section class="primary">
+
+# Discrete Metric
+
+A very simple metric space can be formed as follows: Take any set $X$ and define $d(p, q) = 0$ if $p = q$ or
+$q$ if $p \neq q$.
+
+</section>
+
+<section class="primary">
+
+# Bounded Metric
+
+The bounded metric consists of set $\bbr$ and $d(x, y)$ defined as
+$$ d(x, y) = \frac{\abs{x - y}}{1 + \abs{x - y}}. $$
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Abott, Stephen (2001). Understanding Analysis (1st ed.). Springer. ISBN 978-0387950605.
+
+</section>

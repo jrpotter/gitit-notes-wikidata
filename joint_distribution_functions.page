@@ -1,0 +1,58 @@
+---
+title: Joint Distribution Functions
+categories: Statistics
+icon: /img/icons/random-variables.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Marginal Colored Red and Blue](/img/diagrams/statistics/bivariate-normal.png)
+
+The idea of probability distributions for random variables can be generalized to two or more random variables. We'll consider the 
+specific case of two random variables with the understanding that this entire section can be generalized to more. In particular, 
+all questions regarding joint probabilities of two random variables $X$ and $Y$ can generally be handled through use of the 
+**joint cumulative probability distribution function** of $X$ and $Y$ defined by
+$$ F(a, b) = \bbps{X \leq a, Y \leq b},\quad -\infty < a, b < \infty. $$
+Furthermore, we can break the above down into the distribution of each respective random variable into the 
+**marginal distributions** of $X$ and $Y$ as
+$$ F_X(a) = F(a, \infty) \;\text{ and }\; F_Y(b) = F(\infty, b), $$
+which we can visualize as keeping the value for $X$ or $Y$ fixed respectively.
+
+</div>
+
+<div class="proof">
+
+We prove the marginal distribution formula above holds for $X$. $Y$ can be found similarly.
+$$\begin{align*}
+  F_X(a) &= \bbps{X \leq a}                                            \\
+         &= \bbps{X \leq a, Y < \infty}                                \\
+         &= \bbp\left(\xlimit{b}{\infty} \{X \leq a, Y \leq b\}\right) \\
+         &= \xlimit{b}{\infty} \bbps{X \leq a, Y \leq  b}              \\
+         &= \xlimit{b}{\infty} F(a, b)                                 \\
+         &= F(a, \infty)
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Probability Density Function](probability_density_function)
+- [Probability Mass Function](probability_mass_function)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

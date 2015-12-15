@@ -1,0 +1,124 @@
+---
+title: Thompson's Construction Algorithm
+categories: Computation
+icon: /img/icons/binary-tree.png
+...
+
+<section class="primary">
+
+# Statement
+
+The class of languages accepted by finite automata is closed under a variety of operations. By building an 
+[NFA](nondeterministic_finite_automaton) and converting it into its corresponding 
+[DFA](deterministic_finite_automaton), this construction algorithm can build all regular languages for use
+by a computer.
+
+</section>
+
+<section class="primary">
+
+# Union
+
+<div class="block">
+
+![Union](/img/diagrams/computation/thompsons_union.png)
+
+Let $M_1 = (K_1, \Sigma, \Delta_1, s_1, F_1)$ and $M_2 = (K_2, \Sigma, \Delta_2, s_2, F_2)$ be nondeterministic
+finite automata; we shall construct a nondeterministic finite automaton $M$ such that $L(M) = L(M_1) \cup L(M_2)$.
+Without loss of generality, we may assume that $K_1$ and $K_2$ are disjoint sets. Then the finite automaton $M$
+that accepts $L(M_1) \cup L(M_2)$ is defined as follows:
+
+$M = (K, \Sigma, \Delta, s, F)$ where $s$ is a new state not in $K_1$ or $K_2$,
+
+- $K = K_1 \cup K_2 \cup \{s\}$,
+- $F = F_1 \cup F_2$,
+- $\Delta = \Delta_1 \cup \Delta_2 \cup \{(s, e, s_1), (s, e, s_2)\}$.
+
+We note then that if $w \in \Sigma^*$, then $(s, w) \vdash_M^* (q, e)$ for some $q \in F$ if and only if
+either $(s_1, w) \vdash_{M_1}^* (q, e)$ for some $q \in F_1$ or $(s_2, w) \vdash_{M_2}^* (q, e)$ for
+some $q \in F_2$. Hence $M$ accepts $w$ if and only if $M_1$ or $M_2$ accepts $w$ and $L(M) = L(M_1) \cup L(M_2)$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Concatenation
+
+<div class="block">
+
+![Concatenation](/img/diagrams/computation/thompsons_concatenation.png)
+
+Let $M_1 = (K_1, \Sigma, \Delta_1, s_1, F_1)$ and $M_2 = (K_2, \Sigma, \Delta_2, s_2, F_2)$ be nondeterministic
+finite automata; we shall construct a nondeterministic finite automaton $M$ such that $L(M) = L(M_1) \circ L(M_2)$.
+
+The finite automaton $M$ that accepts $L(M_1) \cup L(M_2)$ is defined as follows:
+
+- $K = K_1 \cup K_2$,
+- $F = F_2$,
+- $\Delta = \Delta_1 \cup \Delta_2 \cup \{(\;f, e, s_2) : f \in F_1\}$.
+
+We note then that if $w \in \Sigma^*$, then $(s, w) \vdash_M^* (q, e)$ for some $q \in F$ if and only if
+$(s_1, w) \vdash_{M_1}^* (s_2, w')$ and $(s_2, w') \vdash_{M_2}^* (q, e)$ for some $q \in F_2$. 
+Hence $M$ accepts $w$ if and only if $M_1$ accepts the first part of $w$ and $M_2$ accepts the second.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Kleene Star
+
+<div class="block">
+
+![Kleene Star](/img/diagrams/computation/thompsons_kleene.png)
+
+Let $M_1 = (K_1, \Sigma, \Delta_1, s_1, F_1)$ be a nondeterministic finite automaton; we construct a nondeterministic 
+finite automaton $M$ such that $L(M) = L(M_1)^*$. 
+
+The finite automaton $M$ that accepts $L(M_1)^*$ is defined as follows:
+
+- $K = K_1 \cup \{s\}$,
+- $F = \{s\} \cup F_1$,
+- $\Delta = \Delta_1 \cup \{(s, e, s_1)\} \cup \{(\;f, e, s_1) : f \in F_1\}$.
+
+Here we note that for all $w \in \Sigma^*$, $w^k$ for all $k \in \bbn$ is accepted. 
+
+Additionally note that it is important to have a new state $s$, instead of creating an $\epsilon$-transition back to $s_1$ since repeated Kleene stars could lead to acceptance problems. For example, the regular language $(a^*bc)^*$ would not be accepted correctly otherwise (since reading an $a$ would force reading $bc$ but the outer Kleene star would bypass this).
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Complementation
+
+Let $M = (K, \Sigma, \delta, s, F)$ be a *deterministic* finite automaton. Then the complementary language
+$$ \overline{L} = \Sigma^* - L(M) $$ is accepted by the deterministic finite automaton 
+$\overline{M} = (K, \Sigma, \delta, s, K-F)$. That is, $\overline{M}$ is identical to $M$ except that final and 
+nonfinal states are interchanged.
+
+</section>
+
+<section class="primary">
+
+# Intersection
+
+We note that
+
+$$ L_1 \cap L_2 = \Sigma^* - ((\Sigma^* - L_1) \cup (\Sigma^* - L_2)), $$
+
+and so closedness under intersection follows from closedness under union and complementation.
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Papadimitriou & Lewis (1998). Elements of the Theory of Computation (2nd ed.). Prentice-Hall. ISBN 0-13-262478-8
+
+</section>

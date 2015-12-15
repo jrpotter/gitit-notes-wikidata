@@ -1,0 +1,116 @@
+---
+title: Similar Matrices
+categories: Linear Algebra
+icon: /img/icons/alternate-bases.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Composition Diagram](/img/diagrams/linear/change-of-basis-matrix-vector.png)
+
+Consider two $n\times n$ matrices $A$ and $B$. We say that $A$ is **similar** to $B$ if there exists an
+invertible matrix $S$ such that $AS = SB$. Thus two matrices are similar if they represent the same linear
+transformation with respect to different bases. Additionally, we note similarity is an equivalence relation, 
+which makes sense considering the change of basis matrices are similar, and we would like to ensure that our choice
+of basis is independent of any final results we are seeking.
+
+</div>
+
+<div class="proof">
+
+Let $A, B$, and $C$ be similar $n\times n$ matrices.
+
+- Reflexive
+:    Consider the identity matrix, an invertible $n\times n$ matrix. Note $AI_n = I_nA$ so
+     $A$ is similar to itself.
+- Symmetric
+:    Suppose there exists an invertible matrix $S$ such that $AS = SB$. Then
+     $B = S^{-1}AS \Rightarrow BS^{-1} = S^{-1}A$.
+- Transitive
+:    Suppose there exist invertible matrices $P$ and $Q$ such that $AP = PB$ and $BQ = QC$.
+     Then $$ AP = PQCQ^{-1} \Rightarrow APQ = PQC \Rightarrow AS = SC $$ where $S = PQ$ is invertible.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Eigenvalues
+
+Suppose matrix $A$ is similar to $B$. Then
+
+1. Matrices $A$ and $B$ have the same [characteristic polynomial](eigenvectors#characteristic-polynomial), 
+   that is, $f_A(\lambda) = f_B(\lambda)$.<br />  
+   <div class="proof">
+   If $B = S^{-1}AS$, then 
+   $$\begin{align*}
+     f_B(\lambda) &= \text{det}(B-\lambda I_n)                                    \\
+                  &= \text{det}(S^{-1}AS-\lambda I_n)                             \\
+                  &= \text{det}(S^{-1}(A-\lambda I_n)S)                           \\
+                  &= (\text{det}\;S)^{-1}\text{det}(A-\lambda I_n)\text{det}(S)   \\
+                  &= (\text{det}\;S)^{-1}(\text{det}\;S)\text{det}(A-\lambda I_n) \\
+                  &= f_A(\lambda)
+   \end{align*}$$
+   for all scalars $\lambda$.
+   </div><br />
+
+2. $\text{rank}(A) = \text{rank}(B)$ and $\text{nullity}(A) = \text{nullity}(B)$.<br />  
+   <div class="proof">
+   First note that $A$ and $B$ are $n \times n$ matrices and therefore $\text{dim}\;A = \text{dim}\;B = n$.
+   Now consider $B = S^{-1}AS$ or $SB = AS$. The kernel of $B$ consists of all vectors $\vec{x}$ such that
+   $$ S(B\vec{x}) = S\vec{0} = \vec{0} = AS\vec{x} = A(S\vec{x}). $$
+   Thus, $S\vec{x}$ is in the kernel of $A$. Given this, consider the transformation $T(\vec{x}) = S\vec{x}$
+   from $\text{ker}\;B$ to $\text{ker}\;A$. Since $S$ is invertible, $\text{ker}\;T = \{\vec{0}\}$ and
+   $\text{im}\;T = \text{ker}\;A$. Therefore $T$ is an isomorphism.
+   Supposing $\inflate{\;f}{m}$ is the basis of $\text{ker}\;B$, we note that $T(f_1), T(f_2), \ldots, T(f_m)$
+   is a basis of $A$[^1] meaning $\text{nullity}\;B = \text{nullity}\;A$. By the 
+   [rank-nullity theorem](dimensions#rank-nullity-theorem), $\text{rank}\;B = \text{rank}\;A$.
+   </div><br />
+
+3. Matrices $A$ and $B$ have the same eigenvalues, with the same algebraic and geometric multiplicities.<br />  
+   <div class="proof">
+   From part $(1)$ we see that matrices $A$ and $B$ have the same eigenvalues, with the same algebraic multiplicities.
+   For geometric multiplicity, we argue that $A - \lambda I_n$ is similar to $B - \lambda I_n$ for all $\lambda$.
+   This follows because
+   $$\begin{align*}
+     A - \lambda I_n &= S^{-1}BS - \lambda I_n     \\
+                     &= S^{-1}(BS - S\lambda I_n)  \\
+                     &= S^{-1}(BS - \lambda I_n S) \\
+                     &= S^{-1}(B - \lambda I_n)S.
+   \end{align*}$$
+   Then part $(2)$ tells us the nullity of $A - \lambda I_n$ is that of $B - \lambda I_n$ for all eigenvalues $\lambda$.
+   </div><br />
+
+4. Matrices $A$ and $B$ have the same determinant and the same trace.<br />  
+   <div class="proof">
+   This follows from the fact that the characteristic polynomials are the same by part $(1)$, so the trace and determinant
+   coefficients are also the same, up to signs.[^2]
+   </div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Change of Basis](change_of_basis)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Bretscher, Otto (2008). Linear Algebra with Applications (4th ed.). Pearson. ISBN 978-0-13-600926-9.
+
+</section>
+
+<!-- Footnotes -->
+
+[^1]: [Property 5 of Isomorphisms](linear_spaces#properties)
+[^2]: [Characteristic Polynomial](eigenspaces#characteristic-polynomial)

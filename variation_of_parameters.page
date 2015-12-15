@@ -1,0 +1,69 @@
+---
+title: Variation of Parameters
+categories: Calculus Differential
+icon: /img/icons/second-order-diff-equations.png
+...
+
+<section class="primary">
+
+# Summary
+
+If the functions $p$, $q$, and $g$ are continuous on an open interval $I$, and if the functions $y_1$ and $y2$ are a
+fundamental set of solutions of the homogeneous equation corresponding to the nonhomogeneous equation
+$$ y'' + p(t)y' + q(t)y = g(t), $$ then a particular solution of this nonhomogeneous equation is
+$$ 
+  Y(t) = -y_1(t)\int_{t_0}^t \frac{y_2(t)g(t)}{W(y_1, y_2)(s)}\;ds 
+       + y_2(t) \int_{t_0}^t \frac{y_1(s)g(s)}{W(y_1, y_2)(s)}\;ds, 
+$$ 
+where $t_0$ is any conveniently chosen point in $I$. The general solution is then
+$$ y = c_2y_2(t) + c_2y_2(t) + Y(t). $$
+
+<div class="proof">
+
+Consider $$ y'' + p(t)y' + q(t)y = g(t), $$ where $p$, $q$, and $g$ are given continuous functions. As a starting point,
+we assume that we know the general solution $$ y_c(t) = c_1y_1(t) + c_2y_2(t) $$ of the corresponding homogeneous equation.
+Instead of considering $c_1$ and $c_2$ though, we replace them with functions $u_1(t)$ and $u_2(t)$ in the hopes of finding
+a solution to the nonhomogeneous equation. For convenience sake, set $$ u_1'(t)y_1(t) + u_2'(t)y_2(t) = 0. \quad (1) $$
+Therefore
+$$\begin{align*}
+  y &= u_1(t)y_1(t) + u_2(t)y_2(t)                                         \\
+  y' &= u_1'(t)y_1(t) + u_1(t)y_1'(t) + u_2'(t)y_2(t) + u_2(t)y_2'(t)      \\
+     &= u_1(t)y_1'(t) + u_2(t)y_2'(t)                                      \\
+  y'' &= u_1'(t)y_1'(t) + u_1(t)y_1''(t) + u_2'(t)y_2'(t) + u_2(t)y_2''(t).
+\end{align*}$$
+
+Substituting these values into our nonhomogeneous equation and rearranging terms, we get
+$$
+  u_1(t)[y_1''(t) + p(t)y_1'(t) + q(t)y_1(t)] 
+  + u_2(t)[y_2''(t) + p(t)y_2'(t) + q(t)y_2(t)]
+  + u_1'(t)y_1'(t) + u_2'(t)y_2'(t) = g(t).
+$$
+But since $y_1$ and $y_2$ are zero, values in the square brackets above evaluate to $0$ and we're left with
+$$ u_1'(t)y_1'(t) + u_2'(t)y_2'(t) = g(t). \quad (2) $$
+
+Note that $(1)$ and $(2)$ create a linear system of equations as follows:
+$$
+  \begin{bmatrix} y_1(t) & y_2(t) \\ y_1'(t) & y_2'(t) \end{bmatrix}
+  \begin{bmatrix} u_1'(t) \\ u_2'(t) \end{bmatrix} = 
+  \begin{bmatrix} 0 \\ g(t) \end{bmatrix}.
+$$
+
+Therefore, noting the determinant of the left square matrix is the [Wronskian](wronskian), and by use of 
+[Cramer's Rule](cramers_rule), we get that
+$$ u_1'(t) = -\frac{y_2(t)g(t)}{W(y_1, y_2)(t)}, \quad u_2'(t) = \frac{y_1(t)g(t)}{W(y_1, y_2)(t)}. $$
+Note that division by the Wronskian is indeed permissible since $y_1$ and $y_2$ are a 
+[fundamental set of solutions](wronskian#fundamental-set-of-solutions), implying that the Wronskian is nonzero. Thus, by 
+integrating these values and placing them back in modified nonhomogeneous equation $y$, we get our result. The fact that the 
+general solution is as described follows from the theory of [nonhomogeneous equations](nonhomogeneous_equations).
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Boyce W.E. & DiPrima R. C. (2010). Elementary Differential Equations (9th ed.). John Wiley & Sons, Inc. ISBN 978-0470554913.
+
+</section>

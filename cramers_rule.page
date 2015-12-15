@@ -1,0 +1,94 @@
+---
+title: Cramer's Rule
+categories: Linear Algebra
+icon: /img/icons/matrix-transformations.png
+...
+
+<section class="primary">
+
+# Summary
+
+Consider the linear system 
+$$ A\vec{x} = \vec{b}, $$
+where $A$ is an invertible $n \times n$ matrix. The components $x_i$ of the solution vector $\vec{x}$ are 
+$$ x_i = \frac{\text{det}(A_{\vec{b}, i})}{\text{det}\;A}, $$
+where $A_{\vec{b}, i}$ is the matrix obtained by replacing the $\spscript{i}{th}$ column of $A$ by $\vec{b}$.
+
+<div class="proof">
+
+Write $A = \begin{bmatrix} \vec{w}_1 & \vec{w}_2 & \cdots & \vec{w}_i & \cdots & \vec{w}_n \end{bmatrix}$. 
+If $\vec{x}$ is the solution of the system $A\vec{x} = \vec{b}$, then
+
+$$\begin{align*}
+  \text{det}\left(A_{\vec{b},i}\right) 
+    &= \text{det}\begin{bmatrix} \vec{w}_1 & \vec{w}_2 & \cdots & \vec{b} & \cdots & \vec{w}_n \end{bmatrix}              \\
+    &= \text{det}\begin{bmatrix} \vec{w}_1 & \vec{w}_2 & \cdots & A\vec{x} & \cdots & \vec{w}_n \end{bmatrix}             \\
+    &= \text{det}\begin{bmatrix} \vec{w}_1 & \vec{w}_2 & \cdots 
+         & (x_1\vec{w}_1 + x_2\vec{w}_2 + \cdots + x_i\vec{w}_i + \cdots + x_n\vec{w}_n) & 
+       \cdots & \vec{w}_n \end{bmatrix}                                                                                   \\
+    &= \text{det}\begin{bmatrix} \vec{w}_1 & \vec{w}_2 & \cdots & x_i\vec{w}_i & \cdots & \vec{w}_n \end{bmatrix}         \\
+    &= x_i \cdot \text{det}\begin{bmatrix} \vec{w}_1 & \vec{w}_2 & \cdots & \vec{w}_i & \cdots & \vec{w}_n \end{bmatrix}  \\
+    &= x_i \cdot \text{det}\;A.
+\end{align*}$$
+
+Note this follows from the [linearity](determinants#linearity) of determinants.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Adjoints
+
+Consider an invertible $n \times n$ matrix $A$. The **classical adjoint** $\text{adj}(A)$ is the
+$n \times n$ matrix whose $\spscript{ij}{th}$ entry is $(-1)^{i+j}\text{det}(A_{ji})$. Then
+
+$$ A^{-1} = \frac{1}{\text{det}\;A}\text{adj}(A). $$
+
+<div class="proof">
+
+Consider an invertible $n \times n$ matrix $A$ and write
+
+$$ 
+  A^{-1} = \begin{bmatrix}
+    m_{11} & m_{12} & \cdots & m_{1j} & \cdots & m_{1n} \\
+    m_{21} & m_{22} & \cdots & m_{2j} & \cdots & m_{2n} \\
+    \vdots & \vdots &        & \vdots &        & \vdots \\
+    m_{n1} & m_{n2} & \cdots & m_{nj} & \cdots & m_{nn}
+  \end{bmatrix}.
+$$
+
+We know that $AA^{-1} = I_n$. Picking out the $\spscript{j}{th}$ column of $A^{-1}$, we find that
+
+$$ A \begin{bmatrix} m_{1j} \\ m_{2j} \\ \vdots \\ m_{nj} \end{bmatrix} = \vec{e}_j. $$
+
+By [Cramer's rule](#definition), $m_{ij} = \text{det}(A_{\vec{e}_j, i})/\text{det}\;A$, where
+
+$$ 
+  A_{\vec{e}_j, i} = \begin{bmatrix}
+    a_{11} & a_{12} & \cdots & 0      & \cdots & a_{1n} \\
+    a_{21} & a_{22} & \cdots & 0      & \cdots & a_{2n} \\
+    \vdots & \vdots &        & \vdots &        & \vdots \\
+    a_{j1} & a_{j2} & \cdots & 1      & \cdots & a_{jn} \\
+    \vdots & \vdots &        & \vdots &        & \vdots \\
+    a_{n1} & a_{n2} & \cdots & 0      & \cdots & a_{nn}
+  \end{bmatrix}.
+$$
+
+Now $\text{det}(A_{\vec{e}_j, i}) = (-1)^{i+j}\text{det}(A_{ji})$ by Laplace expansion down the 
+$\spscript{i}{th}$ column, so that
+
+$$ m_{ij} = (-1)^{i+j}\frac{\text{det}(A_{ji})}{\text{det}\;A}. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Bretscher, Otto (2008). Linear Algebra with Applications (4th ed.). Pearson. ISBN 978-0-13-600926-9.
+
+</section>

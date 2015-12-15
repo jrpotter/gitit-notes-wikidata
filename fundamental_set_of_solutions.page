@@ -1,0 +1,57 @@
+---
+title: Fundamental Set of Solutions
+categories: Calculus Differential
+icon: /img/icons/second-order-diff-equations.png
+...
+
+<section class="primary">
+
+# Summary
+
+Suppose that $y_1$ and $y_2$ are two solutions of the differential equation $$ L[y] = y'' + p(t)y' + q(t)y = 0. $$
+Then the family of solutions $$ y = c_1y_1(t) + c_2y_2(t) $$ with arbitrary coefficients $c_1$ and $c_2$ includes every
+solution of $L[y]$ if and only if there is a point $t_0$ where the Wronskian of $y_1$ and $y_2$ is not zero. We say
+the solutions $y_1$ and $y_2$ form a **fundamental set of solutions** if and only if their [Wronskian](wronskian) is nonzero.
+
+<div class="proof">
+
+$\forward$ We proceed by contraposition. That is, suppose there is no point $t_0$ where the Wronskian is nonzero. 
+Then there are values of $y_0$ and $y_0'$ such that the system
+$$\begin{align*}
+  c_1y_1(t_0) + c_2y_2(t_0) &= y_0     \\
+  c_1y_1'(t_0) + c_2y_2'(t_0) &= y_0'.
+\end{align*}$$
+has no solution for $c_1$ and $c_2$. If we were to select such values, then, by 
+[existence](homogeneous_equations#existence-and-uniqueness), there is some solution $\phi(t)$ that satisfies the initial
+conditions. However this solution cannot be in the family $y = c_1y_1 + c_2y_2$. Thus the linear combination does not
+include all solutions of $L[y]$ if the Wronskian is $0$.
+
+$\backward$ Let $\phi$ be any solution of $L[y]$. We must then determine whether there exist values of the constants $c_1$ and 
+$c_2$ that make the linear combination the same as $\phi$. By hypothesis, there exists a point $t_0$ where the Wronskian of 
+$y_1$ and $y_2$ is not zero. Let $y_0 = \phi(t_0)$ and $y_0' = \phi'(t_0)$. Now consider initial value problem
+$$ y'' + p(t)y' + q(t)y = 0, \quad y(t_0) = y_0, \quad y'(t_0) = y_0', $$
+of which $\phi$ is a solution by construction. Since the Wronskian is nonzero, then the matrix must be invertible and
+$c_1$ and $c_2$ can be picked so that $y = c_1y_1(t) + c_2y_2(t)$ is a solution. Furthermore, by 
+[uniqueness](homogeneous_equations#existence-and-uniqueness), any two solutions to the same initial value problem must
+be the same function. Thus $\phi$ is included in the family of functions $c_1y_1 + c_2y_2$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Homogeneous Equations](homogeneous_equations)
+- [Wronskian](wronskian)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Boyce W.E. & DiPrima R. C. (2010). Elementary Differential Equations (9th ed.). John Wiley & Sons, Inc. ISBN 978-0470554913.
+
+</section>

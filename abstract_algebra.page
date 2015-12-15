@@ -1,0 +1,134 @@
+---
+title: Abstract Algebra
+categories: Abstract Algebra
+icon: /img/icons/arithmetic.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Carl Friedrich Gauss](/img/portraits/gauss.jpg)
+
+Abstract Algebra is the subject related to algebraic structures and the properties derived from said structures (e.g. 
+[groups](#group-theory) and [rings]()). Namely, a large focus is set on identifying properties inherent in
+these structures, and being able to determine isomorphic constructs to help simplify solving problems. In essence,
+rather than focusing on numbers of some specified domain, we abstract the idea to any set of elements that can behave
+in a manner similar to numbers over any domain.
+
+Abstract algebra is particularly prevalent in computer science, such as throughout cryptography and in different
+functional programming paradigms (such as monads, monoids, etc.). It also enables generalizations of transformations
+such as on $GL_2(\bbr)$, the group of $2 \times 2$ invertible matrices with real values, which often time represent
+an actual action on a set of data. It even enables combinatoric arguments (namely through Burnside's Lemma). As such, 
+despite its name, many applications arise from group, ring, and field theory for use outside of pure mathematics.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Group Theory
+
+<div class="extract" data-target="/groups">
+
+- [Isomorphisms](isomorphisms)
+- [Cayley Graphs](cayley_graphs)
+- [Cyclic Groups](cyclic_groups)
+- [Division Algorithm](division_algorithm)
+- [Generating Sets](generating_sets)
+- [Greatest Common Divisor](greatest_common_divisor)
+- [Groups](groups)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Permutations
+
+<div class="extract" data-target="/cycles">
+
+- [Cayley's Theorem](cayleys_theorem)
+- [Cycles](cycles)
+- [Permutations](permutations)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Cosets & Direct Products
+
+<div class="extract" data-target="/direct_products">
+
+- [Cosets](cosets)
+- [Direct Products](direct_products)
+- [Least Common Multiple](least_common_multiple)
+- [Theorem of Lagrange](theorem_of_lagrange)
+
+</div>
+
+</section>
+
+<section class="">
+
+# Homomorphisms
+
+<div class="extract" data-target="/homomorphisms">
+
+- [Automorphisms](automorphisms)
+- [Commutator Subgroup](commutator_subgroup)
+- [Factor Groups](factor_groups)
+- [Fundamental Homomorphism Theorem](fundamental_homomorphism_theorem)
+- [Homomorphisms](homomorphisms)
+- [Normal Subgroups](normal_subgroups)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Rings and Fields
+
+<div class="extract" data-target="/rings">
+
+- [Congruence Equations](congruence_equations)
+- [Euler's Theorem](eulers_theorem)
+- [Factor Rings](factor_rings)
+- [Homomorphisms](homomorphisms)
+- [Integral Domains](integral_domains)
+- [Isomorphisms](isomorphisms)
+- [Little Theorem of Fermat](little_theorem_of_fermat)
+- [Rings](rings)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Rings of Polynomials
+
+<div class="extract" data-target="/rings_of_polynomials">
+
+- [Division Algorithm](division_algorithm)
+- [Irreducibility Over Fields](irreducibility_over_fields)
+- [Rings of Polynomials](rings_of_polynomials)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Fraleigh, John B. (2003). A First Course In Abstract Algebra (7th ed.). Pearson. ISBN 978-0201763904.
+
+</section>

@@ -1,0 +1,44 @@
+---
+title: Exact Equations
+categories: Differential Calculus
+icon: /img/icons/first-order-diff-equations.png
+...
+
+<section class="primary">
+
+# Summary
+
+Another class of first order equations that are neither [linear](integrating_factors) nor [separable](separable_equations)
+are **exact equations**. That is, it can be written in a form represented by the partials of some function $\psi$ of $x$ 
+and $y$ such that $$ \leibniz{x} \psi[x, \phi(x)] $$ where $\phi(x) = y$. More precisely, let the functions $M$, $N$, $M_y$, 
+and $N_x$, where subscripts denote partial derivatives, be continuous in a simply-connected region 
+$R$. Then a differential equation in the form
+$$ M(x, y) + N(x, y)y' = 0 $$
+is an exact differential equation in $R$ if and only if
+$$ M_y(x, y) = N_x(x, y) $$
+at each point of $R$.
+
+<div class="prof">
+
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Clairaut's Theorem](clairauts_theorem)
+- [Conservative Vector Fields](conservative_vector_field)
+- [Green's Theorem](greens_theorem)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Boyce W.E. & DiPrima R. C. (2010). Elementary Differential Equations (9th ed.). John Wiley & Sons, Inc. ISBN 978-0470554913.
+
+</section>

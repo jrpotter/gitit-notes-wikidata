@@ -1,0 +1,119 @@
+---
+title: Linear Algebra
+categories: Linear Algebra
+icon: /img/icons/vectors.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Gabriel Cramer](/img/portraits/cramer.jpg)
+
+Linear Algebra is a subset of algebra focused on the transformations described by a system of linear equations, that is,
+a system of equations involving only scalar multiplication and addition of components. This field is especially important
+as it provides relatively efficient means of manipulating large amounts of data in a compounded way via matrices and vectors,
+as well as provides a rich system of transformations that are applied to data. In fact, I'd go as far as to state that
+linear algebra is the basis of applied mathematics in general.
+
+By generalizing the notion of spaces, we can apply linear algebra in a variety of different settings. For example, 
+in [Abstract Algebra](abstract_algebra), the set of invertible $2 \times 2$ matrices, denoted $GL_2(\bbr)$, is a group
+of transformations, and in [Calculus](single_variable_calculus), differentiation and integration are linear operations.
+In addition, the use of [eigenvalues and eigenvectors](#subspaces) prove incredibly useful in differential equations.
+As such, most theory that apply to subspaces of vector spaces also apply to linear spaces, since the coordinate 
+transformation guarantees an isomorphism between said linear space and some subspace of $\bbr^n$ for some $n \in \bbz^+$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Linear Systems
+
+<div class="extract" data-target="/linear_transformations">
+
+- [Block Matrices](block_matrices)
+- [Gauss-Jordan Elimination](gauss_jordan_elimination)
+- [Linear Transformations](linear_transformations)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Subspaces
+
+<div class="extract" data-target="/eigenspaces">
+
+- [Eigenspaces](eigenspaces)
+- [Linear Spaces](linear_spaces)
+- [Subspaces](subspaces)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Bases
+
+<div class="extract" data-target="/bases">
+
+- [Bases](bases)
+- [Change of Basis](change_of_basis)
+- [Coordinates](coordinates)
+- [Dimensions](dimensions)
+- [Linear Independence](linear_independence)
+- [Rank-Nullity Theorem](rank_nullity_theorem)
+- [Similar Matrices](similar_matrices)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Orthogonality
+
+<div class="extract" data-target="/orthogonal_projections">
+
+- [Cauchy-Schwarz Inequality](cauchy_schwarz_inequality)
+- [Cross Product](cross_product)
+- [Dot Product](dot_product)
+- [Gram-Schmidt Process](gram_schmidt_process)
+- [Inner Product Spaces](inner_product_spaces)
+- [Least Squares](least_squares)
+- [Orthogonal Complement](orthogonal_complement)
+- [Orthogonal Projections](orthogonal_projections)
+- [Pythagorean Theorem](pythagorean_theorem)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Determinants
+
+<div class="extract" data-target="/determinants">
+
+- [Cramer's Rule](cramers_rule)
+- [Determinants](determinants)
+- [Laplace Expansion](laplace_expansion)
+- [Transpositions](transpositions)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Bretscher, Otto (2008). Linear Algebra with Applications (4th ed.). Pearson. ISBN 978-0-13-600926-9.
+
+</section>

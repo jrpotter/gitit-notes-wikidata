@@ -1,0 +1,39 @@
+---
+title: Midpoint Rule
+categories: Calculus
+icon: /img/icons/single-integral.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Visualization](/img/diagrams/calculus/midpoint-rule.png)
+    
+An approximation of an integral can be performed as such:
+$$ \int_a^bf(x)dx \approx M_n = \Delta{x}\left[f(\bar{x}_1) + f(\bar{x}_2) + \cdots + f(\bar{x}_n)\right] $$
+where
+$$ \Delta{x}=\frac{b-a}{n}\text{ and }\bar{x}_i=\frac{1}{2}(x_{i-1}+x_i)=\text{ midpoint of }[x_{i-1}, x_i]. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Error Bound
+
+Suppose $\norm{\;f''(x)} \leq K$ for $a \leq x \leq b$. If $E_M$ is the error in the
+Midpoint Rule, then $$ \norm{E_M} \leq \frac{K(b-a)^3}{24n^2}. $$
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

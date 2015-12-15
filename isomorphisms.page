@@ -1,0 +1,84 @@
+---
+title: Isomorphisms
+categories: Abstract Algebra
+icon: /img/icons/binary-tree.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Fifth Roots of Unity](/img/diagrams/abstract/fifth-roots-of-unity.png)
+
+Let $\lrangle{S,*}$ and $\lrangle{S',*'}$ be binary algebraic structures. An **isomorphism of $S$** with $S'$
+is a one-to-one function $\phi$ mapping $S$ onto $S'$ such that $\phi$ satisfies the [homomorphism](homomorphisms) property.
+This definition extends naturally to algebraic structures with more than one binary structure.
+
+If such a map $\phi$ exists, then $S$ and $S'$ are **isomorphic binary structures**, which we denote by 
+$S \simeq S'$, omitting the $*$ and $*'$ from the notation. By identifying isomorphic binary structures, we
+can reason that any structural property shared by one structure must be shared by the other. These include,
+but are not limited to, cardinality, commutativity, existence of an identity, etc.
+
+Intuitively speaking, an isomorphism is merely a renaming of an element from one structure to that of another- the two
+structures still represent the same data. For instance, the fifth roots of unity pictured to the right are isomorphic to
+that of $\bbz_5$, so any properties found in one must be present in the other.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Uniqueness of Identity
+
+Let $\lrangle{S,*}$ be a binary structure. Then this binary structure has at most one identity element.
+
+<div class="proof">
+
+Suppose that both $e$ and $\bar{e}$ are elements of $S$ serving as identity elements. Regarding $e$ as an
+identity element, we must have $e * \bar{e} = \bar{e}$. However, regarding $\bar{e}$ as an identity element,
+we must have $e * \bar{e} = e$. Thus $e = \bar{e}$, showing the identity element is unique.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Identity Under Isomorphism
+
+Suppose $\lrangle{S,*}$ has an identity element $e$ for $*$. If $\phi: S \rightarrow S'$ is an
+isomorphism of $\lrangle{S,*}$ with $\lrangle{S',*'}$, then $\phi(e)$ is an identity element for the binary
+operation $*'$ on $S'$.
+
+<div class="proof">
+  
+Let $s' \in S'$. We must show that $\phi(e) *' s' = s' *' \phi(e) = s'$. Because $\phi$ is an isomorphism,
+it is a one-to-one map of $S$ onto $S'$. In particular, there exists $s \in S$ such that $\phi(s) = s'$.
+Now $e$ is an identity element for $*$ so we know that $e * s = s * e = s$. Because $\phi$ is a function, then
+$$ \phi(e * s) = \phi(s * e) = \phi(s). $$
+By definition of an isomorphism,
+$$ \phi(e) *' \phi(s) = \phi(s) *' \phi(e) = \phi(s). $$
+Since $s \in S$ such that $\phi(s) = s'$, then $\phi(e) *' s' = s' *' \phi(e) = s'$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Groups](groups)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Fraleigh, John B. (2003). A First Course In Abstract Algebra (7th ed.). Pearson. ISBN 978-0201763904.
+
+</section>

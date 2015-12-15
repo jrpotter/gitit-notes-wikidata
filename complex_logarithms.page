@@ -1,0 +1,58 @@
+---
+title: Complex Logarithms
+categories: Complex
+icon: /img/icons/imaginary.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Branch of Complex Logarithm](/img/diagrams/complex/logarithm.png)
+
+For a nonzero complex number $z$, we define the **logarithm** of $Z$ to be any complex number $w$ such that
+$e^w = z$. Therefore we see that $$ \log{z} = \ln{\norm{z}} + i\text{arg}\;z, \quad z \neq 0. $$ To be more
+definite we could instead use $$ \text{Log}\;z = \ln{\norm{z}} + i\text{Arg}\;z, $$ the **principal branch**.
+Otherwise, let $z_0$ be any point of some domain $D$ in which a ray beginning at the origin is removed. Then, fix
+any value for $\text{arg}\;z_0$, say $\text{arg}\;z_0 = \theta_0$. We define in $D$ a **branch** of 
+$\log{z} = \ln{\norm{z}} + i\text{arg}\;z$ with the additional specification that $\log{z_0} = \ln{\norm{z_0}} + i\theta_0$.
+This ensures that $\text{arg}\;z$ lies in a uniquely determined open interval of length $2\pi$ containing $\theta_0$; note
+then that $\text{arg}\;z$ and $\ln{\norm{z}}$ are both continuous in $D$, so the logarithm is as well.
+
+We note we must delete a ray starting at the origin because the entire complex plane $\bbc - \{0\}$ cannot be the domain
+for a *continuous* logarithm. By convention we usually delete the negative $x$-axis and, in this way, it is not possible
+to add multiples of $2\pi$ to an angle- in essence, we're forcing the logarithm to be defined in some open interval of
+length $2\pi$.
+
+</div>
+
+<div class="proof">
+
+Suppose we have complex numbers $z = \norm{z}(\cos{\phi} + i\sin{\phi})$ and $w = s + it$ such that $e^w = z$. 
+By [Euler's Formula](eulers_formula), we see that $$ e^w = e^s(\cos{t} + i\sin{t}) = \norm{z}(\cos{\phi} + i\sin{\phi}). $$
+Therefore $s = \ln{\norm{z}}$ and $t = \text{arg}\;z$.
+
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Complex Numbers](complex_numbers)
+- [Complex Trigonometry](complex_trigonometry)
+- [Euler's Formula](eulers_formula)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Fisher, Stephen D. (1999). Complex Variables (2nd ed.). Dover Publications Inc. ISBN 0-48-640679-2
+
+</section>

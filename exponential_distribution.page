@@ -1,0 +1,158 @@
+---
+title: Exponential Distribution
+categories: Statistics
+icon: /img/icons/random-variables.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Exponential PDF](/img/graphs/statistics/exponential-distribution.png)
+
+A continuous random variable whose probability density function is given, for some $\lambda > 0$, by
+$$
+  f(x) = \begin{cases}
+    \lambda e^{-\lambda x} &\text{if } x \geq 0 \\
+    0                      &\text{if } x < 0 
+  \end{cases}
+$$
+is said to be an **exponential** random variable with parameter $\lambda$. The exponential distribution
+tends to occur as the distribution of the amount of time until some specific event occurs, similar to
+how a [Poisson distribution](poisson_distribution) can be used to predict when events occur at certain
+points in time.
+
+Note that an exponential random variable is the same as a [gamma random variable](gamma_distribution) with
+parameters $(1, \lambda)$, so proofs regarding gamma random variables also apply.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Cumulative Distribution Function
+
+The cumulative distribution function $F(a)$ of an exponential random variable is given by
+$$ F(a) = 1 - e^{-\lambda a},\quad a \geq 0. $$
+
+<div class="proof">
+
+$$\begin{align*}
+  F(a) &= \bbps{X \leq a}                     \\
+       &= \int_0^a \lambda e^{-\lambda x}\;dx \\
+       &= -e^{-\lambda x} \big|_0^a           \\
+       &= 1 - e^{-\lambda a},\quad a \geq 0.
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Expected Value
+
+Let $X$ be an exponential random variable with parameter $\lambda$. Then the expected value is
+$$ E[X] = \frac{1}{\lambda}. $$
+
+<div class="proof">
+
+Since the density function is given by
+$$
+  f(x) = \begin{cases}
+    \lambda e^{-\lambda x} &\text{if } x \geq 0 \\
+    0                      &\text{if } x < 0 
+  \end{cases}
+$$
+we obtain, for $n > 0$,
+$$ E[X^n] = \int_0^{\infty} x^n\lambda e^{-\lambda x}\;dx. $$
+Integrating by parts (with $\lambda e^{-\lambda x} = dv$ and $u = x^n$) yields
+$$\begin{align*}
+  E[X^n] &= -x^ne^{-\lambda x}\big|_0^\infty + \int_0^\infty e^{-\lambda x}nx^{n-1}\;dx \\
+         &= 0 + \frac{n}{\lambda} \int_0^\infty \lambda e^{-\lambda x} x^{n-1}\;dx      \\
+         &= \frac{n}{\lambda} E[X^{n-1}].
+\end{align*}$$
+Letting $n = 1$ we see
+$$ E[X] = \frac{1}{\lambda}. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Variance
+
+Let $X$ be an exponential random variable with parameter $\lambda$. Then the variance is
+$$ \text{Var}(X) = \frac{1}{\lambda^2}. $$
+
+<div class="proof">
+
+In the proof for expectation, we can substitute $n = 2$ to find
+$$ E[X^2] = \frac{2}{\lambda} E[X] = \frac{2}{\lambda^2}. $$
+Hence,
+$$\begin{align*}
+  \text{Var}(X) &= E[X^2] - (E[X])^2                                      \\
+                &= \frac{2}{\lambda^2} - \left(\frac{1}{\lambda}\right)^2 \\
+                &= \frac{1}{\lambda^2}.
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Moment Generating Function
+
+If $X$ is a random exponential variable with parameter $\lambda$, then it has moment generating function
+$$ M(t) = \frac{\lambda}{\lambda - t}, \quad t < \lambda. $$
+
+<div class="proof">
+
+Let $X$ be a random exponential variable with parameter $\lambda$. Then
+$$\begin{align*}
+  M(t) &= E[e^{tX}]                                            \\
+       &= \int_0^\infty e^{tx}\lambda e^{-\lambda x}\;dx       \\
+       &= \lambda \int_0^\infty e^{-(\lambda - t)x}\;dx        \\
+       &= \frac{\lambda}{\lambda - t} \text{ for } t < \lambda
+\end{align*}$$
+We note $t < \lambda$ since the exponential distribution is defined over positive values; thus the moments of
+expectation couldn't possibly be negative.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Memorylessness
+
+A nonnegative random variable $X$ is **memoryless** if
+$$ \bbps{X > s + t \;|\; X > t} = \bbps{X > s}\quad \text{for all } s, t \geq 0. $$
+An exponential distribution has this property and is the only *continuous* distribution to have this property.
+
+<div class="proof">
+
+Note the above equation is equivalent to
+$$ \frac{\bbps{X > s + t, X > t}}{\bbps{X > t}} = \bbps{X > s} $$
+or
+$$ \bbps{X > s + t} = \bbps{X > s}\bbps{X > t}. $$
+We note that if $X$ is exponentially distributed, then
+$$ e^{-\lambda(s + t)} = e^{-\lambda s}e^{-\lambda t}, $$
+satisfying the memoryless constraint.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

@@ -1,0 +1,42 @@
+---
+title: Euler Equations
+categories: Calculus Differential
+icon: /img/icons/second-order-diff-equations.png
+...
+
+<section class="primary">
+
+# Summary
+
+An equation of the form $$ t^2\leibniz[^2y]{t^2} + \alpha t \leibniz[y]{t}' + \beta y = 0, \quad t > 0, $$ 
+where $\alpha$ and $\beta$ are real constants, is called an **Euler equation**. Then the above equation can be 
+transformed into $$ \leibniz[^2y]{x^2} + (\alpha - 1)\leibniz[y]{x} + \beta y = 0, $$ 
+a second order homogeneous linear equation with [constant coefficients](constant_coefficients) that can be solved for 
+in the regular way by setting $x = \ln{t}$.
+
+<div class="proof">
+
+Suppose $x = \ln{t}$ implying that $e^x = t$. Therefore we see that
+$$ \leibniz[y]{x} = \leibniz[y]{t}\leibniz[t]{x} = e^x\leibniz[y]{t}, $$
+and that $$ \leibniz[y]{t} = e^{-x}\leibniz[y]{x}. $$
+Similarly, by the [Product Rule](product_rule),
+$$\begin{align*}
+  \leibniz[^2y]{x^2} &= \leibniz[^2]{t^2}\leibniz[t]{x}\leibniz[t]{x} + \leibniz[y]{t}\leibniz[^2t]{x^2} \\
+                     &= \leibniz[^2y]{t^2}e^{2x} + \leibniz[y]{t}e^x                                     \\
+                     &= \leibniz[^2y]{t^2}e^{2x} + \leibniz[y]{x},
+\end{align*}$$
+meaning $$ \leibniz[^2y]{t^2} = e^{-2x}\left(\leibniz[^2y]{x^2} - \leibniz[y]{x}\right). $$
+Therefore plugging into our original equation yields
+$$ \leibniz[^2y]{x^2} + (\alpha - 1)\leibniz[y]{x} + \beta y = 0. $$ 
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Boyce W.E. & DiPrima R. C. (2010). Elementary Differential Equations (9th ed.). John Wiley & Sons, Inc. ISBN 978-0470554913.
+
+</section>

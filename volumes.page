@@ -1,0 +1,83 @@
+---
+title: Volumes
+categories: Calculus
+icon: /img/icons/solids-of-revolution.png
+...
+
+<section class="primary">
+
+# Summary
+
+Let $S$ be a solid that lies between $x = a$ and $x = b$. If the cross-sectional area of $S$ in the
+plane $P_x$, through $x$ and perpendicular to the $x$-axis, is $A(x)$, where $A$ is a continuous function,
+then the **volume** of $S$ is $$ V = \xlimit{n}{\infty} \sum_{i=1}^n A(x_i^*)\Delta x = \int_a^bA(x)dx\text{.} $$
+
+</section>
+
+<section class="primary">
+
+# Solids of Revolution
+
+<div class="block">
+
+![Cross Sectional Area](/img/diagrams/calculus/cross-section.png)
+
+In general, we calculate the volume of a solid of revolution by using the basic defining formula
+$$ V = \int_a^b A(x)dx \text{ or } V = \int_c^d A(y)dy $$
+and we find the cross-secitonal area $A(x)$ or $A(y)$ in one of the following ways:
+
+- If the cross-section is a disk, we find the radius of the disk and use $$ A = \pi(\text{radius})^2\text{.} $$
+- If the cross section is a washer, we find the innter and outer radius and subtract the two for the area of
+  the outer disk $$ A = \pi(\text{outer radius})^2 - \pi(\text{inner radius})^2\text{.} $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Cylindrical Shells
+
+Let $S$ be a solid obtained by rotating about the $y$-axis the region bounded by $y = f(x)$ (where $f(x)
+\geq 0$), $y = 0, x = a$, and $x = b$, where $b > a \geq 0$. Then the volume of $S$ is
+$$ V= \int_a^b 2\pi x f(x)dx\text{, where } 0 \leq a < b\text{.} $$
+
+<div class="proof">
+
+Consider a cylindrical shell with inner radius $r_1$, outer radius $r_2$, and height $h$. Its volume $V$
+can be calculated by subtracting the volume $V_1$ of the inner cyclinder from the volume $V_2$ of the
+outer cylinder:
+$$\begin{align*}
+  V &= V_2 - V_1                       \\
+    &= \pi r_2^2 h - \pi r_1^2 h       \\
+    &= \pi(r_2^2-r_1^2)h               \\
+    &= \pi(r_2 + r_1)(r_2-r_1)h        \\
+    &= 2\pi\frac{r_2+r_1}{2}h(r_2-r_1)
+\end{align*}$$
+
+Thus, letting $\Delta r = r_2 - r_1$ (the thickness of the shell) and $r = \frac{1}{2}(r_2 + r_1)$ (the average
+radius of the shell), then we find the volume to be:
+$$ V = 2\pi r h \Delta r\quad (1) $$
+
+Now let $S$ be the solid obtained by rotating about the $y$-axis the region bounded by the curves $y = f(x)$ and $y = g(x)$ and 
+between $x=a$ and $x=b$, where $b > a \geq 0$. We divide the interval $[a,b]$ into $n$ subintervals $[x_{i-1}, x_i]$ of equal 
+width $\Delta x$ and let $\bar{x}_i$ be the midpoint of the $\spscript{i}{th}$ subinterval. If the rectangle with base 
+$[x_{i-1}, x_i]$ and height $f(\bar{x}_i)$ is rotated about the $y$-axis, then the result is a cylindrical shell with average 
+radius $\bar{x}_i$, height $f(\bar{x}_i)$, and thickness $\Delta x$. Thus by (1):
+$$ V = (2\pi\bar{x}_i)[f(\bar{x}_i)]\Delta x\text{.} $$
+
+Therefore an approximation to the volume $V$ of $S$ is given by the sum of these volumes of these shells. We can improve this 
+approximation arbitrarily as $n\rightarrow\infty$, which from the definition of an integral, implies
+$$ \xlimit{n}{\infty}\sum_{i=1}^n 2\pi\bar{x}_i f(\bar{x}_i)\Delta x = \int_a^b 2\pi x f(x)dx. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

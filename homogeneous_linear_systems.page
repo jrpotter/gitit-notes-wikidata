@@ -1,0 +1,60 @@
+---
+title: Homogeneous Linear Systems
+categories: Abstract Algebra
+icon: /img/icons/second-order-diff-equations.png
+...
+
+<section class="primary">
+
+# Summary
+
+For simplicity, we choose to work with a system of first order linear equations that satisfy the constraints to ensure 
+[existence and uniqueness](system_of_first_order_linear_equations#existence-and-uniqueness). In particular, 
+if each of the functions $g_1(t), \ldots, g_n(t)$ is zero for all $t$ in the interval $I$, then we say the system is 
+**homogeneous**. A system of homogeneous equations can be solved very similarly to just a single homogeneous equation,
+and solutions/theorems parallel the single equation theory. In particular, we rewrite the system as
+$$ \pmb{x}' = \pmb{P}(t), $$ and note that nonhomogeneous solutions follow after solving the corresponding homogeneous
+equations. 
+
+</section>
+
+<section class="primary">
+
+# Principle of Superposition
+
+Paralleling the concept of [superposition](homogeneous_equations#principle-of-superposition) of single homogeneous equations,
+we find that if the vector functions $\pmb{x}^{(1)}$ and $\pmb{x}^{(2)}$ are solutions of the homogeneous system, then the
+linear combination $c_1\pmb{x}^{(1)} + c_2\pmb{x}^{(2)}$ is also a solution for any constants $c_1$ and $c_2$.
+
+<div class="proof">
+
+We simply evaluate both the left and right hand sides of the system $\pmb{x}' = \pmb{P}(t)\pmb{x}$. The left hand side is
+$$ \left[c_1\pmb{x}^{(1)} + c_2\pmb{x}^{(2)}\right]' = c_1(\pmb{x}^{(1)})' + c_2(\pmb{x}^{(2)})'. $$
+Similarly, the right hand side is
+$$\begin{align*}
+  P(t)\left[c_1\pmb{x}^{(1)} + c_2\pmb{x}^{(2)}\right] &= c_1P(t)\pmb{x}^{(1)} + c_2P(t)\pmb{x}^{(2)} \\
+                                                       &= c_1(\pmb{x}^{(1)})' + c_2(\pmb{x}^{(2)})'.
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Constant Coefficients](constant_coefficients)
+- [Homogeneous Equations](homogeneous_equations)
+- [Nonhomogeneous Equations](nonhomogeneous_equations)
+- [Wronskian](wronskian)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Boyce W.E. & DiPrima R. C. (2010). Elementary Differential Equations (9th ed.). John Wiley & Sons, Inc. ISBN 978-0470554913.
+
+</section>

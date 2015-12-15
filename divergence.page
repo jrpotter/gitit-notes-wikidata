@@ -1,0 +1,38 @@
+---
+title: Divergence
+categories: Calculus
+icon: /img/icons/line-integrals.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Positive Divergence](/img/diagrams/calculus/divergence-outward.png)
+
+In a vector field, we can view divergence as the ratio of particles that *flow* in and out of a given point. 
+That is, if the collective components of magnitude of vectors that point towards a specific point is greater than
+those that point away from the point, we'd expect over time for this given point to get denser, so to speak. In
+this case we have a negative divergence, since particles tend to converge. If the collective magnitude of the
+vectors are overall outward, then we expect the point to get less and less dense since, over time, the points seem
+to *diverge* away from the given point. If the divergence of a vector field is $0$, we say the vector field is
+**incompressible** (which makes sense, since no points move anywhere).
+
+More precisely, if $\pmb{F} = P\pmb{i} + Q\pmb{j} + R\pmb{k}$ is a vector field on $\bbr^3$ whose components
+have partial derivatives that exist, then the **divergence of $\pmb{F}$** is the function of three variables
+defined by
+$$ \text{div}\;\pmb{F} = \pleibniz[P]{x} + \pleibniz[Q]{y} + \pleibniz[R]{z}. $$ 
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.  
+
+</section>

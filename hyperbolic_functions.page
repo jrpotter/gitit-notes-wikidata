@@ -1,0 +1,50 @@
+---
+title: Hyperbolic Functions
+categories: Calculus
+icon: /img/icons/hyperbolic.png
+...
+
+<section class="primary">
+
+# Definition
+
+<div class="block">
+
+![Unit Hyperbola](/img/graphs/calculus/unit-hyperbola.png)
+
+Hyperbolic functions are analogs of the trigonometric ones: just as the points $(\cos{t}, \sin{t})$ form a circle with a 
+unit radius, the points $(\cosh{t}, \sinh{t})$ form the right half of the equilateral hyperbola.
+
+- *Hyperbolic Sine:* $$ \sinh{x} = \frac{e^x - e^{-x}}{2}. $$
+- *Hyperbolic Cosine:* $$ \cosh{x} = \frac{e^x+e^{-x}}{2}. $$
+- *Hyperbolic Tangent:* $$ \tanh{x} = \frac{\sinh{x}}{\cosh{x}}. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Hyperbolic Inverses
+
+<div class="block">
+
+![](/img/graphs/calculus/hyperbolic-inverses.png)
+
+Paralleling trigonometric inverses are the hyperbolic inverses as follows:
+
+- *Hyperbolic Cosecant:* $$ \text{csch }x = \frac{1}{\sinh{x}}. $$
+- *Hyperbolic Secant:* $$ \text{sech }x = \frac{1}{\cosh{x}}. $$
+- *Hyperbolic Cotangent:* $$ \coth{x} = \frac{\cosh{x}}{\sinh{x}}. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

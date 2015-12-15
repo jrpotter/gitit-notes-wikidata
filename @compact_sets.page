@@ -1,0 +1,33 @@
+---
+title: @Compact Sets
+categories: Analysis Stub
+icon: /img/icons/similarity.png
+...
+
+<section class="primary">
+
+# Harmonic Set
+
+If $(\bbr, d)$ is a metric set and $E \subset \bbr$, then $$ E = \{ \frac{1}{n}: n = 1, 2, \ldots \} \cup \{ 0 \} $$
+is compact.
+
+<div class="proof">
+
+Let $\{ G_\alpha \}_{\alpha \in A}$ be an open cover. Then there exists $\alpha_0$ such that $0 \in G_{\alpha_0}$. So
+there also exists an $r > 0$ such that $N_r(0) \subset G_{\alpha_0}$. Choose $m$ such that $\frac{1}{m} < r$, and
+$G_{\alpha_1}, \ldots, G_{\alpha_{m-1}}$ such that each $\frac{1}{n} \in G_{\alpha_n}$. Thus 
+$G_{\alpha_0}, G_{\alpha_1}, \ldots, G_{\alpha_{m-1}}$ gives a finite cover ($G_{\alpha_0} contains all elements with $n \geq m$
+leaving a finite number of sets to manage the remaining elements lying outside).
+
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Abott, Stephen (2001). Understanding Analysis (1st ed.). Springer. ISBN 978-0387950605.
+
+</section>

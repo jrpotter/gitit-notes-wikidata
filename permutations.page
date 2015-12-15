@@ -1,0 +1,156 @@
+---
+title: Permutations
+categories: Combinatorics Abstract Algebra
+icon: /img/icons/bar-graph.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Permutation Composition Group](/img/diagrams/abstract/permutation-composition.png)
+
+Let $r$ be a positive integer. An **$r$-permutation** of a set $S$ of $n$ elements is an ordered arrangement of $r$
+of the $n$ elements. We denote by $P(n, r)$ the number of $r$-permutations of an $n$-element set. If $r > n$, then
+$P(n, r) = 0$. Simplifying, an $n$-permutation of an $n$-element set $S$ is called a **permutation** of $S$ or a
+permutation of $n$ elements. Thus a permutation of a set $S$ can be thought of as a listing of the elements of $S$
+in some order. Alternatively we can regard a permutation as a function that takes a set of elements back to itself. 
+That is, a **permutation of a set $A$** is a function $\phi: A \rightarrow A$ that is both one to one and onto.
+
+We note that for $n$ and $r$ positive integers with $r \leq n$,
+$$ P(n, r) = n \times (n - 1) \times \cdots \times (n - r + 1). $$
+
+</div>
+
+<div class="proof">
+
+In constructing an $r$-permutation of an $n$-element set, we can choose the first item in $n$ ways, the second
+item in $n - 1$ ways, \ldots, and the $\spscript{r}{th}$ item in $n - (r - 1)$ ways. By the multiplication 
+principle, the $r$ items can therefore be chosen in $n \times (n - 1) \times \cdots \times (n - r + 1) ways.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Circular Permutation
+
+Instead of the traditional linear permutations generally considered, we can also define the concept of a **circular permutation**.
+In these cases, it is natural to regard two permutations as the same, provided one can be brought to another by a rotation.
+We note for every circular permutation of length $n$, there are $n$ linear permutations corresponding to it (simply by
+popping the last element off the end and placing it on the front).
+
+More precisely, the number of circular $r$-permutations of a set of $n$ elements is given by
+$$ \frac{P(n, r)}{r} = \frac{n!}{r \cdot (n - r)!}. $$
+In particular, the number of circular permutations of $n$ elements is $(n - 1)!$.
+
+<div class="proof">
+
+The set of linear $r$-permutations can be partitioned into parts in such a way that two linear $r$-permutations
+correspond to the same circular $r$-permutation if and only if they are in the same part. Thus, the number of
+circular $r$-permutations equals the number of parts. Since each part contains $r$ linear $r$-permutations, the
+number of parts is given by
+$$ \frac{P(n, r)}{r} = \frac{n!}{r \cdot (n - r)!}. $$
+
+</div> 
+
+</section>
+
+<section class="primary">
+
+# Permutation Groups
+
+A special type of [group](groups) is the group under permutation multiplication defined as the
+function composition $\circ$ on the collection of all [permutations](permutations) of a set $A$, 
+where by permutation we mean a bijective mapping from $A$ to $A$. Now if $A$ is a nonempty set,
+and we let $S_A$ be the collection of all permutations of $A$, then $S_A$ is in fact a group
+under permutation multiplication.
+
+<div class="proof">
+
+To begin, we need to show that $\circ$ is closed. Let $\sigma$ and $\tau$ be permutations of $A$
+so that $\sigma$ and $\tau$ are both one-to-one functions mapping $A$ onto $A$. Then $\sigma\tau$
+is a permutation if it is also one-to-one and onto $A$. If
+$$ (\sigma\tau)(a_1) = (\sigma\tau)(a_2), $$
+then
+$$ \sigma(\tau(a_1)) = \sigma(\tau(a_2)). $$
+But note that $\sigma$ and $\tau$ are both one-to-one so $\tau(a_1) = \tau(a_2)$ and subsequently
+$\sigma(\tau(a_1)) = \sigma(\tau(a_2))$. To show that $\sigma\tau$ is onto $A$, let $a \in A$. Since
+$\sigma$ is onto $A$, there exists $a' \in A$ such that $\sigma(a') = a$. Since $\tau$ is onto $A$,
+there exists $a'' \in A$ such that $\tau(a'') = a'$. Thus
+$$ a = \sigma(a') = \sigma(\tau(a'')) = (\sigma\tau)(a''). $$
+Next, we note $\circ$ already satisfies associativity since it is merely function composition. Additionally,
+the permutation $i$ such that $i(a) = a$ for all $a \in A$ acts as the identity. Lastly we must show every
+permutation $\sigma$ has an inverse function. But since every permutation is bijective, then an inverse
+must exist, namely $\sigma^{-1}$, which reverses the mapping.
+
+</div>
+
+<section class="secondary">
+
+## Symmetric Groups
+
+Let $A$ be the finite set $\{1, 2, \ldots, n\}$. The group of all permutations of $A$ is the **symmetric group on $n$ letters**, 
+and is denoted by $S_n$.
+
+</section>
+
+<section class="secondary">
+
+## Dihedral Groups
+
+The **$\spscript{n}{th}$ dihedral group** $D_n$ is the group of symmetries of the regular $n$-gon, where
+$\rho_i$ generally stand for rotations, $\mu_i$ stand for mirror images in bisectors of angles, and
+$\delta_i$ for diagonal flips.
+
+</section>
+
+<section class="secondary">
+
+## Alternating Groups
+
+If $n \geq 2$, then the collection of all [even](cycles#transpositions) permutations of $\{1, 2, \ldots, n\}$ forms
+a subgroup of order $n!/2$ of the symmetric group $S_n$. The subgroup of $S_n$ consisting of the even permutations
+of $n$ letters is the **alternating group $A_n$ on $n$ letters**.
+
+<div class="proof">
+
+- Cardinality
+:    Let $A_n$ be the set of even permutations in $S_n$ and let $B_n$ be the set of odd permutations. To show the order 
+     of $A_n$ is indeed $n!/2$, we can show that the number of even permutations in $S_n$ equals the number of odd 
+     permutations in $S_n$. Let $\tau$ be any fixed transposition in $S_n$ which must exist since
+     $n \geq 2$. Suppose $\tau = (1, 2)$. Define function
+     $$ \lambda_{\tau}: A_n \rightarrow B_n \;\text{ by }\; \lambda_{\tau}(\sigma) = \tau\sigma, $$
+     that is, $\sigma \in A_n$ is mapped into $(1, 2)\sigma$ by $\lambda_{\tau}$. Since $\sigma$ is even,
+     then the permutation $\tau\sigma$ must be odd so it is indeed in $B_n$. Now we note that if $\sigma$ and
+     $\mu$ in $A_n$, then $\lambda_{\tau}(\sigma) = \lambda_{\tau}(\mu)$ means
+     $$ (1, 2)\sigma = (1, 2)\mu, $$
+     and, since $S_n$ is a group, by the cancellation laws we find that $\sigma = \mu$. Additionally,
+     $\tau = (1, 2) = \tau^{-1}$, so if $\rho \in B_n$, then $\tau^{-1}\rho \in A_n$, and 
+     $$ \lambda_{\tau}(\tau^{-1}\rho) = \tau(\tau^{-1}\rho) = \rho. $$
+     Therefore $\lambda_{\tau}$ is a bijective function from $A_n$ to $B_n$ meaning they must have the same cardinality
+     and the size of $A_n$ is therefore $n!/2$.
+
+- Subgroup
+:    First note that the product of two even permutations is again even, so $A_n$ is closed under permutation 
+     multiplication. We also note permutation multiplication is associative. Additionally, $e = (1, 2)(1, 2)$, which is an 
+     even permutation. Lastly, if $\sigma$ is an even permutation, $\sigma^{-1}$ must also be even so $A_n$ is indeed
+     a subgroup.
+
+</div>
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Brualdi, Richard A. (2009). Introductory Combinatorics (5th ed.). Pearson. ISBN 978-0136020400.
+- Fraleigh, John B. (2003). A First Course In Abstract Algebra (7th ed.). Pearson. ISBN 978-0201763904.
+
+</section>

@@ -1,0 +1,63 @@
+---
+title: Clairaut's Theorem
+categories: Calculus
+icon: /img/icons/partial-derivatives.png
+...
+
+<section class="primary">
+
+# Summary
+
+Clairaut's Theorem enables us to safely differentiate a function with respect to different variables in any order, in
+much the same manner as [Fubini's Theorem](fubinis_theorem) with respect to integration. This is especially powerful
+as it allows us to relate components of a function and equate them together (equality of mixed partials). More specifically,
+suppose $\;f$ is defined on a disk $D$ that contains the point $(a, b)$. If the functions $f_{xy}$ and $f_{yx}$ are
+both continuous on $D$, then
+$$ f_{xy}(a, b) = f_{yx}(a, b). $$
+
+<div class="proof">
+
+For small values of $h, h \neq 0$, consider the difference
+$$ \Delta{(h)} = [f(a + h, b + h) - f(a + h, b)] - [f(a, b + h) - f(a, b)]. $$
+
+Notice that if we let $g(x) = f(x, b+h) - f(x, b)$, then
+$$ \Delta{(h)} = g(a + h) - g(a). $$
+
+By the [Mean Value Theorem](mean_value_theorem), there is a number $c$ between $a$ and $a + h$ such that
+$$ g(a + h) - g(a) = g'(c)h = h[f_x(c, b+h) - f_x(c, b)]. $$
+
+Applying the Mean Value Theorem again, this time to $f_x$, we get a number $d$ between $b$ and $b + h$ such that
+$$ f_x(c, b+h) - f_x(c, b) = f_{xy}(c, d)h. $$
+
+Combining these equations, we obtain
+$$ \Delta{(h)} = h^2 f_{xy}(c, d). $$
+
+If $h \rightarrow 0$, then $(c, d) \rightarrow (a, b)$, so the continuity of $f_{xy}$ at $(a, b)$ gives
+$$ \xlimit{h}{0}\frac{\Delta{(h)}}{h^2} = \xlimit{(c, d)}{(a, b)} f_{xy}(c, d) = f_{xy}(a, b). $$
+
+Similarly, by writing
+$$ \Delta{(h)} = [f(a + h, b+h) - f(a, b+h)] - [f(a + h, b) - f(a, b)] $$
+and using the Mean Value Theorem twice and the continuity of $f_{yx}$ at $(a, b)$, we obtain
+$$ \xlimit{h}{0}\frac{\Delta{(h)}}{h^2} = f_{yx}(a, b). $$
+
+Thus $f_{xy}(a, b) = f_{yx}(a, b)$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Green's Theorem](greens_theorem)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.  
+
+</section>

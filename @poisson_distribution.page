@@ -1,0 +1,46 @@
+---
+title: @Poisson Distribution
+categories: Statistics
+icon: /img/icons/inferential-statistics.png
+...
+
+<section class="primary">
+
+# Generalized Birthday Problem
+
+<div class="block">
+
+![Birthday Problem](/img/graphs/statistics/birthday_problem.png)
+
+We've seen how to solve the [birthday problem](axioms_of_probability#birthday-problem) for the case of $2$ people,
+but how do we generalize this to $3$? By using the [Poisson Paradigm](/ST/poisson_distribution#summary), we find that 
+the approximate probability that at least $3$ people in a group of size $84$ or larger will have the same birthday
+exceeds $\frac{1}{2}$.
+
+</div>
+
+<div class="proof">
+
+Imagine that we have a trial for each of the $\binom{n}{3}$ triples $i, j, k$, where $1 \leq i < j < k \leq n$,
+and call the $i, j, k$ trial a success if persons $i, j,$ and $k$ all have their birthday on the same day. Then
+the number of successes is approximately a Poisson random variable with parameter
+$$\begin{align*}
+  \binom{n}{3}\bbps{i,j,k \text{ have the same birthday}} &= \binom{n}{3}\left(\frac{1}{365}\right)^2 \\
+                                                          &= \frac{n(n-1)(n-2)}{6 \times (365)^2}.
+\end{align*}$$
+Hence, $$ \bbps{\text{no }3\text{ have the same birthday}} \approx \exp{\frac{-n(n-1)(n-2)}{799350}}. $$
+This probability will be less than $\frac{1}{2}$ when $n$ is such that
+$$ n(n-1)(n-2) \geq 799350\log{2} \approx 554067.1 $$
+which is equivalent to $n \geq 84$.
+
+</div> 
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

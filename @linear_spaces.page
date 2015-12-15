@@ -1,0 +1,41 @@
+---
+title: @Linear Spaces
+categories: Linear Algebra
+icon: /img/icons/vector-spaces.png
+...
+
+<section class="primary">
+
+# Differentiation
+
+Consider the transformation $D(f) = f'$ from $\bbc^{\infty}$ to $\bbc^{\infty}$. It follows from the 
+[rules of differentiation](rules_of_differentiation) that $D$ is a linear transformation since
+$$\begin{align*}
+  D(f+g) &= (f+g)'      \\
+         &= f' + g'     \\
+         &= D(f) + D(g)
+\end{align*}$$
+and
+$$\begin{align*}
+  D(kf) &= (kf)' \\
+        &= kf'   \\
+        &= kD(f)
+\end{align*}$$ 
+
+We identify the kernel of $D$ to be the set of functions such that the derivative is $0$. The notion of 
+general antiderivatives[^1] show us that $\text{ker}(D)$ is the set of constant functions. The image consists of 
+all smooth functions $g$ such that $g = D(f) = f'$ for some function $f$ in $\bbc^{\infty}$. The 
+[Fundamental Theorem of Calculus](fundamental_theorem_of_calculus) implies that all continuous (and therefore smooth) 
+functions have an antiderivative so $\text{im}(D) = \bbc^{\infty}$.
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+Bretscher, Otto (2008). Linear Algebra with Applications (4th ed.). Pearson. ISBN 978-0-13-600926-9.
+
+</section>
+
+[^1]: Annotation needed 

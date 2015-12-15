@@ -1,0 +1,32 @@
+---
+title: @Pumping Theorems
+categories: Computation
+icon: /img/icons/binary-tree.png
+...
+
+<section class="primary">
+
+# Prime Powers
+
+Consider the language $L = \{a^n: n \text{ is prime}\}$, which cannot be regular. Intuitively this makes sense, since there is no 
+reoccurring periodicity between primes. This is more formally proven by the pumping lemma.
+
+<div class="proof">
+
+Suppose $L$ was regular. Then there exists a $w \in L$ with $|w| \geq n$ such that $w = xyz$ where $y \neq e$, 
+$\left|xy\right| \leq n$, and $xy^iz \in L$ for each $i \geq 0$. More specifically, let $x = a^p, y = a^q$, and $z = a^r$, 
+where $p, r \geq 0$ and $q > 0$. By the pumping lemma, $xy^nz \in L$ for each $n \geq 0$; that is, $p + nq + r$ is prime 
+for each $n \geq 0$. Yet if we let $n = p + 2q + r + 2$, then $p + nq + r = (q + 1) \cdot (p + 2q + r)$, which is a 
+product of two natural numbers each greater than 1. This is a contradiction.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Papadimitriou & Lewis (1998). Elements of the Theory of Computation (2nd ed.). Prentice-Hall. ISBN 0-13-262478-8
+
+</section>

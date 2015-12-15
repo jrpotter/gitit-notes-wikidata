@@ -1,0 +1,64 @@
+---
+title: Rolle's Theorem
+categories: Calculus
+icon: /img/icons/taking-derivatives.png
+...
+
+<section class="primary">
+
+# Statement
+
+<div class="block">
+
+![Rolle's Theorem on Quadratic](/img/graphs/calculus/rolles-theorem.png)
+
+Let $f$ be a function satisfying:
+
+1. $f$ is continuous on the closed interval $[a, b]$.
+2. $f$ is differentiable on the open interval $(a, b)$.
+3. $f(a) = f(b)$.
+
+Then there is a number $c \in (a, b)$ such that $f'(c) = 0$.
+
+We note the above implies the [Mean Value Theorem](mean_value_theorem) if a rotation exists
+that would enable us to view the given function so that $f(a) = f(b)$. By clever subtractions,
+we can always ensure this is true.
+
+</div>
+
+<div class="proof">   
+
+Consider the following cases:
+
+- *Case 1*: Suppose $f(x) = k$, a constant.  
+  Then $f'(x) = 0$, and $c$ can be any number in $(a, b)$.
+
+- *Case 2*: Suppose $f(x) > f(a)$ for some $x \in (a, b)$.  
+  Then by the [Extreme Value Theorem](extreme_value_theorem), $f$ has a maximum value in $[a, b]$. 
+  Since $f(a)=f(b)$, it must attain this maximum at a number $c \in (a, b)$.  
+  Thus, by [Fermat's Theorem](fermats_theorem), $\;f'(c) = 0$.
+
+- *Case 3*: Suppose $f(x) < f(a)$ for some $x \in (a, b)$.  
+  By a similar argument as in Case 2, $\;f'(c) = 0$ for some $c \in (a, b)$.
+
+These cases are exhaustive, completing the proof.  
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Critical Numbers](critical_numbers)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

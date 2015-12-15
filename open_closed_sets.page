@@ -1,0 +1,140 @@
+---
+title: Open/Closed Sets
+categories: Analysis Stub
+icon: /img/icons/euclid.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Sample Set](/img/diagrams/analysis/red-blue-circle.png)
+
+Let $(X, d)$ be a metric space and $E \subset X$. The set $E$ is **closed** if every limit point of $E$ belongs to $E$.
+Alternatively, if every point of $E$ is an interior point of $E$, we say the set $E$ is **open**. Then **complement**
+of $E$, denoted $E^C$ consists of all the elements in $X$ not in $E$. That is,
+$$ E^C = X \backslash E = \{ p \in X: p \not\in E \}. $$
+We say $E$ is a **perfect set** if $E$ is closed and every point is a limit point. Furthermore, we say $E$ is **bounded**
+if there exists an $M > 0$ and some $q \in X$ such that $d(p, q) < M$ for all $p \in E$. We say $E$ is **dense**
+in $X$ if every point in $X$ is either a point of $E$ or a limit point of $E$. That is, $E$ is dense in $X$ if and only
+if given any $x \in X$ and $r > 0$, $N_r(x) \cap E \neq \emptyset$.
+
+Lastly, we denote the set of limit points of $E$ to be $E'$ and define the **closure** of $E$ to be
+$$ \overline{E} = E \cup E'. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Complements
+
+Let $(X, d)$ be a metric space. A set $E$ in a metric space is open if and only if its complement is closed.
+Consequently, a set $F$ is closed in $X$ if and only if $F^C$ is open.
+
+<div class="proof">
+
+$\forward$ Assume $E$ is open. Let $x$ be a limit point of $E^C$. Therefore for all $r > 0$,
+$$ \left(N_r(x) \cap E^C\right) \backslash \{ x \} \neq \emptyset $$
+which means no $r$ exists such that $N_r(x) \subset E$. This means $x$ is not an interior point of $E$.
+But $E$ is open so $x \not\in E$. Thus $x \in E^C$ and $E^C$ is closed since $x$ is an arbitrary limit point.
+
+$\backward$ Suppose $E^C$ is closed. Let $x \in E$, meaning $x \not\in E^C$. Then $x$ is not a limit point of $E^C$ and
+that there exists an $r > 0$ such that $$ N_r(x) \cap E^C = \emptyset. $$ Thus $N_r(x) \subset E$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Collection of Sets
+
+1. Let $\{G_\alpha\}_{\alpha \in A}$, where $A$ is an arbitrary index set, be a collection of open sets in $X$. Then
+   $\bigcup_{\alpha} G_\alpha$ is open.
+2. Let $\{F_\alpha\}_{\alpha \in A}$, where $A$ is an arbitrary index set, be a collection of closed sets in $X$. Then
+   $\bigcap_{\alpha} F_\alpha$ is closed.
+3. The intersection of a finite collection $\{G_1, \ldots, G_n\}$ of open sets is open.
+4. A union of a finite collection $\{ F_1, \ldots, F_n \}$ of closed sets is closed.
+
+<div class="proof">
+
+- Case 1
+:    Let $G$ be $\bigcup_\alpha G_\alpha$ and $x \in G$. Then $x \in G_\alpha$ for some $\alpha$. So there exists an
+     $r > 0$ such that $N_r(x) \subset G_\alpha$. But $G_\alpha \subset G$ so $G$ is open.
+
+- Case 2
+:    By De Morgan's Laws, $$ \left(\bigcap_\alpha F_\alpha\right)^C = \bigcup_\alpha F_\alpha^C, $$ where all
+     $F_\alpha^C$ is open. Thus, by case 1, the complement of the intersection is open, and consequently the
+     intersection itself is closed.
+
+- Case 3
+:    Let $G = \bigcap_{i=1}^n G_i$ and take $x \in G$. Then $x \in G_i$ for all $i = 1, \ldots, n$. Therefore, there exists
+     an $r_i$ corresponding to each $G_i$ such that $N_{r_i}(x) \subset G_i$. Taking
+     $$ r = \mathop{\text{min}}_{1 \leq i \leq n} r_i, $$ we then find that $N_r(x) \subset G$.
+
+- Case 4
+:    We note, by De Morgan's Law, that $$ \left(\bigcup_{i = 1}^r F_i\right)^C = \bigcap_{i=1}^n F_i^C $$ and that
+     each $F_i^C$ is open. Thus the left hand side is also open by case 3 and the complement of this must be closed.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Closure
+
+Let $(X, d)$ be a metric space and $E \subset X$. Let $E'$ denote the set of limit points of $E$. Then:
+
+1. $\overline{E}$ is closed.
+2. $E = \overline{E}$ if and only if $E$ is closed.
+3. If $F$ is closed and $E \subseteq F$, then $\overline{E} \subseteq F$. That is, $\overline{E}$ is the smallest closed
+   set containing $E$.
+4. Let $E$ be a nonempty subset of $\bbr$ bounded above. Then $y = \text{sup}(E)$ is in $\overline{E}$.
+
+<div class="proof">
+
+- Case 1
+:    To show $\overline{E}$ is closed, we instead show that $(\overline{E})^C$ is open. Let $p \in (\overline{E})^C$. This
+     means $p \not\in E$ and $p \not\in E'$. Then, since $p$ is not a limit point of $E$, we see that there exists an $r > 0$
+     such that $N_r(p) \cap E = \emptyset$. Similarly, $N_r(p) \cap E' = \emptyset$. Thus, $N_r(p) \subset (\overline{E})^C$
+     and $(\overline{E})^C$ is open.
+
+- Case 2
+:    $\forward$ Suppose $E = \overline{E}$. Then we need to show that $E$ is closed, or that every limit point of $E$ belongs 
+     to $E$. But this follows directly since $\overline{E} = E' \cup E$, where $E'$ is the set of all limit points of $E$.<br />  
+     $\backward$ Suppose $E$ is closed. By hypothesis all limit points of $E$
+     are in $E$. Thus $E' \subseteq E$ and consequently $E = E' \cup E = \overline{E}$.
+
+- Case 3
+:    Suppose $G$ is a closed subset of $F$ containing $E$. Then $G$ has all the limit points of $E$. Therefore $E \subseteq G$
+     and $E' \subseteq G$, meaning $\overline{E} = E \cup E' \subseteq G$.
+
+- Case 4
+:    If $y \in E$, then we are done. Otherwise, we need to show $y$ is a limit point of $E$. By definition of the supremum,
+     for all $h > 0$, there exists an $x \in E$ such that $y - h < x < y$. Then
+     $$ N_h(y) \cap E \;\backslash \{y\} \neq \emptyset. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Neighborhoods](neighborhoods)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Abott, Stephen (2001). Understanding Analysis (1st ed.). Springer. ISBN 978-0387950605.
+
+</section>

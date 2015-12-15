@@ -1,0 +1,175 @@
+---
+title: Rings
+categories: Abstract Algebra
+icon: /img/icons/arithmetic.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Types of Rings](/img/diagrams/abstract/types-of-rings.png)
+
+A **ring** $\lrangle{R, +, \cdot}$ is a set $R$ together with two binary operations $+$ and $\cdot$, which we
+call *addition* and *multiplication* respectively, defined on $R$ such that the following axioms are satisfied:
+
+- $\lrangle{R, +}$ is an abelian group.
+- Multiplication is associative.
+- For all $a, b, c \in R$, the **left distributive law**, $a \cdot (b + c) = (a \cdot b) + (a \cdot c)$ and
+  the **right distributive law** $(a + b) \cdot c = (a \cdot c) + (b \cdot c)$ hold.
+
+A ring in which multiplication is commutative is a **commutative ring**. A ring with a multiplicative identity
+element is a **ring with unity**; the multiplicative identity element $1$ is called **unity**.
+
+Next, let $R$ be a ring with unity $1 \neq 0$. An element $u$ in $R$ is a **unit** of $R$ if it has a multiplicative
+inverse in $R$. If every nonzero element of $R$ is a unit, then $R$ is a **division ring** (or **skew field**). A
+**field** is a commutative division ring. A noncommutative division ring is called a **strictly skew field**.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Basic Properties
+
+If $R$ is a ring with additive identity $0$, then for any $a, b \in R$ we have
+
+- $0a = a0 = 0$,
+- $a(-b) = (-a)b = -(ab)$,
+- $(-a)(-b) = ab$.
+
+<div class="proof">
+
+- Property 1
+:    Since $R$ is a ring, we have $$ a0 = a(0 + 0) = a0 + a0. $$
+     By the cancellation laws of the group $\lrangle{R, +}$, we have $a0 = 0$.
+     Similarly, we also have $$ 0a = (0 + 0)a = 0a + 0a. $$
+     Again by cancellation laws we have $0a = 0$.
+
+- Property 2
+:    By definition, we note that $-(ab)$ is the element that when added to $(ab)$ yields $0$. Thus it
+     suffices to show that $a(-b) + ab = 0$. By the left distributive law, we have
+     $$ a(-b) + ab = a(-b + b) = a0 = 0. $$
+     Likewise, we must also show $(-a)b + ab = 0$. But by the right distributive law we have
+     $$ (-a)b + ab = (-a + a)b = 0b = 0. $$
+
+- Property 3
+:    By Property 2 we note that $$ (-a)(-b) = -(a(-b)) = -(-(ab)). $$
+     Now $-(-(ab))$ is the element that when added to $-(ab)$ gives $0$ which is $ab$ by definition. Thus,
+     by uniqueness of inverses of a group, we have $(-a)(-b) = ab$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Characteristic
+
+If for a ring $R$ a positive integer $n$ exists such that $n \cdot a = 0$ for all $a \in R$, then the least
+such positive integer is the **characteristic of the ring $R$**. If no such positive integer exists, then $R$
+is of **characteristic $0$**. We see that if $R$ is a ring with unity and $n \cdot 1 \neq 0$ for all $n \in \bbz^+$, 
+then $R$ has characteristic $0$. If $n \cdot 1 = 0$ for some $n \in \bbz^+$, then the smallest such integer $n$ is the 
+characteristic of $R$.
+
+<div class="proof">
+
+If $n \cdot 1 \neq 0$ for all $n \in \bbz^+$, then surely we cannot have $n \cdot a = 0$ for all $a \in R$ for
+some positive integer $n$, so $R$ has characteristic $0$. Suppose that $n$ is a positive integer such that
+$n \cdot 1 = 0$. Then for any $a \in R$, we have
+$$ n \cdot a = a + a + \cdots + a = a(1 + 1 + \cdots + 1) = a(n \cdot 1) = a0 = 0. $$
+Our theorem then follows.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Group Construction
+
+Suppose we have a ring with unity $\lrangle{R, +, \cdot}$, and $U$ is the collection of all units in this ring. Then
+$\lrangle{U, \cdot}$ is a group. This then naturally implies that the nonzero elements of a field form a group under
+multiplication.
+
+<div class="proof">
+
+Let $U$ be the collection of all units in a ring $R$ with unity. We show $\lrangle{U, \cdot}$ satisfies all the necessary
+group properties. First, let $a, b \in U$. Then $ab \in R$ and $(ab)^{-1} = b^{-1}a^{-1} \in R$ since $R$ is closed under
+multiplication. But these elements are units (inverses of one another) so both must be in $U$. Thus $U$ is indeed closed.
+Next, associativity is obvious, since the elements are associative in $R$. The identity $1$ is in $U$ since it is its
+own unit. Lastly, inverses must exist by definition of $U$.
+
+Since the nonzero elements of a field are all units, and a field is a ring, the theorem follows directly.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Divisors of Zero
+
+If $a$ and $b$ are two nonzero elements of a ring $R$ such that $ab = 0$, then $a$ and $b$ are **divisors of $0$**
+(or **$0$ divisors**). It then follows that in the ring $\bbz_n$, the divisors of $0$ are precisely those nonzero
+elements that are not relatively prime to $n$, which further implies that if $p$ is a prime, then $\bbz_p$ has no
+divisors of $0$.
+
+<div class="proof">
+
+$\forward$ Let $m \in \bbz_n$, where $m \neq 0$, and let $\text{gcd}(m, n) = d \neq 1$. Then
+$$ m\left(\frac{n}{d}\right) = \left(\frac{m}{d}\right)n. $$
+Now, all multiples of $n$ yield $0$ so $m(n/d) = 0$ and $m$ must be a divisor of $0$.
+
+$\backward$ Next, suppose $m \in \bbz_n$ is relatively prime to $n$. If for $s \in \bbz_n$ we have $ms = 0$, then
+$n$ divides the product $ms$. But since $\text{gcd}(m, s) = 1$, it must be the case that $n$ divides $s$. Thus, the
+only option for $s$ is $0$.
+
+</div>
+
+<section class="secondary">
+
+## Cancellation Laws
+
+The cancellation laws state that for all $a, b, c \in R$, where $R$ is a ring and $a \neq 0$, then both $ab = ac$ and
+$ba = ca$ implies $b = c$. We note the cancellation laws hold in a ring $R$ if and only if $R$ has no divisors of $0$.
+
+<div class="proof">
+
+First, we note the cancellation laws of addition hold in $R$ since $\lrangle{R, +}$ is a group. Thus, all that remains
+is proving the case of multiplication.
+
+$\forward$ Suppose the cancellation laws hold. For the sake of contradiction, suppose $c \in R$ was a divisor of $0$. 
+Then there exists an $a \in R$ such that $ac = 0$. But, by our [basic properties](#basic-properties), we see this
+amounts to saying $ac = a0$. By the cancellation laws, $c = 0$, contradicting the fact that $c$ was a divisor of $0$.
+Likewise, if $ca = 0a$, then $c = 0$, again showing no zero divisors can exist.
+
+$\backward$ Suppose ring $R$ has no divisors of $0$ and $ab = ac$ with $a \neq 0$. Then 
+$$ ab - ac = a(b - c) = 0, $$
+implying that $b = c$. A similar argument holds for $ba = ca$ with $a \neq 0$ implying $b = c$.
+
+</div>
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Groups](groups)
+- [Homomorphisms](homomorphisms)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Fraleigh, John B. (2003). A First Course In Abstract Algebra (7th ed.). Pearson. ISBN 978-0201763904.
+
+</section>

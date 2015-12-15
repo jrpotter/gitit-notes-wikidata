@@ -1,0 +1,96 @@
+---
+title: Stoke's Theorem
+categories: Calculus
+icon: /img/icons/surface-integrals.png
+...
+
+<section class="summary">
+
+# Summary
+
+<div class="block">
+
+![Positive Orientation](/img/diagrams/calculus/stokes-theorem.png)
+
+Stoke's Theorem is a generalization of [Green's Theorem](greens_theorem). Rather than relating a double integral of a region to 
+a line integral, Stoke's Theorem provides a relationship between a surface integral over a surface and a line integral. We adopt
+a similar convention as we did in Green's Theorem- the positive orientation of the boundary curve $C$ is the direction traveled
+that maintains the surface on the left side. 
+
+Now, let $S$ be an oriented piecewise-smooth surface that is bounded by a simple, closed, piecewise-smooth boundary curve
+$C$ with positive orientation. Let $\pmb{F}$ be a vector field whose components have continuous partial derivatives on
+an open region in $\bbr^3$ that contains $S$. Then
+$$ \oint_C \pmb{F} \cdot d\pmb{r} = \iint_S \text{curl}\;\pmb{F} \cdot d\pmb{S}. $$
+
+That is, the line integral around the boundary curve of $S$ of the tangential component of $\pmb{F}$ is equal to the
+surface integral of the (unit) normal component of the curl of $\pmb{F}$ since
+$$ 
+  \int_C \pmb{F} \cdot d\pmb{r} = \int_C \pmb{F} \cdot \pmb{T}\;ds \;\text{ and }\;
+  \iint_S \text{curl}\;\pmb{F} \cdot d\pmb{S} = \iint_S \text{curl}\;\pmb{F} \cdot \pmb{n}\;dS.
+$$
+
+</div>
+
+<div class="proof">
+
+<div class="block">
+
+![Demonstration](/img/diagrams/calculus/stokes-theorem-proof.png)
+
+We will prove just the special case when $S$ is a graph and $\pmb{F}$, $S$, and $C$ are well behaved. Assume that the equation of
+$S$ is $z = g(x, y)$, $(x, y) \in D$, where $g$ has continuous second-order partial derivatives and $D$ is a simple plane region
+boundary curve $C_1$ corresponds to $C$. If the orientatoin of $S$ is upward, then the positive orientation of $C$ corresponds to
+the positive orientation of $C_1$. Also suppose that $\pmb{F} = P\pmb{i} + Q\pmb{j} + R\pmb{k}$ and that $P$, $Q$, and $R$ are
+continuous.
+
+Now 
+$$ 
+  \iint_S \text{curl}\;\pmb{F} \cdot d\pmb{S} = \iint_D \left[
+    -\left(\pleibniz[R]{y} - \pleibniz[Q]{z}\right)\pleibniz[z]{x}
+    -\left(\pleibniz[P]{z} - \pleibniz[R]{x}\right)\pleibniz[z]{y}
+    +\left(\pleibniz[Q]{x} - \pleibniz[P]{y}\right)
+  \right]dA
+$$
+where the partial derivatives of $P$, $Q$, and $R$ are evaluated at $(x, y, g(x, y))$. If
+$$ x = x(t), \quad y = y(t), \quad a \leq t \leq b $$
+is a parametric representation of $C_1$, then a parametric representation of $C$ is given by
+$$ x = x(t), \quad y = y(t), \quad z = g(x(t), y(t)), \quad a \leq t \leq b. $$
+
+Then, by the [Chain Rule](chain_rule) and [Green's Theorem](greens_theorem), we see that
+$$\begin{align*}
+  \int_C \pmb{F} \cdot d\pmb{r} 
+    &= \int_a^b \left(P\leibniz[x]{t} + Q\leibniz[y]{t} + R\leibniz[z]{t}\right)dt            \\
+    &= \int_a^b \left[P\leibniz[x]{t} + Q\leibniz[y]{t} + 
+       R\left(\pleibniz[z]{x}\leibniz[x]{t} + \pleibniz[z]{y}\leibniz[y]{t}\right) \right] dt \\
+    &= \int_a^b \left[\left(P + R\pleibniz[z]{x}\right)\leibniz[x]{t} + 
+       \left(Q + R\pleibniz[z]{y}\right)\leibniz[y]{t} \right] dt                             \\
+    &= \int_{C_1} \left(P + R\pleibniz[z]{x}\right)dx + \left(Q + R\pleibniz[z]{y}\right)dy   \\
+    &= \iint_D \left[\pleibniz{x}\left(Q + R\pleibniz[z]{y}\right) -
+       \pleibniz{y}\left(P + R\pleibniz[z]{x}\right)\right]dA.
+\end{align*}$$
+
+Lastly, another application of the Chain Rule (keeping in mind that $P$, $Q$, and $R$ are functions of
+$x$, $y$, and $z$) shows that
+$$ 
+  \int_C \pmb{F}\cdot d\pmb{r} = \iint_D \left[
+    \left(\pleibniz[Q]{x} + \pleibniz[Q]{z}\pleibniz[z]{x} + \pleibniz[R]{x}\pleibniz[z]{y}
+         +\pleibniz[R]{z}\pleibniz[z]{x}\pleibniz[z]{y} + R\pleibniz[^2z]{x\partial y}\right)
+   -\left(\pleibniz[P]{y} + \pleibniz[P]{z}\pleibniz[z]{y} + \pleibniz[R]{y}\pleibniz[z]{x}
+         +\pleibniz[R]{z}\pleibniz[z]{y}\pleibniz[z]{x} + R\pleibniz[^2z]{y\partial x}\right)\right]dA.
+$$
+
+Simplifying the above and rearranging does indeed show that
+$$ \int_C \pmb{F} \cdot d\pmb{r} = \iint_S \text{curl}\;\pmb{F} \cdot d\pmb{S}. $$
+</div>
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.  
+
+</section>

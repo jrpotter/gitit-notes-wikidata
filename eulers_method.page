@@ -1,0 +1,74 @@
+---
+title: Euler's Method
+categories: Differential Calculus
+icon: /img/icons/first-order-diff-equations.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Demonstration](/img/diagrams/diffeq/eulers-method.png)
+
+Euler's method is an approximation strategy that takes advantage of the fact that one can find the slope of a 
+function at a given point via the differential equation. That is, by taking the slope $m$ at a given point, one
+can approximate the value of the equation at some $\Delta{t}$ step away by the tangent line with slope $m$.
+By taking $\Delta{t}$ to be smaller over time, we expect this approximation to tend towards the actual values
+of the differential equation. That being said, the error will depend on the volatility of the equation in question.
+
+More precisely, if we introduce the notation $f_n = f(t_n, y_n)$ and assume there is a uniform step size between the points 
+$t_0, t_1, t_2, \ldots$, then $t_{n+1} = t_n + h$ for each $n$, and we obtain Euler's formula as
+$$ y_{n+1} = y_n + f_nh, \quad n = 0, 1, 2, \ldots $$
+
+</div>
+
+<div class="proof">
+
+Suppose we have the general differential equation $$ \leibniz[y]{t} = f(t, y), \quad y(t_0) = y_0. $$
+If we want to approximation the function $y = \phi(t)$, we can begin with an analysis near $t = t_0$. Knowing the solution
+passes through the initial point $(t_0, y_0)$, and that the slope at this point is $f(t_0, y_0)$, we can approximate the
+solution through this initial point via the tangent line $$ y = y_0 + f(t_0, y_0)(t - t_0). $$
+We can then approximate $\phi(t_1)$ by the value $y_1$ determined by substituting $t = t_1$ into the tangent line approximation
+at $t = t_0$; thus $$ y_1 = y_0 + f(t_0, y_0)(t_1 - t_0). $$
+Generalizing with the notation described in the [summary](#summary), the proof follows.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Computation
+
+Here is some sample code on computing via Euler's method:
+
+~~~ { .haskell }
+-- Takes in a differential equation of form dy/dt = f(t, y), step size, starting t,
+-- and y_0 in the inital value problem y(0) = y_0 returning a list of computed values
+
+-- E.g. dy/dt = 3 + t - y, with initial value y(0) = 1. Then call function as
+-- [eulers (\t y -> 3 + t - y) 0 0.1 1] if the desired step size is 0.1
+
+eulers :: (Num a) => (a -> a -> a) -> a -> a -> a -> [(a, a)]
+eulers f h t y = let y' = y + (f t y) * h in (t, y) : eulers f h (t + h) y'
+~~~
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Newton's Method](newtons_method)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Boyce W.E. & DiPrima R. C. (2010). Elementary Differential Equations (9th ed.). John Wiley & Sons, Inc. ISBN 978-0470554913.
+
+</section>

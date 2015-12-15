@@ -1,0 +1,47 @@
+---
+title: Implicit Differentiation
+categories: Calculus
+icon: /img/icons/taking-derivatives.png
+...
+
+<section class="primary">
+
+# Summary
+
+**Implicit Differentiation** involves differentiating both sides of an equation with respect to $x$ and solving
+the resulting equation in terms of $y'$. Note $y$ is a function of $x$ so the [Chain Rule](chain_rule)
+must be applied. One can also employ **logarithmic differentiation** by taking the natural log of both sides 
+of an equation $y = f(x)$ and using the Laws of Logarithms to simplify. Afterwords, implicit differentiation is 
+employed, and one can solve for $y'$.
+
+</section>
+
+<section class="primary">
+
+# Implicit Function Theorem
+
+Implicit differentiation can be generalized to functions of more than one variable by differentiating both sides of an
+equation $F(x, y) = 0$ with respect to $x$. That is, by use of the chain rule in the case of a [single
+independent](chain_rule#single-independent) variable, we have
+
+$$ \pleibniz[F]{x}\leibniz[x]{x} + \pleibniz[F]{y}\leibniz[y]{x} = 0. $$
+
+But $dx/dx = 1$, so if $\partial F/\partial y \neq 0$, then 
+
+$$ \leibniz[y]{x} = -\frac{\pleibniz[F]{x}}{\pleibniz[F]{y}} = -\frac{F_x}{F_y}. $$
+
+Furthermore
+$$ 
+  \pleibniz[z]{x} = -\frac{\pleibniz[F]{x}}{\pleibniz[F]{z}} = \frac{F_x}{F_z} \;\text{ and }\;
+  \pleibniz[z]{y} = -\frac{\pleibniz[F]{y}}{\pleibniz[F]{z}} = \frac{F_y}{F_z}. 
+$$
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.  
+
+</section>

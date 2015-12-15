@@ -1,0 +1,40 @@
+---
+title: Markov's Inequality
+categories: Statistics
+icon: /img/icons/inferential-statistics.png
+...
+
+<section class="primary">
+
+# Summary
+
+Suppose $X$ is a random variable that takes only nonnegative values. Then for any value $a > 0$,
+$$ \bbps{X \geq a} \leq \frac{E[X]}{a}. $$
+This allows us to determine bounds on any nonnegative random variables of which only the mean is known.
+
+<div class="proof">
+
+For $a > 0$, define the [indicator variable](indicator_variables)
+$$ I = \begin{cases} 1 &\text{if } X \geq a \\ 0 &\text{otherwise}. \end{cases} $$
+Note that this implies $$ I \leq \frac{X}{a}. $$ Therefore, by taking expectations, we
+get that $$ E[I] \leq \frac{E[X]}{a}, $$ proving our result.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Chebyshev's Inequality](chebyshevs_inequality)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

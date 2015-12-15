@@ -1,0 +1,52 @@
+---
+title: Pushdown Automata
+categories: Computation
+icon: /img/icons/binary-tree.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Pushdown Automata](/img/diagrams/computation/pushdown-automata.png)
+
+Let us define a **pushdown automaton** to be a sextuple $M = (K, \Sigma, \Gamma, \Delta, s, F)$, where
+
+- $K$ is a finite set of **states**,
+- $\Sigma$ is an alphabet (the **input symbols**),
+- $\Gamma$ is an alphabet (the **stack symbols**),
+- $s \in K$ is the **initial state**,
+- $F \subseteq K$ is the set of **final states**, and
+- $\Delta$, the **transition relation**, is a finite subset of 
+  $(K \times (\Sigma \cup \{e\}) \times \Gamma^*) \times (K \times \Gamma^*)$.
+
+Intuitively, if $((p, a, \beta), (q, \gamma)) \in \Delta$, then $M$, whenever it is in state $p$ with $\beta$ at the
+top of the stack, may read $a$ from the input tape (if $a = e$, then the input is not consulted), replace $\beta$ by
+$\gamma$ on the top of the stack (that is, **pop** $\beta$ and **push** $\gamma$), and enter state $q$. 
+Such a pair $((p, a, \beta), (q, \gamma))$ is called a **transition** of $M$. 
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# CFG Equivalence
+
+The class of languages accepted by pushdown automata is exactly the class of [context-free grammars](context_free_grammars).
+This can be proven by showing that each context-free grammar can be constructed by a pushdown automaton with just two states
+that has rules that parallel the grammar, and by showing that if a language is accepted by an unrestricted pushdown
+automaton, then it is accepted by a **simple** pushdown automaton. Note to be simple means the machine always consults
+its topmost stack symbol (and no symbols below it), and replaces it either with $0$, $1$, or $2$ stack symbols.
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Papadimitriou & Lewis (1998). Elements of the Theory of Computation (2nd ed.). Prentice-Hall. ISBN 0-13-262478-8
+
+</section>

@@ -1,0 +1,91 @@
+---
+title: Division Algorithm
+categories: Abstract Algebra
+icon: /img/icons/arithmetic.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Division Algorithm](/img/diagrams/abstract/division-algorithm.png)
+
+Though very basic, the division algorithm is fundamental in understanding periodicity in groups in $\bbz$ and otherwise
+(such as polynomial groups). It is expressed in $\bbz$ exactly as one might expect: if $m$ is a positive integer and $n$ is 
+any integer, then there exist unique integers $q$ and $r$ such that
+$$ n = mq + r \quad \text{ and }\quad 0 \leq r < m. $$
+
+</div>
+
+<div class="proof">
+
+On the real $x$-axis of analytic geometry, mark off the multiples of $m$ and the position of $n$. Now $n$ falls
+either on a multiple $qm$ of $m$ and $r$ can be taken as $0$, or $n$ falls between two multiples of $m$. If the
+latter is the case, let $qm$ be the first multiple of $m$ to the left of $n$. Then $r$ is as shown in the
+diagram above. Note that $0 \leq r < m$ as expected. Uniqueness of $q$ and $r$ follows since if $n$ is not
+a multiple of $m$ so that we can take $r = 0$, then there is a unique multiple $qm$ of $m$ to the left of $n$
+and at distance less than $m$ from $n$, also illustrated above.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Ring Polynomials
+
+Let $$ f(x) = a_nx^n + a_{n-1}x^{n-1} + \cdots + a_0 $$ and $$ g(x) = b_mx^m + b_{m-1}x^{m-1} + \cdots + b_0 $$
+be two elements of $F[x]$, with $a_n$ and $b_m$ both nonzero elements of $F$ and $m > 0$. Then there are unique
+polynomials $q(x)$ and $r(x)$ in $F[x]$ such that $f(x) = g(x)q(x) + r(x)$, where either $r(x) = 0$ or the degree
+of $r(x)$ is less than the degree $m$ of $g(x)$.
+
+<div class="proof">
+
+Consider the set $S = \{ f(x) - g(x)s(x) : s(x) \in F[X] \}$, which we can regard as the set of solutions. For instance,
+and as our first case, suppose $0 \in S$. Then there exists an $s(x) \in F[x]$ such that $f(x) - g(x)s(x) = 0$, implying
+$f(x) = g(x)s(x)$. Taking $q(x) = s(x)$ and $r(x) = 0$, we are finished.
+Otherwise, let $r(x)$ be an element of minimal degree in $S$. That is, $r(x)$ has a degree that is as small as possible.
+Then we expect $f(x)$ to take on form $$ f(x) = g(x)q(x) + r(x) $$ for some $q(x) \in F[x]$. All that remains is showing
+that the degree of $r(x)$ is less than $m$. Suppose then, for the sake of contradiction, that
+$$ r(x) = c_tx^t + c_{t-1}x^{t-1} + \cdots + c_0, $$
+with $c_j \in F$, $c_t \neq 0$, and $t \geq m$. Then it follows that
+$$ f(x) - g(x)q(x) - (c_t/b_m)x^{t-m}g(x) = r(x) - (c_t/b_m)x^{t-m}g(x). $$
+Because $g(x)$ is of order $m$, we see the right hand side is of the form
+$$ r(x) - (c_tx^t + \text{terms of lower degree}), $$
+which is a polynomial of degree lower than $t$. Yet the right hand side evaluates to
+$$ f(x) - g(x)\left[q(x) + (c_t/b_m)x^{t-m}\right], $$
+which is in $S$. The contradiction becomes clear when we rewrite the polynomial as
+$$ f(x) = g(x)\left[q(x) + (c_t/b_m)x^{t-m}\right] + \left[r(x) - (c_t/b_m)x^{t-m}g(x)\right], $$
+namely that we started with the assumption that $q(x)$ and $r(x)$ were solutions with $r(x)$ with minimal degree,
+but we have found another solution with a remainder that has a smaller degree than $r(x)$. Thus the degree of $r(x)$
+is less than the degree $m$ of $g(x)$.
+
+*****
+
+For uniqueness, if $$ f(x) = g(x)q_1(x) + r_1(x) $$ and $$ f(x) = g(x)q_2(x) + r_2(x), $$ then subtracting we have
+$$ g(x)[q_1(x) - q_2(x)] = r_2(x) - r_1(x). $$ We note either $r_2(x) - r_1(x) = 0$ or the degree of $r_2(x) - r_1(x)$
+is less than the degree of $g(x)$. Since these two evaluations are equal, $q_1(x) - q_2(x)$ must drive $g(x)$ to a
+lower degree, which can only happen if it equals zero. Therefore $q_1(x) = q_2(x)$, which implies that $r_2(x) - r_1(x) = 0$
+and so $r_1(x) = r_2(x)$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Cyclic Groups](cyclic_groups)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Fraleigh, John B. (2003). A First Course In Abstract Algebra (7th ed.). Pearson. ISBN 978-0201763904.
+
+</section>

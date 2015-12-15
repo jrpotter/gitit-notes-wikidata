@@ -1,0 +1,245 @@
+---
+title: Complex Numbers
+categories: Complex
+icon: /img/icons/imaginary.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Complex Plane $\bbc$](/img/graphs/complex/complex-plane.png)
+
+A **complex number** is an expression of the form $z = x + iy$, where $x$ and $y$ are real numbers and $i$ satisfies
+the rule $(i)^2 = (i)(i) = -1$. We call the number $x$ the **real part** of $z$, denoted $x = \text{Re}\;z$, and $y$
+the **imaginary part** of $z$ denoted $y = \text{Im}\;z$. In addition, we say the absolute value of $z$ is defined by
+$\norm{z} = \sqrt{x^2 + y^2}$ and that the complex conjugate is given by $\bar{z} = x - iy$. 
+
+Complex numbers can be represented as vectors, in which the real and imaginary components represent a vector's direction.
+This naturally introduces the notion of the **complex plane**, upon which complex numbers can be graphed. The $x$-axis
+and $y$-axis are subsequently called the **real** and **imaginary axes** respectively. By use of the complex plane, we
+can graphically interpret what it means to add and subtract vectors (via the Triangle Law or Parallelogram Law), and
+can obtain visuals on less obvious operations such as multiplication.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Polar Representation
+
+Since we can represent complex numbers in a plane, and consequently assign a point $P(x, y)$ for every $z = x + iy$, then
+we can introduce parameters in the form of polar coordinates. That is, we can assign
+$$ x = r\cos{\theta} \;\text{ and }\; y = r\sin{\theta} $$
+where $r = \sqrt{x^2 + y^2}$ and $\theta$ is the angle measured from the real axis to the line segment from the origin to $P$.
+Therefore, since $r = \norm{z}$, the polar representation of $z$ is
+$$ z = \norm{z}(\cos\theta + i\sin\theta). $$
+
+<section class="secondary">
+
+## Multiplication/Division
+
+<div class="block">
+
+![Complex Multiplication](/img/graphs/complex/multiplication.png)
+
+The multiplication and division of complex numbers between themselves
+yield very elegant formulas. That is, if $z$ and $w$ are two complex numbers with polar representations
+$$ z = \norm{z}(\cos{\theta} + i\sin{\theta}) \;\text{ and }\; w = \norm{w}(\cos{\phi} + i\sin{\phi}), $$
+then $$ zw = \norm{zw}(\cos{(\theta + \phi)} + i\sin{(\theta + \phi)}) $$
+and $$ \frac{z}{w} = \left(\frac{\norm{z}}{\norm{w}}\right)(\cos{(\theta - \phi)} + i\sin{(\theta - \phi)}). $$
+
+</div>
+
+<div class="proof">
+
+First, by the [Addition Formulas](trigonometric_identities#addition-formulas),
+$$\begin{align*}
+  zw &= \norm{z}\norm{w}((\cos\theta\cos\phi - \sin\theta\sin\phi) + i(\cos\theta\sin\phi + \cos\phi\sin\theta)) \\
+     &= \norm{zw}(\cos{(\theta + \phi)} + i\sin{(\theta + \phi)}).
+\end{align*}$$
+Next, by the [Subtraction Formulas](trigonometric_identities#subtraction-formulas),
+$$\begin{align*}
+  \frac{z}{w} &= \frac{\norm{z}(\cos\theta + i\sin\theta)}{\norm{w}(\cos\phi + i\sin\phi)}              \\
+              &= \left(\frac{\norm{z}}{\norm{w}}\right)(\cos\theta\cos\phi + \sin\theta\sin\phi 
+                                                    + i(\cos\phi\sin\theta - \cos\theta\sin\phi))       \\
+              &= \left(\frac{\norm{z}}{\norm{w}}\right)(\cos{(\theta - \phi)} + i\sin{(\theta - \phi)}).
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="secondary">
+
+## De Moivre's Theorem
+
+In light of the [multiplication and division](#multiplicationdivision) of complex numbers, De Moivere's Theorem becomes almost
+obvious: $$ (cos\theta + i\sin\theta)^n = \cos{(n\theta)} + i\sin{(n\theta)}. $$
+
+<div class="proof">
+
+We proceed via inductions.
+
+- *Base Case:*  
+  Suppose $n = 1$. In this situation, the formula obviously holds true.
+
+- *Induction Hypothesis:*  
+  We assume $(\cos\theta + i\sin\theta)^m = \cos{(m\theta)} + i\sin{(m\theta)}$.
+
+- *Induction Step:*  
+  Consider the following:
+  $$\begin{align*}
+    (\cos\theta + i\sin\theta)^{m+1} &= (\cos\theta + i\sin\theta)^m(\cos\theta + i\sin\theta) \\
+                                     &= (\cos{(m\theta)} + i\sin{(m\theta)})(\cos\theta + i\sin\theta) \\
+                                     &= \cos{((m+1)\theta)} + i\sin{((m+1)\theta)},
+  \end{align*}$$
+  where the last step holds by the property of multiplication and the induction hypothesis.
+
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Arguments
+
+For the sake of conciseness, we define the **argument** of the nonzero complex number $z$ to be any angle $\theta$ for
+which $$ z = \norm{z}(\cos\theta + i\sin\theta), $$ denoted $\theta = \text{arg}\;z$. A concrete choice of $\text{arg}\;z$
+is made by defining **$\textbf{Arg}\;z$** to be the number $\theta_0$ in the interval $[-\pi, \pi)$ such that
+$$ z = \norm{z}(\cos\theta_0 + i\sin\theta_0). $$
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# Geometry
+
+<div class="block">
+
+![Closed Half-Plane](/img/graphs/complex/half-plane.png)
+
+We can view much of complex in a geometrical setting by considering equations regarding complex variables as expressions
+of subsets of the complex plane (much like in a real numbers setting). Namely, we call the **boundary** to be the set of
+all boundary points of a set $S$, where a point $p$ is a **boundary point** of $S$ if every open disc centered at $p$
+contains both points of $S$ and points not in $S$. A set is **open** is all points in the set has an open disc centered
+at the point lying entirely in $D$. A set is **closed** if it contains its boundary.
+
+Furthermore, a set $D$ is considered to contain the point at infinity  in its interior if there is a large number $M$ such 
+that $D$ contains all the points $z$ with $\abs{z} > M$. One "reaches" the point at infinity, denoted $\infty$, by letting 
+$\abs{z}$ increase without bound, with no restriction on $\text{arg}\;z$.
+
+Lastly, we note a set $D$ is open if and only if it contains no point of its boundary and a set $C$ is closed if and only 
+if its complement $D = \{z : z \neq C\}$ is open.
+
+</div>
+
+<div class="proof">
+
+- Open
+:    $\forward$ Suppose $D$ is an open set. Let $p$ be a boundary point of $D$. If it happens that $p$ is in $D$, then there 
+     is an open disc centered at $p$ that lies within $D$. Thus, $p$ is not in the boundary of $D$ which is a contradiction.
+     Therefore $p$ is not in the boundary of $D$.<br />  
+     $\backward$ Suppose $D$ is a set that contains none of its boundary points. If $z_0 \in D$, then $z_0$ cannot be a 
+     boundary point of $D$. Therefore there exists some disc centered at $z_0$ that is either a subset of $D$ or a subset of 
+     the complement of $D$. The latter is impossible since $z_0$ itself is in $D$. Therefore the disc lies in $D$ and,
+     consequently, each point of $D$ is an interior point meaning $D$ is open.
+
+- Closed
+:    Note that the boundary of a set coincides with the boundary of the complement of the set. The rest follows.
+
+</div>
+
+<section class="secondary">
+
+## Roots
+
+<div class="block">
+
+![Fifth Roots of Unity](/img/diagrams/abstract/fifth-roots-of-unity.png)
+
+Suppose $w$ is a nonzero complex number and $n$ is a positive integer. Then a complex number $z$ satisfying the equation $z^n = w$
+is called an **$\spscript{n}{th}$ root of $w$**. We note then that the solutions to this equation are
+$$ z = \norm{w}^{\frac{1}{n}}(\cos{\theta_k} + i\sin{\theta_k}) $$
+where $$ \theta_k = \frac{\psi}{n} + k\left(\frac{2\pi}{n}\right), \quad k = 0, 1, \ldots, n - 1. $$
+
+</div>
+
+<div class="proof">
+
+Let $w = \norm{w}(\cos\psi + i\sin\psi)$ be the polar representation of $w$ where $\psi \in [-\pi, \pi)$. If
+$z = \norm{z}(\cos\theta + i\sin\theta)$, then by [De Moivre's Theorem](#de-moivres-theorem) we see that
+$$ \norm{z}^n = \norm{w}, \quad \cos{(n\theta)} = \cos\psi, \quad \sin{(n\theta)} = \sin\psi. $$
+Now consider $$ \theta_k = \frac{\psi}{n} + k\left(\frac{2\pi}{n}\right), \quad k = 0, 1, \ldots, n - 1, $$
+and note that $n\theta_k = \psi + 2\pi k = \psi$ as desired. Thus $n$ distinct solutions are
+$$ z_k = \norm{w}^{\frac{1}{n}}(\cos\theta_k + i\sin\theta_k), \quad k = 0, 1, \ldots, n - 1. $$
+Moreover these are the only possible roots since for
+$$ \cos{n\theta} = \cos\psi \;\text{ and }\; \sin{n\theta} = \sin\psi, $$
+we must have $n\theta = \psi + 2\pi j$ for some integer $j$, and any values besides the $k$ listed previously 
+yields a number already inspected.
+
+</div>
+
+</section>
+<section class="secondary">
+
+## Straight Lines
+
+Suppose $a = A + iB$ is a nonzero complex number and $b$ is any complex number. Then
+$$ 0 = \text{Re}(az + b) $$
+is the straight line $Ax - By + \text{Re}(b) = 0$. Note that $i$ does not appear in the equation; instead, values of
+$y$ correspond to the imaginary axis. As an aside, we can also represent straight lines parametrically. If $z_1$ and
+$z_2$ are two distinct complex numbers, $tz_1 + (1-t)z_2$ for values $0 \leq t \leq 1$ describes the line segment
+between the two.[^1]
+
+<div class="proof">
+
+Note the following:
+$$\begin{align*}
+  0 &= \text{Re}(az + b)                   \\
+    &= \text{Re}[(A + iB)(x + iy) + b]     \\
+    &= \text{Re}[Ax - By + b + i(Ay + Bx)] \\
+    &= Ax - By + Re(b).
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Circles
+
+A circle is the set of all points equidistant from a given point, the center. If $z_0$ is the center and $r$ is the radius,
+then the circle of radius $r$ and center $z_0$ is described by equation $$ \norm{z - z_0} = r. $$ Note that the following,
+though not used as frequently, also represents a circle: $$ \norm{z - p} = \rho\norm{z - q} $$ where $p, q$ are complex numbers
+and $\rho$ is a positive real number not equal to $1$.
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Binary Structures: Isomorphisms](binary_structures#isomorphisms)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Fisher, Stephen D. (1999). Complex Variables (2nd ed.). Dover Publications Inc. ISBN 0-48-640679-2
+
+</section>
+
+<!-- Footnotes -->
+
+[^1]: [Parametric Line Segments](lines#line-segments)

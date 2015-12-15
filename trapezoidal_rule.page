@@ -1,0 +1,50 @@
+---
+title: Trapezoidal Rule
+categories: Calculus
+icon: /img/icons/single-integral.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Visualization](/img/diagrams/calculus/trapezoidal-rule.png)
+
+An approximation of an integral can be performed as such:
+$$ \int_a^bf(x)dx \approx \frac{\Delta{x}}{2}\left[f(x_0)+2f(x_1)+2f(x_2)+\cdots+2f(x_{n-1})+f(x_n)\right] $$
+where $\Delta{x} = (b-a)/n$ and $x_i = a + i\Delta{x}$.
+
+</div>
+
+<div class="proof">
+ 
+Consider the left and right endpoint approximations and take the average:
+$$\begin{align*}
+  \int_a^bf(x)dx &\approx \frac{1}{2}\left[\sum_{i=1}^nf(x_{i-1})\Delta{x} + \sum_{i=1}^nf(x_i)\Delta{x}\right]      \\
+                 &= \frac{\Delta{x}}{2}\left[\sum_{i=1}^n (f(x_{i-1})+f(x_i))\right]                                 \\
+                 &= \frac{\Delta{x}}{2}\left[(f(x_0)+f(x_1)) + (f(x_1)+f(x_2)) + \cdots + (f(x_{n-1})+f(x_n))\right] \\
+                 &= \frac{\Delta{x}}{2}\left[f(x_0)+2f(x_1)+2f(x_2)+\cdots+2f(x_{n-1})+f(x_n)\right]
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Error Bound
+
+Suppose $\norm{\;f''(x)} \leq K$ for $a \leq x \leq b$. If $E_T$ is the error in the
+Trapezoidal Rule, then $$ \norm{E_T} \leq \frac{K(b-a)^3}{12n^2}. $$
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

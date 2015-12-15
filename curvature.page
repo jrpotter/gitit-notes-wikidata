@@ -1,0 +1,117 @@
+---
+title: Curvature
+categories: Calculus
+icon: /img/icons/geometric-constructions.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![](/img/graphs/calculus/curvature.png)
+
+The **curvature** of $C$ at a given point is a measure of how quickly the curve changes directions at
+that point. Specifically, we define it to be the magnitude of the rate of change of the [unit tangent
+vector](tnb_frames#unit_tangent_vector) with respect to [arc length](/CC/arc_length) (since then the
+curvature is independent of the parameterization). Thus we define the curvature of a curve by
+
+$$ \kappa = \left|\leibniz[\pmb{T}]{s}\right|, $$
+
+where $\pmb{T}$ is the unit tangent vector. 
+Alternatively, we can express the curvature in terms of the parameter $t$
+instead of $s$ by using the [Chain Rule](/CC/rules_of_differentiation#chain-rule):
+
+$$ \leibniz[\pmb{T}]{t} = \leibniz[\pmb{T}]{s}\leibniz[s]{t} $$
+
+and since $ds/dt = \left|\pmb{r}'(t)\right|$,
+
+$$ 
+  \kappa = \left|\leibniz[\pmb{T}]{s}\right| 
+         = \left|\frac{d\pmb{T}/dt}{ds/dt}\right| 
+         = \frac{\left|\pmb{T}'(t)\right|}{\left|\pmb{r}'(t)\right|}. 
+$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Cross Product
+
+The curvature of the curve can also be given by the vector function $\pmb{r}$ is
+
+$$ \kappa(t) = \frac{\left|\pmb{r}'(t) \times \pmb{r}''(t)\right|}{\left|\pmb{r}'(t)\right|^3}. $$
+
+<div class="proof">
+
+Since $\pmb{T} = \pmb{r}'/\left|\pmb{r}'\right|$ and $\left|\pmb{r}'\right| = ds/dt$, we have
+
+$$ \pmb{r}' = \left|\pmb{r}'\right|\pmb{T} = \leibniz[s]{t}\pmb{T} $$
+
+so the [Product Rule](/CC/rules_of_differentiation#product-rule) gives
+
+$$ \pmb{r}'' = \leibniz[^2s]{t^2}\pmb{T} + \leibniz[s]{t}\pmb{T}'. $$
+
+Using the fact that $\pmb{T}\times\pmb{T} = \pmb{0}$, we have 
+
+$$ \pmb{r}'\times\pmb{r}'' = \left(\leibniz[s]{t}\right)^2(\pmb{T}\times\pmb{T}'). $$
+
+Now $\left|\pmb{T}(t)\right| = 1$ for all $t$, so $\pmb{T}$ and $\pmb{T}'$ are orthogonal[^1]. Therefore:
+
+$$ 
+  \left|\pmb{r}' \times \pmb{r}''\right| 
+    = \left(\leibniz[s]{t}\right)^2\big|\pmb{T}\big|\big|\pmb{T}'\big| 
+    = \left(\leibniz[s]{t}\right)^2\left|\pmb{T}'\right|.
+$$
+
+Thus
+
+$$ 
+  \left|\pmb{T}'\right| = \frac{\left|\pmb{r}'\times\pmb{r}''\right|}{(ds/dt)^2} 
+                        = \frac{\left|\pmb{r}'\times\pmb{r}''\right|}{\left|\pmb{r}'\right|^2} $$
+and
+
+$$ 
+  \kappa = \frac{\left|\pmb{T}'\right|}{\left|\pmb{r}'\right|} 
+         = \frac{\left|\pmb{r}'\times\pmb{r}''\right|}{\left|\pmb{r}'\right|^3}. 
+$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Plane Curves
+
+For the special case of a plane curve with equation, curvature is
+
+$$ \kappa(x) = \frac{\left|\;f''(x)\right|}{\left[1 + (\;f'(x))^2\right]^{3/2}}. $$
+
+<div class="proof">
+
+For plance curve $y = f(x)$, we choose $x$ as the parameter and write $\pmb{r}(x) = x\hat{i} + f(x)\hat{j}$.
+Then $\pmb{r}'(x) = \hat{i} + f'(x)\hat{j}$ and $\pmb{r}''(x) = f''(x)\hat{j}$. Since $\hat{i}\times\hat{j} = \hat{k}$
+and $\hat{j}\times\hat{j} = \pmb{0}$, we have $\pmb{r}'(x)\times\pmb{r}''(x) = f''(x)\hat{k}$. We also have
+$\left|\pmb{r}'(x)\right| = \sqrt{1 + [f'(x)]^2}$ and so
+
+$$ \kappa(x) = \frac{\left|\;f''(x)\right|}{\left[1 + (\;f'(x))^2\right]^{3/2}}. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>
+
+<!-- Footnotes -->
+
+[^1]: [Property One of Principal Unit Normal Vectors](tnb_frames#normal-vector)

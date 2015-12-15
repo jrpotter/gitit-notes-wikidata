@@ -1,0 +1,189 @@
+---
+title: Change of Basis
+categories: Linear Algebra
+icon: /img/icons/alternate-bases.png
+...
+
+---
+title: Change of Basis
+categories: Linear Algebra Incomplete
+preamble: all
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Composition Diagram](/img/diagrams/linear/change-of-basis-matrix.png)
+
+For the two bases $\mu$ and $\beta$ of an $n$-dimensional linear space $V$, consider the linear transformation 
+$L_{\mu} \circ L_{\beta}^{-1}$ from $\bbr^n$ to $\bbr^n$, with standard matrix $S$ and 
+[coordinate transformations](linear_transformations#coordinate-transformations) $L_{\mu}$ and $L_{\beta}$. Then 
+$S\vec{x} = L_{\mu}(L_{\beta}^{-1}(\vec{x}))$ for all $\vec{x}$ in $\bbr^n$. This invertible matrix $S$ is called the 
+**change of basis matrix** from $\beta$ to $\mu$, sometimes denoted $S_{\beta\rightarrow\mu}$ and defined as
+$$ S_{\beta\rightarrow\mu} = \begin{bmatrix} & & \\ \bcoor[\mu]{b_1} & \cdots & \bcoor[\mu]{b_n} \\ & & \end{bmatrix} $$
+where $\beta = (\inflate{b}{n})$.
+
+</div>
+
+<div class="proof">
+
+Letting $f = L_{\beta}^{-1}(\vec{x})$ and $\vec{x} = \bcoor{f}$, we find that $\bcoor[\mu]{f} = S\bcoor{f}$, for all $f$ in $V$. 
+If $\beta = (\inflate{b}{n})$, then $\bcoor[\mu]{b_i} = S\bcoor{b_i} = S\vec{e}_i = (\spscript{i}{th}$column of $S)$, 
+so that
+$$
+  S_{\beta\rightarrow\mu} = 
+    \begin{bmatrix}    &        &                  \\
+      \bcoor[\mu]{b_1} & \cdots & \bcoor[\mu]{b_n} \\
+                       &        &
+     \end{bmatrix}
+$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Subspaces of $\bbr^n$
+
+<div class="block">
+
+![Composition Diagram](/img/diagrams/linear/change-of-basis-matrix-vector.png)
+
+Consider a subspace $V$ of $\bbr^n$ with two bases $\mu = (\inflate{\vec{a}}{m})$ and $\beta = (\inflate{\vec{b}}{m})$. 
+Let $S$ be the change of basis matrix from $\beta$ to $\mu$. The the following equation holds:
+$$
+  \begin{bmatrix}&&\\\vec{b}_1&\cdots&\vec{b}_m\\&&\end{bmatrix} =
+  \begin{bmatrix}&&\\\vec{a}_1&\cdots&\vec{a}_m\\&&\end{bmatrix}S.
+$$
+For some intuition as to why this is the case, observe the diagram on the right. We note the matrix consisting of the
+columns of one base take the coordinates of a vector to the original vector. Therefore, in the case of $\mu$ and $\beta$,
+first applying $S$ and then the matrix with respect to $\mu$ yields the same result as simply applying the matrix with
+respect to $\beta$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Linear Transformations
+
+Consider a linear transformation $T$ from $\bbr^n$ to $\bbr^n$ and a basis $\beta = (\inflate{\vec{v}}{n})$
+of $\bbr^n$. Let $B$ be the $\beta$-matrix of $T$, and let $A$ be the standard matrix of $T$
+(such that $T(\vec{x}) = A\vec{x}$ for all $\vec{x}$ in $\bbr^n$). Then
+$$
+  AS=SB, \;B=S^{-1}AS,\text{ and }A=SBS^{-1},\text{ where }
+  S = \begin{bmatrix} \vec{v}_1 &  \cdots & \vec{v}_n \end{bmatrix}\text{.}
+$$
+
+In addition, let $\mu$ and $\beta$ be two given bases on an $n$-dimensional linear space $V$. Consider a linear transformation 
+$T$ from $V$ to $V$, and let $A$ and $B$ be the $\mu$- and the $\beta$-matrix of $T$, respectively. Let $S$ be the change of 
+basis matrix from $\beta$ to $\mu$. Then $A$ is similar to $B$, and 
+$$ AS = SB\text{ or }A=SBS^{-1}\text{ or }B=S^{-1}AS. $$
+
+<div class="proof">
+
+Note $T$ is a linear transformation such that $A\vec{x} = T(\vec{x})$. Also note that for 
+$S=\begin{bmatrix} \vec{v}_1 & \cdots & \vec{v}_n \end{bmatrix}$,
+$$ \vec{x} = S\bcoor{\vec{x}}\text{ and } T(\vec{x}) = S\bcoor{T(\vec{x})}\text{.} $$
+Thus $T(\vec{x}) = AS\bcoor{\vec{x}}$ and $T(\vec{x}) = SB\bcoor{\vec{x}}$ meaning $AS=SB$.
+
+Proof for linear spaces is analogous and omitted as a result.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Diagonalization
+
+Consider a linear transformation $T(\vec{x}) = A\vec{x}$, where $A$ is a square matrix. Suppose 
+$\delta = (\inflate{\vec{v}}{n})$ is an [eigenbasis](bases#eigenbases) for $T$, with 
+$A\vec{v}_i = \lambda_i\vec{v}_i$. Then the $\delta$-matrix $D$ of $T$ is
+
+$$
+  D = S^{-1}AS = \begin{bmatrix}
+    \lambda_1 & 0 & \cdots & 0 \\
+    0 & \lambda_2 & \cdots & 0 \\
+    \vdots & \vdots & & \vdots \\
+    0 & 0 & \cdots & \lambda_n
+  \end{bmatrix},
+  \text{ where }
+  S = \begin{bmatrix} & & & \\ \vec{v}_1 & \vec{v}_2 & \cdots & \vec{v}_n \\ & & & \end{bmatrix}.
+$$
+That is, matrix $D$ is diagonal and its diagonal entries are the eigenvalues $\inflate{\lambda}{n}$ of $T$.
+Conversely, it is also true that if the matrix $D$ of a linear transformation $T$ with respect to a basis $\delta$
+is diagonal, then $\delta$ must be an eigenbasis for $T$.
+
+We say an $n \times n$ matrix $A$ is **diagonalizable** if $A$ is similar to some diagonal matrix $D$, that is,
+if there exists an invertible $n \times n$ matrix $S$ such that $S^{-1}AS$ is diagonal.
+
+<div class="proof">
+
+$\forward$ Consider $\vec{x}$ in the domain of $T$.  Since $\delta$ is an eigenbasis, we can write
+$$ \vec{x} = c_1\vec{v}_1 + c_2\vec{v}_2 + \cdots + c_n\vec{v}_n. $$
+Therefore, $T(\vec{x})$, the application of standard matrix $A$, is
+$$\begin{align*}
+  T(\vec{x}) &= T(c_1\vec{v}_1 + c_2\vec{v}_2 + \cdots + c_n\vec{v}_n)                         \\
+             &= c_1T(\vec{v}_1) + c_2T(\vec{v}_2) + \cdots + c_nT(\vec{v}_n)                   \\
+             &= c_1\lambda_1\vec{v}_1 + c_2\lambda_2\vec{v}_2 + \cdots + c_n\lambda_n\vec{v}_n
+\end{align*}$$
+Given this, $B$ is the matrix that takes
+$$ 
+  \bcoor{\vec{x}} = \begin{bmatrix} c_1 \\ c_2 \\ \vdots \\ c_n \end{bmatrix} \text{ to } 
+  \bcoor{T(\vec{x})} = \begin{bmatrix} c_1\lambda_1 \\ c_2\lambda_2 \\ \vdots \\ c_n\lambda_n \end{bmatrix}
+$$
+which must be the diagonal matrix with diagonal values $\inflate{\lambda}{n}$.
+
+Alternatively, we could argue that
+$$
+  B = \begin{bmatrix} & & &            \\
+        \bcoor[\delta]{T(\vec{v}_1)} & 
+        \bcoor[\delta]{T(\vec{v}_2)} & 
+        \cdots                       & 
+        \bcoor[\delta]{T(\vec{v}_n)}   \\
+      & & & \end{bmatrix}
+    = \begin{bmatrix} & & &                  \\
+        \bcoor[\delta]{\lambda_1\vec{v}_1} & 
+        \bcoor[\delta]{\lambda_2\vec{v}_2} & 
+        \cdots                             & 
+        \bcoor[\delta]{\lambda_n\vec{v}_n}   \\
+      & & & \end{bmatrix}.
+$$
+This is clearly the diagonal matrix with diagonal values $\inflate{\lambda}{n}$.
+
+$\backward$ The converse holds since $D$ is a matrix with respect to the basis $\delta$. That means that
+$$ 
+  (\spscript{i}{th} \text{ column of } D) 
+    = \lambda_i\vec{e}_i 
+    = \bcoor[\delta]{T(\vec{v}_i)}. 
+$$
+Therefore $T(\vec{v}_i)$ must be $\lambda_i\vec{v}_i$ since the coordinates are $0$ in all but the $\spscript{i}{th}$ position.
+This in turn means $\vec{v}_i$ is an eigenvector of $A$. This holds for all $1 \leq i \leq n$ so $\delta$ is an eigenbasis.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Bases](bases)
+- [Coordinates](coordinates)
+- [Similar Matrices](similar_matrices)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Bretscher, Otto (2008). Linear Algebra with Applications (4th ed.). Pearson. ISBN 978-0-13-600926-9.
+
+</section>

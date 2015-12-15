@@ -1,0 +1,69 @@
+---
+title: Integral Domains
+categories: Abstract Algebra
+icon: /img/icons/arithmetic.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Ring Hierarchy](/img/diagrams/abstract/ring-hierarchy.png)
+
+An **integral domain** $D$ is a commutative ring with unity $1 \neq 0$ and containing no divisors of $0$. First, 
+note that a ring $R$ with no divisors of $0$ has unique solutions to all equations of the form $ax = b$ where
+$a, b \in R$. Thus, if the coefficients of some polynomial are from an integral domain, we can solve the
+equation by factoring into linear factors and setting each factor equal to $0$.
+
+It then follows that every field $F$ is an integral domain. Similarly, every finite integral domain is a field.
+
+</div>
+
+<div class="proof">
+
+- Field to Integral Domain
+:    Let $a, b \in F$ with $a \neq 0$. Suppose $ab = 0$. Then
+     $$ ab = 0 = a0. $$
+     Since all nonzero elements of $F$ have an inverse, we see that
+     $$ \left(\frac{1}{a}\right)(ab) = \left[\left(\frac{1}{a}\right)a\right]b = b = 0. $$
+    Thus $F$ cannot have any divisors of $0$.
+
+- Finite Integral Domain to Field
+:    Let $0, 1, a_1, \ldots, a_n$ be all the elements of a finite domain $D$. We must show that for $a \in D$,
+     where $a \neq 0$, there exists $b \in D$ such that $ab = 1$. Now consider $$ a_1, aa_1, \ldots, aa_n. $$
+     These elements of $D$ are distinct, since $aa_i = aa_j$ implies that $a_i = a_j$ by the
+     [cancellation laws](rings#cancellation-laws) that hold in an integral domain. Since $D$ has no $0$ divisors,
+     none of these elements are $0$. Hence, we see that these elements are actually
+     $$ 1, a_1, \ldots, a_n $$ in some order, so that either $a1 = 1$, that is, $a = 1$, or $aa_i = 1$ for some $i$.
+     Thus $a$ has a multiplicative inverse.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Polynomial Domains
+
+We note that if $D$ is an integral domain, then so is $D[x]$. Furthermore, if $F$ is a field, then $F[x]$ is also
+an integral domain (*not* a field).
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Rings of Polynomials](rings_of_polynomials)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Fraleigh, John B. (2003). A First Course In Abstract Algebra (7th ed.). Pearson. ISBN 978-0201763904.
+
+</section>

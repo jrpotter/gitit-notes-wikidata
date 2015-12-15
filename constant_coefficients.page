@@ -1,0 +1,131 @@
+---
+title: Constant Coefficients
+categories: Differential Calculus
+icon: /img/icons/second-order-diff-equations.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Real Rooted Solution](/img/graphs/diffeq/sample-real-roots-solution.png)
+
+When handling second order differential equations, it is often easier to consider a less generalized version of the equations
+where coefficients are constant, rather than functions. That is, we consider equations of the form $$ ay'' + by' + cy = 0. $$ 
+Then the **characteristic equation** of a second order linear homogeneous differential equation is
+$$ ar^2 + br + c = 0. $$
+If $r$ is a root of the given polynomial equation, then we note $y = e^{rt}$ is a solution of the differential equation.
+Note this equation may have two real roots, one real root repeated, or complex conjugates.
+
+</div>
+
+<div class="proof">
+
+Consider the differential equation
+$$ ay'' + by' + cy = 0, $$
+whose coefficients $a$, $b$, and $c$ are arbitrary real constants. Suppose a solution in an exponential form exists
+such that $y = e^{rt}$, where $r$ is a parameter to be determined. Then it follows that $y' = re^{rt}$ and $y'' = r^2e^{rt}$.
+By substituting into the original equation, we find that $$ (ar^2 + br + c)e^{rt} = 0 $$
+and, since $e^{rt} \neq 0$ for all $t$, then we have $$ ar^2 + br + c = 0. $$
+If we assume the roots are real and different, denoted by $r_1$ and $r_2$, then $y_1(t) = e^{r_1t}$ and
+$y_2(t) = e^{r_2}t$ are two solutions. Therefore
+$$ y = c_1y_1(t) + c_2y_2(t) = c_1e^{r_1t} + c_2e^{r_2t} $$
+is also a solution, which is easily verified by differentiating and substituting.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Complex Roots
+
+<div class="block">
+
+![Complex Rooted Solution](/img/graphs/diffeq/sample-complex-roots-solution.png)
+
+Suppose the roots of the characteristic equation are complex numbers $\lambda \pm i\mu$. Then, the pair of real valued
+solutions $$ u(t) = e^{\lambda t}\cos{\mu t} \text { and } v(t) = e^{\lambda t}\sin{\mu t} $$
+form a [fundamental set of solutions](wronskian#fundamental-set-of-solutions) so long as $\mu \neq 0$.
+
+</div>
+
+<div class="proof">
+
+Consider second order equation $$ L[y] = ay'' + by' + cy = 0, $$ and suppose the roots of the characteristic equation
+are conjugate complex numbers (formed when the discriminant of the quadratic equation is less than $0$). Then our
+solutions are $$ y_1(t) = \exp[(\lambda + i\mu)t] \text{ and } y_2(t) = \exp[(\lambda - i\mu)t]. $$
+So, by [Euler's Formula](eulers_number#eulers-formula), 
+$$\begin{align*}
+  y_1(t) &= e^{(\lambda + i\mu)t}                                 \\
+         &= e^{\lambda t}(cos{\mu t} + i\sin{\mu t})              \\
+         &= e^{\lambda t}\cos{\mu t} + ie^{\lambda t}\sin{\mu t}.
+\end{align*}$$
+Similarly, $y_2(t) = e^{\lambda t}\cos{\mu t} - ie^{\lambda t}\sin{\mu t}$. Now by the 
+[principle of superposition](homogeneous_equations#principle-of-superposition), we note that $y_1 + y_2$ and $y_1 - y_2$
+must also be solutions. Therefore
+$$\begin{align*}
+  y_1(t) + y_2(t) &= e^{\lambda t}(\cos{\mu t} + i\sin{\mu t}) + e^{\lambda t}(\cos{\mu t} - i\sin{\mu t}) \\
+                  &= 2e^{\lambda t}\cos{\mu t}
+\end{align*}$$
+and
+$$\begin{align*}
+  y_1(t) - y_2(t) &= e^{\lambda t}(\cos{\mu t} + i\sin{\mu t}) - e^{\lambda t}(\cos{\mu t} - i\sin{\mu t}) \\
+                  &= 2ie^{\lambda t}\sin{\mu t}
+\end{align*}$$
+are also solutions. By neglecting the constant multipliers, we then have our pair of real-valued solutions:
+$$ u(t) = e^{\lambda t}\cos{\mu t} \text { and } v(t) = e^{\lambda t}\sin{\mu t}. $$ The [Wronskian](wronskian)
+of these solutions is $$ W(u, v)(t) = \mu e^{2\lambda t}, $$ meaning as long as $\mu \neq 0$, $u$ and $v$ form a fundamental
+set of solutions.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Repeated Roots
+
+The third possible case arises when the discriminant of the characteristic equation is $0$. In this case, the roots
+$r_1$ and $r_2$ are the same, and we use D'Alembert's method to come up with the general solution. In particular,
+this solution is $$ y = c_1e^{-bt/2a} + c_2te^{-bt/2a}, $$ where $a$ and $b$ are the corresponding constants in
+the characteristic equation.
+
+<div class="proof">
+
+Note that the characteristic equation has repeated roots so $r_1 = r_2 = -b/2a$ since $b^2 - 4ac = 0$. Therefore one 
+solution of $$ L[y] = ay'' + by' + cy = 0 $$ is $$ y_1(t) = e^{-bt/2a}. $$ To find a second solution, assume that 
+$$ y = v(t)y_1(t) = v(t)e^{-bt/2a}. $$ Then $$ y' = v'(t)e^{-bt/2a} - \frac{b}{2a}v(t)e^{-bt/2a} $$ and
+$$ y'' = v''(t)e^{-bt/2a} - \frac{b}{a}v'(t)e^{-bt/2a} + \frac{b^2}{4a^2}v(t)e^{-bt/2a}. $$
+Therefore, substituting in $L[y]$, we get that
+$$ 
+  \left\{a\left[v''(t) - \frac{b}{a}v'(t) + \frac{b^2}{4a^2}v(t)\right] + 
+         b\left[v'(t) - \frac{b}{2a}v(t)\right] + cv(t) 
+  \right\}e^{-bt/2a} = 0. 
+$$
+Simplifying further, and noting that the discriminant is zero by hypothesis, we see that 
+$$\begin{align*}
+  av''(t) + (-b + b)v'(t) + \left(\frac{b^2}{4a} - \frac{b^2}{2a} + c\right)v(t) &= 0 \\
+  av''(t) + \left(\frac{-b^2}{4a} + c\right)v(t) &= 0                                 \\
+  av''(t) &= 0                                                                        \\
+  v''(t) &= 0.
+\end{align*}$$
+
+Thus, by integration, $v(t) = c_1 + c_2t$, and we get that $$ y = c_1e^{-bt/2a} + c_2te^{-bt/2a}. $$
+As an aside, we note that $$ W(y_1, y_2)(t) = e^{-bt/a} $$ where
+$$ y_1(t) = e^{-bt/2a} \;\text{ and }\; y_2(t) = te^{-bt/2a} $$ which is nonzero everywhere, meaning the
+two solutions indeed form a [fundamental set of solutions](wronskian#fundamental-set-of-solutions).
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Boyce W.E. & DiPrima R. C. (2010). Elementary Differential Equations (9th ed.). John Wiley & Sons, Inc. ISBN 978-0470554913.
+
+</section>

@@ -1,0 +1,47 @@
+---
+title: @Exact Equations
+categories: Differential Calculus
+icon: /img/icons/taking-derivatives.png
+...
+
+<section class="primary">
+
+# Conservative Vector Fields
+
+To reiterate, a differential equation $M(x, y) + N(x, y)y' = 0$ is exact if and only if $M_y(x, y) = N_x(x, y)$, under the
+assumption that the partials are defined on a simply-connected region. Similarly, a vector field $\pmb{F} = P\pmb{i} + Q\pmb{j}$ 
+on an open simply-connected region is conservative if and only if $$\pleibniz[P]{y} = \pleibniz[Q]{x}, $$
+which brings to light the geometrical interpretation of exact equations. Namely, the solutions are the level curves
+of the potential of the gradient vector field defined by
+$$ \pmb{F} = M(x, y)\pmb{i} + N(x, y)\pmb{j}. $$
+
+<div class="proof">
+
+Consider the solution of $M(x, y) + N(x, y)y' = 0$. Suppose that we could identify a function $\psi$ such that
+$$ \pleibniz[\psi]{x}(x, y) = M(x, y) \;\text{ and }\; \pleibniz[\psi]{y}(x, y) = N(x, y) $$
+with the understanding that $\psi(x, y) = c$ defines $y = \phi(x)$ implicitly as a differentiable function of $x$.
+Then by the [Chain Rule](chain_rule)
+$$ M(x, y) + N(x, y)\leibniz[y]{x} = \pleibniz[\psi]{x} + \pleibniz[\psi]{y}\leibniz[y]{x} = \leibniz{x}\psi[x, \phi(x)] $$
+and our differential equation becomes
+$$ \leibniz{x}\psi[x, \phi(x)] = 0. $$
+Therefore
+$$ \psi(x, y) = C, $$
+where $C$ is an arbitrary constant. Since $C$ can take on any value (meaning $\psi$ represents a family of solutions), we see
+that the solutions to our differential equations are actually the level curves of $\psi$. As a reminder, we note that the 
+[gradient](directional_derivatives) of a scalar function of two variables consists of vectors that are orthogonal to the 
+level curves of the function (we can observe this by looking at the contour plot of a function of two variables). But also notice that $\psi$ is a scalar function of two variables meaning we can take the gradient:
+$$ \nabla \psi(x, y) = M(x, y)\pmb{i} + N(x, y)\pmb{j}. $$
+Thus we can further conclude that the functions $M$ and $N$ in our differential equation comprise the components of the
+vectors orthogonal to the solution- namely the level curves of $\psi$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Boyce W.E. & DiPrima R. C. (2010). Elementary Differential Equations (9th ed.). John Wiley & Sons, Inc. ISBN 978-0470554913.
+
+</section>

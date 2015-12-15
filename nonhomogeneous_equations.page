@@ -1,0 +1,54 @@
+---
+title: Nonhomogeneous Equations
+categories: Calculus Differential
+icon: /img/icons/second-order-diff-equations.png
+...
+
+<section class="primary">
+
+# Summary
+
+Consider second order differential equation $$ L[y] = y'' + p(t)y' + q(t)y = g(t), $$ where $p$, $q$, and $g$ are given 
+(continuous) functions on the open interval $I$. This equation is called **nonhomogeneous** if $g(t) \neq 0$. If $g(t) = 0$, 
+we say the resulting equation is the corresponding [homogeneous equation](homogeneous_equations). If the corresponding
+homogeneous equation can be solved, then all that is required is a slight generalization to solve the nonhomogeneous equation.
+In fact, the general solution of the nonhomogeneous equation can be written in the form
+$$ y = \phi(t) = c_1y_1(t) + c_2y_2(t) + Y(t), $$ where $y_1$ and $y_2$ are a fundamental set of solutions of the corresponding
+homogeneous equation, $c_1$ and $c_2$ are arbitrary constants, and $Y$ is some specific solution of the nonhomogeneous equation.
+
+<div class="proof">
+
+The proof follows quickly by first showing that if $Y_1$ and $Y_2$ are two solutions of the nonhomogeneous equation $L[y]$, then
+their difference $Y_1 - Y_2$ is a solution of the corresponding homogeneous equation. 
+To show this result, we note that $Y_1$ and $Y_2$ satisfy the equations $$ L[Y_1](t) = g(t), \quad L[Y_2](t) = g(t). $$ 
+Then, $$ L[Y_1](t) - L[Y_2](t) = L[Y_1 - Y_2] = g(t) - g(t) = 0. $$ Thus $Y_1 - Y_2$ is indeed a solution to the corresponding
+homogeneous equation and, since all solutions of a homogeneous equation can be expressed as a linear combination of a [fundamental
+set of solutions](homogeneous_equations#fundamental-set-of-solutions) (if a point exists in which the Wronskian is nonzero), it 
+follows that the solution $Y_1 - Y_2$ can be written as $$ Y_1(t) - Y_2(t) = c_1y_1(t) + c_2y_2(t), $$ where $c_1$ and $c_2$ are 
+certain constants and $y_1$ and $y_2$ form a fundamental set of solutions.
+With this out of the way, identity $Y_1$ with an arbitrary solution $\phi$ of $L[y]$. Additionally, identify $Y_2$ with
+the specific solution $Y$. Then by the previous result we get that $$ \phi(t) - Y(t) = c_1y_1(t) + c_2y_2(t). $$
+Since $\phi$ is an arbitrary solution, all solutions are represented in this way.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Method of Undetermined Coefficients](method_of_undetermined_coefficients)
+- [Homogeneous Equations](homogeneous_equations)
+- [Variation of Parameters](variation_of_parameters)
+- [Wronskian](wronskian)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Boyce W.E. & DiPrima R. C. (2010). Elementary Differential Equations (9th ed.). John Wiley & Sons, Inc. ISBN 978-0470554913.
+
+</section>

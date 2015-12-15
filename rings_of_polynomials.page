@@ -1,0 +1,86 @@
+---
+title: Rings of Polynomials
+categories: Abstract Algebra
+icon: /img/icons/arithmetic.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Evaluation Homomorphism](/img/diagrams/abstract/evaluation-homomorphism.png)
+
+We can extrapolate the idea of rings even further by introducing an **indeterminate** $x$. That is, for a ring $R$, there
+exists a corresponding ring dubbed the polynomial ring with indeterminate $x$, denoted $R[x]$, under the operations of
+polynomial addition and polynomial multiplication. Furthermore, if $R$ is commutative, then so is $R[x]$, and if
+$R$ has unity $1 \neq 0$, then $1$ is also unity for $R[x]$.
+
+Furthermore, we can introduce an arbitrary number of indeterminates if desired. Suppose $R$ is a ring and $x$ and $y$
+are two indeterminaties. Then we can form the ring $(R[x])[y]$, which we note is equivalent to $(R[y])[x]$, and is
+therefore denoted as $R[x, y]$. This can be generalized in a natural way.
+
+This, combined with the evaluation homomorphism, allows us to phrase the problems of polynomials in the language
+of mappings; as a result we can use all of our theory of homomorphisms to derive different solutions. That is, we
+can establish notions of kernels and images, apply the [Fundamental Homomorphism Theorem](fundamental_homomorphism_theorem),
+etc.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Evaluation Homomorphism
+
+Let $F$ be a subfield of a field $E$, $\alpha$ be any element of $E$, and $x$ be an indeterminate. Then the map
+$\phi_\alpha: F[x] \rightarrow E$ defined by 
+$$ \phi_\alpha\left(a_0 + a_1x + \cdots + a_nx^n\right) = a_0 + a_1\alpha + \cdots + a_n\alpha^n $$
+for $(a_0 + a_1x + \cdots + a_nx^n) \in F[x]$ is a homomorphism of $F[x]$ into $E$. Also, $\phi_\alpha(x) = \alpha$,
+and $\phi_\alpha$ maps $F$ isomorphically by the identity map; that is, $\phi_\alpha(a) = a$ for $a \in F$.
+
+<div class="proof">
+
+If $f(x) = a_0 + a_1x + \cdots + a_nx^n$, $g(x) = b_0 + b_1x + \cdots + b_mx^m$, and 
+$h(x) = f(x) + g(x) = c_0 + c_1x + \cdots + c_rx^r$, then 
+$$ \phi_\alpha(f(x) + g(x)) = \phi_\alpha(h(x)) = c_0 + c_1\alpha + \cdots + c_r\alpha^r, $$
+while 
+$$ 
+  \phi_\alpha(f(x)) + \phi_\alpha(g(x)) = 
+  \left(a_0 + a_1\alpha + \cdots + a_n\alpha^n\right) + \left(b_0 + b_1\alpha + \cdots + b_m\alpha^m\right). 
+$$
+Thus, by polynomial addition we have $c_i = a_i + b_i$ and that
+$$ \phi_\alpha(f(x) + g(x)) = \phi_\alpha(f(x)) + \phi_\alpha(g(x)). $$
+Similarly, if $$ f(x)g(x) = d_0 + d_1x + \cdots + d_sx^s, $$ then
+$$ \phi_\alpha(f(x)g(x)) = d_0 + d_1\alpha + \cdots + d_s\alpha^s, $$ while
+$$ 
+  [\phi_\alpha(f(x))][\phi_\alpha(g(x))] = 
+  \left(a_0 + a_1\alpha + \cdots + a_n\alpha^n\right) + \left(b_0 + b_1\alpha + \cdots + b_m\alpha^m\right).
+$$
+Thus, by polynomial multiplication, we indeed have
+$$ \phi_\alpha(f(x)g(x)) = [\phi_\alpha(f(x))][\phi_\alpha(g(x))]. $$
+Therefore $\phi_\alpha$ is a homomorphism.
+
+*****
+
+We see that by definition of $\phi_\alpha$, we have
+$$ \phi_\alpha(x) = \phi_\alpha(1x) = 1\alpha = \alpha. $$
+
+*****
+
+The very definition of $\phi_\alpha$ applied to a constant polynomial $a \in F[x]$, where $a \in F$, gives
+$\phi_\alpha(a) = a$, so $\phi_\alpha$ maps $F$ isomorphically by the identity map (this is a mapping between
+$F$ and $F[x]$).
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Fraleigh, John B. (2003). A First Course In Abstract Algebra (7th ed.). Pearson. ISBN 978-0201763904.
+
+</section>

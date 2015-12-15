@@ -1,0 +1,68 @@
+---
+title: System of First Order Linear Equations
+categories: Calculus Differential
+icon: /img/icons/second-order-diff-equations.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Sample Phase Plane](/img/graphs/diffeq/system-linear-equations.png)
+
+A system of first order linear equations is incredibly important in practice since an arbitrary $\spscript{n}{th}$ order 
+equation can be converted to an equivalent first order linear system. That is, given an $\spscript{n}{th}$ order equation 
+$y^{(n)} = F(t, y, y', \ldots, y^{(n-1)})$, we can create a system of $n$ first order equations by introducing variables
+$\inflate{x}{n}$ defined by $$ x_1 = y, \; x_2 = y', \; x_3 = y'', \; \ldots, \; x_n = y^{(n-1)}. $$
+We can generalize this further by constructing the system
+$$\begin{align*}
+  x_1' &= F_1(t, \inflate{x}{n}), \\
+  x_2' &= F_2(t, \inflate{x}{n}), \\
+       &\;\vdots                  \\
+  x_n' &= F_n(t, \inflate{x}{n})
+\end{align*}$$
+which can be shown to be have a unique solution satisfying some set of initial values.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Existence and Uniqueness
+
+If each of the functions $\inflate{F}{n}$ is a linear function of the dependent variables $\inflate{x}{n}$, we say the system
+of equations is **linear**. The most general system of of $n$ first order linear equations 
+$$\begin{align*}
+  x_1' &= p_{11}(t)x_1 + \cdots + p_{1n}(t)x_n + g_1(t), \\
+  x_2' &= p_{21}(t)x_1 + \cdots + p_{2n}(t)x_n + g_2(t), \\
+       &\;\vdots                                         \\
+  x_n' &= p_{n1}(t)x_1 + \cdots + p_{nn}(t)x_n + g_n(t).
+\end{align*}$$
+If the functions $p_{11}, p_{12}, \ldots, p_{nn}, \inflate{g}{n}$ are
+continuous on an open interval $I: \alpha < t < \beta$, then there exists a unique solution $x_1 = \phi_1(t), \;\ldots,
+\;x_n = \phi_n(t)$ of the above system that also satisfies the initial conditions
+$$ x_1(t_0) = x_1^0, x_2(t_0) = x_2^0, \ldots, x_n(t_0) = x_n^0, $$
+where $t_0$ is any point in $I$ and $\inflate{x^0}{n}$ are any prescribed numbers. Moreover, the solution exists throughout
+the interval $I$.
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Homogeneous Linear Systems](homogeneous_linear_systems)
+- [Nonhomogeneous Linear Systems](nonhomogeneous_linear_systems)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Boyce W.E. & DiPrima R. C. (2010). Elementary Differential Equations (9th ed.). John Wiley & Sons, Inc. ISBN 978-0470554913.
+
+</section>

@@ -1,0 +1,138 @@
+---
+title: Countability
+categories: Analysis Stub
+icon: /img/icons/counting.png
+...
+
+<section class="primary">
+
+# Summary
+
+For positive integer $n$, let $J_n = \{1, 2, \ldots, n\}$ and $J = \bbn \;\backslash \{0\}$. Then for any
+set $A$, we say $A$ is **finite** if $A$ is empty or if $A \;\text{~}\; J_n$ for some $n$. Otherwise we say that
+$A$ is **infinite**. $A$ is **countable** if $A \;\text{~}\; J$; that is, there exists some mapping between $A$ and 
+the natural numbers (excluding $0$, though this is not particularly important). We say $A$ is 
+**uncountable** if $A$ is neither finite nor countable. Lastly, we say $A$ is **at most countable** if $A$ is finite
+or countable.
+
+Note then that if we have two finite, nonempty sets $A$ and $B$, then $A \xtilde B$ if and only if
+$A \xtilde J_n \xtilde B$ for some $n$.
+
+</section>
+
+<section class="primary">
+
+# Subset Countability
+
+Let $A$ be a countable set and $E \subseteq A$. Then $E$ is at most countable.
+
+<div class="proof">
+
+- Case 1 ($E$ is finite)
+:    Then, by definition, $E$ is at most countable.
+
+- Case 2 ($E$ is infinite)
+:    Since $A$ is countable, we can arrange $A$ into a sequence and proceed by induction. That is, let 
+     $A = \{x_n\}_{n=1}^{\infty}$. Construct subsequence $\{n_k\}_{k=1}^{\infty} \subseteq J$ as follows: 
+     Let $n_1$ be the smallest positive integer such that $x_{n_1} \in E$. Having chosen $n_1$ up to $n_{k-1}$, 
+     let $n_k$ be the smallest positive integer such that $n_k > n_{k-1}$ and $x_{n_k} \in E$. This mapping 
+     between $J$ and $E$ is then evident by $\;f: J \rightarrow E$ defined as $f(k) = x_{n_k}$, yielding our 
+     desired one-to-one correspondence.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Unions
+
+Let $S = \{E_n\}_{n=1}^{\infty}$ be a sequence of countable sets. Then $\bigcup \{E_n\}_{n=1}^{\infty}$ is countable.
+
+<div class="proof">
+
+Let $E_n = \{x_{n_1}, x_{n_2}, \ldots\}$ an arbitrary countable set in the sequence $S$. Then, listing out for all $n$, we get
+$$\begin{align*}
+  E_1 &= \{ x_{11}, \;x_{12}, \;x_{13}, \;x_{14}, \;\ldots \} \\
+  E_2 &= \{ x_{21}, \;x_{22}, \;x_{23}, \;x_{24}, \;\ldots \} \\
+  E_3 &= \{ x_{31}, \;x_{32}, \;x_{33}, \;x_{34}, \;\ldots \} \\
+\end{align*}$$ $$\vdots$$
+
+Then we can diagonally group elements in a lattice like fashion. That is, when enumerating, consider all elements
+whose subindices add up to $2$ (i.e. just $x_{11}$), and then $3$ (i.e. $x_{21}, x_{12}$), etc. One last consideration
+arises when we realize some elements could be repeated, and when enumerating our options, we should thus throw out
+any repetitions. More precisely, because we may have $x_{n_k} = x_{m_l}$ for some $n, k, m, l$, then there must
+exist a $T \subseteq J$ such that $S \xtilde T$, where $T$ is our desired set without repetitions.
+Noting $T$ must be countable since it is a subset of the countable set $J$, and each of our $E_n$'s are countable,
+our sequence $S$ must therefore be countable.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Cross Products
+
+Let $A, B$ be countable sets and let
+$$ B_n = \{ \text{ all } n\text{-tuples in } A \} = \{ (a_1, a_2, \ldots, a_n) : a_j \in A \}. $$
+Then $B_n$ is countable. Furthermore, this reasoning allows us to show that the rational numbers $\bbq$ must
+too be countable.
+
+<div class="proof">
+
+We proceed by induction.
+
+- *Base Case*: $B_1 = A$, which, by assumption, is a countable set.
+- *Induction Hypothesis*: We suppose $B_{n-1}$ is countable.
+- *Induction Step*: Note that
+$$ B_n = \{ (b, a) \text{ where } b \in B_{n-1} \text{ and } a \in A \}. $$
+For any fixed $b$, the set $\{ (b, a): a \in A \}$ is countable, since this merely amounts to enumerating through
+the possible $a$'s in $A$. Now
+$$ B_n = \bigcup_{b \in B_{n-1}} \{ (b, a) : a \in A \}, $$
+which is the union of countable sets. Thus, by our proposition of [unions](unions), the $B_n$ must be countable.
+
+*****
+
+Now consider the rationals $\bbq$. Every element in $\bbq$ can be written as $\frac{p}{q}$ for $p, q \in \bbz$.
+We can then consider $p$ and $q$ to be part of a binary tuple $(p, q) \in \bbz \times \bbz$. Since we must not
+count duplicates twice, we let $T \subseteq \bbz \times \bbz$ be our set without any rationals duplicated. Thus
+$\bbn \subset \bbq \xtilde T$, and since $T$ is a subset of the cross product of two countable sets, $\bbq$ must also be countable. 
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Cantor's Diagonalization Argument
+
+In Cantor's Diagonalization argument, we are able to show that if 
+$$ A = \{ \text{ sequence with digits } 0 \text{ and } 1 \}, $$ then $A$ is [uncountable](countability).
+Furthermore, this argument enables us to prove that the real numbers $\bbr$ are uncountable.
+
+<div class="proof">
+
+We show that any countable subset $E$ of $A$ is a proper subset of $A$; this is sufficient since $E \not\subseteq A$.
+So, suppose $E \subset A$ is countable. Then $E = \{ s_n \}_{n=1}^{\infty}$, where $s_n = \{s_{n_1}, s_{n_2}, \ldots\}$.
+Next let $t \in A$. We will show that $t \not\in E$. This is easily done by denoting the $\spscript{k}{th}$ digit of $t$
+by $t_k$ and setting
+$$ t_k = \begin{cases} 0 &\text{if }s_{k_k} = 1 \\ 1 &\text{if }s_{k_k} = 0. \end{cases} $$
+Thus $t$ is different from all elements of $E$, which is an arbitrary countable set, meaning $A$ must not be countable.
+
+*****
+
+The above result quickly allows us to reason the uncountability of $\bbr$ since every real number has some binary
+expansion, and all binary expansions have some equivalent real number associated with it.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Abott, Stephen (2001). Understanding Analysis (1st ed.). Springer. ISBN 978-0387950605.
+
+</section>

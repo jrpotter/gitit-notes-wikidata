@@ -1,0 +1,134 @@
+---
+title: Gram-Schmidt Process
+categories: Linear Algebra
+icon: /img/icons/angles.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![2-Dimensional Case](/img/diagrams/linear/gram-schmidt-process.png)
+
+The Gram-Schmidt process takes in a basis of some subspace $V$ of $\bbr^n$ and returns an orthonormal basis. In particular,
+consider a basis $\inflate{\vec{v}}{m}$ of a subspace $V$ of $\bbr^n$. For $j = 2, \ldots, m$, we can resolve
+the vector $\vec{v}_j$ into its components parallel and perpendicular to the span of the preceding
+vectors, $\inflate{\vec{v}}{j-1}$:
+$$ \vec{v}_j = \vec{v}_j^{\parallel} + \vec{v}_j^{\perp}, $$
+with respect to $\text{span}(\inflate{\vec{v}}{j-1})$. Then
+$$
+  \vec{u}_1 = \frac{1}{\norm{\vec{v}_1}}\vec{v}_1,\; 
+  \vec{u_2} = \frac{1}{\norm{\vec{v}_2^{\perp}}}\vec{v}_2^{\perp},\; \ldots,\; 
+  \vec{u}_j = \frac{1}{\norm{\vec{v}_j^{\perp}}}\vec{v}_j^{\perp},\; \ldots,\; 
+  \vec{u}_m = \frac{1}{\norm{\vec{v}_m^{\perp}}}\vec{v}_m^{\perp}
+$$
+is an [orthonormal basis](bases#orthonormal-basis) of $V$. To find each respective perpendicular vector, we note
+$$\begin{align*}
+  \vec{v}_j^{\perp} &= \vec{v}_j - \vec{v}_j^{\parallel}                                                                
+                     = \vec{v}_j - \text{proj}_V(\vec{v}_j)                                                              \\
+                    &= \vec{v}_j - (\vec{u}_1\cdot\vec{v}_j)\vec{u}_1-\cdots-(\vec{u}_{j-1}\cdot\vec{v}_j)\vec{u}_{j-1}.
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# QR Factorization
+
+Consider an $n \times m$ matrix $M$ with linearly independent columns $\inflate{\vec{v}}{m}$. Then there exists an 
+$n \times m$ matrix $Q$ whose columns $\inflate{\vec{u}}{m}$ are orthonormal and an upper triangular matrix $R$ with 
+positive diagonal entries such that $M = QR$. Then $r_{11}=\norm{\vec{v}_1}, r_{jj} = \norm{\vec{v}_j^{\perp}}$ 
+(for $j = 2, \ldots, m$), and $r_{ij} = \vec{u}_i \cdot \vec{v}_j$ (for $i < j$). Furthermore, this representation is unique.
+
+<div class="proof">
+
+The [Gram-Schmidt Process](gram_schmidt_process) represents a change of basis from basis $\beta = (\inflate{\vec{v}}{m})$ 
+to an orthonormal basis $\mu = (\inflate{\vec{u}}{m})$ of $V$. Thus,
+$$
+  \begin{bmatrix} & & \\ \vec{v}_1 & \cdots & \vec{v}_m \\ & & \end{bmatrix} =
+  \begin{bmatrix} & & \\ \vec{u}_1 & \cdots & \vec{u}_m \\ & & \end{bmatrix}R\text{,}
+$$
+where $R$ is the [change of basis matrix](change_of_basis#change-of-basis-matrix) from $\beta$ to $\mu$ and 
+the matrix before $R$ is traditionally labelled $Q$. The columns of $R$ are the coordinates of $\vec{v}_j$ with respect 
+to basis $\mu$. We note that
+$$
+  \vec{v}_j = \vec{v}_j^{\parallel} + \vec{v}_j^{\perp}
+            = (\vec{u}_1\cdot\vec{v}_j)\vec{u}_1 + \cdots + (\vec{u}_i\cdot\vec{v}_j)\vec{u}_i
+               + \cdots + (\vec{u}_{j-1}\cdot\vec{v}_j)\vec{u}_{j-1}
+               + \norm{\vec{v}_j^{\perp}}\vec{u}_j.
+$$
+It follows that $r_{ij} = \vec{u}_i\cdot\vec{v}_j$ if $i < j$, $r_{jj} = \norm{\vec{v}_j^{\perp}}$, and $r_{ij} = 0$ if 
+$i > j$. This in turn implies that $R$ is upper triangle, with first diagonal entry $r_{11} = \norm{\vec{v}_1},$ 
+since $\vec{v}_1 = \norm{\vec{v}_1}\vec{u}_1$.
+</div>
+
+<section class="secondary">
+
+## Computation
+
+The columns $\inflate{\vec{u}}{m}$ of $Q$ and the entries $r_{ij}$ of $R$ can be computed in the following order:
+$$\begin{gather*}
+  r_{11} = \norm{\vec{v}_1}, \;\vec{u}_1 = \frac{1}{r_{11}}\vec{v}_1                               \\
+  r_{12} = \vec{u}_1\cdot\vec{v}_2,\quad \vec{v}_2^{\perp} = \vec{v}_2-r_{12}\vec{u}_1,\quad
+  r_{22} = \norm{\vec{v}_2^{\perp}},\quad \vec{u}_2 = \frac{1}{r_{22}}\vec{v}_2^{\perp},
+\end{gather*}$$
+and so on.
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# Determinants
+
+If $A$ is an $n \times n$ matrix with columns $\inflate{\vec{v}}{n}$, then
+
+$$ \left|\text{det}\;A\right| = \norm{\vec{v}_1}\norm{\vec{v}_2^{\perp}}\cdots\norm{\vec{v}_n^{\perp}}, $$
+
+where $\vec{v}_k^{\perp}$ is the component of $\vec{v}_k$ perpendicular to space $\inflate{\vec{v}}{k-1}$.
+
+<div class="proof">
+
+Consider an invertible $n \times n$ matrix $A$. Then we can write $A = QR$, where $Q$ is an 
+orthogonal matrix and $R$ is an upper triangular matrix whose diagonal entries are:
+
+$$ r_{11} = \norm{\vec{v}_1} \text{ and } r_{jj} = \norm{\vec{v}_j^{\perp}}, \text{ for } j \geq 2. $$
+
+Thus 
+
+$$ 
+  \left|\text{det}\;A\right| = \left|\text{det}\;Q\right|\left|\text{det}\;R\right| 
+                             = \norm{\vec{v}_1}\norm{\vec{v}_2^{\perp}}\cdots\norm{\vec{v}_n^{\perp}}.
+$$
+
+since the determinant of an orthogonal matrix is either $-1$ or $1$[^1] and the determinant of $R$ is
+the product of its diagonal entries.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Determinants](determinants)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Bretscher, Otto (2008). Linear Algebra with Applications (4th ed.). Pearson. ISBN 978-0-13-600926-9.
+
+</section>
+
+<!-- Footnotes -->
+
+[^1]: [Determinant of Orthogonal Transformation](linear_transformations#determinants)

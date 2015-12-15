@@ -1,0 +1,144 @@
+---
+title: Statistics
+categories: Statistics
+icon: /img/icons/inferential-statistics.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Jakob Bernoulli](/img/portraits/bernoulli.jpg)
+
+Probability and Statistics are two fields that go hand in hand; the former focuses on odds based off combinatoric arguments
+while the latter focuses on determining probabilities given some data. That is, they work in opposite directions, providing a 
+complete picture of the chances involved with a certain event. Nonetheless, statistics is often the word used to describe the
+entire process. More interestingly, this field combines discrete and continuous mathematics in the form of different distributions 
+and combinatoric arguments, providing a rich platform for application of other subjects.
+
+Probability can be defined in several ways- the two leading interpretations are the classical interpretation and 
+frequency interpretation. The classical interpretation states the probability of an event is proportional to the 
+number of cases favorable for an outcome. The frequency interpretation defines an event's probability by the limit 
+of its relative frequency given a large number of trials. In both cases, it can be difficult to work directly with 
+these definitions. For example, by the frequency interpretation, a probability of an event E occurring is:
+$$ \xlimit{n}{\infty} \frac{\sum_{i=i}^n \bbps{E_I}}{n}, $$
+where $n$ is the number of trials of event $E$ and $E_I$ is an [indicator variable](expected_value#indicator-variables). 
+In other words, it is the expected value of an infinite number of trials.
+Generally speaking, instead of working with these limits we work with the [axioms of probability](axioms_of_probability).
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Axioms
+
+<div class="extract" data-target="/axioms_of_probability">
+
+- [Axioms of Probability](axioms_of_probability)
+- [Increasing/Decreasing Sequences](increasing_decreasing_sequences)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Conditional Probability
+
+<div class="extract" data-target="/conditional_probability">
+
+- [Bayes' Theorem](bayes_theorem)
+- [Conditional Expectation](conditional_expectation)
+- [Conditional Probability](conditional_probability)
+- [Conditional Variance](conditional_variance)
+- [Independence](independence)
+- [Odds](odds)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Random Variables
+
+<div class="extract" data-target="/expected_value">
+
+- [Boole's Inequality](booles_inequality)
+- [Correlation](correlation)
+- [Covariance](covariance)
+- [Expected Value](expected_value)
+- [Indicator Variables](indicator_variables)
+- [Moments](moments)
+- [Probability Density Function](probability_density_function)
+- [Probability Mass Function](probability_mass_function)
+- [Variance](variance)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Distributions
+
+<div class="extract" data-target="/binomial_distribution">
+
+- [Binomial Distribution](binomial_distribution)
+- [Exponential Distribution](exponential_distribution)
+- [Gamma Distribution](gamma_distribution)
+- [Geometric Distribution](geometric_distribution)
+- [Hypergeometric Distribution](hypergeometric_distribution)
+- [Poisson Distribution](poisson_distribution)
+- [Negative Binomial Distribution](negative_binomial_distribution)
+- [Negative Hypergeometric Distribution](negative_hypergeometric_distribution)
+- [Normal Distribution](normal_distribution)
+- [Uniform Distribution](uniform_distribution)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Joint Distributions
+
+<div class="extract" data-target="/joint_distribution_functions">
+
+- [Conditional Distributions](conditional_distributions)
+- [Convolution](convolution)
+- [Jacobian](jacobian)
+- [Joint Distribution Functions](joint_distribution_functions)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Limits
+
+<div class="extract" data-target="/central_limit_theorem">
+
+- [Central Limit Theorem](central_limit_theorem)
+- [Chebyshev's Inequality](chebyshevs_inequality)
+- [DeMoivre-Laplace Limit Theorem](demoivre_laplace_limit_theorem)
+- [Markov's Inequality](markovs_inequality)
+- [Law of Large Numbers](law_of_large_numbers)
+
+</div>
+
+</section>
+    
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>
+    

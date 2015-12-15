@@ -1,0 +1,106 @@
+---
+title: Method of Undetermined Coefficients
+categories: Calculus Differential
+icon: /img/icons/second-order-diff-equations.png
+...
+
+<section class="primary">
+
+# Summary
+
+The Method of Undetermined Coefficients is a reasonably efficient way to solve for a particular class of nonhomogeneous
+equations $$ L[y] = y'' + p(t)y' + q(t)y = g(t). $$ Doing so requires making educated "guesses" (we can prove certain
+cases will always work, which is why I use quotes here) about the form of the solution and working backwards to determine
+the coefficients associated with the solution. In addition, if $g(t)$ consists of the sum or product of the type we'd generally
+solve alone, we can also try to find a solution via a sum/product corresponding to the parts of $g(t)$. That is, if
+$$ g(t) = g_1(t)g_2(t) + g_3(t), $$ and solutions corresponding to $g_1(t)$, $g_2(t)$, and $g_3(t)$ are $\mu_1$, $\mu_2$, and
+$\mu_3$, we'd expect our desired solution of $g(t)$ to be $$ \mu_1\mu_2 + \mu_3, $$ with coefficients to be determined.
+
+</section>
+
+<section class="primary">
+
+# Polynomials
+
+Suppose $$ g(t) = P_n(t) = a_0t^n + a_1t^{n-1} + \cdots + a_n. $$ Then we obtain a particular solution by assuming that
+$$ Y(t) = t^k(A_0t^n + A_1t^{n-1} + \cdots + A_{n-2}t^2 + A_{n-1}t + A_n), $$ where $k = 0$, $1$, or $2$.
+
+<div class="proof">
+
+In this case we let $$ L[y] = ay'' + by' + cy = a_0t^n + a_1t^{n-1} + \cdots + a_n. $$
+Plugging into $L[y]$ we get that
+$$ 
+  a[n(n-1)A_0t^{n-2} + \cdots + 2A_{n-2}] + 
+  b(nA_0t^{n-1} + \cdots + A_{n-1}) + 
+  c(A_0t^n + A_1t^{n-1} + \cdots + A_n) = a_0t^n + \cdots + a_n. \quad(1)
+$$
+Equating the coefficients of like powers of $t$ gives
+$$\begin{align*}
+  cA_0 &= a_0,                        \\
+  cA_1 + nbA_0 &= a_1,                \\
+  &\;\vdots                           \\
+  cA_n + bA_{n-1} + 2aA_{n-2} &= a_n.
+\end{align*}$$
+If $c = 0$ but $b \neq 0$, then the polynomial in $(1)$ is of degree $n - 1$so we assume instead that
+$$ Y(t) = t(A_0t^n + \cdots + A_n). $$ Note there is no constant in this equation, but this is unnecessary since
+a constant is a solution of the homogeneous equation (and therefore could not possibly be one for a nonhomogeneous
+equation). Lastly if both $c$ and $b$ are zero we assume that
+$$ Y(t) = t^2(A_0t^n + \cdots + A_n). $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Exponential
+
+Suppose $$ g(t) = e^{\alpha t}P_n(t). $$ Then we obtain a particular solution by assuming that
+$$ Y(t) = t^ke^{\alpha t}(A_0t^n + A_1t^{n-1} + \cdots + A_{n-2}t^2 + A_{n-1}t + A_n), $$
+where $k$ is either $0$, $1$, or $2$.
+
+<div class="proof">
+
+In this case we let $$ L[y] = ay'' + by' + cy = e^{\alpha t}P_n(t) $$ which can be reduced to the polynomial case by a
+substitution. Let $$ Y(t) = e^{\alpha t} u(t); $$ then $$ Y'(t) = e^{\alpha t}[u'(t) + \alpha u(t)] $$
+and $$ Y''(t) = e^{\alpha t}[u''(t) + 2\alpha u'(t) + \alpha^2 u(t)]. $$ Substituting for $y$, $y'$, and $y''$, canceling
+the $e^{\alpha t}$ factor, and collecting terms, we get 
+$$ a u''(t) + (2a \alpha + b)u'(t) + (a\alpha^2 + b\alpha + c)u(t) = P_n(t). $$
+We see this does in fact reduce to the case of the polynomial, and hence a particular solution is of the form
+$$ Y(t) = t^ke^{\alpha t}(A_0t^n + A_1t^{n-1} + \cdots + A_{n-2}t^2 + A_{n-1}t + A_n), $$
+where $k = 0$, $1$, or $2$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Trigonometric
+
+Suppose that $$g(t) = e^{\alpha t}P_n(t)\cos{\beta t} \quad\text{ or }\quad g(t) = e^{\alpha t}P_n(t)\sin{\beta t}. $$
+Then we obtain a particular solution by assuming that 
+$$ Y(t) = t^ke^{\alpha t}(A_0t^n + \cdots + A_n)\cos{\beta t} + t^ke^{\alpha t}(B_0t^n + \cdots + B_n)\sin{\beta t}, $$
+where $k = 0$, $1$, or $2$.
+
+<div class="proof">
+
+Consider just the case of sine. This case can be broken down into the exponential case by noting that
+$$ \sin{\beta t} = \frac{e^{i\beta t}-e^{-i\beta t}}{2i}. $$ Hence
+$$ g(t) = P_n(t)\frac{e^{(\alpha + i\beta)t}-e^{(\alpha - i\beta)t}}{2i}, $$
+and therefore we choose 
+$$ Y(t) = e^{(\alpha + i\beta)t}(A_0t^n + \cdots + A_n) + e^{(\alpha - i\beta)t}(B_0t^n + \cdots + B_n), $$
+or, equivalently,
+$$ Y(t) = e^{\alpha t}(A_0t^n + \cdots + A_n)\cos{\beta t} + e^{\alpha t}(b_0t^n + \cdots + B_n)\sin{\beta t}. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Boyce W.E. & DiPrima R. C. (2010). Elementary Differential Equations (9th ed.). John Wiley & Sons, Inc. ISBN 978-0470554913.
+
+</section>

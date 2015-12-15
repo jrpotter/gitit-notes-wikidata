@@ -1,0 +1,159 @@
+---
+title: Green's Theorem
+categories: Calculus
+icon: /img/icons/line-integrals.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Simple Bounded Region](/img/diagrams/calculus/greens-theorem.png)
+
+Green's Theorem gives a relationship between a line integral around a simple closed curve $C$ and the double integral
+over the plane region $D$ bounded by $C$. Note that we follow the convention of positive orientation of a simple closed
+curve referring to a counterclockwise traversal of $C$; in this way, the region bounded is always on the left of the curve
+while traversed. Now, this relationship is as follows:
+
+Let $C$ be a positively oriented, piecewise-smooth, simple closed curve in the plane and let $D$ be the region bounded
+by $C$. If $P$ and $Q$ have continuous partial derivatives on an open region that contains $D$, then
+$$ \int_C P\;dx + Q\;dy = \iint_D \left(\pleibniz[Q]{x} - \pleibniz[P]{y}\right)\;dA. $$
+
+Note the similarity between the above and part II of the 
+[Fundamental Theorem of Calculus](fundamental_theorem_of_calculus#integrals-part-two). In both cases, there is an integral
+involving derivatives on one side and values of the original functions on the boundary of the domain on the other.
+
+</div>
+
+<div class="proof">
+
+Though not easy to prove in general, Green's Theorem is relatively simple to apply to simple regions 
+(of both type I and type II: e.g. a circle), which could resemble the diagram pictured above. More general regions can 
+then be broken into simple regions, with the understanding that any dividing segments are positive for one subregion, and 
+negative for the other, negating one another for a collective sum of the just the double integral over the intended region.
+
+Notice that, for a simple region, Green's Theorem will be proved if we can show that
+$$ \int_C P\;dx = -\iint_D \pleibniz[P]{y}\;dA \quad(1)$$
+and
+$$ \int_C Q\;dy = \iint_D \pleibniz[Q]{x}\;dA. \quad(2)$$
+
+We first prove equation $(1)$ by expressing $D$ as a type I region:
+$$ D = \left\{ (x, y) : a \leq x \leq b, g_1(x) \leq y \leq g_2(x) \right\} $$
+where $g_1$ and $g_2$ are continuous functions. This enables us to compute the double integral on the right side of equation
+$(1)$ as follows:
+$$ 
+  \iint_D \pleibniz[P]{y}\;dA 
+    = \int_a^b \int_{g_1(x)}^{g_2(x)} \pleibniz[P]{y}(x, y)\;dy\;dx 
+    = \int_a^b \left[P(x, g_2(x)) - P(x, g_1(x))\right]\;dx
+$$
+where the last step follows from the [Fundamental Theorem of Calculus](fundamental_theorem_of_calculus). Next we compute the
+left side of $(1)$ by breaking up $C$ as the union of the four curves $C_1, C_2, C_3$ and $C_4$ shown in the diagram. On 
+$C_1$ we take $x$ as the parameter and write the parametric equations as $x = x, y = g_1(x), a \leq x \leq b$. Thus
+$$ \int_{C_1} P(x, y)\;dx = \int_a^b P(x, g_1(x))\;dx. $$
+Similarly
+$$ \int_{C_3} P(x, y)\;dx = -\int_{-C_3} P(x, y)\;dx = -\int_a^b P(x, g_2(x))\;dx. $$
+On $C_2$ or $C_4$, $x$ is constant, so $dx = 0$ and
+$$ \int_{C_2} P(x, y)\;dx = 0 = \int_{C_4} P(x, y)\;dx. $$
+Hence
+$$\begin{align*}
+  \int_C P(x, y)\;dx &= \int_{C_1} P(x, y)\;dx + \int_{C_2} P(x, y)\;dx + \int_{C_3} P(x, y)\;dx + \int_{C_4} P(x, y)\;dx \\
+                     &= \int_a^b P(x, g_1(x))\;dx - \int_a^b P(x, g_2(x))\;dx.
+\end{align*}$$
+Comparing this equation with the one found when evaluating the right hand side of $(1)$, we see that
+$$ \int_C P(x, y)\;dx = -\iint_D \pleibniz[P]{y}\;dA. $$
+Equation $(2)$ can be proven similarly, by expressing $D$ as type II region. Adding gives us our desired equality.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Curl Form
+
+We can express the line integral of the tangential component of a vector field $\pmb{F}$ along $C$ as the double integral
+of the vertical component of $\text{curl}\;\pmb{F}$ over the region $D$ enclosed by $C$. That is,
+$$ \oint_C \pmb{F}\cdot d\pmb{r} = \iint_D (\text{curl}\;\pmb{F}) \cdot \pmb{k}\;dA. $$
+
+<div class="proof">
+
+Suppose that the plane region $D$ with boundary curve $C$ and functions $P$ and $Q$ satisfy the hypotheses of
+[Green's Theorem](#summary) stated above. Then we consider the vector field $\pmb{F} = P\pmb{i} + Q\pmb{j}$. Its
+line integral is
+$$ \oint_C \pmb{F} \cdot d\pmb{r} = \oint_C P\;dx + Q\;dy $$
+and, regarding $\pmb{F}$ as a vector field on $\bbr^3$ with third component $0$, we have
+$$ 
+  \text{curl}\;\pmb{F} 
+    = \left|\begin{array}{ccc}
+        \pmb{i}      & \pmb{j}      & \pmb{k}      \\
+        \pleibniz{x} & \pleibniz{y} & \pleibniz{z} \\
+        P(x, y)      & Q(x, y)      & 0
+      \end{array}\right|
+    = \left(\pleibniz[Q]{x} - \pleibniz[P]{y}\right)\pmb{k}.
+$$
+Therefore
+$$ 
+  (\text{curl}\;\pmb{F}) \cdot \pmb{k} 
+    = \left( \pleibniz[Q]{x} - \pleibniz[P]{y}\right)\pmb{k} \cdot \pmb{k}
+    = \pleibniz[Q]{x} - \pleibniz[P]{y}
+$$
+and we can now rewrite the equation in Green's Theorem in vector form as
+$$ \oint_C \pmb{F}\cdot d\pmb{r} = \iint_D (\text{curl}\;\pmb{F}) \cdot \pmb{k}\;dA. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Divergence Form
+
+<div class="block">
+
+![Divergence Outward](/img/diagrams/calculus/greens-divergence.png)
+
+We can express the line integral of the normal component of $\pmb{F}$ along $C$ as the double integral
+of the divergence of $\pmb{F}$ over the region $D$ enclosed by $C$. That is,
+$$ \oint_C \pmb{F} \cdot \pmb{n}\;ds = \iint_D \text{div}\;\pmb{F}(x, y)\;dA. $$
+More intuitively, we note that $\pmb{F} \cdot \pmb{n}$ is the amount of "flow" pointing along $\pmb{n}$.
+So the above line integral is the amount of total flow summed at each point along the curve. It is an 
+expression of the total divergence of the curve.
+
+</div>
+
+<div class="proof">
+
+Suppose $C$ is given by the vector equation
+$$ \pmb{r}(t) = x(t)\pmb{i} + y(t)\pmb{j}, \quad a \leq t \leq b, $$
+then the [unit tangent vector](tnb_frames) is
+$$ \pmb{T}(t) = \frac{x'(t)}{\norm{\pmb{r}'(t)}}\pmb{i} + \frac{y'(t)}{\norm{\pmb{r}'(t)}}\pmb{j}. $$
+Then, by reciprocals, we find that the outward unit normal vector to $C$ is given by
+$$ \pmb{n}(t) = \frac{y'(t)}{\norm{\pmb{r}'(t)}}\pmb{i} - \frac{x'(t)}{\norm{\pmb{r}'(t)}}\pmb{j}. $$
+Therefore
+$$\begin{align*}
+  \oint_C \pmb{F} \cdot \pmb{n}\;ds 
+    &= \int_a^b (\pmb{F}\cdot\pmb{n})(t)\norm{\pmb{r}'(t)}\;dt                     \\
+    &= \int_a^b \left[\frac{P(x(t), y(t))y'(t)}{\norm{\pmb{r}'(t)}}
+     - \frac{Q(x(t), y(t))x'(t)}{\norm{\pmb{r}'(t)}}\right] \norm{\pmb{r}'(t)}\;dt \\
+    &= \int_a^b P(x(t), y(t))y'(t)\;dt - Q(x(t), y(t))x'(t)\;dt                    \\
+    &= \int_C P\;dy - Q\;dx 
+     = \iint_D \left(\pleibniz[P]{x} + \pleibniz[Q]{y}\right)\;dA
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.  
+
+</section>
+
+<!-- Footnotes -->
+
+[^1]: [Properties of the Normal Vector](tnb_frames#normal-vector)

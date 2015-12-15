@@ -1,0 +1,161 @@
+---
+title: Independence
+categories: Statistics
+icon: /img/icons/independence.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Mutually Independent Events](/img/diagrams/statistics/mutually-independent.png)
+
+Two events $E$ and $F$ are said to be **independent** if $\bbps{EF} = \bbps{E}\bbps{F}$. Two events that are not independent 
+are said to be dependent. Likewise, three events $E, F,$ and $G$ are said to be independent if
+$$\begin{align*}
+  \bbps{EFG} &= \bbps{E}\bbps{F}\bbps{G},      \\
+  \bbps{EF}  &= \bbps{E}\bbps{F},              \\
+  \bbps{EG}  &= \bbps{E}\bbps{G}, \text{ and } \\
+  \bbps{FG}  &= \bbps{F}\bbps{G}
+\end{align*}$$
+
+Generalizing further, the events $\inflate{E}{n}$ are said to be independent if for every subset $E_{1'}, E_{2'}, \ldots,
+E_{r'}$, $r \leq n$, of these events, $$ \bbps{E_{1'}E_{2'}\ldots E_{r'}} = \bbps{E_{1'}}\bbps{E_{2'}}
+\ldots\bbps{E_{r'}}. $$ An infinite set of events are independent if every finite subset of those events
+is independent.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Complements
+
+If $E$ and $F$ are independent, then so are $E$ and $F^c$.
+
+<div class="proof">
+
+Assume $E$ and $F$ are independent. Since
+$$\begin{align*}
+                     E &= EF \cup EF^c                   \\
+  \Rightarrow \bbps{E} &= \bbps{EF} + \bbps{EF^c}        \\
+                       &= \bbps{E}\bbps{F} + \bbps{EF^c}
+\end{align*}$$
+Thus
+$$\begin{align*}
+  \bbps{EF^c} &= \bbps{E} - \bbps{E}\bbps{F} \\
+              &= \bbps{E}[1-\bbp{F}]         \\
+              &= \bbps{E}\bbps{F^c}.
+\end{align*}$$
+
+</div>    
+
+</section>
+
+<section class="primary">
+
+# Random Variables
+
+The random variables $X$ and $Y$ are said to be **independent** if, for any two sets
+of real numbers $A$ and $B$,
+$$ \bbps{X \in A, Y \in B} = \bbps{X \in A}\bbps{Y \in B}. $$
+In other words, $X$ and $Y$ are independent if, for all $A$ and $B$, the events
+$E_A = \{X \in A\}$ and $F_B = \{Y \in B\}$ are independent.
+
+<section class="secondary">
+
+## Discrete Variables
+
+When $X$ and $Y$ are discrete random variables, $X$ and $Y$ are independent if
+$$ p(x, y) = p_X(x)p_Y(y)\quad \text{ for all } x, y. $$
+
+<div class="proof">
+
+$\forward$ Suppose $$ \bbps{X \in A, Y \in B} = \bbps{X \in A}\bbps{Y \in B} $$ for all sets $A$ and $B$. Then letting $A$ and $B$ be the one-point sets $A = \{x\}$ and $B = \{y\}$ respectively yields
+the desired equation.
+
+$\backward$ Now suppose $$ p(x, y) = p_X(x)p_Y(y)\quad \text{ for all } x, y. $$ Then, for any sets $A$ and $B$,
+$$\begin{align*}
+  \bbps{X \in A, Y \in B} &= \sum_{y \in B}\sum_{x \in A} p(x, y)       \\
+                          &= \sum_{y \in B}\sum_{x \in A} p_X(x)p_Y(y)  \\
+                          &= \sum_{y \in B}p_Y(y) \sum_{x \in A} p_X(x) \\
+                          &= \bbps{Y \in B}\bbps{X \in A}
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Continuous Variables
+
+When $X$ and $Y$ are jointly continuous random variables, $X$ and $Y$ are independent if
+$$ f(x, y) = f_X(x) f_Y(y) \text{ for all } x, y. $$
+
+<div class="proof">
+
+This follows directly from the fact that the density function is the derivative of the cumulative distribution function.
+Its proven [below](#cumulative-distribution-function) that if $X$ and $Y$ are independent, then
+$$ F(a, b) = F_X(a)F_Y(b)\quad \text{ for all } a, b. $$
+To find the density functions, we note that
+$$ f(a, b) = \pleibniz[^2]{a\partial b}F(a, b). $$
+Therefore
+$$\begin{align*}
+  \pleibniz[^2]{a\partial b}F(a, b) &= \pleibniz[^2]{a\partial b}\left[F_X(a)F_Y(b)\right] \\
+                                    &= \pleibniz{a}\left[F_X(a)f_Y(b)\right]               \\
+                                    &= f_X(a)f_Y(b).                                       \\
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Cumulative Distribution Function
+
+In terms of the joint distribution function $F$ of $X$ and $Y$, $X$ and $Y$ are independent if and only if
+$$ F(a, b) = F_X(a)F_Y(b)\quad \text{ for all } a, b. $$
+
+<div class="proof">
+
+$\forward$ Suppose $$ \bbps{X \in A, Y \in B} = \bbps{X \in A}\bbps{Y \in B} $$ for all sets $A$ and $B$.
+Then if $A = (-\infty, a)$ and $B = (-\infty, b)$,
+$$ \bbps{X \leq a, Y \leq b} = \bbps{X \leq a}\bbps{Y \leq b}. $$
+
+$\backward$ Now suppose $$ \bbps{X \leq a, Y \leq b} = \bbps{X \leq a}\bbps{Y \leq b} $$ for all sets $a$ and $b$.
+Then all sets can be defined as $A = (-\infty, a)$ and $B = (-\infty, b)$ since the sets should be continuous and therefore
+$$ \bbps{X \in A, Y \in B} = \bbps{X \in A}\bbps{Y \in B}. $$
+
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Generalization
+
+In general, the $n$ random variables $\inflate{X}{n}$ are said to be independent if, for all sets
+of real  numbers $\inflate{A}{n}$,
+$$ \bbps{X_1 \in A_1, X_2 \in A_2, \ldots, X_n \in A_n} = \prod_{i=1}^n \bbps{X_i \in A_i}, $$
+which is equivalent to saying
+$$ \bbps{X_1 \leq a_1, X_2 \leq a_2, \ldots, X_n \leq a_n} = \prod_{i=1}^n \bbps{X_i \leq a_i} $$
+for all $\inflate{a}{n}$ (note this is a generalization of the statement for the 
+[joint distribution function](#joint-distribution-function)). An infinite collection of random variables is independent if 
+every finite subcollection of them is independent.
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

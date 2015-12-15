@@ -1,0 +1,277 @@
+---
+title: Determinants
+categories: Linear Algebra
+icon: /img/icons/matrix-transformations.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Geometrical Interpretation](/img/diagrams/linear/determinant.png)
+
+The determinant of a matrix turns out to be an important property of a given matrix, and relays a variety
+of information regarding the given matrix and the linear transformation the matrix may represent. One of
+the most fundamental concepts regards a [matrix's invertibility](#invertibility), which is possible if the determinant
+of the given matrix is $0$.
+
+A **pattern** in an $n \times n$ matrix $A$ is a way to choose $n$ entries of the matrix so that there is one chosen entry 
+in each row and in each column of $A$. With a pattern $P$ we associate the product of all its entries, denoted $\text{prod}\;P$. 
+Two entries in a pattern are said to be **inverted** if one of them is located to the right and above the other in the matrix. 
+The **signature** of a pattern $P$ is defined as $\text{sgn}\;P = (-1)^{\text{number of inversions in }P}$.
+
+The **determinant** of $A$ is defined as
+$$ \text{det}\;A = \sum(\text{sgn}\;P)(\text{prod}\;P)\text{,} $$
+where the sum is taken over all $n!$ patterns $P$ in the matrix $A$. Thus we are summing up the products associated with 
+an even number of inversions, and subtracting products with an odd number of inversions.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Alternating Property
+
+Consider an $n \times n$ matrix $A$. Swapping any two rows or any two columns of $A$ yield
+another matrix $B$ where $\text{det}\;B = -\text{det}\;A$. 
+
+<div class="proof">
+
+This is a direct consequence of the signature of a given product; namely, swapping any two adjacent rows results 
+in products with either one less or one more inversion. Thus every product is negated, and the sign of the
+resulting product is also negated. Since swapping any two rows amounts to an odd number of adjacent row swaps,
+the property holds.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Linearity
+
+Consider fixed row vectors $\inflate{\vec{v}}{i-1}, \vec{v}_{i+1}, \ldots, \vec{v}_n$ with $n$ components. Then the function
+
+$$ 
+  T(\vec{x}) = \text{det} 
+    \begin{bmatrix}
+      - & \vec{v}_1     & - \\
+      - & \vec{v}_2     & - \\
+        & \vdots        &   \\
+      - & \vec{v}_{i-1} & - \\
+      - & \vec{x}       & - \\
+      - & \vec{v}_{i+1} & - \\
+      - & \vdots        & - \\
+      - & \vec{v}_n     & - 
+    \end{bmatrix}
+  \text{ from } \bbr^{1 \times n} \text{ to } \bbr
+$$
+
+is a linear transformation. This property is referred to as **linearity of the determinant in the $\spscript{i}{th}$ row**. 
+Likewise, the determinant is linear in all the columns.
+
+<div class="proof">
+
+We note the product $(\text{prod}\;P)$ associated with a pattern $P$ is linear in all the rows and columns, since
+this product contains exactly one factor from each row and one from each column. That is, each product consists
+of just one component from the input vector $\vec{x}$ and is thus a linear combination of the components of
+$\vec{x}$. Thus the determinant itself is linear in all the rows, being a linear combination of pattern products.
+
+To prove the determinant is linear in all the columns, we show that 
+$$ \text{det}\;A = \text{det}\;A^T. $$
+This is fairly straightforward, since each transposed pattern will still contain the same elements
+of the original matrix, and the number of inversions does not change. Thus
+$$ (\text{sgn}\;P)(\text{prod}\;P) = (\text{sgn}\;P^T)(\text{prod}\;P^T) $$
+for all patterns $P$, and, consequently, $\text{det}\;A = \text{det}\;A^T$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Invertibility
+
+Serving as one of the most important consequences of determinant properties, we find that
+a square matrix $A$ is invertible if and only if $\text{det}\;A = 0$.
+
+<div class="proof">
+
+By the ways [elementary row operations](gauss_jordan_elimination#determinants) affect determinants, we see 
+$$ \text{det}(\text{rref}\;A) = (-1)^2\frac{1}{k_1k_2\cdots k_r}(\text{det}\;A)\text{,} $$
+or
+$$ \text{det}\;A = (-1)^sk_1k_2\cdots k_r\text{det}(\text{rref}\;A)\text{,} $$
+where $s$ represents the number of row swaps and the scalars $\inflate{k}{r}$ represent the factors the rows were divided by.
+
+Now suppose $A$ is invertible. Then $\text{rref}\;A = I_n$, so that $\text{det}\;A =  \text{det}(I_n) = 1$ and,
+noting that $\text{det}\;A$ is not zero since all the scalars $k_i$ are nonzero,
+$$ \text{det}\;A = (-1)^sk_1k_2\cdots k_r \neq 0. $$
+
+Next suppose $A$ is not invertible. Then the last row of $\text{rref}\;A$ contains all zeros and thus 
+$\text{det}(\text{rref}\;A) = 0\;$ by linearity in the last row. It follows that $\text{det}\;A = 0$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Paralellepipeds
+
+By the calculation method afforded by the [Gram-Schmidt Process](gram_schmidt_process#determinants), we can interpret
+determinants geometrically as the volume of a parallelepiped. More specifically, consider the vectors $\inflate{\vec{v}}{m}$ 
+in $\bbr^n$. The $m$-parallelepiped defined by the vectors $\inflate{\vec{v}}{m}$ is the set of all vectors in $\bbr^n$ of 
+the form $c_1\vec{v}_1 + c_2\vec{v}_2 + \cdots + c_m\vec{v}_m,$ where $0 \leq c_i \leq 1$. The $m$-volume
+$V(\inflate{\vec{v}}{m})$ of this $m$-parallelepiped is defined recursively by $V(\vec{v}_1) = \norm{\vec{v}_1}$ and
+$$ V(\inflate{\vec{v}}{m} = V(\inflate{\vec{v}}{m-1})\norm{\vec{v}_m^{\perp}}. $$
+
+Alternatively, consider the vectors $\inflate{\vec{v}}{m}$ in $\bbr^n$. Then the $m$-volume of the
+$m$-parallelepiped defined by the vectors $\inflate{\vec{v}}{m}$ is 
+$$ \sqrt{\text{det}(A^TA)}, $$
+where $A$ is the $n \times m$ matrix with columns $\inflate{\vec{v}}{m}$. Note that if $m = n$, then 
+this volume is 
+$$ \left|\text{det}\;A\right|. $$
+
+<div class="proof">
+
+Let $A$ be the $n \times m$ matrix whose columns are $\inflate{\vec{v}}{m}$. If the columns of $A$ are
+linearly independent, we can consider the $QR$ factorization $A = QR$. Then, $A^TA = R^TQ^TQR = R^TR$, 
+since the columns of $Q$ are orthonormal. Therefore
+$$\begin{align*} 
+  \text{det}(A^TA) &= \text{det}(R^TR) = (\text{det}\;R)^2 = (r_{11}r_{22}\cdots r_{mm})^2       \\
+                   &= (\norm{\vec{v}_1}\norm{\vec{v}_2^{\perp}}\cdots\norm{\vec{v}_m^{\perp}})^2 \\
+                   &= (V(\inflate{\vec{v}}{m}))^2.
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Expansion Factors
+
+Consider a linear transformation $T(\vec{x}) = A\vec{x}$ from $\bbr^2$ to $\bbr^2$. Then $\left|\text{det}\;A\right|$ 
+is the **expansion factor**
+$$ \frac{\text{area of }T(\Omega)}{\text{area of }\Omega} $$
+of $T$ on parallelograms $\Omega$. Likewise, for a linear transformation $T(\vec{x}) = A\vec{x}$ from $\bbr^n$ 
+to $\bbr^n$, $\left|\text{det}\;A\right|$ is the expansion factor of $T$ on $n$-parallelepipeds:
+$$ V(A\vec{v}_1, \ldots, A\vec{v}_n) = \left|\text{det}\;A\right| V(\inflate{\vec{v}}{n}), $$
+for all vectors $\inflate{\vec{v}}{n}$ in $\bbr^n$.
+
+<div class="proof">
+
+Let $\Omega$ be the parallelogram defined by vectors $\vec{v}_1$ and $\vec{v}_2$, and let 
+$B = \begin{bmatrix} \vec{v}_1 & \vec{v}_2 \end{bmatrix}$. Then the area of $\Omega$ is $\left|\text{det}\;B\right|$
+and area of $T(\Omega)$ is 
+$$ 
+  \left|\text{det} \begin{bmatrix} A\vec{v}_1 & A\vec{v}_2 \end{bmatrix}\right|
+    = \left|\text{det}(AB)\right| = \left|\text{det}\;A\right|\left|\text{det}\;B\right|,
+$$
+meaning the expansion factor is
+$$
+  \frac{\text{area of }T(\Omega)}{\text{area of }\Omega} =
+  \frac{\left|\text{det}\;A\right|\left|\text{det}\;B\right|}{\left|\text{det}\;B\right|} =
+  \left|\text{det}\;A\right|.
+$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Other Determinants
+
+<section class="secondary">
+
+## Matrix Products
+
+If $A$ and $B$ are $n \times n$ matrices, then
+$$ \text{det}(AB) = (\text{det}\;A)(\text{det}\;B). $$
+
+<div class="proof">
+
+First consider the case when $A$ is invertible. Then we see that
+$$ \text{rref} \big[ \;A\;|\;AB\; \big] = \big[ \;I_n\; | \;B\; \big]. $$
+Suppose we swap rows $s$ times and divide various rows by $\inflate{k}{r}$ as we perform this elimination. 
+By Gauss-Jordan Elimination, we see that
+$$ \text{det}\;A = (-1)^sk_1k_2\cdots k_r $$
+and
+$$ \text{det}(AB) = (-1)^sk_1k_2\cdots k_r(\text{det}\;B) = (\text{det}\;A)(\text{det}\;B) $$
+as claimed. If $A$ is not invertible, then neither is $AB$ so
+$$ (\text{det}\;A)(\text{det}\;B) = 0(\text{det}\;B) = 0 = \text{det}(AB). $$
+
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Matrix Inverses
+
+If $A$ is an invertible matrix, then
+
+$$ \text{det}(A^{-1}) = \frac{1}{\text{det}\;A} = (\text{det}\;A)^{-1}. $$
+
+<div class="proof">
+
+If $A$ is an invertible $n \times n$ matrix, then $I_n = AA^{-1}$. By taking determinants on both sides 
+and using the [determinant of matrix products](#matrix-products) we find that
+$$ 1 = \text{det}(I_n) = \text{det}(AA^{-1}) = \text{det}(A)\text{det}A^{-1}, $$
+so that
+$$ \text{det}(A^{-1}) = \frac{1}{\text{det}\;A}. $$
+
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Similar Matrices
+
+If matrix $A$ is [similar](similar_matrices) to $B$, then $$ \text{det}\;A = \text{det}\;B. $$
+
+<div class="proof">
+
+Since $A$ and $B$ are similar, there exists an invertible matrix $S$ such that $AS = SB$. By the 
+[determinant of matrix products](#matrix-products) we have
+$$ (\text{det}\;A)(\text{det}\;S) = (\text{det}\;S)(\text{det}\;B). $$
+Dividing both sides by the nonzero scalar $(\text{det}\;S)$, we find that
+$$ \text{det}\;A = \text{det}\;B. $$
+
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Matrix Transpositions
+
+Given matrix $A$, $$ \text{det}\;A = \text{det}\;A^T. $$
+
+<div class="proof">
+
+Consider the pattern $P$ and its transpose $P^T$. Note these two patterns involve the same numbers as well
+as the same number of inversions. The role of the two numbers in each inversion has been reversed, but that
+does not change the contribution to their respective determinants. Thus
+$$ (\text{sgn}\;P)(\text{prod}\;P) = (\text{sgn}\;P^T)(\text{prod}\;P^T) $$
+for all products meaning
+$$ \text{det}\;A = \text{det}\;A^T. $$
+
+</div>
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Bretscher, Otto (2008). Linear Algebra with Applications (4th ed.). Pearson. ISBN 978-0-13-600926-9.
+
+</section>

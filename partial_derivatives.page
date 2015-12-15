@@ -1,0 +1,65 @@
+---
+title: Partial Derivatives
+categories: Calculus
+icon: /img/icons/partial-derivatives.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Partial Derivative Projection](/img/diagrams/calculus/partial-derivative.png)
+
+Partial differentiation is a means of differentiating functions of two or more variables by keeping all variables
+except for one constant, and then differentiating with respect to the dynamic variable. Geometrically speaking (at least
+for a function of two variables), we are differentiating the projection of a curve, formed by projecting the intersection
+of a surface intersected with a plane on the $xz$- or $yz$-plane. 
+
+More specifically, if $f$ is a function of two variables, its **partial derivatives** are the functions $f_x$ and $f_y$ defined by
+$$ f_x(x, y) = \pleibniz[f]{x} = \xlimit{h}{0} \frac{f(x+h, y)-f(x,y)}{h} $$
+and 
+$$ f_y(x, y) = \pleibniz[f]{y} = \xlimit{h}{0} \frac{f(x, y+h)-f(x,y)}{h}. $$
+
+</div>
+
+Generalizing further, if $u$ is a function of $n$ variables, $u = f(\inflate{x}{n})$, its partial derivative with respect to the 
+$\spscript{i}{th}$ variable $x_i$ is
+$$ \pleibniz[u]{x_i} = \xlimit{h}{0} \frac{f(x_1,\ldots,x_{i-1},x_i+h,x_{i+1},\ldots,x_n) - f(x_1,\ldots,x_i,\ldots,x_n)}{h}. $$
+
+</section>
+
+<section class="primary">
+
+# Higher Order Derivatives
+
+If $f$ is a function of two variables, then so are its partial derivatives, the so called **second partial derivatives**.
+If $z = f(x, y)$ we use the following notation:
+
+$$\begin{align*}
+(f_x)_x &= f_{xx} = f_{11} = \pleibniz{x}\left(\pleibniz[f]{x}\right) = \pleibniz[^2f]{x^2} = \pleibniz[^2z]{x^2}                 \\
+(f_x)_y &= f_{xy} = f_{12} = \pleibniz{y}\left(\pleibniz[f]{x}\right) = \pleibniz[^2f]{y\partial x} = \pleibniz[^2z]{y\partial x} \\
+(f_y)_x &= f_{yx} = f_{21} = \pleibniz{x}\left(\pleibniz[f]{y}\right) = \pleibniz[^2f]{x\partial y} = \pleibniz[^2z]{x\partial y} \\
+(f_y)_y &= f_{yy} = f_{22} = \pleibniz{y}\left(\pleibniz[f]{y}\right) = \pleibniz[^2f]{y^2} = \pleibniz[^2z]{y^2}
+\end{align*}$$
+
+This notation can be generalized in the obvious way.
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Clairaut's Theorem](clairauts_theorem)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.  
+
+</section>

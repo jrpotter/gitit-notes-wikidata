@@ -1,0 +1,124 @@
+---
+title: Absolute Convergence Test
+categories: Calculus Complex
+icon: /img/icons/sequences-2.png
+...
+
+<section class="secondary">
+
+# Summary
+
+If a series of real numbers $\sum a_n$ is [absolutely convergent](series#convergence), then it is convergent.
+
+<div class="proof">
+
+Note that $0 \leq a_n + \left|a_n\right| \leq 2\left|a_n\right|$. If $\sum a_n$ is absolutely convergent, then 
+$\sum \left|a_n\right|$ is convergent, so $\sum 2|a_n|$ is convergent. Therefore, by the Comparison Test, 
+$\sum (a_n + \left|a_n\right|)$ is convergent. Then $$ \sum a_n = \sum (a_n + \left|a_n\right|) - \sum \left|a_n\right|. $$ 
+is the difference of two convergent series and is therefore convergent.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Ratio Test
+
+1. If $\xlimit{n}{\infty}\left|\frac{a_{n+1}}{a_n}\right| = L < 1$, then the series $\sum_{n=1}^{\infty} a_n$ is 
+   absolutely convergent. 
+2. If $\xlimit{n}{\infty}\left|\frac{a_{n+1}}{a_n}\right| = L > 1$ or $\xlimit{n}{\infty}\left|\frac{a_{n+1}}{a_n}\right| 
+   = \infty$, then the series $\sum_{n=1}^{\infty} a_n$ is divergent.
+3. If $\xlimit{n}{\infty}\left|\frac{a_{n+1}}{a_n}\right| = 1$, the Ratio test is inconclusive.
+
+<div class="proof">
+
+- Case 1
+:    Since $L < 1$, we can choose a number $r$ such that $L < r < 1$. Since
+     $$ \xlimit{n}{\infty}\left|\frac{a_{n+1}}{a_n}\right| = L \text{ and } L < r, $$ 
+     the ratio $|a_{n+1}/a_n|$ will eventually be less than $r$; that is, there exists an integer $N$ such that
+     $$ \left|\frac{a_{n+1}}{a_n}\right| < r, \text{ whenever } n \geq N. $$
+     Putting $n$ successively equal to $N, N+1, N+2, \ldots$, we find
+     $$\begin{align*}
+       \left|a_{N+1}\right| &< \left|a_N\right|r                                      \\
+       \left|a_{N+2}\right| &< \left|a_{N+1}\right|r < \left|a_N\right|r^2            \\
+                            &\cdots                                                   \\
+       \left|a_{N+k}\right| &< \left|a_N\right|r^k, \text{ for all } k \geq 1.
+     \end{align*}$$
+     Now the series $\sum_{k=1}^{\infty}\left|a_N\right|r^k$ is a geometric series with $0 < r < 1$ and must be convergent. 
+     Thus the [Comparison Test](comparison_test) tells us that 
+     $$ \sum_{n=N+1}^{\infty} \left|a_n\right| = \sum_{k=1}^{\infty} \left|a_{N+k}\right| $$ 
+     is also convergent so $\sum a_n$ is absolutely convergent.
+
+- Case 2
+:    If $\left|a_{n+1}/a_n\right| \rightarrow L > 1$ or $\left|a_{n+1}/a_n\right| \rightarrow \infty$, 
+     then the ratio $\left|a_{n+1}/a_n\right|$ will eventually be greater than $1$; that is, there exists an integer 
+     $N$ such that $$ \left|\frac{a_{n+1}}{a_n}\right| > 1,\text{ whenever } n \geq N\text{.} $$
+     This means that $\left|a_{n+1}\right| > \left|a_n\right|$ whenever $n \geq N$ and so $\xlimit{n}{\infty} a_n \neq 0$. 
+     Therefore $\sum a_n$ diverges by the [Divergence Test](divergence_test).
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Root Test
+
+1. If $\xlimit{n}{\infty} \sqrt[n]{|a_n|} = L < 1$, then the series $\sum_{n=1}^{\infty} a_n$ is absolutely convergent.
+2. If $\xlimit{n}{\infty} \sqrt[n]{|a_n|} = L > 1$ or $\xlimit{n}{\infty} \sqrt[n]{|a_n|} = \infty$, then the 
+   series $\sum_{n=1}^{\infty} a_n$ is divergent.
+3. If $\xlimit{n}{\infty} \sqrt[n]{|a_n|} = 1$, the Root Test is inconclusive.
+
+<div class="proof">
+
+- Case 1
+:    Since $L < 1$, we can choose a number $r$ such that $L < r < 1$. Since
+     $$ \xlimit{n}{\infty}\sqrt[n]{\abs{a_n}} = L \text{ and } L < r, $$ 
+     the root $\sqrt[n]{\abs{a_n}}$ will eventually be less than $r$; that is, there exists an integer $N$ such that
+     $$ \sqrt[n]{\abs{a_n}} < r, \text{ whenever } n \geq N. $$
+     This in turn implies $\abs{a_n} < r^n$. Then by the [Comparison Test](comparison_test), we have
+     $$ \sum_{n=1}^{\infty} \abs{a_n} < \sum_{n=1}^{\infty} r^n. $$ Since the right hand side is a geometric series,
+     we have that $\sum a_n$ is absolutely convergent.
+
+- Case 2
+:    If $\sqrt[n]{\abs{a_n}} \rightarrow L > 1$ or $\sqrt[n]{\abs{a_n}} \rightarrow \infty$, 
+     then the root $\sqrt[n]{\abs{a_n}}$ will eventually be greater than $1$; that is, there exists an integer 
+     $N$ such that $$ \sqrt[n]{\abs{a_n}} > 1,\text{ whenever } n \geq N. $$
+     This means that $\abs{a_n} > 1$ whenever $n \geq N$ and so $\xlimit{n}{\infty} a_n \neq 0$. 
+     Therefore $\sum a_n$ diverges by the [Divergence Test](divergence_test).
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Complex Variables
+
+The test also applies in the complex setting. That is, if $\sum_{j=1}^{\infty} \norm{z_j}$ converges, then 
+$\sum_{j=1}^{\infty} z_j$ converges, and
+$$ \norm{\sum_{j=1}^{\infty} z_j} \leq \sum_{j=1}^{\infty} \norm{z_j}. $$ This is especially useful, since the norm of
+a complex variable is a real number, and thus we can apply all our convergence tests on the right hand side of the
+above inequality. By the [Comparison Test](comparison_test) it then follows that the series of complex numbers must also
+converge. 
+
+<div class="proof">
+
+Note that $\abs{x_j} \leq \norm{z_j}$ and $\abs{y_j} \leq \norm{z_j}$. Now if $\sum_{j=1}^{\infty} \norm{z_j}$ of nonnegative
+numbers converges, then by the [Comparison Test](comparison_test) both $\sum_{j=1}^{\infty} \abs{x_j}$ and
+$\sum_{j=1}^{\infty} \abs{y_j}$ converges. So, by the absolute convergence test of real numbers, $\sum_{j=1}^{\infty} x_j$
+and $\sum_{j=1}^{\infty} y_j$ also converges meaning $\sum_{j=1}^{\infty} (x_j + iy_j) = \sum_{j=1}^{\infty} z_j$ converges.
+The inequality is an obvious consequence.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

@@ -1,0 +1,40 @@
+---
+title: Chebyshev's Inequality
+categories: Statistics
+icon: /img/icons/inferential-statistics.png
+...
+
+<section class="primary">
+
+# Summary
+
+If $X$ is a random variable with finite mean $\mu$ and variance $\sigma^2$, then, for any value
+$k > 0$, $$ \bbps{\abs{X-\mu} \geq k} \leq \frac{\sigma^2}{k^2}. $$
+This allows us to determine bounds on any random variables of which the mean and variance is known.
+
+<div class="proof">
+
+Note that $(X - \mu)^2$ is a nonnegative random variable. Therefore, by [Markov's Inequality](markovs_inequality),
+$$ \bbps{(X - \mu)^2 \geq k^2} \leq \frac{E[(X - \mu)^2]}{k^2} = \frac{\sigma^2}{k^2}. $$
+This then implies that
+$$ \bbps{\abs{X - \mu} \geq k} \leq \frac{\sigma^2}{k^2}. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Markov's Inequality](markovs_inequality)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

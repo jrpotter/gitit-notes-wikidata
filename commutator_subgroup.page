@@ -1,0 +1,66 @@
+---
+title: Commutator Subgroup
+categories: Abstract Algebra
+icon: /img/icons/arithmetic.png
+...
+
+<section class="primary">
+
+# Summary
+
+Let $G$ be a group. The set of all commutators $aba^{-1}b^{-1}$ for $a, b \in G$ generates the **commutator
+subgroup** $C$ of $G$. This subgroup $C$ is a normal subgroup of $G$. Furthermore, if $N$ is a normal subgroup
+of $G$, then $G/N$ is abelian if and only if $C \leq N$.
+
+<div class="proof">
+
+By the theory of [generating sets](generating_sets#generation), we see that the set of commutators must generate the desired 
+commutator subgroup $C$ of $G$. Note that each $a_i$ as detailed in the statement of generation is a commutator $cdc^{-1}d^{-1}$.
+Therefore we just need to show that $C$ is normal; that is, for all $g \in G$ and $c \in C$, $gcg^{-1} \in C$. Equivalently,
+we instead prove that $g^{-1}cg \in C$ for all $g \in G$ and $c \in C$. If $c = aba^{-1}b^{-1}$, then we get
+$$\begin{align*}
+  g^{-1}cg &= g^{-1}aba^{-1}b^{-1}g                             \\
+           &= (g^{-1}aba^{-1})(gb^{-1}bg^{-1})(b^{-1}g)         \\
+           &= (g^{-1}aba^{-1}gb^{-1})(bg^{-1}b^{-1}g)           \\
+           &= [(g^{-1}a)b(a^{-1}g)b^{-1}][bg^{-1}b^{-1}g]       \\
+           &= [(g^{-1}a)b(g^{-1}a)^{-1}b^{-1}][bg^{-1}b^{-1}g].
+\end{align*}$$
+Since the product of two commutators yields another commutator, we see that that $g^{-1}cg \in C$, proving $C$ is normal.
+
+*****
+
+Next we show $G/N$ is abelian if and only if $C \leq N$.
+
+$\forward$  Suppose $G/N$ is abelian. Let $(aN), (bN) \in G/N$. Then, by hypothesis, $(aN)(bN) = (bN)(aN)$.
+This implies that $$ (aN)(bN)(aN)^{-1}(bN)^{-1} = (aba^{-1}b^{-1})N = N, $$ proving $C \leq N$.
+
+$\backward$ Supposing $C \leq N$, then we find that $$ (aN)(bN) = (ab)N = ab(b^{-1}a^{-1}ba)N = (ba)N = (bN)(aN). $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Center
+
+Every nonabelian group $G$ has a normal subgroup called the **center $Z(G)$** of $G$. This is defined as
+$$ Z(G) = \{ z \in G : zg = gz \text{ for all } g \in G \}. $$ We note that if $G$ is abelian, then $Z(G)$
+is simply $G$, which is useless.
+
+<div class="proof">
+
+To show $Z(G)$ is normal, we just need to notice that $zg = gz$ immediately implies that $z = gzg^{_1}$. Since
+this holds for all $g \in G$, and all $z \in Z(G)$, the subgroup must be normal.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Fraleigh, John B. (2003). A First Course In Abstract Algebra (7th ed.). Pearson. ISBN 978-0201763904.
+
+</section>

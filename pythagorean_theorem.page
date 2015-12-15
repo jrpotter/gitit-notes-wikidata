@@ -1,0 +1,35 @@
+---
+title: Pythagorean Theorem
+categories: Linear Algebra
+icon: /img/icons/angles.png
+...
+
+<section class="primary">
+
+# Summary
+
+Consider two vectors $\vec{x}$ and $\vec{y}$ in $\bbr^n$. The equation 
+$$ \norm{\vec{x}+\vec{y}}^2 = \norm{\vec{x}}^2 + \norm{\vec{y}}^2 $$ 
+holds if and only if $\vec{x}$ and $\vec{y}$ are orthogonal.
+
+<div class="proof">
+
+For any two vectors $\vec{x}, \vec{y} \in \bbr^n$:
+$$\begin{align*}
+  \norm{\vec{x}+\vec{y}}^2 &= (\vec{x}+\vec{y})\cdot(\vec{x}+\vec{y}) \\
+                           &= \dotp{x}{x} + 2(\dotp{x}{y}) + \dotp{y}{y} \\
+                           &= \norm{\vec{x}}^2+2(\dotp{x}{y})+\norm{y} \\
+                           &= \norm{\vec{x}}^2+\norm{\vec{y}}^2\text{ if and only if }\dotp{x}{y} = 0\text{.}
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Bretscher, Otto (2008). Linear Algebra with Applications (4th ed.). Pearson. ISBN 978-0-13-600926-9.
+
+</section>

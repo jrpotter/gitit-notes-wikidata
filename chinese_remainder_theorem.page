@@ -1,0 +1,41 @@
+---
+title: Chinese Remainder Theorem
+categories: Abstract Algebra Combinatorics
+icon: /img/icons/counting.png
+...
+
+<section class="primary">
+
+# Summary
+
+Let $m$ and $n$ be [relatively prime](greatest_common_divisor#prime-relativity) positive integers, and let $a$ and $b$ be integers 
+where $0 \leq a \leq m - 1$ and $0 \leq b \leq n - 1$. Then there is a positive integer $x$ such that the remainder when $x$ 
+is divided by $m$ is $a$ and the remainder when $x$ is divided by $n$ is $b$; that is, $x$ can be written in the form 
+$x = pm + a$ and also in the form $x = qn + b$ for some integers $p$ and $q$.
+
+<div class="proof">
+
+Consider the $n$ integers $$ a, m + a, 2m + a, \ldots, (n - 1)m + a. $$ Note that each of these integers has remainder $a$ when
+divided by $m$. For the sake of contradiction, suppose that two of them had the same remainder $r$ when divided by $n$. Let the 
+two numbers be $im + a$ and $jm + a$, where $0 \leq i < j \leq n - 1$. Then there are integers $q_i$ and $q_j$ such that
+$$ im + a = q_in + r \quad\text{ and }\quad jm + a = q_jn + r. $$ Subtracting these equations yield $$ (j - i)m = (q_j - q_i)n. $$
+Therefore $n$ must be a factor of the number $(j - i)m$; by prime relativity, we note $n$ must be a factor of $j - i$. However,
+$0 \leq i < j \leq n - 1$ implies that $0 < j - i \leq n - 1$, and hence $n$ cannot be a factor of $j - 1$. 
+
+This contradiction leads to the conclusion that the original $n$ integers must each actually have a different remainder when 
+divided by $n$. By the [pigeonhole principle](pigeonhole_principle), each of the $n$ numbers $0, 1, \ldots, n-1$ occurs as a
+remainder, meaning the number $b$ must as well. Let $p$ be the integer with $0 \leq p \leq n-1$ such that the number
+$x = pm + a$ has remainder $b$ when divided by $n$. Then, for some integer $q$, $x = qn + b$. Therefore $x = pm + a$
+and $x = qn + b$, meaning $x$ has the required properties.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Brualdi, Richard A. (2009). Introductory Combinatorics (5th ed.). Pearson. ISBN 978-0136020400.
+
+</section>

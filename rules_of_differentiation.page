@@ -1,0 +1,205 @@
+---
+title: Rules of Differentiation
+categories: Calculus
+icon: /img/icons/taking-derivatives.png
+...
+
+<section class="primary">
+
+# Summary
+
+Differentiation of elementary and transcendental functions are very formulaic. This page lists rules and proofs of several.
+
+</section>
+
+<section class="primary">
+
+# Product Rule
+
+If $f$ and $g$ are both differentiable, then $$\leibniz{x}[f(x)g(x)] = f(x)\leibniz{x}g(x) + g(x)\leibniz{x}f(x)\text{.}$$   
+
+<div class="proof">  
+Let $u = f(x), v = g(x)$, and $\Delta x$ represent a change in $x$. Then $\Delta(uv) = (u + \Delta{u})
+(v + \Delta v) - uv = u\Delta v + v\Delta u + \Delta u\Delta v$. Then dividing by $\Delta x$, we get:
+$$\begin{align*}
+  \leibniz{x}(uv) &= \frac{\Delta(uv)}{\Delta x}                                                                          \\
+                  &= \xlimit{\Delta x}{0}\left[u\frac{\Delta v}{\Delta x} + v\frac{\Delta u}{\Delta x} + \Delta u
+                     \frac{\Delta v}{\Delta x}\right]                                                                     \\
+                  &= u\left(\xlimit{\Delta x}{0}\frac{\Delta v}{\Delta x}\right) +
+                     v\left(\xlimit{\Delta x}{0}\frac{\Delta v}{\Delta x}\right) +
+                     \left(\xlimit{\Delta x}{0}\Delta u\right) \left(\xlimit{\Delta x}{0}\frac{\Delta v}{\Delta x}\right) \\
+                  &= u\leibniz{x}(v) + v\leibniz{x}(u) + 0 \cdot \leibniz{x}(v)                                           \\
+                  &= f(x)\leibniz{x}[g(x)] + g(x)\leibniz{x}[f(x)]\text{.}
+\end{align*}$$
+</div>
+
+</section>
+
+<section class="primary">
+
+# Quotient Rule
+
+Let $f, g$ be differentiable functions where $g$ does not equal 0. Then $$\leibniz{x}\frac{f}{g} = \frac{f'g-fg'}{g^2}\text{.}$$  
+
+<div class="proof">   
+Note the following:
+$$\begin{align*}
+  \Delta \left(\frac{u}{v}\right) &= \frac{u + \Delta{u}}{v + \Delta{v}} - \frac{u}{v}          \\
+                                  &= \frac{(u + \Delta{u})v-(v + \Delta{v})u}{v(v + \Delta{v})} \\
+                                  &= \frac{v\Delta u-u\Delta v}{v(v + \Delta{v})}               \\
+\end{align*}$$
+which implies
+$$\begin{align*}
+  \leibniz{x}\left(\frac{u}{v}\right) &= \xlimit{x}{0}\frac{\Delta(\frac{u}{v})}{\Delta x}            \\
+                                      &= \xlimit{x}{0}\frac{v\left(\frac{\Delta u}{\Delta x}\right) -
+                                         u\left(\frac{\Delta v}{\Delta x}\right)}{v(v + \Delta{v})}\text{.}
+\end{align*}$$
+Therefore
+$$
+  \leibniz{x}\left(\frac{u}{v}\right)
+    = \frac{v\xlimit{x}{0}\frac{\Delta u}{\Delta x}-u\xlimit{x}{0}\frac{\Delta v}{\Delta x}}{v\xlimit{x}{0}(v + \Delta{v})}
+$$
+where $\xlimit{x}{0} \Delta v = 0$ since $v$ is differentiable and therefore continuous. Hence,
+$$
+  \leibniz{x}\left(\frac{u}{v}\right) = \frac{f'g-fg'}{g^2}\text{.}
+$$
+</div>
+
+</section>
+
+<section class="primary">
+
+# Trigonometric Differentiation
+
+- $\leibniz{x}(\sin{x}) = \cos{x}$.
+- $\leibniz{x}(\cos{x}) = -\sin{x}$.
+- $\leibniz{x}(\tan{x})=\sec^2{x}$.
+- $\leibniz{x}(\cot{x})=-\csc^2{x}$.
+- $\leibniz{x}(\csc{x})=-\csc{x}\cot{x}$.
+- $\leibniz{x}(\sec{x})=\sec{x}\tan{x}$.<br />  
+
+<div class="proof">  
+Let $f(x) = \sin{x}$. Then:
+$$\begin{align*}
+  f'(x) &= \xlimit{h}{0}\frac{\sin{(x+h)}-\sin{x}}{h}                   \\
+        &= \xlimit{h}{0}\frac{\sin{x}\cos{h}+\cos{x}\sin{h}-\sin{h}}{h} \\
+        &= \xlimit{h}{0}\sin{x}\cdot\xlimit{h}{0}\frac{\cos{h}-1}{h} +
+           \xlimit{h}{0}\cos{x}\cdot\xlimit{h}{0}\frac{\sin{h}}{h}
+\end{align*}$$
+In addition,
+$$\begin{gather*}
+  \sin{\theta}<\theta\text{ for }0<\theta<\frac{\pi}{2}\Rightarrow\frac{\sin{\theta}}{\theta}<1  \\
+  \theta\leq\tan{\theta}\Rightarrow\theta<\frac{\sin{\theta}}{\cos{\theta}}
+    \Rightarrow\cos{\theta}<\frac{\sin{\theta}}{\theta}<1\text{.}
+\end{gather*}$$
+Then by the [Squeeze Theorem](), $\xlimit{\theta}{0} = 1$.
+Also,
+$$\begin{align*}
+  \xlimit{\theta}{0}\frac{\cos{\theta}-1}{\theta}
+    &= \xlimit{\theta}{0}\left(\frac{\cos{\theta}-1}{\theta}\cdot\frac{\cos{\theta}+1}{\cos{\theta}+1}\right)\\
+    &= \xlimit{\theta}{0}\frac{\cos^2\theta-1}{\theta(\cos{\theta}+1}\\
+    &= \xlimit{\theta}{0}\frac{-\sin^2\theta}{\theta(\cos{\theta}+1)}\\
+    &= -\xlimit{\theta}{0}\frac{\sin{\theta}}{\theta}\cdot\xlimit{\theta}{0}\frac{\sin{\theta}}{\cos{\theta}+1}\\
+    &= -1\cdot\frac{0}{1+1}\\
+    &= 0
+\end{align*}$$
+Thus, $\;f'(x) = \sin{x}\cdot 0 + \cos{x}\cdot 1 = \cos{x}$.  
+</div>
+
+</section>
+
+<section class="primary">
+
+# Inverse Trigonometric Differentiation
+
+- $\leibniz{x}(\sin^{-1} x) = \frac{1}{\sqrt{1-x^2}}$.
+- $\leibniz{x}(\cos^{-1}x) = -\frac{1}{\sqrt{1-x^2}}$.
+- $\leibniz{x}(\tan^{-1}x) = \frac{1}{1+x^2}$.
+- $\leibniz{x}(\csc^{-1}x) = -\frac{1}{x\sqrt{x^2-1}}$.
+- $\leibniz{x}(\sec^{-1}x) - \frac{1}{x\sqrt{x^2-1}}$.
+- $\leibniz{x}(\cot^{-1}x) = =\frac{1}{1+x^2}$.<br />  
+  
+<div class="proof">   
+Note $y = \sin^{-1}x \Rightarrow \sin{y}=x$. Then:
+$$
+  \leibniz{x}(\sin{y}) = \leibniz{x}(x) \Rightarrow \cos{y}\leibniz[y]{x} = 1
+  \Rightarrow \leibniz[y]{x} = \frac{1}{\cos{y}}.
+$$
+Now $\cos{y}\geq 0$, since $\frac{-\pi}{2} \leq y \leq \frac{\pi}{2}$, so $\cos{y} = \sqrt{1-\sin^2{y}} = \sqrt{1-x^2}$.
+Therefore $$ \leibniz[y]{x} = \frac{1}{\cos{y}} = \frac{1}{\sqrt{1-x^2}}\text{.} $$
+</div>
+
+</section>
+
+<section class="primary">
+
+# Miscellaneous Rules
+
+- Let $f(x)=c$ for some constant $c$. Then $\leibniz{x}(c) = 0$.<br />  
+  <div class="proof">   
+  Note the following:
+  $$\begin{align*}
+    f'(x) &= \xlimit{h}{0}\frac{f(x+h)-f(x)}{h} \\
+          &= \xlimit{h}{0}\frac{c-c}{h}         \\
+          &= \xlimit{h}{0}0                     \\
+          &= 0\text{.}
+  \end{align*}$$
+  </div><br />
+
+- If $c$ is a constant and $f$ a differentiable function, then $\leibniz{x}[cf(x)] = c\leibniz{x}f(x)$.<br />  
+  <div class="proof"> 
+  Let $g(x) = cf(x)$. Then
+  $$\begin{align*}
+    \xlimit{h}{0} \frac{g(x+h)-g(x)}{h} &= \xlimit{h}{0} c\frac{f(x+h)-f(x)}{h} \\
+                                        &= c \xlimit{h}{0}\frac{f(x+h)-f(x)}{h} \\
+                                        &= cf'(x)
+  \end{align*}$$
+  </div><br />
+
+- If $f, g$ are differentiable, then $\leibniz{x}[f(x)+g(x)] = \leibniz{x}f(x) + \leibniz{x}g(x)$.<br />  
+  <div class="proof">   
+  Let $F(x) = f(x) + g(x)$. Then:
+  $$\begin{align*}
+    F'(x) &= \xlimit{h}{0}\frac{F(x+h)-F(x)}{h}                                      \\
+          &= \xlimit{h}{0}\frac{f(x+h)+g(x+h)-f(x)-g(x)}{h}                          \\
+          &= \xlimit{h}{0}\frac{f(x+h)-f(x)}{h} + \xlimit{h}{0}\frac{g(x+h)-g(x)}{h} \\
+          &= \leibniz{x}f(x) + \leibniz{x}g(x)\text{.}
+  \end{align*}$$
+  </div><br />
+
+- $\leibniz{x}(a^x) = a^x\ln{a}$.<br />  
+  <div class="proof">   
+  Note $a = e^{\ln{a}}$ so $a^x = e^{(\ln{a})x}$. Then $\leibniz{x}(a^x) = \leibniz{x}(e^{(\ln{a})x})
+  = e^{(\ln{a})x} \cdot \leibniz{x}[(\ln{a})x]$ by the [Chain Rule](Rules of Differentiation#Chain Rule). 
+  This in turn equals $a^x\cdot \ln{a}$.  
+  </div><br />
+
+- $\leibniz{x}(\ln{x}) = \frac{1}{x}$.<br />  
+  <div class="proof">  
+  $\leibniz{x}(\ln{x}) = \leibniz{x}(\log_{e}x) = \frac{1}{x\ln{e}} = \frac{1}{x}$.  
+  </div><br />
+
+- If $n$ is any real number and $f(x) = x^n$, then $f'(x)=nx^{n-1}$.<br />  
+  <div class="proof"> 
+  We let $y = x^n$ and use [logarithmic differentiation](Logarithmic Differentiation). $y = x^n \Rightarrow |y| = |x^n| \Rightarrow
+  \ln{|y|} = \ln{|x^n|} = n\ln{|x|}$. Therefore $$\leibniz{x}(\ln{|y|}) = \leibniz{x}(n\ln{|x|}) \Rightarrow
+  \frac{y'}{y} = \frac{n}{x} \Rightarrow \leibniz[y]{x} = \frac{yn}{x} = \frac{nx^n}{x} = nx^{n-1}\text{.}$$ 
+  </div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Implicit Differentiation](implicit_differentiation)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

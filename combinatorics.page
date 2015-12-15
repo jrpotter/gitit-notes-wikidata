@@ -1,0 +1,65 @@
+---
+title: Combinatorics
+categories: Combinatorics
+icon: /img/icons/counting.png
+...
+
+<section class="primary">
+
+# Combinatorics
+
+<div class="block">
+
+![Frank Ramsey](/img/portraits/ramsey.jpg)
+
+Combinatorics is the subject associated with counting a set of discrete objects, based on certain requirements or constraints.
+Though the field derived from a more critical analysis of game theory and probability, it can be used to demonstrate a variety
+of surprising results used in a variety of fields. Probably the most notable example of this is the binomial theorem (or the
+more generalized multinomial theorem) used in calculus.
+
+Furthermore, combinatorics is especially powerful as it formalizes many notions that we often take for granted, and perhaps
+misapply. Because of its close ties to statistics, and the inherent disability of humans to seemingly grasp statistics accurately,
+combinatorics becomes an incredibly valuable tool to set aside our misunderstandings. It is used to generalize concepts
+that at first seem basic, such as the [pigeonhole principle](pigeonhole_principle), to stronger and stronger versions that can
+be used on a wider variety of challenges, such as the [Theory of Ramsey](theory_of_ramsey).
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Ordering
+
+<div class="extract" data-target="/permutations">
+
+- [Combinations](combinations)
+- [Multisets](multisets)
+- [Permutations](permutations)
+- [Pigeonhole Principle](pigeonhole_principle)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Pigeonhole Principle
+
+<div class="extract" data-target="/pigeonhole_principle">
+
+- [Chinese Remainder Theorem](chinese_remainder_theorem)
+- [Pigeonhole Principle](pigeonhole_principle)
+- [Theory of Ramsey](theory_of_ramsey)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Brualdi, Richard A. (2009). Introductory Combinatorics (5th ed.). Pearson. ISBN 978-0136020400.
+
+</section>

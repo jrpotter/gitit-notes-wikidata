@@ -1,0 +1,201 @@
+---
+title: Groups
+categories: Abstract Algebra
+icon: /img/icons/arithmetic.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Cayley Graph of $D_4$](/img/diagrams/abstract/cayley-graph-dih4.png)
+
+A group can be considered the smallest "useful" construct of abstract algebra. It builds upon a 
+[binary structure](binary_structure), applying a set of rules that allow many interesting properties to be reasoned about. 
+It also serves as the concept abstracted from when working with [rings](rings) and [fields](fields). More specifically, a 
+**group $\lrangle{G, *}$** is a set $G$, closed under a binary operation $*$, such that the following
+axioms are satisfied:
+
+1. For all $a$, $b$, $c \in G$, we have **associativity of $*$**: $(a * b) * c = a * (b * c)$.
+2. There is an element $e$ in $G$, named the **identity element**, such that for all $x \in G$, $e * x = x * e = x$.
+3. Corresponding to each $a \in G$, there is an element $a^{-1} \in G$, named the **inverse**, such that $a*a^{-1} = a^{-1}*a = e$.
+
+A group is said to be **abelian** if it is commutative.
+
+</div>
+
+<section class="secondary">
+
+## Cancellation Laws
+
+If $G$ is a group with binary operation $*$, then the **left and right cancellation laws** hold in $G$, that is,
+$a * b = a * c$ implies $b = c$, and $b * a = c * a$ implies $b = c$ for all $a, b, c \in G$.
+
+<div class="proof">
+
+Suppose $a * b = a * c$. Then by axiom $(3)$, there exists $a^{-1}$ and
+$$ a^{-1} * (a * b) = a^{-1} * (a * c). $$
+By the associative law,
+$$ (a^{-1} * a) * b = (a^{-1} * a) * c. $$
+By the definition of $a^{-1}$ in $(3)$, $a^{-1} * a = e$, so
+$$ e * b = e * c. $$
+Therefore, by definition of $e$ in $(2)$,
+$$ b = c. $$
+Similarly, from $b * a = c* a$ one can deduce that $b = c$ upon multiplication on the right by $a^{-1}$.
+
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Uniqueness of Solutions
+
+If $G$ is a group with binary operation $*$, and if $a$ and $b$ are any elements of $G$, then the linear
+equations $$ a * x = b \;\text{ and }\; y * a = b $$ have unique solutions $x$ and $y$ in $G$.
+
+<div class="proof">
+
+First we show the existence of at least one solution by just computing that $a^{-1} * b$ is a solution of
+$a * x = b$. Note that
+$$\begin{align*}
+  a * (a^{-1} * b) &= (a * a^{-1}) * b \\
+                   &= e * b            \\
+                   &= b
+\end{align*}$$
+Thus $x = a^{-1} * b$ is a solution of $a * x = b$. In a similar fashion, $y = b * a^{-1}$ is a solution of $y * a = b$.
+To show uniqueness of $y$, suppose we have two solutions $y_1$ and $y_2$ so that $y_1 * a = b$ and $y_2 * a = b$.
+Then $y_1 * a = y_2 * a$ and, by the [cancellation laws](#cancellation-laws), $y_1 = y_2$. The uniqueness of $x$
+follows similarly.
+
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Uniqueness of Identity
+
+In a group $G$ with binary operation $*$, there is only one element $e$ in $G$ such that
+$$ e * x = x * e = x $$ for all $x \in G$.
+
+<div class="proof">
+
+We note binary structures have unique identity elements[^1], and a group is a type of binary structure.
+
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Uniqueness of Inverses
+
+Let $G$ be a group with binary operation $*$. Then for each $a \in G$, there is only one element $a^{-1}$ in $G$ such that
+$$ a^{-1} * a = a * a^{-1} = e. $$
+
+<div class="proof">
+
+Suppose that $a \in G$ has inverses $a'$ and $a''$ so that $a' * a = a * a' = e$ and $a'' * a = a * a'' = e$. Then
+$$ a * a'' = a * a' = e $$
+and by the [cancellation laws](#cancellation-laws)
+$$ a'' = a', $$
+meaning the inverse of $a$ in a group is unique.
+
+</div>
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# Subgroups
+
+<div class="block">
+
+![Coordinate Group Table](/img/diagrams/abstract/group-table.png)
+
+If a subset $H$ of a group $G$ is closed under the binary operation of $G$ and if $H$ with the induced operation from
+$G$ is itself a group, then $H$ is a **subgroup of $G$**. We shall let $H \leq G$ or $G \geq H$ denote that $H$ is a
+subgroup of $G$, and $H < G$ or $G > H$ shall mean $H \leq G$ but $H \neq G$.
+
+If $G$ is a group, then the subgroup consisting of $G$ itself is the **improper subgroup** of $G$. All other subgroups
+are **proper subgroups**. The subgroup $\{e\}$ is the **trivial subgroup of $G$**. All other subgroups are **nontrivial**.
+
+We note $H$ is a subgroup of $G$ if and only if
+
+1. $H$ is closed under the binary operation of $G$,
+2. The identity element $e$ of $G$ is in $H$,
+3. For all $a \in H$ it is true that $a^{-1} \in H$ also.
+
+</div>
+
+<section class="secondary">
+
+## Intersections
+
+The intersection of some subgroups $H_i$ of a group $G$ for $i \in I$, where $I$ may be any set of indices,
+is again a subgroup of $G$.
+
+<div class="proof">
+
+First we show closure. Let $a, b \in \bigcap_{i \in I} H_i$, so that $a, b \in H_i$ for all $i \in I$. Then $ab \in H_i$ for 
+all $i \in I$, since $H_i$ is a group. Thus $ab \in \bigcap_{i \in I} H_i$. Next note that since $H_i$ is a subgroup for all 
+$i \in I$, we have $e \in H_i$ for all $i \in I$, and hence $e \in \bigcap_{i\in I} H_i$. Lastly, for 
+$a \in \bigcap_{i \in I} H_i$, we have $a \in H_i$ for all $i \in I$, so $a^{-1} \in H_i$ for all $i \in I$, which implies 
+that $a^{-1} \in \bigcap_{i \in I} H_i$.
+
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Isomorphisms
+
+Let $G$ and $G'$ be groups and let $\phi: G \rightarrow G'$ be a one-to-one function such that 
+$\phi(xy) = \phi(x)\phi(y)$ for all $x, y \in G$. Then $\phi[G]$ is a subgroup of $G'$ and $\phi$ provides
+an isomorphism of $G$ with $\phi[G]$.
+
+<div class="proof">
+
+Let $x', y' \in \phi[G]$. Then there exist $x, y \in G$ such that $\phi(x) = x'$ and $\phi(y) = y'$. By
+hypothesis, $\phi(xy) = \phi(x)\phi(y) = x'y'$, showing that $x'y' \in \phi[G]$. Thus $\phi[G]$ is
+closed under the operation of $G'$. Next, suppose $e'$ is the identity of $G'$. Then
+$$ e'\phi(e) = \phi(e) = phi(ee) = \phi(e)\phi(e) $$
+which, by right cancellation, shows that $e' = \phi(e)$ so $e' \in \phi[G]$. For $x' \in \phi[G]$ where
+$x' = \phi(x)$, we have
+$$ e' = \phi(e) = \phi(xx^{-1}) = \phi(x)\phi(x^{-1}) = x'\phi(x^{-1}), $$
+meaning $x'^{-1} = \phi(x^{-1}) \in \phi[G]$.
+
+Thus $\phi[G]$ is a subgroup of $G'$.
+
+</div>
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Cyclic Groups](cyclic_groups)
+- [Generating Sets](generating_sets)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Fraleigh, John B. (2003). A First Course In Abstract Algebra (7th ed.). Pearson. ISBN 978-0201763904.
+
+</section>
+
+<!-- Footnotes -->
+
+[^1]: [Identity Element Uniqueness](binary_structures#identity-element)

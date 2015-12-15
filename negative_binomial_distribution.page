@@ -1,0 +1,64 @@
+---
+title: Negative Binomial Distribution
+categories: Statistics
+icon: /img/icons/random-variables.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Negative Binomial PDFs](/img/graphs/statistics/negative-binomial-pdf.png)
+
+Suppose that independent trials, each having probability $p$, $0 < p < 1$, of being a success are performed until a
+total of $r$ successes is accumulated. If we let $X$ equal the number of trials required, then
+
+$$ \bbps{X=n} = \binom{n-1}{r-1}p^r(1-p)^{n-r}\quad n = r, \;r+1, \;\ldots $$
+
+A random variable $X$ whose probability mass function is given by the above is said to be a **negative binomial** random
+variable with parameters $(r, p)$. We note this follows because, in order the the $\spscript{r}{th}$ success to occur at the
+$\spscript{n}{th}$ trial, there must be $r - 1$ successes in the first $n - 1$ trials and the $\spscript{n}{th}$ trial must be a success. The probability of the first event is $$ \binom{n-1}{r-1}p^{r-1}(1-p)^{n-r} $$ 
+and the probability of the second is $p$; thus by independence, the distribution is established.
+
+Note this is a [geometric distribution](geometric_distribution) with $r = 1$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Expectation
+
+The expected value of a negative binomial random variable $X$ with parameters $(r, p)$ is 
+$$ E[X] = \frac{r}{p}. $$
+
+</section>
+
+<section class="primary">
+
+# Variance
+
+The variance of a negative binomial random variable $X$ with parameters $(r, p)$ is 
+$$ \text{Var}(X) = \frac{r(1-p)}{p^2}. $$
+
+</section>
+
+<section class="primary">
+
+# Moment Generating Function
+
+Let $X$ be a negative binomial random variable with parameters $(r, p)$. Then its moment generating function is
+$$ M(t) = \left[\frac{pe^t}{1 - (1 - p)e^t}\right]^r. $$
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

@@ -1,0 +1,84 @@
+---
+title: Autonomous Equations
+categories: Differential Calculus
+icon: /img/icons/first-order-diff-equations.png
+...
+
+<section class="primary">
+
+# Summary
+
+First order equations in which the independent variable does not appear explicitly is called **autonomous** and have form
+$$ \leibniz[y]{t} = f(y). $$
+In particular, these equations are [separable](separable_equations) and can thus be solved for if necessary, though they
+tend to be used more for modeling than anything else. These sets of equations can be classified according to what the
+equation is trying to model. Demonstrated throughout this page are some of these models.
+
+</section>
+
+<section class="primary">
+
+# Exponential Growth
+
+Let $y = \phi(t)$ be the population of the given species at time $t$. Though a simple model, we can describe the variation
+of the population as proportional to the current population:
+$$ \leibniz[y]{t} = ry, $$
+where $r$ is called the **rate of growth or decay** depending on whether it is positive or not. We note given initial condition
+$$ y(0) = y_0, $$
+then
+$$ y = y_0 e^{rt}. $$
+
+<div class="proof">
+
+Note that
+$$
+  \leibniz[y]{t} = ry 
+    \Rightarrow \leibniz{t}\left(\ln{y}\right) = r 
+    \Rightarrow \ln{y} = rt + C 
+    \Rightarrow y = e^{rt}e^{c} = Ce^{rt}
+$$
+Solving for $C$ yields $$ y = y_0 e^{rt}. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Logistic Growth
+
+Let $y = \phi(t)$ be the population of the given species at time $t$. We consider the equation
+$$ \leibniz[y]{t} = r\left(1 - \frac{y}{K}\right)y $$
+where $K = r/a$ and the constant $r$ is called the **intrinsic growth rate**. Note that when $y = 0$ or $y = K$ the
+derivative is $0$ and thus the population is constant. These solutions are therefore called the **equilibrium solutions**.
+Additionally, note that $K$ is the upper bound that is approached, but not exceeded, by growing populations starting below
+this value. Thus $K$ is called the **saturation level**. Given initial condition
+$$ y(0) = y_0, $$
+we find that
+$$ y = \dfrac{y_0K}{y_0 + (K - y_0)e^{rt}}. $$
+
+<div class="proof">
+
+Assuming $y \neq 0$ and $y \neq K$, we can write our autonomous equation as
+$$ \frac{1}{(1-y/K)y}\leibniz[y]{t} = r. $$
+Via [partial fraction](integration_techniques#partial-fractions) we find that
+$$ \left(\frac{1}{y} + \frac{1/K}{1-y/K}\right)\leibniz[y]{t} = r. $$
+Then integrating with respect to $t$, we have
+$$ \ln{\big|y\big|} - \ln{\left|1-\frac{y}{K}\right|} = rt + c, $$
+where $c$ is an arbitrary constant of integration to be determined from the initial condition $y(0) = y_0$. Since we are 
+assuming $0 < y_0 < K$, then $y$ remains in this interval for all time, allowing removal of the absolute value bars. Therefore
+$$ \frac{y}{1 - (y/K)} = Ce^{rt}, $$
+where $C = e^c$. Solving for $C$ we obtain
+$$ y = \dfrac{y_0K}{y_0 + (K - y_0)e^{rt}}. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Boyce W.E. & DiPrima R. C. (2010). Elementary Differential Equations (9th ed.). John Wiley & Sons, Inc. ISBN 978-0470554913.
+
+</section>

@@ -1,0 +1,42 @@
+---
+title: Intermediate Value Theorem
+categories: Calculus
+icon: /img/icons/limits.png
+...
+
+<section class="primary">
+
+# Statement
+
+<div class="block">
+
+![Existence of Roots](/img/graphs/calculus/intermediate-value-theorem.png)
+
+Suppose that $f$ is continuous on the closed interval $[a, b]$ and let $N$ be any number between $f(a)$ and $f(b)$, where $f(a) \neq f(b)$. Then there exists a number $c \in (a, b)$ such that $f(c) = N$.
+
+Note this is particularly useful for determining whether a function has roots. For example, a polynomial that passes
+through the $x$-axis is guaranteed to have a root since all polynomials are continuous[^1].
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Continuity](continuity)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>
+
+<!-- Footnotes -->
+
+[^1]: [Continuity](continuity#summary)

@@ -1,0 +1,153 @@
+---
+title: Critical Number
+categories: Calculus
+icon: /img/icons/taking-derivatives.png
+...
+
+<section class="primary">
+
+# Definition
+
+<div class="block">
+
+![](/img/graphs/calculus/critical-number.png)
+
+A **critical number** of a function $f$ is a number $c$ in the domain of $f$ such that either $f(c)=0$ or $f'(c)$ does not exist.
+In the context of functions of two variables, a point $(a, b)$ is critical whenever both $f_x(a, b) = 0$ and
+$f_y(a, b) = 0$, or if one of these partial derivatives does not exist.
+
+A function $f$ has an **absolute maximum** at $c$ if $f(c) \geq f(x)$ for all $x \in D$, where $D$ is the
+domain of $f$. The number $f(c)$ is called the **maximum value** of $f$ on $D$. A similar definition exists
+for absolute minimums and minimal values. The maximum and minimum values of $f$ are the **extreme values**.
+A function $f$ has a **local maximum** at $c$ if $f(c) \geq f(x)$ when $x$ is near $c$. Similarly, $\;f$
+has a **local minimum** at $c$ if $f(c) \leq f(x)$ when $x$ is near $c$.
+
+Similarly, for a function of two variables $f$, $\;f$ has a **local maximum** at $(a, b)$ if $f(x, y) \leq f(a, b)$ when $(x, y)$
+is near $(a, b)$. That is, $f(x, y) \leq f(a, b)$ for all points $(x, y)$ in some disk with center $(a, b)$. The number
+$f(a, b)$ is called a **local maximum value**. If $f(x, y) \geq f(a, b)$ when $(x, y)$ is near $(a, b)$, then $f$ has a **local
+minimum** at $(a, b)$ and $f(a, b)$ is a **local minimum value**. If these inequalities hold for all points $(x, y)$ in the domain
+of $f$, then $f$ has an **absolute maximum** (or **absolute minimum**) at $(a, b)$. 
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# First Derivative Tests
+
+By observing the change in slope of a function, we can determine a variety of properties of the curve. For example, we are able to observe intervals on which the slope is increasing or decreasing with the following test:
+
+Suppose $c$ is a critical number of continuous function $f$. Then
+
+- If $f'$ changes from positive to negative at $c$, $\;f$ has a local maximum at $c$.
+- If $f'$ changes from negative to positive at $c$, $\;f$ has a local minimum at $c$.
+- If $f'$ does not change signs at $c$, $\;f$ has no local maximum or minimum at $c$.
+
+<section class="secondary">
+
+## Increasing/Decreasing Test
+
+If $f'(x) > 0$ on an interval, then $f$ is increasing on that interval. If $f'(x) < 0$ on an interval, then $f$ is 
+decreasing on that interval.  
+
+<div class="proof">
+
+Let $x_1, x_2$ be any two numbers in the interval with $x_1 < x_2$. We must show that if $f'(x) > 0, \;f(x_2) > f(x_1)$. 
+Suppose $f'(x) > 0$, noting $\;f'$ is defined and thus differentiable on $[x_1, x_2]$. By the 
+[Mean Value Theorem](mean_value_theorem), 
+$$ \exists c \in (x_1, x_2) \text{ such that } f(x_2)-f(x_1)=f'(c)(x_2-x_1)\text{.} $$
+Since $f'(c) > 0$ and $x_2-x_1 > 0$, $f(x_2)-f(x_1) = f'(c)(x_2-x_1) > 0$. 
+Therefore $f(x_2) > f(x_1)$ and $\;f$ is increasing. A decreasing $\;f$ is proved similarly.  
+
+</div>
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# Second Derivative Tests
+
+If the graph of $f$ lives above all of its tangents on an interval $I$, then it is **concave upward** on $I$. If it lies below all its tangents, it is **concave downward** on $I$. A point $P$ on a curve $y = f(x)$ is called an **inflection point** if $f$ 
+is continuous there and the curve changes from concave upward to concave downward or from concave downward to concave upward at $P$.
+
+By observing the critical points of the derivative of $f$, and noting that positive values along this curve correspond to an increasing slope, and negative values along this curve correspond to a decreasing slope, we can conclude the following:
+
+<section class="secondary">
+
+## Concavity Test
+
+If $f''(x) > 0$ for all $x \in I$, the graph is concave upward on $I$. If $f''(x) < 0$ for all
+$x \in I$, the graph is concave downward on $I$.
+
+</section>
+
+<section class="secondary">
+
+## Second Derivative Test
+
+Suppose $f''$ is continuous near $c$. If $f'(c) = 0$ and $f''(c) > 0$, then $f$ has a local minimum at
+$c$. If $f'(c) = 0$ and $f''(c) < 0$, then $f$ has a local maximum at $c$.
+
+We can generalize this test for functions of two variables as well. Suppose the second partial derivatives of $\;f$ are
+continuous on a disk with center $(a, b)$, and suppose that $f_x(a, b) = 0$ and $f_y(a, b) = 0$ (that is, $(a, b)$ is
+a critical point of $f$). Letting
+$$ D = D(a, b) = f_{xx}(a, b)f_{yy}(a, b) - \left[\;f_{xy}(a, b)\right]^2, $$
+
+1. If $D > 0$ and $f_{xx}(a, b) > 0$, then $f(a, b)$ is a local minimum.
+2. If $D > 0$ and $f_{xx}(a, b) < 0$, then $f(a, b)$ is a local maximum.
+3. If $D < 0$, then $f(a, b)$ is not a local maximum or minimum.
+
+<div class="proof">
+
+We prove just the first case, noting the others are relatively similar.
+
+We compute the second-order [directional derivative](directional_derivative) of $f$ in the direction of 
+$\vec{u} = \lrangle{h, k}$. The first-order derivative is given by
+$$ f_x(x, y)h + f_y(x, y)k. $$
+Applying the derivative a second time, we see
+$$\begin{align*}
+  D_u^2f &= D_u(D_uf) \pleibniz{x}(D_uf)h + \pleibniz{y}(D_uf)k                                          \\
+         &= (f_{xx}h + f_{yx}k)h + (f_{xy}h + f_{yy}k)k                                                  \\
+         &= f_{xx}h^2 + 2f_{xy}hk + f_{yy}k^2                                                            \\
+         &= f_{xx}h^2 + 2f_{xy}hk + \frac{f_{xy}^2}{f_{xx}}k^2 + k^2f_{yy} - \frac{f_{xy}^2}{f_{xx}}k^2  \\
+         &= f_{xx}\left(h^2 + 2\frac{f_{xy}}{f_{xx}}hk + \frac{f_{xy}^2}{f_{xx}^2}k^2\right) +
+            \frac{k^2}{f_{xx}}\left(f_{xx}f_{yy} - f_{xy}^2\right)                                       \\
+         &= f_{xx}\left(h + \frac{f_{xy}}{f_{xx}}k\right)^2 + 
+            \frac{k^2}{f_{xx}}\left(f_{xx}f_{yy} - f_{xy}^2\right)
+\end{align*}$$
+where the third equality follows from [Clairaut's Theorem](clairauts_theorem). We are given that $f_{xx}(a, b) > 0$
+and $D(a, b) > 0$. But $f_{xx}$ and $D = f_{xx}f_{yy}-f_{xy}^2$ are continuous functions, so there is a disk $B$ with
+center $(a, b)$ and radius $\delta > 0$ such that $f_{xx}(x, y) > 0$ and $D(x, y) > 0$ whenever $(x, y)$ is in $B$.
+Therefore, by the last equation above, we see that $D_u^2f(x, y) > 0$ whenever $(x, y)$ is in $B$.<br />  
+This means if $C$ is the curve obtained by intersecting the graph of $\;f$ with the vertical plane through 
+$P(a, b, \;f(a, b))$ in the direction of $\vec{u}$, then $C$ is concave upward on an interval of length $2\delta$.
+This is true in the direction of every vector $\vec{u}$, so if we restrict $(x, y)$ to lie in $B$, the graph of $\;f$ lies
+above its horizontal tangent plane at $P$. Thus $\;f(x, y) \geq f(a, b)$ whenever $(x, y)$ is in $B$. This shows that
+$f(a, b)$ is a local minimum.
+
+</div>
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Fermat's Theorem](fermats_theorem)
+- [Rolle's Theorem](rolles_theorem)
+- [Mean Value Theorem](mean_value_theorem)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

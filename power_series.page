@@ -1,0 +1,54 @@
+---
+title: Power Series
+categories: Calculus Complex
+icon: /img/icons/sequences-2.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Radius of Convergence (White)](/img/graphs/complex/radius-of-convergence.png)
+
+A **power series about $a$** is a series of the form $$ \sum_{n=0}^{\infty} c_n(x-a)^n = c_0 + c_1(x-a) + c_2(x-a)^2 + \cdots $$
+where $x$ is a variable and the $c_n$'s are constants called the **coefficients** of the series.
+For a given power series $\sum_{n=0}^{\infty} c_n(x-a)^n$, there are only three possibilities:
+
+1. The series converges only when $x = a$.
+2. The series converges for all $x$.
+3. There is a positive number $R$ such that the series converges if $|x-a| < R$ and diverges if $|x-a| > R$.
+
+$R$ in item (3) is called the **radius of convergence**, which is $0$ in case (1) and $\infty$ in case (2) by convention.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Term-by-Term
+    
+If the power series $\sum c_n(x-a)^n$ has radius of convergence $R > 0$, then the function $f$ defined by
+$$ f(x) = c_0 + c_1(x-a) + c_2(x-a)^2 + \cdots = \sum_{n=0}^{\infty} c_n(x-a)^n $$ 
+satisfy the following on the interval $(a-R, a+R)$:
+
+1. *Differentiation:* $$ f'(x) = c_1 + 2c_2(x-a) + 3c_3(x-a)^2 + \cdots = \sum_{n=1}^{\infty} nc_n(x-a)^{n-1}. $$
+2. *Integration:* 
+   $$ \int f(x)dx = C + c_0(x-a) + c_1\frac{(x-a)^2}{2} + c_2\frac{(x-a)^3}{3} + \cdots 
+                  = C + \sum_{n=0}^{\infty}c_n\frac{(x-a)^{n+1}}{n+1}.
+   $$
+
+The radii of convergence (though not necessarily the interval of convergence) of the power series in (1) and (2) are both $R$.
+Note this does not explain the properties at the endpoints of the interval.
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

@@ -1,0 +1,100 @@
+---
+title: Context-Free Grammars
+categories: Computation
+icon: /img/icons/binary-tree.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Sample Parse Tree](/img/diagrams/computation/parse-tree.png)
+
+A **context-free grammar** $G$ is a quadruple $(V, \Sigma, R, S)$, where
+
+- $V$ is an alphabet,
+- $\Sigma$ (the set of **terminals**) is a subset of $V$,
+- $R$ (the set of **rules**) is a finite subset of $(V - \Sigma) \times V^*$, and
+- S (the **start symbol**) is an element of $V - \Sigma$.
+
+The members of $V - \Sigma$ are called **nonterminals**. For any $A \in V - \Sigma$ and $u \in V^*$, we write
+$A \rightarrow_G u$ whenever $(A, u) \in R$. For any strings $u, v \in V^*$, we write $u \Rightarrow_G v$ if
+and only if there are strings $x, y \in V^*$ and $A \in V - \Sigma$ such that $u = xAy$, $v = xv'y$, and 
+$A \rightarrow_G v'$. The relation $\Rightarrow_G^*$ is the reflexive transitive closure of $\Rightarrow_G$.
+Finally, $L(G)$, the **language generated** by $G$, is $\{ w \in \Sigma^* : S \Rightarrow_G^* w \};$ we also say
+that $G$ **generates** each string in $L(G)$. A language $L$ is said to be a **context-free language** if $L = L(G)$
+for some context-free grammar $G$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Parse Trees
+
+For an arbitrary [context-free grammar](context_free_grammar) $G = (V, \Sigma, R, S)$, we define its **parse trees**
+and their roots, leaves, and yields, as follows:
+
+1. For every $a \in \Sigma$, a single node represents the parse tree. This node is both the root and a leaf. The yield
+   of this parse tree is $a$.
+2. If $A \rightarrow e$ is a rule in $R$, then $A$ is the root of the tree and its sole leaf is the node labeled $e$,
+   with yield $e$.
+3. Suppose $\inflate{T}{n}$ are parse trees where $n \geq 1$ with roots labeled $\inflate{A}{n}$ respectively and with yields
+   $\inflate{y}{n}$. If $A \rightarrow \inflate[]{A}{n}$ is a rule in $R$, then the parse tree of $A$ contains $A$ as the root
+   with leaves of all constituent parse trees and yield $\inflate{y}{n}$.
+4. Nothing else is a parse tree.
+
+<section class="secondary">
+
+## Derivations
+
+<div class="block">
+
+![Ambiguous Derivations](/img/diagrams/computation/ambiguous-derivations.png)
+
+Parse trees are ways of representing derivations of strings in $L(G)$; in fact, they represent equivalence classes
+of derivations, since derivations can differ in the order in which nonterminals are resolved, but the tree is generally
+the same.
+
+More precisely, let $G = (V, \Sigma, R, S)$ be a context-free grammar. Let $D = \inflate[\Rightarrow]{x}{n}$ and
+$D' = \inflate[\Rightarrow]{x'}{n}$ be two derivations in $G$, where $x_i, x'_i \in V^*$ for $i = 1, \ldots, n$, 
+$x_1, x'_1 \in V - \Sigma$, and $x_n, x'_n \in \Sigma^*$. That is, they are both derivations of terminal strings from
+a single nonterminal. We say that $D$ preceded $D'$, written $D \prec D'$, if $n > 2$ and there is an integer
+$k, 1 < k < n$ such that
+
+1. for all $i \neq k$ we have $x_i = x'_i$;
+2. $x_{k-1} = x'_{k-1} = uAvBw$, where $u, v, w \in V^*$, and $A, B \in V - \Sigma$;
+3. $x_k = uyvBw$, where $A \rightarrow y \in R$;
+4. $x'_k = uAvzw$ where $B \rightarrow z \in R$;
+5. $x_{k+1} = x'_{k+1} = uyvzw$.
+
+In other words, the two derivations are identical except for two consecutive steps, during which the same two nonterminals
+are replaced by the same two strings but in opposite orders in the two derivations.
+
+Note there exists a **leftmost derivation** and **rightmost derivation** in every parse tree.
+
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Ambiguity
+
+A context-free grammar is **ambiguous** if there exist a string in the language that is the yield of two or more parse trees.
+If no refactoring of the given grammar can create an unambiguous equivalent, then we say the language is **inherently ambiguous**.
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Papadimitriou & Lewis (1998). Elements of the Theory of Computation (2nd ed.). Prentice-Hall. ISBN 0-13-262478-8
+
+</section>

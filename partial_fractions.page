@@ -1,0 +1,67 @@
+---
+title: Partial Fractions
+categories: Calculus
+icon: /img/icons/single-integral.png
+...
+
+<section class="primary">
+
+# Summary
+
+Consider a rational function $$ f(x)=\frac{P(x)}{Q(x)} $$ where $P$ and $Q$ are polynomials. If $f$ is
+improper, that is, $\text{deg}(P)\geq\text{def}(Q)$, then we must take the preliminary step of dividing
+$Q$ into $P$ until a remainder $R(x)$ is obtained such that $\text{deg}(R)<\text{deg}(Q)$. The division
+statement is $$ f(x)=\frac{P(x)}{Q(x)}=S(x)+\frac{R(x)}{Q(x)} $$ where $S$ and $R$ are also polynomials.
+
+
+</section>
+
+<section class="primary">
+
+# Distinct Linear Factors
+
+Suppose the denominator $Q(x)$ is a product of distinct linear factors.  
+If $Q(x) = (a_1x+b_1)(a_2x+b_2)\cdots(a_kx+b_k)$ where no factor is repeated, then 
+$$ \frac{R(x)}{Q(x)} = \frac{A_1}{a_1x+b_1} + \frac{A_2}{a_2x+b_2} + \cdots + \frac{A_k}{a_kx+b_k}. $$
+
+</section>
+
+<section class="primary">
+
+# Repeated Linear Factors
+
+Suppose $Q(x)$ is a product of linear factors, some of which are repeated.  
+If the first linear factor $(a_1x+b_1)$ is repeated $r$ times, then 
+$$ \frac{R(x)}{Q(x)} = \frac{A_1}{a_1x+b_1} + \frac{A_2}{(a_1x+b_1)^2} + \cdots + \frac{A_r}{(a_1x+b_1)^r}. $$
+
+</section>
+
+<section class="primary">
+
+# Distinct Quadratic Factors
+
+Suppose $Q(x)$ contains irreducible quadratic factors, none of which is repeated.  
+If $Q(x)$ has the factor $ax^2+bx+c$, where $b^2-rac < 0$, then, in addition to the partial fractions
+in Cases (1) and (2), the expression for $R(x)/Q(x)$ will have a term
+of the form $$ \frac{Ax+B}{ax^2+bx+c} $$ where $A$ and $B$ are constants to be determined.
+
+</section>
+
+<section class="primary">
+
+# Repeated Quadratic Factors
+
+Suppose $Q(x)$ contains a repeated irreducible quadratic factor.  If $Q(x)$ has the factor $(ax^2+bx+c)^r$, where 
+$b^2-4ac < 0$, then instead of the single partial fraction in Case (3), the sum 
+$$ \frac{A_1x+b_1}{ax^2+bx+c}+\frac{A_2x+B_2}{(ax^2+bx+c)^2}+\cdots+\frac{A_rx+B_r}{(ax^2+bx+c)^r} $$ 
+occurs in the partial fraction decomposition of $R(x)/Q(x)$.
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

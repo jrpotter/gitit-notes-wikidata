@@ -1,0 +1,66 @@
+---
+title: Continuity
+categories: Analysis Calculus
+icon: /img/icons/limits.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![](/img/graphs/calculus/continuity.png)
+
+Continuity states that a function has no "breaks" at a given point or throughout a given interval; this means a small change in 
+the input yields a small change in the output. More precisely, it states that the limit of a function at a given value is the 
+function evaluated at the given value.
+
+More precisely, let $(X, d_X), (Y, d_Y)$ be metric spaces. Then a map $\;f: X \rightarrow Y$ is called **continuous** if for every $p \in X$ and $\epsilon > 0$, $\exists\delta > 0$ such that $\forall q \in X$, $$ d_X(p, q) < \delta \Rightarrow d_Y(f(p), \:f(q)) < \epsilon.$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Uniform Continuity
+
+Uniform continuity refers to a more stringent criteria of continuity in which one value of $\delta$ is sufficient for all $\epsilon$.
+That is, for all $\epsilon > 0$, $\exists\delta > 0$ such that for all $p, q \in X$,
+$$ d_X(p, q) < \delta \Rightarrow d_Y(f(p), \:f(q)) < \epsilon. $$
+
+</section>
+
+<section class="primary">
+
+# Real Metric Spaces
+
+Suppose we have two metric spaces $X, Y$ that equal $\bbr$. Then we can explicitly define continuous functions mapped from $\bbr^n$
+to $\bbr^n$ in an intuitive, limit-oriented manner (though this limit definition can also be extended to arbitrary metric spaces).
+For instance, a function $f: \bbr \rightarrow \bbr$ is continuous at a point $a$ of its domain if the limit of $\;f(x)$ as $x$ 
+approaches $a$ through the domain of $f$ exists and is equal to $\;f(c)$. That is; $$ \xlimit{x}{a}\;f(x)=f(a). $$
+A function $f$ is continuous over an interval $I$ if it is continuous at all points $a \in I$. Similarly, a function 
+$f: \bbr^2 \rightarrow \bbr^2$ is called continuous at $(a, b)$ if $$ \xlimit{(x, y)}{(a, b)}\;f(x, y) = f(a, b). $$
+We say $\;f$ is continuous on $D$ if $\;f$ is continuous at every point $(a, b)$ in $D$.
+This concept can be generalized to functions of three or more variables in the obvious way.
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Differentiation](differentiation)
+- [Intermediate Value Theorem](intermediate_value_theorem)
+- [Uniform Continuity](uniform_continuity)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

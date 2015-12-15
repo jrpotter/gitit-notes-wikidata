@@ -1,0 +1,84 @@
+---
+title: Lagrange Multipliers
+categories: Calculus
+icon: /img/icons/taking-derivatives.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Parabolic Constraint](/img/diagrams/calculus/lagrange-multiplier.png) 
+
+Lagrange multipliers work by noting that [gradient vectors](directional_derivatives#maximization) are orthogonal to their level curve. Thus, given the level curves of a graph and some constraint, we note the minimum or maximum of the graph that satisfies
+the given constraint is where the two functions are tangent to one another - they must have parallel gradient vectors at this
+point (though not necessarily of the same magnitude).
+
+More specifically, let $f(x, y, z)$ be a general function subject to a constraint of the form $g(x, y, z)= k$. Suppose that this 
+function $f$ has an extreme value at a point $P(x_0, y_0, z_0)$ on the surface $S$. Then there is a number $\lambda$ such that
+$$ \nabla f(x_0, y_0, z_0) = \lambda \nabla g(x_0, y_0, z_0). $$
+
+The number $\lambda$ is called the **lagrange multiplier**.
+
+</div>
+
+<div class="proof">
+
+Given the constraint function $g$, the point $(x, y, z)$ is restricted to lie on the level surface $S$ with equation 
+$g(x, y, z) = k$. Suppose that a function $\;f$ has an extreme value at a point $P(x_0, y_0, z_0)$ on the surface $S$
+and let $C$ be a curve with vector equation $\pmb{r}(t) = \lrangle{x(t), y(t), z(t)}\;\;$ that lies on $S$ and passes through 
+$P$. If $t_0$ is the parameter value corresponding to the point $P$, then $\pmb{r}(t_0) = \lrangle{x_0, y_0, z_0}$.
+The composite function $h(t) = f(x(t), y(t), z(t))\;\;$ represents the values that $\;f$ takes on the curve $C$. Since $f$
+has an extreme value at $(x_0, y_0, z_0)$, it follows that $h$ has an extreme value at $t_0$, so $h'(t_0) = 0$. But
+if $f$ is differentiable, we can use the [Chain Rule](chain_rule) to write
+$$\begin{align*}
+  0 &= h'(t_0)                                                                           \\
+    &= f_x(x_0, y_0, z_0)x'(t_0) + f_y(x_0, y_0, z_0)y'(t_0) + f_z(x_0, y_0, z_0)z'(t_0) \\
+    &= \nabla f(x_0, y_0, z_0) \cdot \pmb{r}'(t_0)
+\end{align*}$$
+Therefore the gradient vector $\nabla f(x_0, y_0, z_0)$ is orthogonal to the tangent vector $\pmb{r}'(t_0)$ to every
+such curve $C$. But we already know that $\nabla g$ is orthogonal to $\pmb{r}'(t_0)$ for every such curve as well, since
+$g$ is a level surface. Thus the gradient vectors must be parallel.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Generalization
+
+Suppose we are looking for maximum and minimum of a function $f(x, y, z)$ subject to two constraints $g(x, y, z) = k$
+and $h(x, y, z) = c$. Then there are numbers $\lambda$ and $\mu$ such that
+$$ \nabla f(x_0, y_0, z_0) = \lambda \nabla g(x_0, y_0, z_0) + \mu \nabla h(x_0, y_0, z_0). $$
+
+<div class="proof">
+
+Suppose $G$ has such an extreme value at a point $P(x_0, y_0, z_0)$. We note $\nabla f$ is orthogonal to $C$ at $P$,
+where $C$ is the curve of intersection of the level surfaces $g(x, y, z) = k$ and $h(x, y, z) = c$. In addition,
+$\nabla g$ is orthogonal to $g(x, y, z) = k$ and $\nabla h$ is orthogonal to $h(x, y, z) = c$, so $\nabla g$
+and $\nabla h$ are both orthogonal to $C$. Therefore $\nabla f(x_0, y_0, z_0)$ is in the plane determined by
+$\nabla g(x_0, y_0, z_0)$ and $\nabla h(x_0, y_0, z_0)$. Meaning there are numbers $\lambda$ and $\mu$ such that
+$$ \nabla f(x_0, y_0, z_0) = \lambda \nabla g(x_0, y_0, z_0) + \mu \nabla h(x_0, y_0, z_0). $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Directional Derivatives](directional_derivatives)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

@@ -1,0 +1,85 @@
+---
+title: Neighborhoods
+categories: Analysis Stub
+icon: /img/icons/euclid.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Neighborhood around $p$](/img/diagrams/analysis/neighborhood-topology.png)
+
+Let $(X, d)$ be a metric space and $E \subset X$. Then for all $p, q \in X$, we say that a **neighborhood** of $p$ is 
+a set $$ N_r(p) = \{ q \in X : d(p, q) < r \} $$ for $r > 0$. The point $p \in X$ is a **limit point** of $E$ in $X$ if 
+every neighborhood of $p$ contains some point in $E$ different from $p$ itself. More precisely, we say that for all $r > 0$, 
+$$ \left[(N_r(p) \cap E) \backslash \{p\}\right] \neq \emptyset. $$
+If $p \in E$ and $p$ isn't a limit point of $E$, then we call $p$ an **isolated point**. A point $p$ belonging to $E$ is an 
+**interior point** of $E$ if there exists an $r > 0$ such that $N_r(p) \subset E$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Open Set
+
+Every neighborhood is an open set.
+
+<div class="proof">
+
+Let $(X, d)$ be a metric space. Fix $r > 0$ and $p \in X$. We want to show that that $N_r(p)$ is open.
+So consider another point $q \in N_r(p)$ and let $h = r - d(p, q) > 0$. That is, $h$ represents the distance
+between the edge of our neighborhood and $q$. 
+
+If we can show that $N_h(q) \subset N_r(p)$, then every point in our neighborhood must be an interior point,
+and the neighborhood is consequently open. So let $w \in N_h(q)$. Therefore we have
+$$\begin{align*}
+  d(p, w) &\leq d(p, q) + d(q, w)    \\
+          &< d(p, q) + [r - d(p, q)] \\
+          &= r.
+\end{align*}$$
+Therefore $w \in N_r(p)$ and every neighborhood is an open set.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Limit Points
+
+If $p$ is a limit point of $E$, then every neighborhood of $p$ contains infinitely many points of $E$. Consequently, a finite
+set has no limit points.
+
+<div class="proof">
+
+Suppose there exists a neighborhood $N$ containing point $p$ such that
+$$ (N \cap E) \backslash \{p\} = \{q_1, \ldots, q_n\}, $$
+a finite number of points. Suppose we let
+$$ r = \frac{1}{2} \mathop{\text{min}}_{1 \leq j \leq n} d(p, q_j) > 0. $$
+(As a quick remark, note that $r > 0$ since $r = 0$ only if $q_j = p$ for some $j$). Then 
+$$ N_r(p) \backslash \{p\} = \emptyset, $$ which is a contradiction to the fact that $p$ is a limit point.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Open/Closed Sets](open_closed_sets)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Abott, Stephen (2001). Understanding Analysis (1st ed.). Springer. ISBN 978-0387950605.
+
+</section>

@@ -1,0 +1,34 @@
+---
+title: @Functions
+categories: Analysis
+icon: /img/icons/similarity.png
+...
+
+<section class="primary">
+
+# Harmonic in Metric Spaces
+
+Let $\{x_n\} = \{\frac{1}{n}\}$ be in $\bbr$ with the usual metric. Then $\{x_n\} \rightarrow 0$. If we were to change
+the metric space to $\bbr \backslash \{0\}$ though, the sequence no longer converges.
+
+<div class="proof">
+
+Let $(\bbr, d)$ be a metric space with the usual metric. Then, given $\epsilon > 0$, choose $N > 1/\epsilon$. 
+Thus, for any $n \geq N$, we see that $$ \abs{\frac{1}{n} - 0} = \frac{1}{n} \leq \frac{1}{N} < \epsilon. $$
+
+Next consider $(\bbr \backslash \{0\}, d)$, again with the usual metric. We now need to show that our sequence
+$\{\frac{1}{n}\}$ does not converge to $x$ for any $x \in \bbr \backslash \{0\}$. Let $\delta = \abs{x} > 0$ and
+$\epsilon_0 = \frac{1}{2}\delta$. Then for all $N$, if $N > \frac{2}{\delta}$, then for any $n \geq N$, we see that
+$$ \abs{x - \frac{1}{n}} \geq \abs{x} - \frac{1}{n} > \delta - \frac{\delta}{2} = \epsilon_0. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Abott, Stephen (2001). Understanding Analysis (1st ed.). Springer. ISBN 978-0387950605.
+
+</section>

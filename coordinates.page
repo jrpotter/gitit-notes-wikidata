@@ -1,0 +1,133 @@
+---
+title: Coordinates
+categories: Linear Algebra
+icon: /img/icons/alternate-bases.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Sample Basis](/img/graphs/linear/sample-basis.png)
+
+Consider a basis $\beta = (\inflate{\vec{v}}{m})$ of a subspace $V$ of $\bbr^n$ and a basis $\mu = (\inflate{\;f}{n})$
+of a linear space $W$. We note by linear combinations that any vector $\vec{x}$ in $V$ can be written uniquely as 
+$$ \vec{x} = c_1\vec{v}_1 + c_2\vec{v}_2 + \cdots + c_m\vec{v}_m, $$
+with a similar result for linear spaces. The scalars $\inflate{c}{m}$ are called the **$\beta$-coordinates** 
+and **$\mu$-coordinates** respectively. The corresponding vector
+$$ \begin{bmatrix} c_1 \\ c_2 \\ \vdots \\ c_m \end{bmatrix} $$ 
+is the **$\beta$-coordinate vector** of $\vec{x}$ and the **$\mu$-coordinate vector** of $f$, 
+denoted by $\bcoor{\vec{x}}$ and $\bcoor{f}$, depending on the given context.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Linearity
+
+We note linearity of the coordinates of a linear space are analogous to the following statements regarding
+vector spaces, and are omitted as a result. Now if $\beta$ is a basis of a subspace $V$ of $\bbr^n$, then
+
+1. $\bcoor{\vec{x}+\vec{y}} = \bcoor{\vec{x}} + \bcoor{\vec{y}}$, for all vectors $\vec{x}$ and $\vec{y}$ in $V$.<br />  
+   <div class="proof"> 
+   Let $\beta = (\inflate{\vec{v}}{m})$. If $\vec{x} = c_1\vec{v}_1 + c_2\vec{v}_2 + \cdots + c_m\vec{v}_m$
+   and $\vec{y} = d_1\vec{v}_1 + d_2\vec{v}_2 + \cdots + d_m\vec{v}_m$, then
+   $$\begin{align*}
+     \vec{x} + \vec{y} &= c_1\vec{v}_1 + c_2\vec{v}_2 + \cdots + c_m\vec{v}_m + 
+                          d_1\vec{v}_1 + d_2\vec{v}_2 + \cdots + d_m\vec{v}_m \\
+                       &= (c_1 + d_1)\vec{v}_1 + (c_2 + d_2)\vec{v}_2 + \cdots + (c_m + d_m)\vec{v}_m
+   \end{align*}$$
+   meaning
+   $$
+     \bcoor{\vec{x}+\vec{y}} = \begin{bmatrix} c_1+d_1 \\ c_2+d_2 \\ \vdots \\ c_m+d_m \end{bmatrix}
+                             = \begin{bmatrix} c_1 \\ c_2 \\ \vdots \\ c_m \end{bmatrix} + 
+                               \begin{bmatrix} d_1 \\ d_2 \\ \vdots \\ d_m \end{bmatrix}
+                             = \bcoor{\vec{x}} + \bcoor{\vec{y}}\text{.}
+   $$
+   </div><br />
+
+2. $\bcoor{k\vec{x}} = k\bcoor{\vec{x}}$, for all $\vec{x}$ in $V$ and for all scalars $k$.<br />    
+   <div class="proof">
+   Let $\beta = (\inflate{\vec{v}}{m})$. If $\vec{x} = c_1\vec{v}_1 + c_2\vec{v}_2 + \cdots + c_m\vec{v}_m$,
+   then $k\vec{x} = kc_1\vec{v}_1 + kc_2\vec{v}_2 + \cdots + c_m\vec{v}_m$, so that
+   $$
+     \left[k\vec{x}\right]_\beta = \begin{bmatrix} kc_1 \\ kc_2 \\ \vdots \\ kc_m \end{bmatrix}
+                                 = k\begin{bmatrix} c_1 \\ c_2 \\ \vdots \\ c_m \end{bmatrix}
+                                 = k\bcoor{\vec{x}}
+   $$
+   as claimed.
+   </div>
+
+</section>
+
+<section class="primary">
+
+# $\beta$-Matrices
+
+<div class="block">
+
+![$\beta$-Matrix Diagram](/img/diagrams/linear/beta-matrix.png)
+
+Consider a linear transformation $T$ from $\bbr^n$ to $\bbr^n$ and a basis $\beta$ of $\bbr^n$. The $n \times n$ matrix 
+$B$ that transforms $\bcoor{\vec{x}}$ into $\bcoor{T(\vec{x})}$ is called the **$\beta$-matrix of $T$**: 
+$$ \bcoor{T(\vec{x})} = B\bcoor{\vec{x}}\text{,} $$ for all $\vec{x}$ in $\bbr^n$.
+
+Similarly, consider a linear transformation $T$ from $V$ to $V$, where $V$ is an $n$-dimensional linear space.
+Let $\beta$ be a basis of $V$ and $L_{\beta}$ be the [coordinate transformation](linear transformations#coordinate-transformation). Consider the linear transformation $L_{\beta}\circ T\circ L_{\beta}^{-1}$ from $\bbr^n$ to $\bbr^n$, with standard matrix $B$, 
+meaning that $B\vec{x} = L_{\beta}(T(L_{\beta}^{-1}(\vec{x})))$ for all $\vec{x}$ in $\bbr^n$. This matrix $B$ is also 
+called the **$\beta$-matrix** of transformation $T$.
+
+</div>
+
+<section class="secondary">
+
+## Construction
+
+We can construct a $\beta$-matrix $B$ of a linear transformation $T$ column by column as follows:
+$$ B = \begin{bmatrix} & & \\ \bcoor{T(\vec{v}_1)} & \cdots & \bcoor{T(\vec{v}_n)} \\ & & \end{bmatrix}\text{,} $$ 
+where $\beta$ = $(\inflate{\vec{v}}{n})$. A similar result holds for linear transformation $T$ from linear subspace $V$ to $V$, 
+and the $\beta$-matrix $B$ of $T$ with respect to a basis $\beta = (\inflate{\;f}{n})$ of $V$. That is,
+$$ B = \begin{bmatrix} & & \\ \bcoor{T(f_1)} & \cdots & \bcoor{T(f_n)} \\ & & \end{bmatrix}\text{.} $$
+The proof is analogous to the following, so is omitted.
+
+<div class="proof"> 
+
+Let $\vec{x} = c_1\vec{v}_1 + \cdots + c_n\vec{v}_n$. By linearity of $T$ and linearity of coordinates, we note
+$$ T(\vec{x}) = c_1T(\vec{v}_1) + \cdots + c_nT(\vec{v}_n) $$ and
+$$\begin{align*}
+  \bcoor{T(\vec{x})} &= c_1\bcoor{T(\vec{v}_1)} + \cdots + c_n\bcoor{T(\vec{v}_n)} \\
+                     &= \begin{bmatrix} 
+                                               &        &                          \\                        
+                          \bcoor{T(\vec{v}_1)} & \cdots & \bcoor{T(\vec{v}_n)}     \\
+                                               &        &
+                        \end{bmatrix} \bcoor{\vec{x}}.
+\end{align*}$$
+Alternatively, we can note that to get the $\spscript{i}{th}$ column of $B$, we can find $Be_i$, of which
+we then note $\bcoor{\vec{v}_i} = e_i$. Since $\bcoor{T(\vec{v}_i)} = B\bcoor{\vec{v}_i}$, the proof follows.
+
+</div>
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Bases](bases)
+- [Change of Basis](change_of_basis)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Bretscher, Otto (2008). Linear Algebra with Applications (4th ed.). Pearson. ISBN 978-0-13-600926-9.
+
+</section>

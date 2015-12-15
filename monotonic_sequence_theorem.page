@@ -1,0 +1,55 @@
+---
+title: Monotonic Sequence Theorem
+categories: Analysis Calculus
+icon: /img/icons/sequences-2.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Sample Monotonic Bounded Sequence](/img/graphs/calculus/monotonic-sequence-theorem.png)
+
+A sequence $\{a_n\}$ is called **increasing** if $a_n < a_{n+1}$ for all $n \geq 1$, that is $a_1 < a_2 < \cdots$. 
+It is called **decreasing** if $a_n > a_{n+1}$ for all $n \geq 1$. It is called **monotonic** if it is either 
+increasing or decreasing. 
+
+A sequence $\{a_n\}$ is **bounded above** if there is a number $M$ such that $a_n \leq M$ for
+all $n \geq 1$. It is **bounded below** if there is a number $m$ such that $m \leq a_n$ for all $n \geq 1$. If it is 
+bounded above and below, then $\{a_n\}$ is a **bounded sequence**.
+
+This all culminates to the fact that every bounded, monotonic sequence is convergent.
+
+</div>
+
+<div class="proof"> 
+
+Suppose $\{a_n\}$ is an increasing sequence. Since $\{a_n\}$ is bounded, the set $$ S = \{a_n : n \geq 1\} $$ has an upper bound. 
+By the [Completeness Axiom](#completeness-axiom), it has a supremum L. Given $\epsilon > 0$, $L - \epsilon$ is not an upper 
+bound for $S$. Therefore $a_N > L - \epsilon$ for some integer $N$. But since the sequence is increasing, $a_n \geq a_N$ 
+for every $n > N$. Thus if $n > N$ we have $a_n > L-\epsilon$ which implies $0 \leq L - a_n < \epsilon$ since $a_n \leq L$. 
+Therefore $|L-a_n| < \epsilon$ whenever $n > N$ and $$ \xlimit{n}{\infty} a_n = L\text{.} $$ A similar proof holds when 
+$\{a_n\}$ is decreasing.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Completeness Axiom
+
+For the set $\bbr$ of real numbers, if $S$ is a nonempty set of real numbers that has an upper bound $M$, 
+then $S$ has a **least upper bound** or **supremum**. Likewise, $S$ also has a **least lower bound** or **infimum**.
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

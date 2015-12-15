@@ -1,0 +1,86 @@
+---
+title: Inner Product Spaces
+categories: Complex Linear Algebra
+icon: /img/icons/angles.png
+...
+
+<section class="primary">
+
+# Summary
+
+The inner product serves as a generalization of the [dot product](dot_product), allowing one to consider
+orthogonality of linear spaces in the same way one might with vector spaces. By applying an inner product
+in place of the dot product and a linear space in place of a vector space, one can decompose functions into
+[orthogonal projections](orthogonal_projections), apply [QR Factorization](qr_factorization), etc. Roughly speaking, 
+an inner product space behaves like $\bbr^n$ as far as addition, scalar multiplication, and the dot product are concerned.
+
+More precisely, we say an **inner product** in a linear space $V$ is a rule that assigns a real scalar (denoted by 
+$\langle \;f, g \rangle$) to any pair $f, g$ of elements of $V$, such that the following properties hold for all $f, g, h$ 
+in $V$, and all $c$ in $\bbr$:
+
+1. $\iprod{\;f}{g} = \iprod{g}{\;f}$,
+2. $\iprod{\;f+h}{g} =\iprod{\;f}{g} + \iprod{h}{g}$,
+3. $\iprod{cf}{g} = c\iprod{\;f}{g}$, and
+4. $\iprod{\;f}{\;f} > 0$, for all nonzero $\;f$ in $V$.
+
+A linear space endowed with an inner product is called an **inner product space**.
+
+<section class="secondary">
+
+## Norm
+
+The **norm** (or magnitude) of an element $\;f$ of an inner product space is
+
+$$ \norm{\;f} = \sqrt{\iprod{\;f}{\;f}}\text{.} $$
+
+</section>
+
+<section class="secondary">
+
+## Orthogonality
+
+Two elements $\;f$ and $g$ of an inner product space are called **orthogonal** (or perpendicular) if
+
+$$ \iprod{\;f}{g} = 0\text{.} $$
+
+</section>
+
+<section class="secondary">
+
+## Distance
+
+We define the **distance** between two elements of an inner product space as the norm of their difference:
+
+$$ \text{dist}(\;f, g) = \norm{\;f - g}\text{.} $$
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# Complex Inner Product
+
+When working with vectors of complex numbers, we work with a slightly modified inner product. Note commutativity and
+scalar multiplication is not quite correct as defined in the above [summary](summary) unless consider the real subset
+$\bbr$ of $\bbc$. That is, we define the **inner product** of two vectors having the same number of components, by
+$$ (\pmb{x}, \pmb{y}) = \sum_{i=1}^n x_i\overline{y}_i = \pmb{x}^T\overline{\pmb{y}}.\; $$
+
+From this, it follows that
+
+1. $(\pmb{x}, \pmb{y}) = \overline{(\pmb{y}, \pmb{x})},$
+2. $(\pmb{x}, \pmb{y} + \pmb{z}) = (\pmb{x}, \pmb{y}) + (\pmb{x }, \pmb{z}),$
+3. $(\alpha\pmb{x}, \pmb{y}) = \alpha(\pmb{x}, \pmb{y}),$
+4. $(\pmb{x}, \alpha\pmb{y}) + \overline{\alpha}(\pmb{x}, \pmb{y}).$
+
+The norm and orthogonality are described in the same way as the generalized inner product space.
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Bretscher, Otto (2008). Linear Algebra with Applications (4th ed.). Pearson. ISBN 978-0-13-600926-9.
+
+</section>

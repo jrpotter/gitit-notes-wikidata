@@ -1,0 +1,53 @@
+---
+title: @Homomorphisms
+categories: Abstract Algebra
+icon: /img/icons/arithmetic.png
+...
+
+<section class="primary">
+
+# Reduction Modulo (Addition)
+
+Let $\gamma$ be the natural map of $\bbz$ into $\bbz_n$ given by $\gamma(m) = r$, where $r$ is the remainder given
+by the division algorithm when $m$ is divided by $n$. Then $\gamma$ is a homomorphism under addition.
+
+<div class="proof">
+
+We need to show that $\gamma(s + t) = \gamma(s) + \gamma(t)$ for $s, t \in \bbz$. Using the division algorithm, we
+let $s = q_1n + r_1$ and $t = q_2n + r_2$ where $0 \leq r_i < n$ for $i = 1, 2$. If $$ r_1 + r_2 = q_3n + r_3 $$
+for $0 \leq r_3 < n$, then we see that $$ s + t = (q_1 + q_2 + q_3)n + r_3, $$ so $\gamma(s + t) = r_3$. Since
+$\gamma(s) = r_1$ and $\gamma(t) = r_2$, then $\gamma(s) + \gamma(t) = r_3$ as well, proving this is a homomorphism.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Reduction Modulo (Multiplication)
+
+Let $\gamma$ be the natural map of $\bbz$ into $\bbz_n$ given by $\gamma(m) = r$, where $r$ is the remainder given
+by the division algorithm when $m$ is divided by $n$. Then $\gamma$ is a homomorphism under multiplication.
+
+<div class="proof">
+
+Let $a = q_1n + r_1$ and $b = q_2n + r_2$. Then $$ \gamma(a)\gamma(b) = r_1r_2. $$ Yet we also see that
+$$\begin{align*}
+  \gamma(ab) &= \gamma(q_1q_2n^2 + q_2nr_1 + q_2nr_2 + r_1r_2) \\
+             &= \gamma(n[q_1q_2n + q_2r_1 + q_1r_2] + r_1r_2)  \\
+             &= r_1r_2.
+\end{align*}$$
+
+Thus $\gamma$ is an isomorphism.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Fraleigh, John B. (2003). A First Course In Abstract Algebra (7th ed.). Pearson. ISBN 978-0201763904.
+
+</section>

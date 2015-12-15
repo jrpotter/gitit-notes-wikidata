@@ -1,0 +1,38 @@
+---
+title: @Indicator Variables
+categories: Statistics
+icon: /img/icons/inferential-statistics.png
+...
+
+<section class="primary">
+
+# Generating Subsets
+
+Consider a method that generates each subset of size $\binom{n}{k}$ with equal probability.
+One memory-efficient process is to generate a series of random indicator variables, where
+a value of $1$ indicates that a uniform $(0, 1)$ random variable is less than the probability
+that a given value would be chosen in the subset given the remaining spaces left.
+
+~~~ { .python }
+import random
+
+def subset(n, k):
+    total = 0
+    group = []
+    for i in range(n):
+        if random.random() < (k - total) / (n - i):
+            total += 1
+            group.append(i)
+    return group
+~~~
+This method results in all subsets being equally likely to be generated.
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

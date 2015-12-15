@@ -1,0 +1,50 @@
+---
+title: @Independence
+categories: Statistics
+icon: /img/icons/independence.png
+...
+
+<section class="primary">
+
+# Buffon's Needle Problem
+
+<div class="block">
+
+![Buffon Needle Diagram](/img/diagrams/statistics/buffon-needle.png)
+
+Suppose a table is ruled with equidistant parallel lines a distance $D$ apart. A needle of length
+$L$ where $L \leq D$, is randomly thrown on the table. Then the probability that the needle will
+intersect one of the lines is
+$$ \frac{2L}{\pi D}. $$
+Note that this method, via a Markov process, can actually be used to find the value of $\pi$!
+
+</div>
+
+<div class="proof">
+
+Let $X$ be the random variable representing the middle point of the needle to the nearest parallel line and $\theta$ be the 
+random variable representing the angle between the needle and the projected line of length $X$. The needle will intersect a 
+line if the hypotenuse of the right triangle formed by the projected line and the needle is less than $L/2$. Therefore
+$$ \frac{X}{\cos{\theta}} < \frac{L}{2} \text{ or } X < \frac{L}{2}\cos{\theta}. $$
+As $X$ varies between $0$ and $D/2$ and $\theta$ between $0$ and $\pi/2$, it is reasonable to assume that they are independent,
+uniformly distributed random variables over their respective ranges. Hence,
+$$\begin{align*}
+  \bbps{X < \frac{L}{2}\cos{\theta}} 
+    &= \iint_{x < L/2\cos{y}} f_X(x)f_{\theta}(y)\;dx\;dy                                \\
+    &= \iint_{x < L/2\cos{y}} \left(\frac{2}{D}\right)\left(\frac{2}{\pi}\right)\;dx\;dy \\
+    &= \frac{4}{\pi D} \int_0^{\pi/2} \int_0^{L/2\cos{y}}\;dx\;dy                        \\
+    &= \frac{4}{\pi D} \int_0^{\pi/2} \frac{L}{2} \cos{y}\;dy                            \\
+    &= \frac{2L}{\pi D}.
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

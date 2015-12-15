@@ -1,0 +1,75 @@
+---
+title: Increasing/Decreasing Sequences
+categories: Statistics
+icon: /img/icons/sequences-2.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Nested Sequences](/img/diagrams/statistics/increasing-sequence.png)
+
+A sequence of events $\{E_n, n \geq 1\}$ is an **increasing sequence** if $\inflate[\subset]{E}{n} \subset
+E_{n+1} \subset \ldots$ whereas a **decreasing sequence** if $\inflate[\supset]{E}{n} \supset E_{n+1} \ldots$ 
+If $\{E_n, n \geq 1\}$ is an increasing sequence, 
+$$ \xlimit{n}{\infty} E_n = \bigcup_{i=1}^{\infty} E_i. $$ 
+Similarly if $\{E_n, n \geq 1\}$ is a decreasing sequence,
+$$ \xlimit{n}{\infty} E_n = \bigcap_{i=1}^{\infty} E_i. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Probability Limits
+
+If $\{E_n, n \geq 1\}$ is either an increasing or decreasing sequence of events, then
+$$ \xlimit{n}{\infty} \bbps{E_n} = \bbps{\xlimit{n}{\infty} E_n}. $$
+
+<div class="proof">
+
+Suppose first that $\{E_n, n \geq 1\}$ is an increasing sequence and define events $F_n$, $n \geq 1$ by
+
+$$\begin{align*}
+  F_1 &= E_1\\
+  F_n &= E_n\left(\bigcup_{1}^{n-1}E_i\right)^c = E_nE_{n-1}^c, n > 1
+\end{align*}$$
+
+where we have used $\bigcup_{1}^{n-1}E_i = E_{n-1}$ since events are increasing. Therefore $F_n$ consists
+of outcomes in $E_n$ not included in earlier events. We also note 
+$\bigcup_{i=1}^{\infty} F_i = \bigcup_{i=1}^{\infty} E_i$ and $\bigcup_{i=1}^{n} F_i = \bigcup_{i=1}^{n} E_i$ 
+for all $n \geq 1$. Thus
+
+$$\begin{align*}
+  \bbps{\bigcup_{1}^{\infty} E_i} &= \bbps{\bigcup_{1}^{\infty} F_i}
+                                   = \sum_{1}^{\infty} \bbps{F_i}                \\
+                                  &= \xlimit{n}{\infty} \bbps{\bigcup_{1}^n F_i} \\
+                                  &= \xlimit{n}{\infty} \bbps{\bigcup_{1}^n E_i} \\
+                                  &= \xlimit{n}{\infty} \bbps{E_n}.
+\end{align*}$$
+
+Now if $\{E_n, n \geq 1\}$ was decreasing, $\{E_n^c, n \geq 1\}$ is increasing meaning that $\bbps{\bigcup_{1}^{\infty} E_i^c} 
+= \xlimit{n}{\infty} \bbps{E_n^c}$. However, since $\bigcup_{1}^{\infty}E_i = \left(\bigcap_{1}^{\infty}E_i\right)^c$, 
+then $\bbps{\left(\bigcap_{1}^{\infty}E_i\right)^c} = \xlimit{n}{\infty} \bbps{E_n^c}$. Thus,
+
+$$\begin{align*}
+  1 - \bbps{\bigcap_{1}^{\infty} E_i} &= \xlimit{n}{\infty} [1-\bbps{E_n}]       \\
+                                      &= 1 - \xlimit{n}{\infty} \bbps{E_n}       \\
+    \Rightarrow \bbps{\bigcap_{1}^{\infty} E_i} &= \xlimit{n}{\infty}\bbps{E_n}.
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

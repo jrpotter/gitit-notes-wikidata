@@ -1,0 +1,26 @@
+---
+title: Difference Equations
+categories: Differential Calculus
+icon: /img/icons/first-order-diff-equations.png
+...
+
+<section class="primary">
+
+# Summary
+
+Difference equations are the discrete analogue of differential equations. An equation is called a **first order difference 
+equation** if the next value of the equation is equal to a function applied to the previous value of the equation as follows:
+$$ y_{n+1} = f(n, y_n), \quad n = 0, 1, 2, \ldots $$
+A **solution** of the difference equation is a sequence of numbers $y_0, y_1, y_2, \ldots$ that satisfy the equation for each $n$,
+which may be described by an initial condition $$ y_0 = \alpha $$
+that prescribes the value of the first term of the solution sequence.
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Boyce W.E. & DiPrima R. C. (2010). Elementary Differential Equations (9th ed.). John Wiley & Sons, Inc. ISBN 978-0470554913.
+
+</section>

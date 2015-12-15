@@ -1,0 +1,104 @@
+---
+title: Area of Curves
+categories: Calculus
+icon: /img/icons/single-integral.png
+...
+
+<section class="primary">
+
+# Definition
+
+<div class="block">
+
+![Area Under Curve](/img/graphs/calculus/area-under-curve.png)
+
+The **area** $A$ of the region $S$ that lies under the graph of the continuous function $f$ is the limit of
+the sum of the areas of the approximating rectangles $$A = \xlimit{n}{\infty}R_n = \xlimit{n}{\infty}\sum_{i=1}^n
+f(x_i)\Delta x$$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Area Formula
+
+The area formula can be generalized for plane curves.
+
+<section class="secondary">
+
+## Cartesian Curves
+
+We note in this case, area can be interpreted geometrically as the space between the $x$-axis and a curve above the 
+$x$-axis, with "negative" areas occurring for space between the $x$-axis and the curve below the $x$-axis. This is
+exactly the integral from $a$ to $b$:
+
+$$\int_a^bf(x)dx = \xlimit{n}{\infty}\sum_{i=1}^n f(x_i^{*})\Delta x.$$
+
+</section>
+
+<section class="secondary">
+
+## Parametric Curves
+
+Let $x = f(t)$ and $y = g(t)$ such that the conditions for [conversion](#to-cartesian-coordinates) are satisfied 
+(in a piecewise manner if necessary). The area under this curve is
+$$ A = \int_{\alpha}^{\beta} g(t)f'(t)\text{ or } \int_{\beta}^{\alpha} g(t)f'(t)dt\text{.} $$
+
+<div class="proof"> 
+Note $y = F(x)$ can be written as $ g(t) = F(f(t)) $ and so, if $f, F,$ and $f$ are differentiable,
+the Chain Rule gives
+$$ A = \int_a^b ydx = \left[ \int_{\alpha}^{\beta} g(t)f'(t)dt \text{ or } \int_{\beta}^{\alpha} g(t)f'(t)dt \right] $$
+where the limits of integration are found also with the [Substitution Rule](integration_techniques#substitution-rule)
+(when $x = a$, $t$ is either $\alpha$ or $\beta$ and when $x = b$, $t$ is the remaining value).
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Polar Curves
+
+Let $R$ be the region bounded by the polar curve $r = f(\theta)$ and by the rays $\theta = a$ and $\theta = b$, where $f$ is a
+positive continuous function and where $0 < b - a \leq 2\pi$. Then the area $A$ of the polar region $R$ is
+$$ A = \int_a^b \frac{1}{2}r^2 d\theta\text{.} $$
+
+<div class="proof">  
+
+Let $R$ be the region bounded by the polar curve $r = f(\theta)$ and by rays $\theta = a$ and $\theta = b$, 
+where $f$ is a positive continuous function and where $0 < b - a \leq 2\pi$. We divide the interval $[a, b]$ into 
+subintervals with endpoints $\inflate{\theta}{n}$ and equal width $\Delta{\theta}$. 
+
+The rays $\theta = \theta_i$ then divide $R$ into $n$ smaller regions with central angle $\Delta{\theta} = \theta_i - \theta-{i-1}$.
+If we choose $\theta_i^*$ in the $\spscript{i}{th}$ subinterval $[\theta_{i-1}, \theta_i]$, then the area $\Delta{A_i}$ of the 
+$\spscript{i}{th}$ region is approximated by the area of a sector of a circle with central angle $\Delta{\theta}$ and radius
+$f(\theta_i^*)$. Since an area of a sector of a circle is $A = \frac{1}{2}r^2\theta$, we have 
+$$ \Delta{A_i} \approx \frac{1}{2}[f(\theta_i^*)]^2\Delta{\theta}. $$
+Thus the total area is 
+
+$$ \xlimit{n}{\infty}\sum_{i=1}^n\frac{1}{2}[f(\theta_i^*)]^2\Delta{\theta} = \int_a^b \frac{1}{2}[f(\theta)]^2 d\theta. $$
+
+</div>
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Parametric Equations](parametric_equations)
+- [Polar Equations](polar_equations)
+- [Vector Functions](parametric_equations#vector_functions)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

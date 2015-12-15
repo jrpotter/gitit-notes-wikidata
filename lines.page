@@ -1,0 +1,119 @@
+---
+title: Lines
+categories: Calculus
+icon: /img/icons/geometric-constructions.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Parametric Line](/img/diagrams/calculus/lines-three-dimension.png)
+
+The line serves as the fundamental building block of differential geometry, as it allows complete description
+of all two- and three-dimensional shapes (and an algebraic means of describing higher dimensions), depending
+on the construction of said lines. For instance, by correctly choosing two lines, one can construct a plane in
+3D space. Additionally, it provides a geometrical interpretation of limits in general, since a derivative is the 
+slope of the tangent line at a given point- the secant line constructed when approaching a value in a limit eventually
+"reaches" the desired point. 
+
+In particular, we focus on the three-dimensional case, with an understanding that the formulas can be simplified on a 
+plane (or not referred to at all). A line $L$ in three-dimensional space is determined when we know a point 
+$P_0(x_0, y_0, z_0)$ on $L$ and the direction of $L$. Thus, the direction of a line is described by a vector. 
+Let $\vec{v}$ be a vector parallel to $L$, and $P(x, y, z)$ be an arbitrary point on $L$. 
+
+If $\vec{r}_0$ and $\vec{r}$ are the position vectors of $P_0$ and $P$, and $\vec{a}$ is a vector with representation 
+$\overrightarrow{P_0P}$, then the [Triangle Law](vectors#triangle-law) for vector addition tells us 
+$\vec{r} = \vec{r}_0 + \vec{a}$. Since $\vec{a}$ and $\vec{v}$ are parallel, there exists a scalar $t$ such that 
+$\vec{a} = t\vec{v}$. Thus $$ \vec{r} = \vec{r}_0 + t\vec{v}. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Parametric Equations
+
+If the vector $\vec{v}$ that gives the direction of the line $L$ is written in component form as $\vec{v} = \langle a, b, c \rangle$,
+then we have $t\vec{v} = \langle ta, tb, tc \rangle$. We also write $\vec{r} = \langle x, y, z \rangle$ and $\vec{r}_0 =
+\langle x_0, y_0, z_0 \rangle$, so the vector equation becomes
+$$ \langle x, y, z \rangle = \langle x_0 + ta, y_0 + tb, z_0 + tc \rangle, $$
+meaning the parametric equations of a line are
+$$ x = x_0 + at, \quad y = y_0 + bt, \quad z = z_0 + ct. $$
+
+<section class="secondary">
+
+## Symmetric Equations
+
+By eliminating the parameter $t$ in the [parametric equations](#parametric-equations) above, we find that
+$$ \frac{x - x_0}{a} = \frac{y - y_0}{b} = \frac{z - z_0}{c}, $$
+the **symmetric equations** of $L$.
+
+</section>
+
+<section class="secondary">
+
+## Line Segments
+
+We know the vector equation of a line through vector $\vec{r}_0$ in the direction of a vector
+$\vec{v}$ is $\vec{r} = \vec{r}_0 + t\vec{v}$. If the line also passes through $\vec{r}_1$, then we
+can take $\vec{v} = \vec{r}_1 - \vec{r}_0$ and so its vector equation is
+$$ \vec{r} = \vec{r}_0 + t(\vec{r}_1 - \vec{r}_0) = (1 - t)\vec{r}_0 + t\vec{r}_1. $$
+We note the line segment from $\vec{r}_0$ to $\vec{r}_1$ is given by the parameter interval $0 \leq t \leq 1$.
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# Tangent Lines
+
+<div class="block">
+
+![Tangent Line](/img/graphs/calculus/tangent-line.png)
+
+A tangent line is a line that meets (is tangent to) a curve at one point. Similarly, we could define the slope of a point 
+on a curve to be the slope of the tangent line that intersects the curve at said point. More precisely, the **tangent line** 
+to the curve $y = f(x)$ at the point $P(a,\;f(a))$ is the line through $P$ with slope 
+$$ \xlimit{x}{a} \frac{f(x)-f(a)}{x-a} $$ provided that this limit exists. Alternatively, we could define the tangent line 
+with slope calculated via an offset: $$ m = \xlimit{h}{0} \frac{f(a+h)-f(a)}{h}. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Linearization
+
+The **linear approximation** or **tangent line approximation** of $f$ at $a$ is $$ f(x) \approx f(a) + f'(a)(x-a). $$
+
+Note this is merely a reformulation of the point-slope form of a line. The linear function whose graph is the above 
+approximation is called the **linearization** of $f$ at $a$. An alternative means of visualizing linearization is 
+through the use of **differentials** as follows:
+
+Let $y = f(x)$, where $\;f$ is a [differentiable](differentiation) function. Then the **differential** $dx$ is an independent 
+variable and differential $dy$ is defined in terms of $dx$ as $$ dy = f'(x)dx. $$
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Complex Lines](complex_numbers#straight-lines)
+- [Newton's Method](newtons_method)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

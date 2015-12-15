@@ -1,0 +1,44 @@
+---
+title: Front Page
+...
+
+<section class="primary">
+
+# Summary
+
+This wiki is a collection of personal notes designed so I can easily access different concepts I've learned and try to connect them together. While I began initially with a large collection of LaTeX and different UML-like diagrams (such as yEd), they failed to convey the connections between seemingly disparate concepts from different fields. In addition, they provided a format that was less than ideal to include references from elsewhere, footnotes, and a means of filtering any queries in a very generalized manner. A wiki seemed like a great alternative.
+
+This wiki is built on Gitit, using HappStack underneath. As of now, the site is not up on any servers; it is merely personal, but I may upload it once I have [FuzzyKayak](www.fuzzykayak.com) in a relatively complete state.
+
+</section>
+
+<section class="primary">
+
+# Discussions
+
+In order to relate information together, we include additional content under the *discuss* tab of a given page. For example, if I want to relate inner product spaces and integration, I would add a definition of an inner product space (integration of products of functions) under the inner product space tab. Discussions will also contain examples of applying different concepts. Essentially, the page itself is related to direct information while the discussion provides applications.
+
+</section>
+
+<section class="primary">
+
+# Schedule
+
+Shift attention to completing statistics and differential equations. Could potentially finish within
+the week, and then review. Start up CV/AA/CB/Algorithms the following week after I finish RDDing.
+Also need to think about blog/online posts. Need to come up with no schedule after that (reading books!).
+
+</section>
+
+<section class="primary">
+
+# Internal Assignments
+
+- Abstract Algebra: Ch. 22-23 Notes & Problems
+- Algorithms: Sorting Algorithms
+- Combinatorics: Ch. 3.3 Notes & Problems
+- Complex Variables: Ch. 1.5-1.6 Notes & Problems
+- Differential Equations: 5.4 Problems
+- Machine Learning: Chapter 3 Notes & Lab
+
+</section>

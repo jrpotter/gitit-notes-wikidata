@@ -1,0 +1,125 @@
+---
+title: Irreducibility Over Fields
+categories: Abstract Algebra
+icon: /img/icons/arithmetic.png
+...
+
+<section class="primary">
+
+# Summary
+
+A nonconstant polynomial $f(x) \in F[x]$ is **irreducible over $F$** or is an **irreducible polynomial in $F[x]$**
+if $f(x)$ cannot be expressed as a product $g(x)h(x)$ of two polynomials $g(x)$ and $h(x)$ in $F[x]$ both of lower
+degree than the degree of $f(x)$. If $f(x) \in F[x]$ is a nonconstant polynomial that is not irreducible over $F$,
+then $f(x)$ is **reducible over $F$**.
+
+</section>
+
+<section class="primary">
+
+# Factor Theorem
+
+We note an element $a$ in a field $F$ is a zero of $f(x) \in F[x]$ if and only if $x - a$ is a factor of $f(x)$
+in $F[x]$. Note this is where the derivation of the idea of zeros of a polynomial derive from, and how we can determine
+uniqueness of a zero (since every nonzero element is a unit, it cannot be a divisor of zero). This also tells us if
+we can find a zero of a polynomial, then we can apply the [division algorithm](division_algorithm) and simplify the
+overall problem.
+
+<div class="proof">
+
+$\forward$ Suppose that for $a \in F$ we have $f(a) = 0$. Because of the division algorithm for ring polynomials, we
+see that there must exist a $q(x), r(x) \in F[x]$ such that
+$$ f(x) = (x - a)q(x) + r(x), $$ where either $r(x) = 0$ or the degree of $r(x)$ is less than $1$. Thus we must
+have $r(x) = c$ for some $c \in F$, though our intention is to show $c$ must be $0$.
+But by the evaluation homomorphism $\phi_a: F[x] \rightarrow F$, and by the hypothesis of $a$ being a $0$, we see that
+$$ 0 = f(a) = 0q(a) + c, $$ so $c = 0$ as desired. Thus $x - a$ is a factor of $f(x)$.
+
+$\backward$ Suppose next that $x - a$ is a factor of $f(x)$ in $F[x]$. Then
+$$ f(x) = (x - a)q(x). $$ Therefore, applying $\phi_a$ to $f(x) = (x - a)q(x)$, we have $$ f(a) = 0q(a) = 0. $$
+
+</div>
+
+<section class="secondary">
+
+## Zero Count
+
+A nonzero polynomial $f(x) \in F[x]$ of degree $n$ can have at most $n$ zeros in a field $F$.
+
+<div class="proof">
+
+This follows naturally from the idea of linear factorizations. If $a_1 \in F$ is a zero of $f(x)$, then
+we note $$ f(x) = (x - a_1)q_1(x), $$ where the degree of $q_1(x)$ is $n - 1$. We can continue this process
+for up to $n$ zeros, until we arrive to $$ f(x) = (x - a_1)\cdots(x - a_r)q_r(x), $$ where $q_r(x)$ has no
+further zeros in $F$ and $r \leq n$.
+
+Additionally, for $b \neq a_i$ for $i = 1, \ldots, r$ and $b \in F$, then
+$$ f(b) = (b - a_1)\cdots(b - a_r)q_r(b) \neq 0, $$
+since $F$ has no divisors of $0$ and none of $b - a_i$ or $q_r(b)$ are $0$ by construction.
+
+</div>
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# Factoring in Rational Ring
+
+Let $f(x) \in \bbz[x]$. Then $f(x)$ factors as a product of polynomials of degrees $m$ and $n$ in $\bbq[x]$ if and only
+if $f(x)$ factors as a product of polynomials of degrees $m$ and $n$ in $\bbz[x]$. We avoid proving this, but find that
+if $f(x) = x^n + a_{n-1}x^{n-1} + \cdots + a_0$ is in $\bbz[x]$ with $a_0 \neq 0$, and if $f(x)$ has a zero in $\bbq$,
+then it has a zero $m$ in $\bbz$, and $m$ must divide $a_0$.
+
+<div class="proof">
+
+If $f(x)$ has a zero $a$ in $\bbq$, then $f(x)$ has a linear factor $x - a$ in $\bbq[x]$. Thus $f(x)$ has a factorization
+with a linear factor in $\bbz[x]$, so for some $m \in \bbz$ we must have
+$$ f(x) = (x - m)\left(x^{n-1} + \cdots - a_0 / m\right). $$
+Thus $a_0 / m$ is in $\bbz$, so $m$ divides $a_0$.
+
+</div>
+
+<section class="secondary">
+
+## Eisenstein Criterion
+
+Let $p \in \bbz$ be a prime. Suppose that $f(x) = a_nx^n + \cdots + a_0$ is in $\bbz[x]$, and 
+$a_n \not\equiv 0 \;(\text{mod}\;p)$, but $a_i = 0 \;(\text{mod}\;p)$ for all $i < n$, with 
+$a_0 \not\equiv 0 \;(\text{mod}\;p^2)$. Then $\;f(x)$ is irreducible over $\bbq$.
+
+<div class="proof">
+
+By the equivalence of reducibility between $\bbz$ and $\bbq$, we need only show that $f(x)$ does not factor into polynomials
+of lower degree in $\bbz[x]$. Let $$ f(x) = \left(b_rx^r + \cdots + b_0\right)\left(c_sx^s + \cdots + c_0\right) $$
+be a factorization in $\bbz[x]$, with $b_r \neq 0$, $c_s \neq 0$, and $r, s < n$. By hypothesis, we know that
+$a_0 \not\equiv 0 \;(\text{mod}\;p^2)$, implying that $b_0$ and $c_0$ are not both congruent to $0$ modulo $p$.
+
+Therefore, suppose that $b_0 \not\equiv 0 \;(\text{mod}\;p)$ and $c_0 \equiv 0 \;(\text{mod}\;p)$ (note that $a_0$
+must be such that $a_0 = 0 \;(\text{mod}\;p)$). Again, by hypothesis, we already note $a_n \not\equiv 0 \;(\text{mod}\;p)$ 
+implying that $b_r, c_s \not\equiv 0 \;(\text{mod}\;p)$, since $a_n = b_rc_s$. Now, let $m$ be the smallest value of $k$
+such that $c_k \not\equiv 0 \;(\text{mod}\;p)$. Then, by polynomial multiplication, we have
+$$ 
+  a_m = b_0c_m + b_1c_{m-1} + \cdots + \begin{cases}
+    b_mc_0 &\text{ if } r \geq m, \\
+    b_rc_{m-r} &\text{ if } r < m.
+  \end{cases}
+$$
+By construction, we see that neither $b_0$ nor $c_m$ are congruent to $0$ modulo $p$ but $c_{m-1}, \ldots, c_0$ are. 
+Therefore, it must be the case that $a_m \not\equiv 0 \;(\text{mod}\;p)$, and the only suitable choice for $m$ must then 
+be $n$. That is, $a_n$ is the only coefficient that is not modulo $p$, so $m = n$. Consequently, $s = n$, contradicting 
+the assumption that $s < n$ (i.e. the assumption that a nontrivial factorization existed).
+
+</div>
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Fraleigh, John B. (2003). A First Course In Abstract Algebra (7th ed.). Pearson. ISBN 978-0201763904.
+
+</section>

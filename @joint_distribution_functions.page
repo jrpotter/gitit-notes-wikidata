@@ -1,0 +1,39 @@
+---
+title: @Joint Distribution Functions
+categories: Statistics
+icon: /img/icons/random-variables.png
+...
+
+<section class="primary">
+
+# Multinomial Distribution
+
+When a sequence of $n$ independent and identical experiments are performed, we have the **multinomial distribution**, a 
+generalization of the [binomial distribution](binomial_distribution). Suppose that each experiement can result in any one 
+of $r$ possible outcomes with respective probabilities $$ \inflate{p}{r}, \sum_{i=1}^r p_i = 1. $$
+If we let $X_i$ denote the number of the $n$ experiments that result in outcome number $i$, then
+$$ 
+  \bbps{X_1 = n_1, X_2 = n_2, \ldots, X_r = n_r} = 
+  \frac{n!}{n_1!n_2!\cdots n_r!} p_1^{n_1}p_2^{n_2}\cdots p_r^{n_r}
+$$
+whenever $\sum_{i=1}^r n_i = n$.
+
+<div class="proof">
+
+Note that any sequence of outcomes for the $n$ experiments that leads to outcome $i$ occurring $n_i$ times for 
+$i = 1, 2, \ldots, r$ will have probability $p_1^{n_1}p_2^{n_2}\cdots p_r^{n_r}$ of occurring (under the assumption of 
+independence). There are
+$$ \frac{n!}{n_1!n_2!\ldots n_r!} $$
+such sequences of outcomes, establishing the proof.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

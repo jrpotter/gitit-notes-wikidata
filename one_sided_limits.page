@@ -1,0 +1,33 @@
+---
+title: One-Sided Limits
+categories: Calculus
+icon: /img/icons/limits.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Different One-Sided Limits](/img/graphs/calculus/one-sided-limits.png)
+
+Limits can also approach from just one side. For instance, given a bounded interval $[a, b]$, a limit can approach $b$ from
+the left side and $a$ from the right side. The left-handed limit and right-handed limits respectively are
+$$ \xlimit[-]{x}{a}\;f(x) = L \text{ and } \xlimit[+]{x}{a} f(x) = L $$
+if for every number $\epsilon > 0$ there is a number $\delta > 0$ such that if $a - \delta < x < a$ (or $a < x < a + \delta$)
+then $\left|\;f(x)-L\right| < \epsilon$. We also note that if the limit of some value is the same from the left and right, 
+then the limit exists at the given point. That is,
+$$ \xlimit{x}{a}\;f(x) = L \text{ if and only if } \xlimit[-]{x}{a}\;f(x) = L \text{ and } \xlimit[+]{x}{a}\;f(x) = L. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

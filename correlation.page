@@ -1,0 +1,44 @@
+---
+title: Correlation
+categories: Statistics
+icon: /img/icons/random-variables.png
+...
+
+<section class="primary">
+
+# Summary
+
+We define the **correlation** of two random variables $X$ and $Y$, denoted by $\rho(X, Y)$, as
+$$ \rho(X, Y) = \frac{\text{Cov}(X, Y)}{\sqrt{\text{Var}(X)\text{Var}(Y)}}, $$
+so long as $\text{Var}(X)$ and $\text{Var}(Y)$ is positive. This serves as a measure of linearity between the random variables
+$X$ and $Y$. Furthermore, it can be shown that $$ -1 \leq \rho(X, Y) \leq 1. $$
+
+<div class="proof">
+
+Suppose $X$ and $Y$ have variances $\sigma_x^2$ and $\sigma_y^2$ respectively. Noting that variance is always nonnegative
+(since its the expectation of a squared value) and by the [linearity of variance](variance#linearity-of-variance), we 
+get that
+$$\begin{align*}
+  0 &\leq \text{Var}\left(\frac{X}{\sigma_x} + \frac{Y}{\sigma_y}\right)                                                \\
+    &= \frac{\text{Var}(X)}{\sigma_x^2} + \frac{\text{Var}(Y)}{\sigma_y^2} + \frac{2\text{Cov}(X, Y)}{\sigma_x\sigma_y} \\
+    &= 2 + 2\rho(X, Y) = 2[1 + \rho(X, Y)],
+\end{align*}$$
+implying that $-1 \leq \rho(X, Y)$. Similarly,
+$$\begin{align*}
+  0 &\leq \text{Var}\left(\frac{X}{\sigma_x} - \frac{Y}{\sigma_y}\right)                                                   \\
+    &= \frac{\text{Var}(X)}{\sigma_x^2} + \frac{\text{Var}(Y)}{(-\sigma_y)^2} - \frac{2\text{Cov}(X, Y)}{\sigma_x\sigma_y} \\
+    &= 2 + 2\rho(X, Y) = 2[1 + \rho(X, Y)],
+\end{align*}$$
+implying that $\rho(X, Y) \leq 1$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

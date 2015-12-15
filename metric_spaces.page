@@ -1,0 +1,61 @@
+---
+title: Metric Spaces
+categories: Abstract Algebra Analysis
+icon: /img/icons/arithmetic.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Euclidean Distances](/img/diagrams/analysis/metric-space-euclidean.png)
+
+A **metric space** is a set $X$ with a metric $d: X \times X \rightarrow \bbr$, denoted $(X, d)$, satisfying for all $p, q \in X$:
+
+1. $d(p, q) \geq 0$ with equality if and only if $p = q$.
+2. $d(p, q) = d(q, p)$.
+3. The [triangle inequality](triangle_inequality) holds; that is $d(p, q) \leq d(p, r) + d(r, q)$ for some $r \in X$.
+
+Given a metric space $(X, d)$, we define the **diameter** of a set $A \subset X$ to be
+$$ \text{diam}(A) = \text{sup}\{d(x, y): x, y \in A\}. $$
+
+We can use the idea of metric spaces to generalize our theory of analysis further. In Advanced Calculus, we were limited to just
+the real numbers, but most conclusions could be generalized to an arbitrary space that satisfies the above conditions.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Completeness
+
+A metric space $X$ in which every [Cauchy sequence](cauchy_sequences) converges to a point in $X$ is **complete**. It goes 
+to show that any [compact](compact_sets) metric space is complete, and furthermore, that $\bbr$ is complete.
+
+<div class="">
+
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Compact Sets](compact_sets)
+- [Neighborhoods](neighborhoods)
+- [Open/Closed Sets](open_closed_sets)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Abott, Stephen (2001). Understanding Analysis (1st ed.). Springer. ISBN 978-0387950605.
+
+</section>

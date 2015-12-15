@@ -1,0 +1,157 @@
+---
+title: Binomial Distribution
+categories: Statistics
+icon: /img/icons/random-variables.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Binomial Distribution](/img/graphs/statistics/binomial-distribution.png)
+
+Let $X$ be a random variable representing the number of successes occurring in $n$ independent trials,
+each of which results in a success with probability $p$ and failure with probability $1-p$. Then
+$X$ is said to be a **binomial random variable** with parameters $(n, p)$.
+
+The probability mass function of a binomial random variable having parameters $(n, p)$ is given by
+$$ p(i) = \binom{n}{i}p^i(1-p)^{n-i}\quad i=0,1,\ldots,n. $$
+
+A random variable $X$ is said to be a **Bernoulli Random Variable** if its probability mass function is given by
+$$\begin{align*}
+  p(0) &= \bbps{X=0} = 1 - p \\
+  p(1) &= \bbps{X=1} = p
+\end{align*}$$
+where $p$, $0 \leq p \leq 1$, is the probability that a given trial is a success. Note a Bernoulli random
+variable can equivalently be identified as a binomial random variable with parameters $(1, p)$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Expectation
+
+The expectation of a binomial random variable $X$ with parameters $n$ and $p$ is $$ E[X] = np. $$
+
+<div class="proof">
+
+We differentiate the moment generating function and evaluate at $t = 0$ as follows:
+$$\begin{align*}
+  M'(t) &= \leibniz{t}(pe^t + 1 - p)^n     \\
+        &= n(pe^t + 1 - p)^{n-1}(pe^t).
+\end{align*}$$
+Therefore
+$$\begin{align*}
+  M'(0) &= n(p + 1 - p)^{n-1}(p) \\
+        &= np.
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Variance
+
+The variance of a binomial random variable $X$ with parameters $n$ and $p$ is $$ \text{Var}(X) = np(1-p). $$
+
+<div class="proof">
+
+We first differentiate the moment generating function twice. From the result found in [expectation](#expectation), we see that
+$$ M'(t) = n(pe^t + 1 - p)^{n-1}(pe^t). $$ Thus,
+$$ M''(t) = n(n-1)(pe^t + 1 - p)^{n-2}(pe^t)^2 + n(pe^t + 1 - p)^{n-1}(pe^t). $$
+This implies
+$$ E[X^2] = M''(0) = n(n-1)p^2 + np = np[(n-1)p + 1] $$
+and therefore
+$$\begin{align*}
+  \text{Var}(X) &= E[X^2] - (E[X])^2        \\
+                &= np[(n-1)p + 1] - n^2p^2  \\
+                &= np[(n - 1)p + 1 - np]    \\
+                &= np(1 - p).
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Moment Generating Function
+
+If $X$ is a binomial random variable with parameters $n$ and $p$, then the 
+[moment generating function](moments#generating-functions) $M(t)$ is
+$$ M(t) = (pe^t + 1 - p)^n. $$
+
+<div class="proof">
+
+Let $X$ be a binomial random variable with parameters $n$ and $p$. Then
+$$\begin{align*}
+  M(t) &= E[e^{tX}]                                     \\
+       &= \sum_{k=0}^n e^{tk}\binom{n}{k}p^k(1-p)^{n-k} \\
+       &= \sum_{k=0}^n \binom{n}{k}(pe^t)^k(1-p)^{n-k}  \\
+       &= (pe^t + 1 - p)^n.
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Convolution
+
+We note, by the physical interpretation of a binomial random variable, the it is closed under [convolution](convolution). That is,
+if $X$ and $Y$ are binomial random variables with parameters $(n, p)$ and $(m, p)$ respectively, then binomial random variable
+$X + Y$ has parameters $(n + m, p)$.
+
+<div class="proof">
+
+We prove this more by argument as opposed to anything rigorous. Suppose $X$ and $Y$ are binomial random variables with parameters 
+$(n, p)$ and $(m, p)$ respectively. Note that each binomial random variable consists of a sequence of independent trials
+and thus the addition of two binomial random variables yields another binomial random variable consisting of $n + m$ trials.
+Since the probability is $p$ in both cases, it logically follows that $X + Y$ is also binomial with parameters
+$(n + m, p)$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Computation
+
+Supposing $X$ is a binomial random variable with parameters $(n,p)$,
+$$ \bbps{X=k+1} = \frac{p}{1-p} \cdot \frac{n-k}{k+1} \cdot \left(\bbps{X=k}\right). $$
+This follows directly from the notion that if $X$ is a binomial random variable with parameters $(n, p)$, where 
+$0 < p < 1$, then as $k$ goes from $0$ to $n$, $\bbps{X=k}$ first increases monotonically and then decreases monotonically, 
+reaching its largest value when $k$ is the largest integer less than or equal to $(n+1)p$.
+
+<div class="proof">
+
+We prove the proposition by considering $\frac{\bbps{X=k}}{\bbps{X=k-1}}$ and determining for what values of
+$k$ it is greater or less than $1$. Now,
+
+$$\begin{align}
+  \frac{\bbp[X=k]}{\bbp[X=k-1]} &= \frac{\binom{n}{k}p^k(1-p)^{n-k}}{\binom{n}{k-1}p^{k-1}(1-p)^{n-k+1}} \\
+                                &= \frac{(n-k+1)p}{k(1-p)}
+\end{align}$$
+
+Hence, $\bbps{X=k} \geq \bbps{X=k-1}$ if and only if $(n-k+1)p \geq k(1-p)$, or, equivalently, if and only
+if $k \leq (n+1)p$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

@@ -1,0 +1,143 @@
+---
+title: Single-Variable Calculus
+categories: Calculus
+icon: /img/icons/single-integral.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Gottfried Wilhelm von Leibniz](/img/portraits/leibniz.jpg)
+
+Single-Variable Calculus refers to the subject focused on analyzing the change of a function of a single variable
+with respect to some limiting factor. For example, when exploring derivatives, the limiting factor is the slope of
+the approximate line at a given point and, in regards to integrals, we refer to the approximate area of the function
+under a given curve. It also serves as the foundation of continuous math; even when exploring higher order functions,
+we are generally concerned with just continuous ones (or at least those with only a finite number of discontinuities).
+
+It is important to note that many concepts of [Multi-Variable Calculus](multi_calculus) apply to that of Single
+Variable Calculus if the dimensions following the first two are set to $0$. For example, [curvature](/MC/curvature)
+is a concept that helps explain the change in a curve of a function in vector space, but the same concept can be extended
+to plane curves by not regarding the $z$ dimension. Other higher ordered concepts of those in Single Variable Calculus
+also decompose to their lower order counterparts (e.g. [line integrals](/MC/line_integrals), 
+[parametric surfaces](/MC/parametric_surfaces), etc.).
+
+Leibniz (pictured right) and Newton are often accredited with the development of Calculus independently, though Leibniz's 
+notation, which was much more convenient and well thought out, is primarily used today.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Trigonometry
+
+<div class="extract" data-target="/trigonometric_identities">
+
+- [Hyperbolic Functions](hyperbolic_functions)
+- [Trigonometric Identities](trigonometric_identities)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Limits
+
+<div class="extract" data-target="/limits">
+
+- [Algebraic Limit Theorem](algebraic_limit_theorem)
+- [Continuity](continuity)
+- [Continuity Limit Theorem](continuity_limit_theorem)
+- [Convergence](convergence)
+- [Euler's Number](eulers_number)
+- [Intermediate Value Theorem](intermediate_value_theorem)
+- [Limits](limits)
+- [One-Sided Limits](one_sided_limits)
+- [Sequence Limit Laws](sequence_limit_laws)
+- [Squeeze Theorem](squeeze_theorem)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Differentiation
+
+<div class="extract" data-target="/differentiation">
+
+- [Average Value](average_value)
+- [Chain Rule](chain_rule)
+- [Critical Numbers](critical_numbers)
+- [Differentiation](differentiation)
+- [Extreme Value Theorem](extreme_value_theorem)
+- [Fermat's Theorem](fermats_theorem)
+- [Implicit Differentiation](implicit_differentiation)
+- [L'Hospital's Rule](lhospitals_rule)
+- [Mean Value Theorem](mean_value_theorem)
+- [Newton's Method](newtons_method)
+- [Rolle's Theorem](rolles_theorem)
+- [Rules of Differentiation](rules_of_differentiation)
+- [Tangent Lines](lines#tangent-lines)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Integration
+
+<div class="extract" data-target="/integration">
+
+- [Arc Length](arc_length)
+- [Area of Curves](area_of_curves)
+- [Constant Integration](constant_integration)
+- [Fundamental Theorem of Calculus](fundamental_theorem_of_calculus)
+- [Integration](integration)
+- [Integration by Parts](integration_by_parts)
+- [Midpoint Rule](midpoint_rule)
+- [Partial Fractions](partial_fractions)
+- [Simpson's Rule](simpsons_rule)
+- [Substitution Rule](substitution_rule)
+- [Surface of Revolution](surface_of_revolution)
+- [Trapezoidal Rule](trapezoidal_rule)
+- [Volumes](volumes)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Sequences & Series
+
+<div class="extract" data-target="/series">
+
+- [Absolute Convergence Test](absolute_convergence_test)
+- [Alternating Series Test](alternating_series_test)
+- [Comparison Test](comparison_test)
+- [Divergence Test](divergence_test)
+- [Integral Test](integral_test)
+- [Monotonic Sequence Theorem](monotonic_sequence_theorem)
+- [Power Series](power_series)
+- [Series](series)
+- [Taylor Series](taylor_series)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.  
+
+</section>

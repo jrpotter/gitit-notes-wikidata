@@ -1,0 +1,51 @@
+---
+title: Abel's Theorem
+categories: Statistics
+icon: /img/icons/second-order-diff-equations.png
+...
+
+<section class="primary">
+
+# Summary
+
+If $y_1$ and $y_2$ are solutions of the differential equation $L[y]$ where $p$ and $q$ are continuous on an open interval
+$I$, then the Wronskian $W(y_1, y_2)(t)$ is given by $$ W(y_1, y_2)(t) = c\exp\left[-\int p(t)\;dt\right], $$
+where $c$ is a certain constant that depends on $y_1$ and $y_2$, but not on $t$. Further, $W(y_1, y_2)(t)$ either
+is zero for all $t$ in $I$ (if $c = 0$) or else is never zero in $I$ (if $c \neq 0$).
+
+<div class="proof">
+
+We start by noting that $y_1$ and $y_2$ satisfy
+$$\begin{align*}
+  y_1'' + p(t)y_1' + q(t)y_1 &= 0, \\
+  y_2'' + p(t)y_2' + q(t)y_2 &= 0.
+\end{align*}$$
+Then multiplying the first equation by $-y_2$ and the second by $y_1$, then adding the resulting equations, we obtain
+$$ (y_1y_2'' - y_1''y_2) + p(t)(y_1y_2' - y_1'y_2) = 0. $$ Observing that $W' = y_1y_2'' - y_1''y_2$, we can write
+$$ W' + p(t)W = 0. $$ Solving the above [separable equation](separable_equation) we see that
+$$ W(t) = c\exp{\left[-\int p(t)\;dt\right]}, $$ where $c$ is a constant. Here we note that the Wronskian is zero only
+if $c = 0$, proving our desired result.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Constant Coefficients](constant_coefficients)
+- [Homogeneous Equations](homogeneous_equations)
+- [Nonhomogeneous Equations](nonhomogeneous_equations)
+- [System of First Order Linear Equations](system_of_first_order_linear_equations)
+- [Wronskian](wronskian)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Boyce W.E. & DiPrima R. C. (2010). Elementary Differential Equations (9th ed.). John Wiley & Sons, Inc. ISBN 978-0470554913.
+
+</section>

@@ -1,0 +1,47 @@
+---
+title: Negative Hypergeometric Distribution
+categories: Statistics
+icon: /img/icons/random-variables.png
+...
+
+<section class="primary">
+
+# Summary
+
+Suppose an urn contains $n + m$ balls of which $n$ are special and $m$ are ordinary. These items are removed
+one at a time, with each new removal being equally likely to be any of the balls that remain in the urn.
+The random variable $Y$, equal to the number of balls that need to be withdrawn until a total of $r$ special
+balls have been removed, is said to have a **negative hypergeometric distribution**.
+
+The probability mass function of a negative hypergeometric random variable $Y$ is
+$$ \bbps{Y = k} = \frac{\binom{n}{r-1}\binom{m}{k-r}}{\binom{n+m}{k-1}}\frac{n-r+1}{n+m-k+1}. $$
+Note this follows since the first $k-1$ withdrawals consist of $r-1$ special and $k-r$ ordinary balls, and
+the $\spscript{k}{th}$ ball is special.
+
+</section>
+
+<section class="primary">
+
+# Expectation
+
+The expected value of a negative hypergeometric random variable $Y$ with parameters $(r, m, n)$ is
+$$ E[Y] = \frac{r(n + m + 1)}{n + 1}. $$
+
+</section>
+
+<section class="primary">
+
+# Variance
+
+The variance of a negative hypergeometric random variable $Y$ with parameters $(r, m, n)$ is
+$$ \text{Var}(Y) = \frac{mr(n + 1 - r)(n + m + 1)}{(n + 1)^2(n + 2)}. $$
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

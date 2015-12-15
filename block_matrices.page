@@ -1,0 +1,78 @@
+---
+title: Block Matrices
+categories: Linear Algebra
+icon: /img/icons/matrix-transformations.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+<div style="float: right; text-align: center; margin-left: 10px;">
+
+$$\begin{bmatrix}
+  a_{11} & a_{12} & \cdots & a_{1k} & | & b_{11} & b_{12} & \cdots & b_{1m} \\
+  a_{21} & a_{22} & \cdots & a_{2k} & | & b_{21} & b_{22} & \cdots & b_{2m} \\
+  \vdots & \vdots &        & \vdots & | & \vdots & \vdots &        & \vdots \\
+  a_{r1} & a_{r2} & \cdots & a_{rk} & | & b_{r1} & b_{r2} & \cdots & b_{rm} \\
+    --   &   --   &   --   &   --   & + &   --   &   --   &   --   &   --   \\
+  c_{11} & c_{12} & \cdots & c_{1p} & | & d_{11} & d_{12} & \cdots & d_{1n} \\
+  c_{21} & c_{22} & \cdots & c_{2p} & | & d_{21} & d_{22} & \cdots & d_{2n} \\
+  \vdots & \vdots &        & \vdots & | & \vdots & \vdots &        & \vdots \\
+  c_{q1} & c_{q2} & \cdots & c_{qp} & | & d_{q1} & d_{q2} & \cdots & d_{qn} \\
+\end{bmatrix}$$
+
+<span>Example Block Matrix</span>
+
+</div>
+
+A **block matrix** (or **partitioned matrix**) is a matrix that is partitioned into rectangular submatrices,
+called **blocks**, by means of horizontal and vertical lines that go all the way through the matrix. Note
+the blocks need not be of equal size.
+
+The block matrix can be inverted and multiplied under certain conditions (for example, multiplication is
+defined only if all sub-multiplications are also well-defined), but these additional properties are not
+included in this document.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Determinants
+
+If $m = \begin{bmatrix} A & B \\ 0 & C \end{bmatrix}$, where $A$ and $C$ are square matrices (though not
+necessarily of the same size), then
+$$ \text{det} \begin{bmatrix} A & B \\ 0 & C \end{bmatrix} = (\text{det}\;A)(\text{det}\;C). $$
+Likewise,
+$$ \text{det} \begin{bmatrix} A & 0 \\ B & C \end{bmatrix} = (\text{det}\;A)(\text{det}\;C). $$
+
+<div class="proof">
+
+If $P_A$ is a pattern in $A$ and $P_C$ is a pattern in $C$, then their concatenation, $P_M = (P_A, P_C)$ will
+be a pattern in $M$, with $\text{prod}\;P_M = (\text{prod}\;P_A)(\text{prod}\;P_C)$ and 
+$\text{sgn}\;P_m = (\text{sgn}\;P_A)(\text{sgn}\;P_C)$, since the number of inversions in $P_M$ will be the
+sum of those in $P_A$ and $P_C$. Conversely, any pattern $P_M$ in $M$ with a nonzero product will be of this
+form, $P_M = (P_A, P_C)$, since the pattern entries cannot be taken from the zero block in matrix $M$. Now
+$$\begin{align*}
+  (\text{det}\;A)(\text{det}\;C) 
+    &= \left(\sum_{P_A}(\text{sgn}\;P_A)(\text{prod}\;P_A)\right)
+       \left(\sum_{P_C}(\text{sgn}\;P_C)(\text{prod}\;P_C)\right)                              \\
+    &= \sum_{(P_A, P_C)}(\text{sgn}\;P_A)(\text{sgn}\;P_C)(\text{prod}\;P_A)(\text{prod}\;P_C) \\
+    &= \sum_{P_M} (\text{sgn}\;P_M)(\text{prod}\;P_M) = \text{det}\;M
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Bretscher, Otto (2008). Linear Algebra with Applications (4th ed.). Pearson. ISBN 978-0-13-600926-9.
+
+</section>

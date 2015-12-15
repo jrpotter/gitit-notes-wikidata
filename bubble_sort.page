@@ -1,0 +1,59 @@
+---
+title: Bubble Sort
+categories: Algorithms Stub
+icon: /img/icons/binary-tree.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Bubble Sort](/img/diagrams/algorithms/bubble-sort.png)
+
+The name of the bubble sort results from the way the sorting seems to bubble up the items being compared in a given array.
+The entire array is iterated over again and again, swapping adjacent elements in place if out of order during each iteration. 
+The algorithm is complete when no more swaps are needed.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Analysis
+
+
+</section>
+
+<section class="primary">
+
+# Implementation
+
+~~~ { .python }
+def bubble_sort(values):
+    """
+    A simple sorting process in Python that keeps track of any swaps that occurs.
+    """
+    swapped = True
+    while swapped:
+        swapped = False
+        for i in range(1, len(values)):
+            if values[i] < values[i-1]:
+                swapped = True
+                tmp = values[i-1]
+                values[i-1] = values[i]
+                values[i] = tmp
+~~~
+
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Cormen, Thomas H. (2009). Introduction to Algorithms (3rd ed.). MIT Press. ISBN 978-0262033848.
+
+</section>

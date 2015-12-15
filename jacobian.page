@@ -1,0 +1,270 @@
+---
+title: Jacobian
+categories: Calculus Statistics
+icon: /img/icons/partial-derivatives.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![$f:\bbr^2 \rightarrow \bbr^2$ sends square to parallelepiped](/img/diagrams/calculus/jacobian.png)
+
+The **Jacobian** enables a change of variables in multiple integrals, by generalizing the concept of the transformed area of
+some given region from an arbitrary $uv$-plane to the $xy$-plane. Namely, consider a bijective $C^1$ transformation (continuous
+first-order partial derivatives) $T(u, v) = (x, y)$ where $x$ and $y$ are related to $u$ and $v$ by $x = g(u, v)$ and
+$y = h(u, v)$. Then the Jacobian of the transformation $T$ is
+$$ 
+  \pleibniz[(x, y)]{(u, v)} 
+    = \left| \begin{array}{cc} 
+        \pleibniz[x]{u} & \pleibniz[x]{v} \\
+        \pleibniz[y]{u} & \pleibniz[y]{v}
+      \end{array} \right|
+    = \pleibniz[x]{u}\pleibniz[y]{v} - \pleibniz[x]{v}\pleibniz[y]{u}.
+$$
+
+Given this, we can determine a double integral by performing the given change of variables multiplied with the Jacobian as follows:
+$$ \iint_R \;f(x, y) dA = \iint_S \;f(x(u, v), y(u, v)) \left|\pleibniz[(x, y)]{(u, v)}\right|\;du\;dv. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Derivation
+
+The Jacobian of the transformation $T$ given by $x = g(u, v)$ and $y = h(u, v)$ is
+$$ 
+  \pleibniz[(x, y)]{(u, v)} 
+    = \left| \begin{array}{cc} 
+        \pleibniz[x]{u} & \pleibniz[x]{v} \\
+        \pleibniz[y]{u} & \pleibniz[y]{v}
+      \end{array} \right|
+    = \pleibniz[x]{u}\pleibniz[y]{v} - \pleibniz[x]{v}\pleibniz[y]{u}.
+$$
+This ends up being the best linear approximation of the area of the parallelogram spanned by the vectors formed from the 
+potentially nonlinear mapping $T : \bbr^2 \rightarrow \bbr^2$. 
+
+If $T$ is a transformation that maps a region $S$ in $uvw$-space onto a region $R$ in $xyz$-space by means of the equations
+$$ x = g(u, v, w),\quad y = h(u, v, w),\quad z = k(u, v, w), $$
+then the Jacobian is
+$$ 
+  \pleibniz[(x, y, z)]{(u, v, w)} 
+    = \left| \begin{array}{ccc} 
+        \pleibniz[x]{u} & \pleibniz[x]{v} & \pleibniz[x]{w} \\
+        \pleibniz[y]{u} & \pleibniz[y]{v} & \pleibniz[y]{w} \\
+        \pleibniz[z]{u} & \pleibniz[z]{v} & \pleibniz[z]{w}
+      \end{array} \right|.
+$$
+
+<div class="proof">
+
+We derive just the $2 \times 2$ case.
+
+<div class="block" style="text-align: center; width: 100%;">
+<img src="/img/diagrams/calculus/jacobian-uv-xy.png" />
+</div>
+
+Suppose we have a small rectangle $S$ in the $uv$-plane whose lower left corner is the point $(u_0, v_0)$ and whose dimensions 
+are $\Delta{u}$ and $\Delta{v}$. The image of $S$ is then a region $R$ in the $xy$-plane, one of whose boundary points is
+$(x_0, y_0) = T(u_0, v_0)$. The vector
+$$ \pmb{r}(u, v) = g(u, v)\pmb{i} + h(u, v)\pmb{j} $$
+is the position vector of the image of the point $(u, v)$. The equation of the lower side of $S$ is $v = v_0$, whose image
+curve is given by the vector function $\pmb{r}(u, v_0)$. The tangent vector at $(x_0, y_0)$ to this image curve is therefore
+$$ \pmb{r}_u = g_u(u_0, v_0)\pmb{i} + h_u(u_0, v_0)\pmb{j} = \pleibniz[x]{u}\pmb{i} + \pleibniz[y]{u}\pmb{j}. $$
+
+Similarly, the tangent vector at $(x_0, y_0)$ to the image curve of the left side of $S$ (namely $u = u_0$) is
+$$ \pmb{r}_v = g_v(u_0, v_0)\pmb{i} + h_v(u_0, v_0)\pmb{j} = \pleibniz[x]{v}\pmb{i} + \pleibniz[y]{v}\pmb{j}. $$
+
+<div class="block">
+
+![Approximation Visualization](/img/diagrams/calculus/jacobian-approximation.png)
+
+We can approximate the image region $R = T(S)$ by a parallelogram determined by the secant vectors
+$$ 
+  \pmb{a} = \pmb{r}(u_0 + \Delta{u}, v_0) - \pmb{r}(u_0, v_0) \quad\text{ and }\quad
+  \pmb{b} = \pmb{r}(u_0, v_0 + \Delta{v}) - \pmb{r}(u_0, v_0).
+$$
+
+But
+$$ \pmb{r}_u = \xlimit{\Delta{u}}{0} \frac{\pmb{r}(u_0 + \Delta{u}, v_0) - \pmb{r}(u_0, v_0)}{\Delta{u}} $$
+so
+$$ \pmb{r}(u_0 + \Delta{u}, v_0) - \pmb{r}(u_0, v_0) \approx \Delta{u}\pmb{r}_u $$
+and, similarly,
+$$ \pmb{r}(u_0, v_0 + \Delta{v}) - \pmb{r}(u_0, v_0) \approx \Delta{v}\pmb{r}_v. $$
+
+This means we can approximate $R$ by a parallelogram determined by $\Delta{u}\pmb{r}_u$ and $\Delta{v}\pmb{r}_v$
+which is
+$$ \left| (\Delta{u}\pmb{r}_u) \times (\Delta{v}\pmb{r}_v) \right| = \left| r_u \times r_v \right|\Delta{u}\Delta{v}. $$
+
+Computing this cross product yields the Jacobian since
+$$ 
+  r_u \times r_v 
+    = \left| \begin{array}{ccc}
+        \pmb{i}         & \pmb{j}         & \pmb{k} \\
+        \pleibniz[x]{u} & \pleibniz[y]{u} & 0       \\
+        \pleibniz[x]{v} & \pleibniz[y]{v} & 0
+      \end{array} \right| 
+    = \left| \begin{array}{cc}
+        \pleibniz[x]{u} & \pleibniz[y]{u} \\
+        \pleibniz[x]{v} & \pleibniz[y]{v} 
+      \end{array} \right|
+    = \left| \begin{array}{cc}
+        \pleibniz[x]{u} & \pleibniz[y]{v} \\
+        \pleibniz[x]{u} & \pleibniz[y]{v}
+      \end{array} \right|.
+$$
+
+</div>
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Change of Variables
+
+Suppose that $T$ is a $C^1$ transformation whose Jacobian is nonzero and that maps a region $S$ in the $uv$-plane onto
+a region $R$ in the $xy$-plane. Suppose that $\;f$ is continuous on $R$ and that $R$ and $S$ are type I or type II plane regions.
+Suppose also that $T$ is one-to-one, except perhaps on the boundary of $S$. Then
+$$ \iint_R \;f(x, y) dA = \iint_S \;f(x(u, v), y(u, v)) \left|\pleibniz[(x, y)]{(u, v)}\right|\;du\;dv. $$
+
+Under similar hypotheses, a triple integral can have a change of variables as follows:
+$$ \iiint_R\;f(x,y,z)dV = \iiint_S \;f(x(u,v,w),y(u,v,w),z(u,v,w))\left|\pleibniz[(x, y, z)]{(u, v, w)}\right|\;du\;dv\;dw. $$
+
+<div class="proof">
+
+From the [derivation](#derivation) of the Jacobian, we note the image of some rectangle $S$ on the $uv$-plane to the
+$xy$-plane can be approximated by
+$$ \Delta{A} \approx \left| \pleibniz[(x, y)]{(u, v)} \right| \Delta{u} \Delta{v} $$
+where the Jacobian is evaluated at $(u_0, v_0)$. Thus, dividing a region $S$ in the $uv$-plane into rectangles
+$S_{ij}$ and calling their respective images in the $xy$-plane $R_{ij}$, we can approximate the double integral over $R$
+as follows:
+$$\begin{align*}
+  \iint_R \;f(x, y) dA 
+    &\approx \sum_{i=1}^m \sum_{j=1}^n \;f(x_i, y_j) \Delta{A}       \\
+    &\approx \sum_{i=1}^m \sum_{j=1}^n \;f(g(u_i, v_j), h(u_i, v_j)) 
+     \left| \pleibniz[(x, y)]{(u, v)}  \right | \Delta{u}\Delta{v}
+\end{align*}$$
+where the Jacobian is evaluated at $(u_{i}, v_{i})$. This double sum is in fact a Riemann sum for the integral, 
+suggesting that 
+$$ \iint_R \;f(x, y) dA = \iint_S \;f(x(u, v), y(u, v)) \left|\pleibniz[(x, y)]{(u, v)}\right| du dv. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Polar Coordinates
+
+<div class="block">
+
+![Polar Rectangle](/img/diagrams/calculus/polar-double-integral.png)
+
+If $\;f$ is continuous on a polar rectangle $R$ given by $0 \leq a \leq r \leq b$, $\alpha \leq \theta \leq \beta$, where
+$0 \leq \beta - \alpha \leq 2\pi$, then
+$$ \iint_R \;f(x, y) dA = \int_\alpha^\beta \int_a^b \;f(r\cos{\theta}, r\sin{\theta})\;r\;dr\;d\theta. $$
+
+</div>
+
+<div class="proof">
+
+Let $T$ be a transformation from the $r\theta$-plane to the $xy$-plane as given by
+$$ x = g(r, theta) = r\cos{\theta} \quad\text{and}\quad y = h(r, \theta) = r\sin{theta}. $$
+Then the Jacobian of $T$ is
+$$
+  \pleibniz[(x, y)]{(r, \theta)} = 
+    \left| \begin{array}{cc}
+      \pleibniz[x]{r} & \pleibniz[x]{\theta} \\
+      \pleibniz[y]{r} & \pleibniz[y]{\theta}
+    \end{array} \right| = 
+    \left| \begin{array}{cc}
+      \cos{\theta} & -r\sin{\theta} \\
+      \sin{\theta} &  r\cos{\theta}
+    \end{array} \right| = r\cos^2{\theta} + r\sin^2{\theta} = r > 0.
+$$
+Therefore our [change of variables](#change-of-variables) formula tells us
+$$\begin{align*}
+  \iint_R \;f(x, y) dx dy &= \iint_S \;f(r\cos{\theta}, r\sin{\theta}) \left|\pleibniz[(x, y)]{(r, \theta)}\right| dr d\theta \\
+                          &= \int_\alpha^\beta \int_a^b \;f(r\cos{\theta}, r\sin{\theta}) r dr d\theta.
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Spherical Coordinates
+
+<div class="block">
+
+![Spherical Coordinates](/img/diagrams/calculus/spherical-coordinates.png)
+
+A change of variables to spherical coordinates is
+$$ 
+  \iiint_R \;f(x, y, z)\;dV = \iiint_S \;f(\rho\sin{\phi}\cos{\theta}, y(\rho\sin{\phi}\sin{\theta}, \rho\cos{\phi})
+    \rho^2\sin{\phi}\;d\rho\;d\theta\;d\phi
+$$ 
+where $R$ is a spherical wedge given by 
+$$ R = \left\{ (\rho, \theta, \phi) : a \leq \rho \leq b, \alpha \leq \theta \leq \beta, c \leq \phi \leq d \right\}. $$
+
+</div>
+
+<div class="proof">
+
+Here the change of variables is given by
+$$ x = \rho\sin{\phi}\cos{\theta},\quad y = \rho\sin{\phi}\sin{\theta},\quad z = \rho\cos{\phi}. $$
+Then the Jacobian of $T$ is
+$$
+  \pleibniz[(x, y, z)]{(\rho \theta, \phi)} = \left| \begin{array}{ccc}
+    \sin{\phi}\cos{\theta} & -\rho\sin{\phi}\sin{\theta} & \rho\cos{\phi}\cos{\theta} \\
+    \sin{\phi}\sin{\theta} &  \rho\sin{\phi}\cos{\theta} & \rho\cos{\phi}\sin{\theta} \\
+    \cos{\phi}             & 0                           & -\rho\sin{\phi}
+  \end{array} \right| = -\rho^2\sin{\phi}.
+$$
+
+Since $0 \leq \phi \leq \pi$, we have $\sin{\phi} \geq 0$. Therefore
+$$ \left| \pleibniz[(x, y, z)]{(\rho \theta, \phi)} \right| = \left| -\rho^2\sin{\phi} \right| = \rho^2\sin{\phi}, $$
+and 
+$$ 
+  \iiint_R \;f(x, y, z)\;dV = \iiint_S \;f(\rho\sin{\phi}\cos{\theta}, y(\rho\sin{\phi}\sin{\theta}, \rho\cos{\phi})
+    \rho^2\sin{\phi}\;d\rho\;d\theta\;d\phi.
+$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Joint Probability Distribution
+
+Let $X_1$ and $X_2$ be jointly continuous random variables with joint probability density function $f_{X_1, X_2}$.
+Also suppose random variables $Y_1 = g_1(X_1, X_2)$ and $Y_2 = g_2(X_1, X_2)$ for some functions $g_1$ and $g_2$ are
+defined such that $g_1$ and $g_2$ are both invertible and have continuous partial derivatives at all points $(x_1, x_2)$
+such that
+$$ 
+  J(x_1, x_2) = \left| \begin{array}{cc} \pleibniz[g_1]{x_1} & \pleibniz[g_1]{x_2} \\
+                \pleibniz[g_2]{x_1} & \pleibniz[g_2]{x_2} \end{array} \right |
+              = \pleibniz[g_1]{x_1}\pleibniz[g_2]{x_2} - \pleibniz[g_1]{x_2}\pleibniz[g_2]{x_1}
+              \neq 0.
+$$
+Then the random variables $Y_1$ and $Y_2$ are jointly continuous with joint density function given by
+$$ f_{Y_1,Y_2}(y_1, y_2) = f_{X_1,X_2}(x_1, x_2)\left|J(x_1, x_2)\right|^{-1} $$
+where $x_1 = h_1(y_1, y_2)$ and $x_2 = h_2(y_1, y_2)$.
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

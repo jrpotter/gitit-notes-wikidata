@@ -1,0 +1,51 @@
+---
+title: Fundamental Homomorphism Theorem
+categories: Abstract Algebra
+icon: /img/icons/arithmetic.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Composition Diagram](/img/diagrams/abstract/fundamental-homomorphism-theorem.png)
+
+We've already noted that the kernel of a group homomorphism naturally yields a [factor group](factor_group#summary). 
+Similarly, each factor group $G/H$ gives rise to a natural homomorphism having $H$ as a kernel. That is, let $H$ be
+a normal subgroup of $G$. Then $\gamma: G \rightarrow G/H$ given by $\gamma(x) = xH$ is a homomorphism with kernel $H$.
+
+With this established, we are able to state the **Fundamental Homomorphism Theorem**. Let $\phi: G \rightarrow G'$ be a group
+homomorphism with kernel $H$. Then $\phi[G]$ is a group, and $\mu: G/H \rightarrow \phi[G]$ given by $\mu(gH) = \phi(g)$
+is an isomorphism. If $\gamma: G \rightarrow G/H$ is the homomorphism given by $\gamma(g) = gH$, then $\phi(g) = \mu\gamma(g)$
+for each $g \in G$. We state that $\mu$ is the **canonical isomorphism** and $\gamma$ is the **canonical homomorphism**.
+
+Therefore, if we can find a homomorphism $\phi: G \rightarrow G'$ whose kernel is $H$, then we know the factor group $G/H$
+is actually isomorphic to the image of $\phi$, namely $\phi[G]$.
+
+</div>
+
+<div class="proof">
+
+Note we've already shown $\mu$ is an isomorphism in the proof outlined in the [summary of factor groups](factor_groups#summary).
+So instead we first establish that $\gamma$ is indeed a homomorphism with kernel $H$. Let $x, y \in G$. Then 
+$$ \gamma(xy) = (xy)H = (xH)(yH) = \gamma(x)\gamma(y). $$ Since $xH = H$ if and only if $x \in H$, we see the kernel is
+indeed $H$.
+
+Now the Fundamental Homomorphism Theorem follows from the fact that there is a one-to-one correspondence via the canonical
+homomorphism. That is, for all $g \in G$, $\gamma(g) = gH$. Thus every potential coset is mapped onto. Since $\mu$ is
+an isomorphism, it then follows that there exists a one-to-one correspondence between each of these cosets onto the
+image of $\phi$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Fraleigh, John B. (2003). A First Course In Abstract Algebra (7th ed.). Pearson. ISBN 978-0201763904.
+
+</section>

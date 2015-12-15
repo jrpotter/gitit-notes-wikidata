@@ -1,0 +1,96 @@
+---
+title: Turing Machines
+categories: Computation
+icon: /img/icons/binary-tree.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Physical Turing Machine](/img/diagrams/computation/turing-machine.png)
+
+A **Turing machine** is a quintuple $(K, \Sigma, \delta, s, H)$, where
+
+- $K$ is a finite set of **states**;
+- $\Sigma$ is an alphabet, containing the **blank symbol** $\sqcup$ and the **left end symbol** $\triangleright$, but
+  not containing the symbols $\leftarrow$ and $\rightarrow$;
+- $s \in K$ is the **initial state**;
+- $H \subseteq K$ is the set of **halting states**;
+- $\delta$, the **transition function**, is a function from $(K - H) \times \Sigma$ to $K \times (\Sigma \cup
+  \{\leftarrow, \rightarrow\})$.
+
+Note $\delta$ must also satisfy the following two conditions:
+
+- For all $q \in K - H$, if $\delta(q, \triangleright) = (p, b)$, then $b = \;\rightarrow$.
+- For all $q \in K - H$ and $a \in \Sigma$, if $\delta(q, a) = (p, b)$ then $b \neq \triangleright$.
+
+That is, the leftmost symbol is denoted by $\triangleright$  and any transition that goes to it must immediately cause
+the machine to move to the right. Furthermore, no transition can write out $\triangleright$, keeping the left end symbol
+unique.
+
+</div>
+
+To summarize, the Turing machine consists of a finite control and a tape which can be read or written to. At any one
+step the machine either performs a read/write or it moves the tape to the left or right one tape square. In particular, if
+$q \in K - H$, $a \in \Sigma$, and $\delta(q, a) = (p, b)$, then when the machine is in state $q$ and has scanned symbol $a$,
+it will enter state $p$ and either write symbol $b$ or move left or right. Lastly, since $\delta$ isn't defined on any
+halting states, the machine will stop execution at this point.
+
+</section>
+
+<section class="primary">
+
+# Computation
+
+<div class="block">
+
+![Chomsky Hierarchy](/img/diagrams/computation/chomsky-hierarchy.png)
+
+Let $M = (K, \Sigma, \delta, s, H)$ be a Turing machine such that $H = \{y, n\}$ consists of two distinguished halting states.
+Any halting configuration whose state component is $y$ is called **accepting**, while a halting configuration with $n$ is 
+called **rejecting**. We say that $M$ **accepts** an input $w$ if $(s, \triangleright\underline{\sqcup}w)$ yields an
+accepting configuration. $M$ **rejects** an input $W$ if $(s, \triangleright\underline{\sqcup}w)$ yields a
+rejecting configuration.
+
+Let $\Sigma_0 \subseteq \Sigma - \{\sqcup, \triangleright\}$ be an alphabet called the **input alphabet** of $M$. We say that
+$M$ **decides** a language $L \subseteq \Sigma_0^*$ if for any string $w \in \Sigma_0^*$: if $w \in L$ then $M$ accepts $w$
+and if $w \not\in L$ then $M$ rejects $w$. A language $L$ is **recursive** if there is a Turing machine that decides it. Similarly,
+we say that $M$ **semidecides** $L$ if for any string $w \in \Sigma_0^*$ the following is true: $w \in L$ if and only
+if $M$ halts on input $w$. A language $L$ is **recursively enumerable** if and only if there is a Turing machine $M$ that
+semidecides $L$.
+
+This quickly leads to the notion that if a language is recursive, then it is recursively enumerable.
+
+</div>
+
+<div class="proof">
+
+Suppose we have a Turing machine $M = (K, \Sigma, \delta, s, \{y, n\})$ that decides $L$. Then we can quickly construct
+another Turing machine $M'$ that semidecides $L$ as follows: $$ M' = (K, \Sigma, \delta', s, \{y\}), $$ where $\delta'$
+is $\delta$ but such that $\delta'(n, a) = (n, a)$ for all $a \in \Sigma$. That is, reaching $n$ yields a continual loop
+to $n$, thereby not halting. In other words, for all inputs $w$, $M'(w) = \nearrow$ if and only if $M(w) = n$, where
+$\nearrow$ denotes the failure to halt.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Basic Machines](basic_machines)
+- [Church-Turing Thesis](church_turing_thesis)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Papadimitriou & Lewis (1998). Elements of the Theory of Computation (2nd ed.). Prentice-Hall. ISBN 0-13-262478-8
+
+</section>

@@ -1,0 +1,111 @@
+---
+title: Algebraic Limit Theorem
+categories: Calculus Complex
+icon: /img/icons/limits.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Function Addition](/img/graphs/calculus/function-addition.png)
+
+The Algebraic Limit Theorem relates the limits of two functions $\;f$ and $g$ with the resulting limit of the function created
+when applying the four basic binary operations between $\;f$ and $g$ and scalar multiplication. More specifically, suppose $c$ 
+is a constant and limits $\xlimit{x}{a}\;f(x) = L_1$ and $\xlimit{x}{a}\;g(x) = L_2$ exist. Then
+
+1. *Addition:* $$ \xlimit{x}{a}\;[f(x)+g(x)] = \xlimit{x}{a}\;f(x) + \xlimit{x}{a}\;g(x). $$
+2. *Scalar Multiplication:* $$ \xlimit{x}{a}\;[cf(x)] = c\xlimit{x}{a}\;f(x). $$
+3. *Multiplication:* $$ \xlimit{x}{a}\;[f(x)g(x)] = \xlimit{x}{a}\;f(x) \cdot \xlimit{x}{a}\;g(x). $$
+4. *Division:* $$ \xlimit{x}{a}\;\frac{f(x)}{g(x)} = \left[\xlimit{x}{a}\;f(x)\right]\big/\left[\xlimit{x}{a}\;g(x)\right] 
+   \text{ if } \xlimit{x}{a}\;g(x) \neq 0. $$
+
+</div>
+
+<div class="proof">
+
+- Addition
+:    Let $\epsilon > 0$. By hypothesis, there exists a $N_1, N_2 \in \bbn$ such that
+     $$\begin{align*}
+       \forall n_1 \geq N_1, \left|\;f(x) - L_1\right| &< \frac{\epsilon}{2} \text{ and } \\
+       \forall n_2 \geq N_2, \left|\;g(x) - L_2\right| &< \frac{\epsilon}{2}.
+     \end{align*}$$
+     Take $N = \text{max}\{N_1, N_2\}$. Then, for all $n \geq N$:
+     $$\begin{align*}
+       \left|\;f(x) + g(x) - (L_1 + L_2)\right| &=    \left|\;(f(x) - L_1) + (g(x) - L_2)\right|          \\
+                                                &\leq \left|\;f(x) - L_1\right| + \left|g(x) - L_2\right| \\
+                                                &<    \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon.
+     \end{align*}$$
+
+- Scalar Multiplication
+:    Suppose $c = 0$. Then $$ \xlimit{x}{a} cf(x) = \xlimit{x}{a} 0 = 0 \text{ and } cL_1 = 0, $$ proving trivially true. 
+     Now suppose $c \neq 0$. Let $\epsilon > 0$. By hypothesis, there exists a $N \in \bbn$ such that
+     $$ \forall n \geq N, \left|\;f(x) - L_1\right| < \frac{\epsilon}{\left|c\right|}. $$
+     Therefore, for all $n \geq N$,
+     $$\begin{align*}
+       \left|cf(x) - cL_1\right| &= |c|\left|\;f(x) - L_1\right|        \\ 
+                                 &< |c|\frac{\epsilon}{|c|} = \epsilon.
+     \end{align*}$$
+
+- Multiplication
+:    Let $\epsilon > 0$. Note that because $g(x)$ is convergent, it must also be bounded. That is, there exists an $M > 0$
+     such that $\abs{g(x)} < M$ for all $x$.
+     Now we see that:
+     $$\begin{align*}
+       \abs{\;f(x)g(x) - L_1L_2} &= \abs{\;f(x)g(x) - L_1g(x) + L_1g(x) - L_1L_2}             \\
+                                 &= \abs{\;f(x)g(x) - L_1g(x)} + \abs{L_1g(x) - L_1L_2}       \\
+                                 &= \abs{g(x)}\abs{\;f(x) - L_1} + \abs{L_1}\abs{g(x) - L_2}.
+     \end{align*}$$
+     There are two cases to consider. First, suppose $L_1 = 0$. Now, by hypothesis, there exists an $N \in \bbn$ such that for 
+     all $n \geq N$, $$ \abs{\;f(x) - L_1} < \frac{\epsilon}{M}. $$ Thus we find that
+     $$\begin{align*}
+       \abs{\;f(x)g(x) - L_1L_2} &= \abs{g(x)}\abs{\;f(x) - L_1} + \abs{L_1}\abs{g(x) - L_2} \\
+                                 &\leq M\left(\frac{\epsilon}{M}\right)                      \\
+                                 &= \epsilon.
+     \end{align*}$$
+     Now if $L_1 \neq 0$ we see that, by hypothesis, there exists an $N_1, N_2 \in \bbn$ such that for 
+     all $n \geq \text{max}(N_1, N_2)$, 
+     $$ \abs{\;f(x) - L_1} < \frac{\epsilon}{2M} \;\text{ and }\; \abs{g(x) - L_2} < \frac{\epsilon}{2\abs{L_1}}. $$
+     Therefore
+     $$\begin{align*}
+       \abs{\;f(x)g(x) - L_1L_2} &= \abs{g(x)}\abs{\;f(x) - L_1} + \abs{L_1}\abs{g(x) - L_2}                                 \\
+                                 &\leq M\left(\frac{\epsilon}{2M}\right) + \abs{L_1}\left(\frac{\epsilon}{2\abs{L_1}}\right) \\
+                                 &= \epsilon.
+     \end{align*}$$
+
+- Division
+:    First, let $\epsilon > 0$ and note that if $L_2 \neq 0$, then $$ \abs{\frac{1}{g(x)} - \frac{1}{L_2}} < \epsilon. $$ 
+     This follows by noting that since $g(x)$ is bounded, there exists an $M > 0$ such that $\abs{g(x)} \leq M$. By hypothesis,
+     there also exists an $N \in \bbn$ such that for all $n \geq N$, $\abs{g(x) - L_2} < M\abs{L_2}\epsilon$.
+     Thus
+     $$\begin{align*}
+       \abs{\frac{1}{g(x)} - \frac{1}{L_2}} &= \abs{\frac{L_2 - g(x)}{g(x)L_2}}            \\
+                                            &= \frac{1}{\abs{g(x)L_2}}\abs{L_2 - g(x)}     \\
+                                            &\leq \frac{1}{M\abs{L_2}}(M\abs{L_2}\epsilon) \\
+                                            &= \epsilon.
+     \end{align*}$$
+     Our desired result then follows by the multiplication of limits as proved above.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Complex Variables
+
+Suppose that $\;f$ and $g$ are functions with limits $L$ and $M$ respectively at $z_0$. Let $\lambda$ be a complex number. Then
+the functions $\;f + \lambda g$ and $\;fg$ have the limits $L + \lambda M$ and $LM$, respectively, at the point $z_0$. If
+$M \neq 0$, then the function $\;f/g$ has the limit $L/M$ at the point $z_0$.
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

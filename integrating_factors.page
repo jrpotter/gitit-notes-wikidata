@@ -1,0 +1,57 @@
+---
+title: Integrating Factors
+categories: Differential Calculus
+icon: /img/icons/first-order-diff-equations.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Sample Graph Solved Via Integrating Factors](/img/graphs/diffeq/integral-curves.png)
+
+Suppose we have a general first order linear equation
+$$ \leibniz[y]{t} + p(t)y = g(t), $$
+where $p$ and $g$ are given functions. This cannot be solved directly in the manner of basic
+algebraic techniques, but can be solved by the use of **integrating factors**: a function multiplied
+by both sides of the given equation such that the solution can be expressed as
+$$ y = \frac{1}{\mu(t)}\left[\int_{t_0}^t \mu(s)g(s)\;ds + c\right], $$
+where $t_0$ is some convenient lower limit of integration and
+$$ \mu(t) = \exp{\int p(t)\;dt}. $$
+
+</div>
+
+<div class="proof">
+
+Consider general first order linear equation
+$$ \leibniz[y]{t} + p(t)y = g(t), $$
+where $p$ and $g$ are given functions. To determine an appropriate integrating factor, we multiply the above by a yet
+undetermined function $\mu(t)$, obtaining
+$$ \mu(t)\leibniz[y]{t} + p(t)\mu(t)y = \mu(t)g(t). \quad (1) $$
+Now we note that $$ \leibniz{t}\left[\mu(t)y\right] = \mu(t)y' + \mu'(t)y $$
+so we want to find $\mu(t)$ such that $\mu'(t) = p(t)\mu(t)$. Temporarily assuming $\mu(t)$ is positive, then we have
+$$ \frac{d\mu(t)/dt}{\mu(t)} = p(t), $$
+and consequently $$ \ln{\mu(t)} = \int p(t)dt + k. $$
+By choosing the arbitrary constant $k$ to be zero, we obtain the simplest possible function for $\mu$, namely
+$$ \mu(t) = \exp{\int p(t)\;dt}. $$
+Note that $\mu(t)$ is positive for all $t$ as we originally assumed. Thus, referring to $(1)$,
+$$ \leibniz{t}\left[\mu(t)y\right] = \mu(t)g(t). $$
+Hence $$ \mu(t)y = \int \mu(t)g(t)\;dt + c, $$
+where $c$ is an arbitrary constant. Sometimes the integral above can be evaluated in terms of elementary functions,
+but, in general, this is not possible. Thus the general solution is
+$$ y = \frac{1}{\mu(t)}\left[\int_{t_0}^t \mu(s)g(s)\;ds + c\right], $$
+where $t_0$ is some convenient lower limit of integration.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Boyce W.E. & DiPrima R. C. (2010). Elementary Differential Equations (9th ed.). John Wiley & Sons, Inc. ISBN 978-0470554913.
+
+</section>

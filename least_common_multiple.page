@@ -1,0 +1,51 @@
+---
+title: Least Common Multiple
+categories: Abstract Algebra
+icon: /img/icons/arithmetic.png
+...
+
+<section class="primary">
+
+# Summary
+
+Let $\inflate{r}{n}$ be positive integers. Their **least common multiple**, denoted $\text{lcm}$, is the positive
+generator of the cyclic group of all common multiples of the $r_i$, that is, the cyclic group of all integers
+divisible by each $r_i$ for $i = 1, 2, \ldots, n$. Note the similarity of this definition to that of the 
+[greatest common divisor](greatest_common_divisor). In fact, the two are connected fundamentally by the fact that
+$$ \text{lcm}(r, s) = \frac{rs}{\text{gcd}(r, s)}. $$
+
+<div class="proof">
+
+Let $d$ be the $\text{gcd}$ of integers $r, s$, which, by [Bezout's Identity](greatest_common_divisor#summary),
+is $d = nr + ms$ for some integers $n, m$. Now $d$ obviously divides $rs$ so we can let $$ L = \frac{rs}{d}. $$
+All that is left to show is that $L$ is less than all other common multiples of $r$ and $s$. Let $x$ be any common multiple;
+then $$ \frac{x}{L} = \frac{xd}{rs} = \frac{x(nr + ms)}{rs} = \frac{x}{s}n + \frac{x}{r}m. $$
+The right hand side of the above equation is an integer, meaning the left hand side is as well, completing the proof.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Direct Product Orders
+
+Let $(\inflate{a}{n}) \in \prod_{i=1}^n G_i$. If $a_i$ is of finite order $r_i$ in $G_i$, then the order of
+$(\inflate{a}{n})$ in $\prod_{i=1}^n G_i$ is equal to the least common multiple of all the $r_i$.
+
+<div class="proof">
+
+For a power of $(\inflate{a}{n})$ in $\prod_{i=1}^n G_i$ to give $(\inflate{e}{n})$, the power must simultaneously be
+a multiple of $\inflate{r}{n}$, where each $r_i$ for $i = 1, 2, \ldots, n$ is the order of $\inflate{a}{n}$ respectively. 
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Fraleigh, John B. (2003). A First Course In Abstract Algebra (7th ed.). Pearson. ISBN 978-0201763904.
+
+</section>

@@ -1,0 +1,260 @@
+---
+title: Expected Value
+categories: Statistics
+icon: /img/icons/inferential-statistics.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![](/img/graphs/statistics/expected-value.png)
+
+The expectation can be thought of as the weighted average of certain events. That is, over a large collection of trials, we expect 
+the average value to be approximately the expectation. More precisely, if $X$ is a discrete random variable having a probability 
+mass function $p(x)$, then the **expectation**, or the **expected value**, of $X$, denoted by $E[X]$, is defined by 
+$$ E[X] = \sum_{x:p(x)>0}xp(x). $$
+
+If $X$ is a continuous random variable with probability density function $\;f(x)$, then, since
+$$ f(x)dx \approx \bbps{x \leq X \leq x + dx} \text{ for } dx \text{ small}, $$
+we can derive an analogous definition as follows:
+$$ E[X] = \int_{-\infty}^{\infty} xf(x)dx. $$
+
+</div>
+
+<section class="secondary">
+
+## Expectation via Outcomes
+
+We can also determine the expected value by considering the probability of all possible outcomes, and weighing the
+actual value of some random variable given an outcome with the probability of said outcome. More precisely,
+for random variable $X$, let $X(s)$ denote the value of $X$ when $s \in S$ is the outcome of an experiment.
+Additionally, let $p(s) = \bbp(\{s\})$ be the probability that $s$ is the outcome of the experiment. Then
+$$ E[X] = \sum_{s\in S} X(s)p(s). $$
+
+<div class="proof">
+
+Suppose that the distinct values of $X$ are $x_i, i \geq 1$. For each $i$, let $S_i$ be the event that
+$X$ is equal to $x_i$. That is, $S_i = \{s: X(s) = x_i\}$. Then
+$$\begin{align*}
+  E[X] &= \sum_i x_i\bbps{X=x_i} = \sum_i x_i\bbps{S_i} = \sum_i x_i \sum_{s \in S_i} p(s) \\
+       &= \sum_i\sum_{s\in S_i} x_i p(s) = \sum_i\sum_{s\in S_i} X(s)p(s)                  \\
+       &= \sum_{s\in S} X(s)p(s)
+\end{align*}$$
+where the final equality follows because $S_1, S_2, \ldots$ are mutually exclusive events whose union is $S$.
+
+</div>
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# Factors of Expectation
+
+If $a$ and $b$ are constants, then $$ E[aX + b] = aE[X] + b. $$
+
+<div class="proof">
+
+Letting $X$ be a random variable, and $a, b$ be constants:
+$$\begin{align*}
+  E[aX + b] &= \sum_{x:p(x)>0}(ax + b)p(x)                               \\
+            &= a\sum_{x:p(x)>0}xp(x) + \sum_{x:p(x)>0}bp(x)              \\
+            &= a\sum_{x:p(x)>0}xp(x) + b\left(\sum_{x:p(x)>0}p(x)\right) \\
+            &= aE[X] + b.
+\end{align*}$$
+
+If $X$ is a continuous random variable, the same proof holds but with the use of the integral
+as opposed to a summation.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Linearity of Expectation
+
+For random variables $\inflate{X}{n}$, $$ E\left[\sum_{i=1}^nX_i\right] = \sum_{i=1}^n E[X_i]. $$
+
+<div class="proof">
+
+- Discrete Case
+:    Let $Z = \sum_{i=1}^n X_i$. Then,
+     $$\begin{align*}
+       E[Z] &= \sum_{s\in S} Z(s)p(s)                                                                  \\
+            &= \sum_{s\in S} (X_1(s) + X_2(S) + \cdots + X_n(S))p(s)                                   \\
+            &= \sum_{s\in S} X_1(s)p(s) + \sum_{s\in S} X_2(s)p(s) + \cdots + \sum_{s\in S} X_n(s)p(s) \\
+            &= E[X_1] + E[X_2] + \cdots + E[X_n].
+     \end{align*}$$
+
+- Continuous Case
+:    Let $X$ and $Y$ be continuous random variables and $g(X, Y) = X + Y$. Then, by [joint composition](#joint-composition),
+     $$\begin{align*}
+       E[X + y] &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} (x + y)f(x, y)\;dx\;dy                                      \\
+                &= \int_{-\infty}^{\infty} xf(x, y)\;dy\;dx + \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} yf(x, y)\;dx\;dy \\
+                &= \int_{-\infty}^{\infty} xf_X(x)\;dx + \int_{-\infty}^{\infty} yf_Y(y)\;dy                                   \\
+                &= E[X] + E[Y].
+     \end{align*}$$
+     An induction proof yields the desired result for $n$ random variables.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Independent Variables
+
+If $X$ and $Y$ are independent, then, for any functions $h$ and $g$, $$ E[g(X)h(Y)] = E[g(X)]E[h(Y)]. $$
+
+<div class="proof">
+
+Suppose that $X$ and $Y$ are jointly continuous with joint density $\;f(x, y)$. Then
+$$\begin{align*}
+  E[g(X)h(Y)] &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g(x)h(y)f(x, y)\;dx\;dy \\
+              &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g(x)h(y)f_X(x)f_Y(y)\;dx\;dy \\
+              &= \int_{-\infty}^{\infty} h(y)f_Y(y)\;dy \int_{-\infty}^{\infty}g(x)f_X(x)\;dx \\
+              &= E[h(Y)]E[g(X)].
+\end{align*}$$
+The proof in the discrete case is similar.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Composition
+
+<section class="secondary">
+
+## Discrete Composition
+
+Oftentimes an expected value is written in the form of another function; the expected value of the composed function
+can be determined simply by considering all weighed probabilities with the composed value corresponding to an outcome.
+This has both a discrete and continuous analogue.
+
+If $X$ is a discrete random variable that takes on one of the values $x_i, i\ge 1$, with respective
+probabilities $p(x_i)$, then, for any real-valued function $g$, $$ E[g(X)] = \sum_i g(x_i)p(x_i). $$
+
+<div class="proof">
+
+We group together all terms in $\sum_i g(x_i)p(x_i)$ with the same value of $g(x_i)$. Specifically,
+suppose that $y_j, j\geq 1$, represent the different values of $g(x_i), i\geq 1$. Then, grouping
+all the $g(x_i)$ having the same value gives
+$$\begin{align*}
+  \sum_ig(x_i)p(x_i) &= \sum_j\sum_{i: g(x_i)=y_j} g(x_i)p(x_i) \\
+                     &= \sum_j\sum_{i:g(x_i)=y_j} y_jp(x_i)     \\
+                     &= \sum_jy_j\sum_{i:g(x_i)=y_j}p(x_i)      \\
+                     &= \sum_jy_j\bbp[g(X)=y_j]                 \\
+                     &= E[g(x)].
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Continuous Composition
+
+<div class="block">
+
+![Integration Order Visualization](/img/graphs/statistics/expectation-change-integral.png)
+
+If $X$ is a continuous random variable with probability density function $\;f(x)$, then, for any real-valued
+function $g$, $$ E[g(X)] = \int_{-\infty}^{\infty} g(x)f(x)dx. $$
+
+</div>
+
+<div class="proof">
+
+We work under the provision that the random variable $g(X)$ is nonnegative, with the understanding that a more
+general proof is analogous to the following. First, we shall show for a nonnegative continuous random variable $Y$,
+$$ E[Y] = \int_0^{\infty} \bbps{Y > y}dy. $$
+
+Supposing $Y$ has probability density function $\;f_Y$, we have
+$$ \int_0^{\infty} \bbps{Y > y} dy = \int_0^{\infty}\left(\int_y^{\infty} f_Y(x)dx\right)dy. $$
+Interchanging the order of integration yields
+$$\begin{align*}
+  \int_0^{\infty} \bbps{Y > y} dy &= \int_0^{\infty} \left(\int_0^x dy\right)f_Y(x)dx \\
+                                  &= \int_0^{\infty} xf_Y(x)dx                        \\
+                                  &= E[Y].
+\end{align*}$$
+
+Therefore, for any function $g(x) \geq 0$,
+$$\begin{align*}
+  E[g(X)] &= \int_0^{\infty}\bbps{g(X) > y}dy                    \\
+          &= \int_0^{\infty}\left(\int_{x:g(x)>y}f(x)dx\right)dy \\
+          &= \int_{x:g(x)>0}\left(\int_0^{g(x)}dy\right)f(x)dx   \\
+          &= \int_{x:g(x)>0}g(x)f(x)dx.
+  \end{align*}$$
+  
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Joint Composition
+
+Suppose that $X$ and $Y$ are random variables and $g$ is a function of two variables. Then if $X$ and $Y$ have a joint
+probability mass function $p(x, y)$, then
+$$ E[g(x, y)] = \sum_y\sum_x g(x, y) p(x, y). $$
+If $X$ and $Y$ have a joint probability density function $\;f(x, y)$, then
+$$ E[g(X, Y)] = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g(x, y)f(x, y)\;dx\;dy. $$
+
+<div class="proof">
+
+We will prove the case for when the random variables $X$ and $Y$ are jointly continuous with joint density
+function $\;f(x, y)$ and when $g(X, Y)$ is a nonnegative random variable (note this is directly analagous to the 
+[continuous](#continuous-composition) case). Becase $g(X, Y) \geq 0$, we note that[^1]
+$$ E[g(X, Y)] = \int_0^{\infty} \bbps{g(X, Y) > t}\;dt. $$
+Then
+$$ \bbps{g(X, Y) > t} = \int\int_{(x, y):g(x, y)>t}\;f(x, y)\;dy\;dx $$
+implies that
+$$ E[g(X, Y)] = \int_0^{\infty} \int\int_{(x, y):g(x, y)>t}\;f(x, y)\;dy\;dx\;dt. $$
+Interchanging the order of integration yields
+$$\begin{align*}
+  E[g(X, Y)] &= \int_x \int_y \int_{t=0}^{g(x, y)}\;f(x, y)\;dt\;dy\;dx \\
+             &= \int_x \int_y g(x, y)f(x, y)\;dy\;dx,
+\end{align*}$$
+proving the case for when $g(X, Y)$ is a nonnegative random variable. To aid in the visualization of the order of integration,
+note that $g(x, y)$ can be considered a surface. Then in our first integral, $(x, y): g(x, y) > t$ can be seen as evaluating
+$x$ and $y$ across levels as $t$ increases. In the changed order, we can view the integral as evaluating all spots of $g(x, y)$
+and then integrating across the levels simultaneously. That is, the former is evaluating the entirety of a region parallel to
+the $xy$-plane and rising towards $g(x, y)$, while the latter is evaluated up to the surface and then expanding across the
+entirety of the $xy$-plane.
+
+</div>
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Correlation](correlation)
+- [Covariance](covariance)
+- [Moments of Event Occurrences](indicator_variables#moments-of-event-occurrences)
+- [Variance](variance)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>
+
+<!-- Footnotes -->
+
+[^1]: [Continuous Proof](#continuous-composition)

@@ -1,0 +1,70 @@
+---
+title: Law of Large Numbers
+categories: Statistics
+icon: /img/icons/inferential-statistics.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Progressive Sample Means of Dice Rolls](/img/graphs/statistics/expected-value.png)
+
+First we establish the **weak law of large numbers**, which states that a sample average converges in probability towards
+the expected value. There also exists the **strong law of large numbers** which states that the the sample average almost 
+surely converges towards the expected value. 
+
+The two statements are very similar and as such, it is useful to distinguish between what we mean by convergence in probability
+and almost surely converging. In the weak law, convergence in probability states that the chances of the difference between the
+sample average and $\mu$ being greater than $\epsilon$ gets smaller and smaller, but it is still possible (just very unlikely).
+
+In the strong law, almost surely converging states that the number of times this difference is greater than some fixed $\epsilon$
+is finite. That is, at some $N \in \bbn$, the difference between the sample mean $(\inflatec[+]{X}{n}) / n$ and the actual mean
+$\mu$ will always be smaller than some $\epsilon$ for all $n \geq N$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Weak Law of Large Numbers
+
+Let $X_1, X_2, \ldots$ be a sequence of independent and identically distributed random variables, each having finite mean 
+$E[X_i] = \mu$. Then, for any $\epsilon > 0$,
+$$ \bbps{\abs{\frac{\inflatec[+]{X}{n}}{n} - \mu} \geq \epsilon} \rightarrow 0 \text{ as } n \rightarrow \infty. $$
+
+<div class="proof">
+
+Assume that the random variables have a finite variance $\sigma^2$. Now, by hypothesis,
+$$ 
+  E\left[\frac{\inflatec[+]{X}{n}}{n}\right] = \mu \text{ and } 
+  \text{Var}\left(\frac{\inflatec[+]{X}{n}}{n}\right) = \frac{\sigma^2}{n}.
+$$
+Thus, [Chebyshev's Inequality](chebyshevs_inequality) states that 
+$$ \bbps{\abs{\frac{\inflatec[+]{X}{n}}{n} - \mu} \geq \epsilon} \leq \frac{\sigma^2}{n\epsilon^2}. $$
+Taking the limit of $n$ as it approaches $\infty$ proves our result.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Strong Law of Large Numbers
+
+Let $X_1, X_2, \ldots$ be a sequence of independent and identically distributed random variables, each having a finite mean 
+$\mu = E[X_i]$. Then, with probability $1$, 
+$$ \frac{\inflatec[+]{X}{n}}{n} \rightarrow \mu \;\text{ as }\; n \rightarrow \infty. $$
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

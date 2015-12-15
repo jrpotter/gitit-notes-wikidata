@@ -1,0 +1,45 @@
+---
+title: Factor Rings
+categories: Abstract Algebra
+icon: /img/icons/arithmetic.png
+...
+
+<section class="primary">
+
+# Summary
+
+Let $\phi: R \rightarrow R'$ be a ring homomorphism with kernel $H$. Then the additive cosets of $H$ form a ring
+$R/H$ whose binary operations are defined by choosing representatives. That is, the sum of two cosets is defined
+by $$ (a + H) + (b + H) = (a + b) + H, $$ and the product of the cosets is defined by
+$$ (a + H)(b + H) = (ab) + H. $$
+Also, the map $\mu: R/H \rightarrow \phi[R]$ defined by $\mu(a + H) = \phi(a)$ is an isomorphism.
+
+<div class="proof">
+
+Note the theory of factor groups already covers the additive component of the factor ring. All that remains is
+verification of the multiplicative component. First we show multiplication is well-defined. Let $h_1, h_2 \in H$
+and consider representatives $a + h_1$ of $a + H$ and $b + h_2$ of $b + H$. Let
+$$ c = (a + h_1)(b + h_2) = ab + ah_2 + h_1b + h_1h_2. $$
+We must show that $c$ lies in the coset $ab + H$. Since $ab + H = \phi^{-1}[\{\phi(ab)\}]$, we can just show
+that $\phi(c) = \phi(ab)$. This follows from:
+$$\begin{align*}
+  \phi(c) &= \phi(ab + ah_2 + h_1b + h_1h_2)                   \\
+          &= \phi(ab) + \phi(ah_2) + \phi(h_2b) + \phi(h_1h_2) \\
+          &= \phi(ab) + \phi(a)0' + 0'\phi(b) + 0'0'           \\
+          &= \phi(ab) + 0' + 0' + 0' = \phi(ab).
+\end{align*}$$
+The fact that $R/H$ is a ring then naturally follows, since the associative property of multiplication and 
+the distributive laws hold and computation in $R/H$ is done by representatives, which must satisfy these
+properties. The derivation of $\mu$ follows quickly when considering $\mu$ as defined in [factor groups](factor_groups).
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Fraleigh, John B. (2003). A First Course In Abstract Algebra (7th ed.). Pearson. ISBN 978-0201763904.
+
+</section>

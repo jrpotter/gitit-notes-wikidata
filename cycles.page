@@ -1,0 +1,94 @@
+---
+title: Cycles
+categories: Abstract Linear Algebra
+icon: /img/icons/bar-graph.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Cycle of Length Three](/img/diagrams/abstract/cycle.png)
+
+Let $\sigma$ be a permutation of a set $A$. The equivalence classes in $A$ determined by the equivalence relation
+$$ \text{For } a, b \in A, \text{ let } a ~ b \text{ if and only if } b = \sigma^n(a) \text{ for some } n \in \bbz $$
+are called the **orbits of $\sigma$**. A permutation $\sigma \in S_n$ is a **cycle** if it has at most one orbit 
+containing more than one element. The **length** of a cycle is the number of elements in its largest orbit.
+We provide cyclic notation for convenience's sake. For instance, 
+$$ \mu = (1, 3, 6), $$
+which represents the cycle displayed to the right, takes each number to the next element, cycling around to the
+first element if at the end. An integer not appearing in the notation is understood to map to itself (these are
+the other orbits containing just one element).
+
+</div>
+
+<div class="proof">
+
+We need to show that $\text{~}$ as described above is indeed an equivalence relation. In the following, let
+$a, b, c \in A$.
+
+- *Symmetric:* $a \text{ ~ } a$ since $a = \sigma^0(a)$.
+
+- *Reflexive:* Suppose $a \text{ ~ } b$. Then $b = \sigma^n(a)$ for some $n \in \bbz$. But then
+               $a = \sigma^{-n}(b)$ and $-n \in \bbz$, so $b \text{ ~ } a$.
+
+- *Transitive:* Suppose $a \text{ ~ } b$ and $b \text{ ~ } c$. Then $b = \sigma^n(a)$ and $c = \sigma^m(b)$ for some 
+                $n, m \in \bbz$. Substituting, we find that $c = \sigma^m(\sigma^n(a)) = \sigma^{n+m}(a)$, so $a \text{ ~ } c$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Disjointedness
+
+Every permutation $\sigma$ of a finite set is a product of disjoint cycles. As an aside, note that the product of
+disjoint cycles are commutative, and, since orbits are unique, the representation of a permutation as these disjoint
+cycles must also be unique up to the order of the factors.
+
+<div class="proof">
+
+Let $\inflate{B}{r}$ be the orbits of $\sigma$, and let $\mu_i$ be the cycle defined by
+$$ \mu_i(x) = \begin{cases} \sigma(x) &\text{for } x \in B_i \\ x &\text{otherwise}. \end{cases} $$
+Then $\sigma = \inflatec[]{\mu}{r}$, since elements in one orbit cannot be in another and by construction
+each $\mu_i$ is disjoint from the others. That is, the equivalence-class orbits $\inflate{B}{r}$ are disjoint,
+then the cycles $\inflate{\mu}{r}$ must be as well.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Transpositions
+
+A cycle of length $2$ is a **transposition**. We note that a transposition leaves all elements but two fixed,
+and maps each of these onto the other. We also see that any cycle is a product of transpositions since
+$$ (\inflate{a}{n}) = (a_1, a_n)(a_1, a_{n-1})\cdots(a_1, a_3)(a_1, a_2). $$
+We also note that, though a representation of a permutation as some number of transpositions is not unique,
+the parity of the number of transpositions must always be the same. That is, no permutation in $S_n$ can
+be expressed both as a product of an even number and an odd number of transpositions.
+
+<div class="proof">
+
+Consider the isomorphism between the numbers $1, 2, \ldots, n$ and the $n$ rows of the $n \times n$ identity
+matrix $I_n$. Additionally, note that the identity matrix has [determinant](determinant) $1$ and that interchanging 
+any two rows of a square matrix changes the sign of the determinant (i.e. the number of inversions of a given pattern
+is changed by $1$). If $C$ could be obtained from $I_n$ by both an even number and an odd number of transpositions
+of rows, its determinant would have to be both $1$ and $-1$, which is impossible. Thus $\sigma$ cannot be expressed
+as a product of both an even and an odd number of transpositions.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Fraleigh, John B. (2003). A First Course In Abstract Algebra (7th ed.). Pearson. ISBN 978-0201763904.
+
+</section>

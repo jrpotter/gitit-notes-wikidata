@@ -1,0 +1,117 @@
+---
+title: Finite Automata
+categories: Computation
+icon: /img/icons/binary-tree.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Example DFA](/img/diagrams/computation/dfa.png)
+
+A **deterministic finite automaton** is a quintuple $M=(K,\Sigma,\delta,s,F)$ where
+
+- $K$ is a finite set of **states**,
+- $\Sigma$ is an alphabet,
+- $s \in K$ is the **initial state**,
+- $F \subseteq K$ is the set of **final states**, and
+- $\delta$, the **transition function**, is a function from $K \times \Sigma$ to $K$.
+
+Note that, despite minimization techniques such as the [Myhill-Nerode Theorem](myhill_nerode_theorem), a DFA that is
+equivalent to an NFA may require up to $2^n$ states to represent, where the NFA in question has $n$ states. Therefore, though 
+DFAs do provide the convenience of computing regular languages in a straightforward manner, pragmatical concerns with memory 
+or even initial construction may inhibit the usefulness of the automaton.
+
+</div>
+
+<div class="block">
+
+![Example NFA](/img/diagrams/computation/nfa.png)
+
+A **nondeterministic finite automaton** is a quintuple $M = (K, \Sigma, \Delta, s, F)$, where
+
+- $K$ is a finite set of **states**,
+- $\Sigma$ is an alphabet,
+- $s \in K$ is the **initial state**,
+- $F \subseteq K$ is the set of **final states**, and
+- $\Delta$, the **transition relation**, is a subset of $K\times(\Sigma\cup\{e\})\times K$.
+
+An NFA is a much easier tool to wield on the topic of regular languages, and all regular languages can quickly be translated
+to an equivalent NFA via [Thompson's Construction Algorithm](thomspons_construction_algorithm). That being said, they cannot
+generally be used directly- instead they should be converted to their corresponding DFA, though, as raised above, this may
+not be a suitable option depending on the size of the NFA and its properties.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Epsilon Closures
+
+For any state $q \in K$, let $E(q)$ be the set of all states of $M$ that are reachable from state $q$ without
+reading any input. That is, $$ E(q) = \{p\in K: (q,e) \vdash_M^* (p, e)\}\text{.} $$
+
+</section>
+
+<section class="primary">
+
+# Equivalence
+
+We note that a DFA is a specification of an [NFA](nondeterministic_finite_automaton) but where no $\epsilon$-transitions exist 
+in $\Delta$ and there exists a transition from every state to another for every $\alpha \in \Sigma$. In fact, through the use 
+of [epsilon closures](#epsilon-closures), conversions from NFA's to DFA's can happen in a more generalized sense. That is, for 
+each nondeterministic finite automaton, there is an equivalent deterministic finite automaton.
+
+<div class="proof">
+
+Let $M=(K,\Sigma,\Delta,s,F)$ be a nondeterministic finite automaton. We shall construct a deterministic
+finite automaton $M'=(K',\Sigma,\delta,s',F')$ equivalent to $M$. Define deterministic automaton $M'=(K',\Sigma,\delta,s',F')$ 
+such that $K'=2^K, s'=E(s),F=\{Q \subseteq K: Q \cap F \neq \emptyset\}$, and for each $Q \subseteq K$ and each symbol 
+$a \in \Sigma$, define
+$$ \delta'(Q, a) = \bigcup\{E(p): p \in K \text{ and } (q,a,p) \in \Delta \text{ for some } q \in Q\}\text{.} $$
+We note this formalization shows $M'$ is deterministic, since $\delta'$ is single-valued and well defined on all $Q \in K'$
+and $a \in \Sigma$, by construction.
+
+We now *claim* that for any string $w \in \Sigma^*$ and any states $p, q \in K'$,
+$$ (q,w) \vdash_M^* (p, e) \text{ if and only if } (E(q), w) \vdash_{M'}^* (P, e) $$ 
+for some set $P$ containing $p$. Given this, for any string $w \in \Sigma^*$, $w \in L(M)$ if and only if 
+$(s, w)\vdash_M^*(f, e)$ for some $f \in F$ if and only if $(E(s), w) \vdash_{M'}^* (Q, e)$ for some $Q$ containing 
+$f$ meaning $w \in L(M')$, proving the theorem.
+
+We now prove the claim by induction on $|w|$.
+
+- *Basis Step*: For $|w| = 0$, we must show $(q, e) \vdash_M^* (p, e)$ if and only if $(E(q), e) \vdash_{M'}^* (P, e)$ for
+some set $P$ containing $p$. But note this states that if $q = p$, then $p \in P$ since $E(q) = P$. This is true by hypothesis,
+so the basis step holds.
+
+- *Induction Hypothesis*: The claim is true for all strings $w$ of length $k$ or less for some $k \geq 0$.
+
+- *Induction Step*:  
+$\forward$ Suppose $(q,w)\vdash_M^*(p,e)$. Then there are states $r_1$ and $r_2$ such that
+$$ (q,w) \vdash_M^* (r_1, a) \vdash_M (r_2, e) \vdash_M^* (p, e)\text{.} $$
+where $w = va$ for some input $v$ and $a$. Now $(q, va) \vdash_M^* (r_1, a)$ is tantamount to $(q, v)\vdash_M^*(r_1, e)$, and
+since $|v| = k$, the induction hyposthesis states $(E(q), v) \vdash_{M'}^* (R_1, e)$ for some set $R_1$ containing $r_1$. Since
+$(r_1, a) \vdash_M (r_2, e)$, there is a triple $(r_1, a, r_2) \in \Delta$, and hence $E(r_2) \subseteq \delta'(R_1, a)$, by
+construction of $M'$. Since $(r_2, e) \vdash_M^* (p, e)$, it follows that $p \in E(r_2)$, and therefore $p \in \delta'(r_1, a)$.
+Therefore $(R_1, a) \vdash_{M'} (P, e)$ for some $P$ containing $p$, and thus $(E(q), va) \vdash_{M'}^* (R_1, a) 
+\vdash_{M'} (P, e)$.<br />  
+$\backward$ Suppose that $(E(q), va) \vdash_{M'}^* (R_1, a) \vdash_{M'} (P, e)$ for some $P$ containing $p$ and some $R_1$ such that
+$\delta'(R_1, a) = P$. Since $p \in P = \delta'(R_1, a)$, there is some $r_2$ such that $p \in E(r_2)$, and, for some $r_1 \in R_1$,
+$(r_1, a, r_2)$ is a transition of $M$. Thus, by the induction hypothesis, $(q, v) \vdash_M^* (r_1, a) \vdash_M (r_2, e) 
+\vdash_M^* (p, e)$, where the last relation holds by the epsilon closure of $r_2$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Papadimitriou & Lewis (1998). Elements of the Theory of Computation (2nd ed.). Prentice-Hall. ISBN 0-13-262478-8
+
+</section>

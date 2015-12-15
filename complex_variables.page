@@ -1,0 +1,72 @@
+---
+title: Complex Variables
+categories: Complex
+icon: /img/icons/imaginary.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Pierre-Simon Laplace](/img/portraits/laplace.jpg)
+
+The study of Complex Variables revolves around the analysis of imaginary numbers, and the means of understanding how
+to interpret them. To do so requires moving beyond the real numbers into the complex space, and considering numbers
+consisting of two components (the real and imaginary parts). Furthermore, though these numbers can be interpreted
+as a vector in $\bbr^2$, graphing these numbers requires graphing these components separately.
+
+Despite the increased complexity inherent in adding another component to a number, many properties can be mapped into
+the complex plane, especially when we realize the absolute value of a complex number is a real number (i.e. the length
+of the vector representing the complex value). Because of the interpretation of the absolute value (which is also a
+[homomorphism](homomorphism)), we can begin comparing numbers and regarding them in series like we would the reals.
+Because of the vectorized interpretation of these numbers, we can apply general vector calculus (for the most part), 
+with results that we also would expect.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Complex Plane
+
+<div class="extract" data-target="/complex_numbers">
+
+- [Complex Numbers](complex_numbers)
+- [Complex Trigonometry](complex_trigonometry)
+- [Euler's Formula](eulers_number#eulers-formula)
+- [Complex Logarithms](complex_logarithms)
+- [Triangle Inequality](triangle_inequality)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Calculus
+
+<div class="extract" data-target="/line_integrals">
+
+- [Algebraic Limit Theorem](algebraic_limit_theorem#complex-variables)
+- [Continuity](continuity)
+- [Continuity Limit Theorem](continuity_limit_theorem#complex-variables)
+- [Green's Theorem](greens_theorem)
+- [Limits](limits#complex-functions)
+- [Line Integrals](line_integrals)
+- [Series](series#complex-series)
+- [Sequence Limit Laws](sequence_limit_laws#complex-variables)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Fisher, Stephen D. (1999). Complex Variables (2nd ed.). Dover Publications Inc. ISBN 0-48-640679-2
+
+</section>

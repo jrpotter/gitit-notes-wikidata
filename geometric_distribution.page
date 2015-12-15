@@ -1,0 +1,95 @@
+---
+title: Geometric Distribution
+categories: Statistics
+icon: /img/icons/random-variables.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Geometric PDF](/img/graphs/statistics/geometric-distribution.png)
+
+Suppose that independent trials, each having a probability $p$, $0 < p < 1$, of being a success, are performed
+until a success occurs. If we let $X$ equal the number of trials required, then
+$$ \bbps{X=n} = (1-p)^{n-1}p,\quad n = 1,2,\ldots $$
+Any random variable $X$ with this probability mass function is said to be a **geometric** random variable with parameter $p$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Expectation
+
+The expected value of a geometric random variable $X$ with parameter $p$ is 
+$$ E[X] = \frac{1}{p}. $$
+
+<div class="proof">
+
+By use of moment generating functions, we see that
+$$\begin{align*}
+  M'(t) &= \frac{[1 - (1-p)e^t]pe^t - pe^t[-(1-p)e^t]}{[1 - (1-p)e^t]^2} \\
+        &= \frac{pe^t[1 - (1-p)e^t + (1-p)e^t]}{[1 - (1-p)e^t]^2}        \\
+        &= \frac{pe^t}{[1 - (1-p)e^t]^2}.
+\end{align*}$$
+Therefore
+$$ M'(0) = \frac{p}{[1 - (1-p)]^2} = \frac{p}{p^2} = \frac{1}{p}. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Variance
+
+The variance of a geometric random variable $X$ with parameter $p$ is 
+$$ \text{Var}(X) = \frac{1-p}{p^2}. $$
+
+<div class="proof">
+
+Piggybacking off the computation of $M'(t)$ in [expectation](#expectation), we find that
+$$ M''(t) = \frac{pe^t + 2(1-p)}{(pe^t)^2}. $$
+Therefore
+$$ 
+  \text{Var}(X) = M''(0) - \left(\frac{1}{p}\right)^2 
+                = \frac{p + 2(1-p)}{p^2} - \frac{1}{p^2}
+                = \frac{1 - p}{p^2}.
+$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Moment Generating Function
+
+Let $X$ be a geometric random variable $X$ with parameter $p$. Then the moment generating function of $X$ is
+$$ M(t) = \frac{pe^t}{1 - (1-p)e^t}. $$
+
+<div class="proof">
+
+Let $X$ be a geometric random variable $X$ with parameter $p$. Then
+$$\begin{align*}
+  M(t) &= \sum_{x=1}^\infty e^{tx}(1-p)^{x-1}p          \\
+       &= \frac{p}{1-p} \sum_{x=1}^\infty [e^t(1-p)]^x.
+\end{align*}$$
+If $e^t \leq 1$ (which, when evaluated at $t = 0$ holds true), then we recognize the sum as geometric. Therefore
+$$ M(t) = \frac{p}{1-p}\frac{e^t(1-p)}{1 - (1 - p)e^t} = \frac{pe^t}{1 - (1 - p)e^t}. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

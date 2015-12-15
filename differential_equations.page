@@ -1,0 +1,89 @@
+---
+title: Differential Equations
+categories: Differential Calculus
+icon: /img/icons/first-order-diff-equations.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Leonhard Euler](/img/portraits/euler.jpg)
+
+Differential Equations is the subject dedicated to solving equations involving derivatives of some functions. In addition,
+it is often associated with different modeling strategies, especially of biological or economical systems. In many cases,
+"real-world" differential equations are difficult to solve, despite the numerous strategies that have cropped up, and, like
+with integration, it is often best to approximate solutions as opposed to attempting to find any exact answers.
+
+Equations can become arbitrarily complex in terms of "order," referring to the highest level of differentiation of some
+function present in an equation or by nonlinearity, in which case many linear algebra techniques cannot be employed. That being
+said, through different graphing and approximating techniques, one can solve most equations within some degree of accuracy.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# First Order Functions
+
+<div class="extract" data-target="/integrating_factors">
+
+- [Autonomous Equations](autonomous_equations)
+- [Difference Equations](difference_equations)
+- [Euler's Method](eulers_method)
+- [Exact Equations](exact_equations)
+- [First Order Equations](first_order_equations)
+- [Integrating Factors](integrating_factors)
+- [Separable Equations](separable_equations)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Second Order Linear Equations
+
+<div class="extract" data-target="/homogeneous_equations">
+
+- [Abel's Theorem](abels_theorem)
+- [Constant Coefficients](constant_coefficients)
+- [Euler Equations](euler_equations)
+- [Fundamental Set of Solutions](fundamental_set_of_solutions)
+- [Homogeneous Equations](homogeneous_equations)
+- [Method of Undetermined Coefficients](method_of_undetermined_coefficients)
+- [Nonhomogeneous Equations](nonhomogeneous_equations)
+- [Variation of Parameters](variation_of_parameters)
+- [Wronskian](wronskian)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# System of First Order Linear Equations
+
+<div class="extract" data-target="/system_of_first_order_linear_equations">
+
+- [Abel's Theorem](abels_theorem)
+- [Fundamental Matrices](fundamental_matrices)
+- [Fundamental Set of Solutions](fundamental_set_of_solutions)
+- [Homogeneous Linear Systems](homogeneous_linear_systems)
+- [System of First Order Linear Equations](system_of_first_order_linear_equations)
+- [Wronskian](wronskian)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Boyce W.E. & DiPrima R. C. (2010). Elementary Differential Equations (9th ed.). John Wiley & Sons, Inc. ISBN 978-0470554913.
+
+</section>

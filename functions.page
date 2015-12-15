@@ -1,0 +1,93 @@
+---
+title: Functions
+categories: Analysis Stub
+icon: /img/icons/similarity.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Function](/img/diagrams/analysis/function.png)
+
+Let $A, B$ be sets. If for all $x \in A$, there is associated exactly one element of $B$, then we have a **function**
+$f(x)$ where $f: A \rightarrow B$ denotes the mapping of $A$ into $B$. If $E \subseteq A$, then 
+$f[E] = \{ f(x): x \in E\} \subseteq B$ is the **image of $E$**. Similarly, if $E \subseteq B$, then the
+**preimage** is $\{x \in A: f(x) \in E\}$. We say the function is **surjective** if the image of $A$ is onto $B$; 
+that is, $f[A] = B$. Additionally, we say our function is **injective** if for all $y \in B$, the preimage of $f^{-1}(y)$ 
+consists of at most one point.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Sequences
+
+A **sequence** is a function $\;f: J \rightarrow B$ for some set $B$, where $J = \{1, 2, \ldots\}$. Then a
+**[countable](countability) set $S$** is the range of a sequence with distinct elements. Any countable set can
+be arranged in a sequence. We say a sequence $\{x_n\}$ **converges** to a point $x \in X$ if for all $\epsilon > 0$,
+there exists an $N$ such that for all $n \geq N$, $d(x_n, x) < \epsilon$. If $\{x_n\}$ does not converge, we say it
+**diverges**.
+
+Now, let $\{p_n\}$ be a sequence in a metric space $X$. Then:
+
+1. $p_n \rightarrow p$ in $X$ if and only if every neighborhood of $p$ in $X$ contains all but finitely many
+   of the $\{p_n\}$.
+2. If $p$ and $p'$ are in $X$, and $p_n \rightarrow p$ and $p_n \rightarrow p'$, then $p = p'$.
+3. If $\{p_n\}$ converges, then $\{p_n\}$ is bounded.
+4. If $E \subset X$ and $p$ is a limit point of $E$, then there exists some $\{p_n\} \subset E$ such that
+   $\{p_n\} \rightarrow p$.
+
+<div class="proof">
+
+- Case 1
+:    $\forward$ Suppose that $p_n \rightarrow p$. Let $N_r(p) \subset X$ be a neighborhood around $p$ and let $\epsilon = r$.
+     Then for this $\epsilon > 0$, there exists an $N$ such that for all $n \geq N$, $$ d(p_n, p) < \epsilon = r. $$
+     This implies that for all $n \geq N$, $p_n \in N_r(p)$.<br />  
+     $\backward$ Now assume that every neighborhood of $p$ in $X$ contains all but finitely many of the $\{p_n\}$. That is,
+     given any $\epsilon > 0$, $N_{\epsilon}(p)$ has all but finitely many points in it. Say 
+     $p_{n_1}, \ldots, p_{n_k} \not\in N_{\epsilon}(p)$. Then if we were to set $$ N = \text{max} \{ \inflate{n}{k} \} + 1, $$ 
+     we see that for all $n \geq N$, $$ p_n \in N_\epsilon(p) \Rightarrow d(p_n, p) < \epsilon. $$
+
+- Case 2
+:    Let $\epsilon > 0$. Then there exist an $N_1, N_2 \in \bbn$ such that for all $n \geq N$, $d(p, p_n) < \frac{\epsilon}{2}$
+     and for all $n \geq N_2$, $d(p', p_n) < \frac{\epsilon}{2}$. Let $N = \text{max}\{N_1, N_2\}$. Then
+     $$ d(p, p') \leq d(p, p_N) + d(p', p_N) < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon. $$
+
+- Case 3
+:    Suppose $\{p_n\}$ converges to $p$. Then for $\epsilon = 1$, there exists an $N \in \bbn$ such that for all
+     $n \geq N$, $d(p_n, p) < 1$. But then for $n \geq N$, $p_n \in N_1(p)$, so $\{p_n\}_{n = N}^\infty$ is bounded.
+     But we also note the finite set $\{\inflate{p}{N-1}\}$ is also bounded. Thus the entire sequence is bounded.
+
+- Case 4
+:    TODO
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Equivalence Classes
+
+If there exists a one-to-one mapping $\;f: A \rightarrow B$, then $A$ and $B$ are said to be in **one-to-one correspondence**.
+This is denoted via $A \;\text{~}\; B$, where we note that $\text{~}$ is an equivalence relation. That is, it satisfies the
+following:
+
+1. Reflexive
+2. Symmetric
+3. Transitive
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Abott, Stephen (2001). Understanding Analysis (1st ed.). Springer. ISBN 978-0387950605.
+
+</section>

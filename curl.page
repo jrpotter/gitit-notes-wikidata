@@ -1,0 +1,94 @@
+---
+title: Curl
+categories: Calculus
+icon: /img/icons/line-integrals.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Geometric Interpretation](/img/diagrams/calculus/curl-interpretation.png)
+
+Intuitively, **curl** is a measure of the rotation applied on an object at any point in a vector field.
+That is, if a vector field has a vector at any point parallel to any other, we would expect an object
+placed here to *flow* along the direction of the vectors, but not rotate around any axis. Alternatively,
+if the vectors in the field do not have this parallel property, we'd expect the object to rotate while
+still moving along with the general flow of the field. With this notion in mind, we can consider the
+curl to be a measure of this rotation. 
+
+To motivate the idea further, we can observe the diagram to the right, in which we want to find that the velocity field
+of $B$ is given by $\pmb{v} = \pmb{w} \times \pmb{r}$. Let the rotation be described by the vector $\pmb{w} = \omega\pmb{k}$,
+where $\omega$ is the angular speed of $B$, that is, the tangential speed of any point $P$ in $B$ divided by the distance $d$
+from the axis of rotation. Furthermore, let $\pmb{r} = \lrangle{x, y, z}$ be the position vector of $P$. Then, denoting the 
+tangential vector as $\pmb{v}$, 
+$$ \omega = \norm{\pmb{w}} = \frac{\pmb{v}}{d} = \frac{\pmb{v}}{\sin{\theta}\norm{\pmb{r}}} $$
+meaning
+$$ \pmb{v} = \norm{\pmb{w}}\norm{\pmb{r}}\sin{\theta} = \pmb{w} \times \pmb{r}. $$
+
+With this complete, we can now explicitly define curl. If $\pmb{F} = P\pmb{i} + Q\pmb{j} + R\pmb{k}$ is a vector field
+on $\bbr^3$ and the partial derivatives of $P$, $Q$, and $R$ all exist, then the curl of $\pmb{F}$ is the vector field
+on $\bbr^3$ defined by 
+$$ 
+  \text{curl}\;\pmb{F} = \left(\pleibniz[R]{y} - \pleibniz[Q]{z}\right)\pmb{i} 
+                       + \left(\pleibniz[P]{z} - \pleibniz[R]{x}\right)\pmb{j}
+                       + \left(\pleibniz[Q]{x} - \pleibniz[P]{y}\right)\pmb{k}
+$$
+which can be expressed notationally as
+$$ \text{curl}\;F = \nabla \times \pmb{F}. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Gradient Field
+
+If $f$ is a function of three variables that has continuous second-order partial derivatives, then
+$$ \text{curl}(\nabla f) = \pmb{0}. $$
+That is, the curl of a gradient vector field is always $\pmb{0}$. Intuitively, since the gradient always points in the
+direction of maximum increase, it makes sense that this field does not have any concept of rotation along it.
+
+<div class="proof">
+
+$$
+  \text{curl}(\nabla f) 
+    = \nabla \times (\nabla f) = \left|\begin{array}{ccc}
+        \pmb{i}         & \pmb{j}         & \pmb{k}         \\
+        \pleibniz{x}    & \pleibniz{y}    & \pleibniz{z}    \\
+        \pleibniz[f]{x} & \pleibniz[f]{y} & \pleibniz[f]{z}
+      \end{array}\right|      
+$$
+so
+$$
+  \text{curl}(\nabla f)
+    = \left(\pleibniz[^2f]{y\partial z} - \pleibniz[^2f]{z\partial y}\right)\pmb{i}
+    + \left(\pleibniz[^2f]{z\partial x} - \pleibniz[^2f]{x\partial z}\right)\pmb{j}
+    + \left(\pleibniz[^2f]{x\partial y} - \pleibniz[^2f]{y\partial x}\right)\pmb{k}
+$$
+which is indeed $\pmb{0}$ by [Clairaut's Theorem](clairauts_theorem).
+
+</div>
+
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Divergence](divergence)
+- [Stoke's Theorem](stokes_theorem)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.  
+
+</section>

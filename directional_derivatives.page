@@ -1,0 +1,138 @@
+---
+title: Directional Derivative
+categories: Calculus
+icon: /img/icons/taking-derivatives.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Directional Derivative](/img/diagrams/calculus/directional-derivative.png)
+
+The directional derivative is a generalization of the derivative into three-dimensional space. For the same reason there
+are now an infinite number of ways to approach a point (just consider an arbitrary disc around a point), there are now
+an infinite number of ways to leave a point. This begs the question- what is the change in slope along any one of these
+given directions? The **directional derivative** of $f$ at $(x_0, y_0)$ in the direction of a unit vector 
+$\vec{u} = \lrangle{a,b}$ is
+$$ D_uf(x_0, y_0) = \xlimit{h}{0} \frac{f(x_0 + ha, y_0 + hb) - f(x_0, y_0)}{h} $$
+if this limit exists. In conjunction with this concept is the **gradient**: if $f$ is a function of two variables $x$ and $y$,
+then the gradient of $\;f$ is the vector function $\nabla f$ defined by
+$$ \nabla f(x, y) = \lrangle{f_x(x, y), \;f_y(x, y)} = \pleibniz[f]{x}\hat{i} + \pleibniz[f]{y}\hat{j}. $$
+
+Therefore the directional derivative in the direction of $\vec{u}$ is the scalar projection of the gradient
+vector onto $\vec{u}$. 
+
+</div>
+
+<div class="proof">
+
+We note that the partial derivatives $f_x$ and $f_y$ for some function $z = f(x, y)$ are along the directions of
+$\hat{i}$ and $\hat{j}$. To generalize and find the rate of change of $z$ at $(x_0, y_0)$ in the direction of
+an arbitrary unit vector $\vec{u} = \lrangle{a, b}$, we consider the surface $S$ with equation $z = f(x, y)$
+and let $z_0 = f(x_0, y_0)$. Then the point $P(x_0, y_0, z_0)$ lies on $S$. The vertical plane that passes through
+$P$ in the direction of $\vec{u}$ intersects $S$ in a curve $C$. The slope of the tangent line $T$ to $C$ at the point
+$P$ is therefore the rate of change of $z$ in the direction of $\vec{u}$.
+
+If $Q(x,y,z)$ is another point on $C$ and $P', Q'$ are the projections of $P, Q$ on the $xy$-plane, then the vector
+$\overrightarrow{P'Q'}$ is parallel to $\vec{u}$ and so
+$$ \overrightarrow{P'Q'} = h\vec{u} = \lrangle{ha,hb} $$
+for some scalar $h$. Therefore $x - x_0 = ha, y - y_0 = hb$ meaning $x = x_0 + ha, y = y_0 + hb$ and
+$$ \frac{\Delta{z}}{h} = \frac{z-z_0}{h} = \frac{f(x_0 + ha, y_0 + hb)-f(x_0,y_0)}{h}. $$
+Taking the limit as $h \rightarrow 0$ yields the rate of change of $z$ in the direction of $\vec{u}$, as desired.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Existence
+
+If $f$ is a differentiable function of $x$ and $y$, then $\;f$ has a directional derivative in the direction of any
+unit vector $\vec{u} = \lrangle{a, b}$ and
+$$ D_uf(x, y) = f_x(x, y)a + f_y(x, y)b. $$
+Therefore we can write the directional derivative with respect to the [gradient vector](#gradient-vector) as
+$$ D_u f(x, y) = \nabla f(x, y) \cdot \vec{u}. $$
+
+<div class="proof">
+
+If we define a function $g$ of the single variable $h$ by
+$$ g(h) = f(x_0 + ha, y_0 + hb) $$
+then, by the definition of a derivative, we have
+$$\begin{align*} 
+  g'(0) &= \xlimit{h}{0} \frac{g(h)-g(0)}{h}                   \\
+        &= \xlimit{h}{0}\frac{f(x_0+ha, y_0+hb)-f(x_0,y_0)}{h} \\
+        &= D_uf(x_0, y_0)
+\end{align*}$$
+
+We can also write $g(h) = f(x, y)$, where $x = x_0 + ha, y = y_0 + hb$, so the [Chain Rule](chain_rule) gives
+$$ g'(h) = \pleibniz[f]{x}\leibniz[x]{h} + \pleibniz[f]{y}\leibniz[y]{h} = f_x(x, y)a + f_y(x, y)b. $$
+
+Putting $h = 0$, then $x = x_0, y = y_0$ and
+$$ g'(0) = f_x(x_0, y_0)a + f_y(x_0, y_0)b. $$
+
+Therefore
+$$ D_uf(x_0, y_0) = f_x(x_0, y_0)a + f_y(x_0, y_0)b. $$
+
+In addition, letting $\vec{u} = \lrangle{a, b}$ be a unit vector, we see that:
+$$\begin{align*}
+  D_u f(x, y) &= f_x(x, y)a + f_y(x, y)b                               \\
+              &= \lrangle{f_x(x, y), \;f_y(x, y)} \cdot \lrangle{a, b} \\
+              &= \nabla f(x, y) \cdot \vec{u}.
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Maximization
+
+<div class="block">
+
+![Gradient Orthogonality](/img/diagrams/calculus/gradient-perpendicular.png)
+
+Suppose $\;f$ is a differentiable function of two or three variables. The maximum value of the directional
+derivative $D_uf(\pmb{x})$ is $\norm{\nabla f(\pmb{x})}$ and it occurs when $\pmb{u}$ has the same direction
+as the gradient vector $\nabla f(\pmb{x})$. Furthermore, the minimal value occurs at $-\norm{\nabla{f(\pmb{x})}}$
+and no change occurs along vectors orthogonal to $\nabla f(\pmb{x})$.
+
+As an aside, this tells us that the gradient vector must be orthogonal to any level curve or surface; moving along
+the level curve/surface would yield no change in the value of $\;f$. Thus orthogonal is really the only sensible
+direction.
+
+</div>
+
+<div class="proof">
+
+We note that
+$$ D_uf = \nabla{f}\cdot\vec{u} = \norm{\nabla{f}}\norm{\vec{u}}\cos{\theta} = \norm{\nabla{f}}\cos{\theta} $$
+where $\theta$ is the angle between $\nabla{f}$ and $\vec{u}$. The maximum value of $\cos{\theta}$ is $1$ and
+occurs when $\theta = 0$. Therefore the maximum value of $D_uf$ is $\norm{\nabla{f}}$ and it occurs when 
+$\theta = 0$, that is, when $\vec{u}$ has the same direction as $\nabla{f}$. Similarly, the minimum value
+of $\cos{\theta}$ is $-1$ in which $\vec{u}$ points in the opposite direction of $\nabla{f}$ and 
+at $\cos{(\pi/2)}$ or $\cos{(-\pi/2)}$, the directional derivative is $0$, indicating no change in value.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Lagrange Multipliers](lagrange_multipliers)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.  
+
+</section>

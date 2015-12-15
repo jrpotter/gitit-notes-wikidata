@@ -1,0 +1,132 @@
+---
+title: Probability Density Function
+categories: Statistics
+icon: /img/icons/random-variables.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Normal Distribution PDF](/img/graphs/statistics/normal-distribution.png)
+
+$X$ is a **continuous** random variable if there exists a nonnegative function $f$, defined for all real 
+$x \in (-\infty, \infty)$, having the property that, for any set $B$ of real numbers,
+$$ \bbps{X \in B} = \int_B \;f(x)dx = \int_{-\infty}^{\infty}\;f(x)dx = 1. $$
+The function $f$ is called the **probability density function** of the random variable $X$.
+Alternatively, we can define the function as follows:
+$$ 
+  \bbps{a - \frac{\epsilon}{2} \leq X \leq a + \frac{\epsilon}{2}} = 
+  \int_{a-\epsilon/2}^{a+\epsilon/2}\;f(x)dx \approx \epsilon f(a)
+$$
+when $\epsilon$ is small and when $f(\cdot)$ is continuous at $x = a$. In other words, the probability that
+$X$ will be contained in an interval of length $\epsilon$ around the point $a$ is approximately $\epsilon f(a)$.
+Thus $\;f(a)$ is a measure of how likely it is that the random variable will be near $a$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Cumulative Distribution Function
+
+<div class="block">
+
+![CDF of Normal Function](/img/graphs/statistics/cdf-normal-distribution.png)
+
+The **cumulative distribution function** $F$ of the probability density $\;f$ is expressed by
+$$ F(a) = \bbps{X \in (-\infty, a]} = \int_{-\infty}^a\;f(x)dx. $$
+Differentiating both sides shows, by the [Fundamental Theorem of Calculus](/CC/fundamental_theorem_of_calculus), that
+$$ \leibniz{a}F(a) = f(a), $$
+that is, the density is the derivative of the cumulative distribution function.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Joint Probability Density Function
+
+<div class="block">
+
+![Point PDF](/img/diagrams/statistics/bivariate-normal.png)
+
+We say that $X$ and $Y$ are **jointly continuous** if there exists a function $f(x, y)$, defined for all real $x$ and $y$, 
+having the property that, for every set $C$ of pairs of real numbers
+$$ \bbps{(X ,Y) \in C} = \iint_{(x, y)\in C} f(x, y)\;dx\;dy. $$
+The function $f(x, y)$ is called the **joint probability density function** of $X$ and $Y$. If $A$ and $B$ are any 
+sets of real numbers, then, by defining $C = \{(x, y) : x \in A, y \in B\}$, we get that
+$$ f(a, b) = \pleibniz[^2]{a\partial b}F(a, b) $$
+for $a \in A$ and $b \in B$, wherever the partial derivatives are defined. Alternatively we can consider
+$$\begin{align*}
+  \bbps{a < X < a + db, b < y < b + db} &= \int_b^{b + db} \int_a^{a + da} f(x, y)\;dx\;dy \\
+  &\approx f(a, b)\;da\;db
+\end{align*}$$
+when $da$ and $db$ are small and $f(x, y)$ is continuous at $a, b$. Hence, $\;f(a, b)$ is a measure of how likely it is 
+that the random vector $(X, Y)$ will be near $(a, b)$. In both cases, notice the similarity with a 
+[single random variable](#summary).
+
+</div>
+
+<div class="proof">
+
+If $A$ and $B$ are any sets of real numbers and $C = \{(x, y) : x \in A, y \in B\}$,
+then
+$$ \bbps{X \in A, Y \in B} = \int_B \int A f(x, y)\;dx\;dy $$
+since the probability should be summed up over the entirety of the given sets.
+Because
+$$\begin{align*} 
+  F(a, b) &= \bbps{X \in (-\infty, a], Y \in (-\infty, b]}    \\
+          &= \int_{-\infty}^b \int_{\infty}^a f(x, y)\;dx\;dy,
+\end{align*}$$
+we can differentiate both sides with respect to $b$ and then $a$ to get
+$$ f(a, b) = \pleibniz[^2]{a\partial b}F(a, b). $$
+
+</div>
+
+<section class="secondary">
+
+## Marginal Density Functions
+
+If $X$ and $Y$ are jointly continuous, then they are individually continuous and their
+probability density functions are given by
+$$ f_X(x) = \int_{-\infty}^{\infty} f(x, y)\;dy \;\text{ and }\;  f_Y(y) = \int_{-\infty}^{\infty} f(x, y)\;dx $$
+respectively.
+
+<div class="proof">
+
+If $A$ is any set of real numbers, we find that
+$$\begin{align*}
+  \bbps{X \in A} &= \bbps{X \in A, Y \in (-\infty, \infty)}        \\
+                 &= \int_A \int_{-\infty}^{\infty} f(x, y)\;dy\;dx \\
+                 &= \int_A f_X(x)\;dx
+\end{align*}$$
+Notice that $f_X(x)$ is our density function because its being integrated over with respect to $x$. A similar
+proof holds for $Y$.
+
+</div>
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Joint Distribution Functions](joint_distribution_functions)
+- [Probability Mass Function](probability_mass_function)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section> 

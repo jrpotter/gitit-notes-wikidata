@@ -1,0 +1,85 @@
+---
+title: Complex Trigonometry
+categories: Complex Trigonometry
+icon: /img/icons/imaginary.png
+...
+
+<section class="primary">
+
+# Summary
+
+Complex trigonometric functions are defined in terms of the exponential function as follows:
+
+- *Sine:* $$ \sin{z} = \frac{1}{2i}(e^{iz} - e^{-iz}). $$
+- *Cosine:* $$ \cos{z} = \frac{1}{2}(e^{iz} + e^{-iz}). $$
+
+Tangent, cotangent, secant, and cosecant are subsequently defined in the obvious way. Furthermore, if we restrict the
+possible values of $z$, we can ensure both sine and cosine are one-to-one. For instance, if for $z = x + iy$ we have
+$0 \leq x < \pi/2$ and $y \geq 0$, then $\sin{z}$ is one-to-one.
+
+</section>
+
+<section class="primary">
+
+# Properties
+
+In the following, the [hyperbolic functions](hyperbolic_functions) are defined in the regular, real, way.
+
+1. *Periodicity:* $$ \cos{z} = \cos{(z + 2\pi k)} \text{ and } \sin{z} = \sin{(z + 2\pi k)}. $$
+2. *Cosine Addition:* $$ \cos{(x + iy)} = \cos{x}\cosh{y} - i\sin{x}\sinh{y}. $$
+3. *Sine Addition:* $$ \sin{(x + iy)} = \sin{x}\cosh{y} + i\cos{x}\sinh{y}. $$
+
+<div class="proof">
+
+- Case 1:
+:    We see that 
+     $$\begin{align*}
+       \cos{(z + 2\pi)} &= \frac{1}{2}(e^{i(z + 2\pi)} + e^{-i(z + 2\pi)}) \\
+                        &= \frac{1}{2}(e^{iz} + e^{-iz})                   \\
+                        &= \cos{z}.
+     \end{align*}$$
+     Likewise, $\sin({z + 2\pi)} = \sin{z}$ for all $z$. Furthermore, $2\pi k$ is the only number $\alpha$ with
+     $\cos{(z + \alpha)} = \cos{z}$ and $\sin{(z + \alpha)} = \sin{z}$. We prove this just for the case of cosine.
+     If $\cos{(z + \alpha)} = \cos{z}$ for all $z$, then
+     $$ e^{iz}e^{i\alpha} + e^{-iz}e^{-i\alpha} = e^{iz} + e^{-iz}. $$
+     Rearranging, we find the
+     $$\begin{align*}
+       e^{iz}(e^{i\alpha} - 1) &= e^{-iz}(1 - e^{-i\alpha})              \\
+                               &= e^{-i\alpha}e^{-iz}(e^{i\alpha} - 1).
+     \end{align*}$$
+     If $e^{i\alpha} - 1$ is not zero, then we have $e^{iz} = e^{-i\alpha}e^{-iz}$ for all $z$ but for $z = 1$ we get
+     $1 = e^{-i\alpha}$, a contradiction. Therefore $e^{i\alpha}$ must be $1$ which implies $\alpha = 2\pi k$ for some 
+     integer $k$.
+
+- Case 2:
+:    By the [Addition Formulas](trigonometric_identities#addition-formulas) we have
+     $$\begin{align*}
+       \cos{(x + iy)} &= \cos{x}\cos{(iy)} - \sin{x}\sin{(iy)} \\
+                      &= \cos{x}\left[\frac{1}{2}\left(e^{yi^2} + e^{-yi^2}\right)\right]
+                       - \sin{x}\left[\frac{1}{2i}\left(e^{yi^2} - e^{-yi^2}\right)\right] \\
+                      &= \cos{x}\left[\frac{1}{2}(e^{-y} + e^{y})\right] - \sin{x}\left[\frac{-i}{2}(e^{-y}-e^y)\right] \\
+                      &= \cos{x}\cosh{y} - i\sin{x}\sinh{y}.
+     \end{align*}$$
+
+- Case 3:
+:    Parallels case $2$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Trigonometric Identities](trigonometric_identities)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Fisher, Stephen D. (1999). Complex Variables (2nd ed.). Dover Publications Inc. ISBN 0-48-640679-2
+
+</section>

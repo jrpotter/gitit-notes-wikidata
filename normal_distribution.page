@@ -1,0 +1,2066 @@
+---
+title: Normal Distribution
+categories: Statistics
+icon: /img/icons/random-variables.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Normal Distribution](/img/graphs/statistics/normal-distribution.png)
+
+We say that $X$ is a **normal random variable**, or simply that $X$ is normally distributed, with parameters $\mu$ and $\sigma^2$ 
+if the density of $X$ is given by $$ f(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{-(x-\mu)^2/2\sigma^2}\quad -\infty < x < \infty. $$
+To the right we see that the density function is a symmetric bell-shaped curve about $x = \mu$. In addition, we can *standardize* 
+a normal distribution. That is, if $X$ is normally distributed with parameters $\mu$ and $\sigma^2$, then 
+$$ Z = \frac{X - \mu}{\sigma} $$ is normally distributed with parameters $0$ and $1$. Such a random variable is said to 
+be a **standard**, or a **unit**, normal random variable.
+
+</div>
+
+<div class="proof">
+
+To prove the above, we prove the more general statement that for some normally distributed $X$ with parameters $\mu$ and 
+$\sigma^2$, then $Y = aX + b$ is normally distributed with parameters $a\mu + b$ and $a^2\sigma^2$. We suppose $a > 0$, noting 
+that the proof for $a < 0$ is similar. Let $F_Y$ denote the CDF of $Y$. Then
+$$\begin{align*}
+  F_Y(x) &= \bbps{Y \leq x}               \\
+         &= \bbps{aX + b \leq x}          \\
+         &= \bbps{X \leq \frac{x - b}{a}} \\
+         &= F_X\left(\frac{x-b}{a}\right)
+\end{align*}$$
+where $F_X$ is the cumulative distribution function of $X$. Differentiating we find that
+$$\begin{align*}
+  f_Y(x) &= \frac{1}{a}f_X\left(\frac{x-b}{a}\right)                                                                  \\
+         &= \frac{1}{\sqrt{2\pi}a\sigma} \exp \left\{ -\left(\frac{x-b}{a} - \mu \right)^2 \big/ \;2\sigma^2 \right\} \\
+         &= \frac{1}{\sqrt{2\pi}a\sigma} \exp \left\{ -(x-b-a\mu)^2\; / \;2(a\sigma)^2 \right\}                       \\
+         &= \frac{1}{\sqrt{2\pi}a\sigma} \exp \left\{ -(x-a\mu-b)^2\; / \;2(a\sigma)^2 \right\}
+\end{align*}$$
+proving the general claim. 
+Thus $$ Z = \frac{X - \mu}{\sigma} = \frac{1}{\sigma}X - \frac{\mu}{\sigma} $$ is normal with parameters $0$ and $1$. 
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Expected Value
+
+Let $X$ be a normal random variable with parameters $\mu$ and $\sigma^2$. Then
+$$ E[X] = \mu. $$
+
+<div class="proof">
+
+To begin, consider the standard normal random variable $Z = (X - \mu) / \sigma$:
+$$\begin{align*}
+  E[Z] &= \int_{-\infty}^{\infty} xf_Z(x)\;dx                           \\
+       &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} xe^{-x^2/2}\;dx \\
+       &= -\frac{1}{\sqrt{2\pi}}e^{-x^2/2}\big|_{-\infty}^{\infty}      \\
+       &= 0
+\end{align*}$$
+Since $X = \mu + \sigma Z$, we see that
+$$ E[X] = \mu + \sigma E[Z] = \mu. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Variance
+
+Let $X$ be a normal random variable with parameters $\mu$ and $\sigma^2$. Then
+$$ \text{Var}(X) = \sigma^2. $$
+
+<div class="proof">
+
+To begin, consider the standard normal random variable $Z = (X - \mu) / \sigma$:
+$$\begin{align*}
+  \text{Var}(Z) &= E[Z^2] - (E[Z])^2                                                \\
+                &= E[Z^2]                                                           \\
+                &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} x^2e^{-x^2/2}\;dx  \\
+                &= \frac{1}{\sqrt{2\pi}} \left(-xe^{-x^2/2}\big|_{-\infty}^\infty +
+                   \int_{-\infty}^\infty e^{-x^2/2}\;dx \right)                     \\
+                &= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\infty} e^{-x^2/2}\;dx     \\
+                &= 1.
+\end{align*}$$
+
+Because $X = \mu + \sigma Z$, we see that
+$$ \text{Var}(X) = \sigma^2\text{Var}(Z) = \sigma^2. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Moment Generating Function
+
+Let $X$ be a normal random variable with parameters $\mu$ and $\sigma^2$. Then its moment generating function is
+$$ M(t) = \exp\left\{\frac{\sigma^2 t^2}{2} + \mu t\right\}. $$
+
+<div class="proof">
+
+First consider the moment generating function of a unit normal random variable $Z$ with parameters $0$ and $1$. Now
+$$\begin{align*}
+  M_Z(t) &= E[e^{tZ}]                                                                                             \\
+         &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{tx}e^{-x^2/2}\;dx                                       \\
+         &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty \exp\left\{-\frac{(x^2 - 2tx)}{2}\right\}\;dx              \\
+         &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty \exp\left\{-\frac{(x-t)^2}{2} + \frac{t^2}{2}\right\}\;dx  \\
+         &= e^{t^2/2}\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty e^{-(x-t)^2/2}\;dx                                \\
+         &= e^{t^2/2}.
+\end{align*}$$
+Noting that $X = \mu + \sigma Z$, we have that
+$$\begin{align*}
+  M_X(t) &= E[e^{t(\mu + \sigma Z)}
+          = E[e^{t\mu}e^{t \sigma Z}]
+          = e^{t\mu}E[e^{t\sigma Z}]                           \\
+         &= e^{t\mu}M_Z(t\sigma)]
+          = e^{t\mu}e^{(t\sigma)^2/2}                          \\
+         &= \exp\left\{\frac{\sigma^2 t^2}{2} + \mu t\right\}.
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Convolution
+
+If $X_i$ for $i = 1, \ldots, n$ are independent random variables that are normally distributed with respective
+parameters $\mu_i$, $\sigma_i^2$ for $i = 1, \ldots, n$, then $$ \sum_{i=1}^n X_i $$ is normally distributed with
+parameters $$ \sum_{i=1}^n \mu_i \;\text{ and }\; \sum_{i=1}^n \sigma_i^2. $$
+
+<div class="proof">
+
+Suppose $X$ and $Y$ are normal random variables with parameters $(0, \sigma^2)$ and $(0, 1)$ respectively.
+Then 
+$$\begin{align*} 
+  f_X(a - y)f_Y(y) 
+    &= \frac{1}{\sqrt{2\pi}\sigma}\exp{\left\{-\frac{(a - y)^2}{2\sigma^2}\right\}}
+       \frac{1}{\sqrt{2\pi}}\exp{\left\{-\frac{y^2}{2}\right\}}                                  \\
+    &= \frac{1}{2\pi\sigma}\exp{\left\{-\frac{(a-y)^2 + y^2\sigma^2}{2\sigma^2}\right\}}         \\
+    &= \frac{1}{2\pi\sigma}\exp{\left\{-\frac{a^2 - 2ay + y^2 + y^2\sigma^2}{2\sigma^2}\right\}} \\
+    &= \frac{1}{2\pi\sigma}\exp{\left\{-\frac{a^2-2ay+y^2(1+\sigma^2)}{2\sigma^2}\right\}}       \\
+    &= \frac{1}{2\pi\sigma}\exp{\left\{-\frac{a^2}{2\sigma^2}\right\}}
+       \exp{\left\{-\frac{y^2(1+\sigma^2) - 2ay}{2\sigma^2}\right\}}.
+\end{align*}$$
+Letting 
+$$ c = \frac{1+\sigma^2}{2\sigma^2} $$
+we finally get
+$$ 
+  f_X(a - y)f_Y(y) 
+    = \frac{1}{2\pi\sigma}\exp{\left\{-\frac{a^2}{2\sigma^2}\right\}}
+      \exp{\left\{-c\left(y^2-2y\frac{a}{1+\sigma^2}\right)\right\}}.
+$$
+Now, by the formula for [convolution](convolution), we see that
+$$\begin{align*}
+  f_{X+Y}(a) 
+    &= \int_{-\infty}^{\infty} f_X(a - y)f_Y(y)\;dy                                               \\
+    &= \int_{-\infty}^{\infty} \frac{1}{2\pi\sigma}\exp{\left\{-\frac{a^2}{2\sigma^2}\right\}}
+       \exp{\left\{-c\left(y^2-2y\frac{a}{1+\sigma^2}\right)\right\}}\;dy                         \\
+    &= \frac{1}{2\pi\sigma}\exp{\left\{-\frac{a^2}{2\sigma^2}\right\}}
+       \exp{\left\{\frac{a^2}{2\sigma^2(1+\sigma^2)}\right\}}
+       \int_{-\infty}^{\infty} \exp{\left\{-c\left(y - \frac{a}{1+\sigma^2}\right)^2\right\}}\;dy \\
+    &= \frac{1}{2\pi\sigma}\exp{\left\{-\frac{a^2}{2(1+\sigma^2)}\right\}}
+       \int_{-\infty}^{\infty} \exp{\left\{-cx^2\right\}} \;dx                                    \\
+    &= C\exp{\left\{-\frac{a^2}{2(1+\sigma^2)}\right\}}
+\end{align*}$$
+where $C$ does not depend on $a$. Therefore $X + Y$ is a normal random variable with mean $0$ and variance
+$1 + \sigma^2$. Next, suppose that $X_1$ and $X_2$ are independent normal random variables with $X_i$ having mean
+$\mu_i$ and variance $\sigma_i^2$ for $i = 1, 2$. Then
+$$ X_1 + X_2 = \sigma_2\left(\frac{X_1 - \mu_1}{\sigma_2} + \frac{X_2 - \mu_2}{\sigma_2}\right) + \mu_1 + \mu_2. $$
+Now $(X_1 - \mu_1)/\sigma_2^2$ is normal with mean $0$ and variance $\sigma_1^2/\sigma_2^2$ and
+$(X_2 - \mu_2)/\sigma_2$ is normal with mean $0$ and variance $1$. Therefore, by the previous argument,
+$(X_1 - \mu_1)/\sigma_2^2 + (X_2 - \mu_2)/\sigma_2^2$ is normal with mean $\mu_1 + \mu_2$ and variance
+$\sigma_2^2(1 + \sigma_1^2/\sigma_2^2) = \sigma_1^2 + \sigma_2^2$. An arbitrary number of normal variables can be
+handled via induction.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Cumulative Distribution Function
+
+It is customary to denote the cumulative distribution function of a standard normal random variable
+by $\phi(x)$. That is,
+$$ \phi(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^x e^{-y^2/2}\;dy. $$
+Alternatively, we note whenever $X$ is normally distributed with parameters $\mu$ and $\sigma^2$, then
+the distribution function of $X$ can be expressed as
+$$ 
+  F_X(a) = \bbps{X \leq a} 
+         = \bbp\left(\frac{X - \mu}{\sigma} \leq \frac{a - \mu}{\sigma}\right)
+         = \phi\left(\frac{a-\mu}{\sigma}\right).
+$$
+The values of $\phi(x)$ for nonnegative $x$ are listed below, with the understanding that
+$$ \phi(-x) = 1 - \phi(x)\quad -\infty < x < \infty. $$
+
+*****
+
+<table class="normal-table" border="0" cellpadding="0" cellspacing="0" class="ta1">
+<colgroup>
+<col width="99">
+</col>
+<col width="99">
+</col>
+<col width="99">
+</col>
+<col width="99">
+</col>
+<col width="99">
+</col>
+<col width="99">
+</col>
+<col width="99">
+</col>
+<col width="99">
+</col>
+<col width="99">
+</col>
+<col width="99">
+</col>
+<col width="99">
+</col>
+</colgroup>
+<tr class="ro1">
+<td class="ce1" style="text-align:left;width:0.889in; ">
+<p>
+Z
+</p>
+</td>
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+0
+</p>
+</td>
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+0.01
+</p>
+</td>
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+0.02
+</p>
+</td>
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+0.03
+</p>
+</td>
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+0.04
+</p>
+</td>
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+0.05
+</p>
+</td>
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+0.06
+</p>
+</td>
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+0.07
+</p>
+</td>
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+0.08
+</p>
+</td>
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+0.09
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+0
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.5
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.504
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.508
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.512
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.516
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.5199
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.5239
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.5279
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.5319
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.5359
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+0.1
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.5398
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.5438
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.5478
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.5517
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.5557
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.5596
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.5636
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.5675
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.5714
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.5753
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+0.2
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.5793
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.5832
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.5871
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.591
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.5948
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.5987
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.6026
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.6064
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.6103
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.6141
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+0.3
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.6179
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.6217
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.6255
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.6293
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.6331
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.6368
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.6406
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.6443
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.648
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.6517
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+0.4
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.6554
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.6591
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.6628
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.6664
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.67
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.6736
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.6772
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.6808
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.6844
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.6879
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+0.5
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.6915
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.695
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.6985
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7019
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7054
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7088
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7123
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7157
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.719
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7224
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+0.6
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7257
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7291
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7324
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7357
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7389
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7422
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7454
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7486
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7517
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7549
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+0.7
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.758
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7611
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7642
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7673
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7704
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7734
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7764
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7794
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7823
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7852
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+0.8
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7881
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.791
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7939
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7967
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.7995
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8023
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8051
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8078
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8106
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8133
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+0.9
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8159
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8186
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8212
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8238
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8264
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8289
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8315
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.834
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8365
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8389
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+1
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8413
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8438
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8461
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8485
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8508
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8531
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8554
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8577
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8599
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8621
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+1.1
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8643
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8665
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8686
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8708
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8729
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8749
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.877
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.879
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.881
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.883
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+1.2
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8849
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8869
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8888
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8907
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8925
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8944
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8962
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.898
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.8997
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9015
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+1.3
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9032
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9049
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9066
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9082
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9099
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9115
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9131
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9147
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9162
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9177
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+1.4
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9192
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9207
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9222
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9236
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9251
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9265
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9279
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9292
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9306
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9319
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+1.5
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9332
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9345
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9357
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.937
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9382
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9394
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9406
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9418
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9429
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9441
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+1.6
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9452
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9463
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9474
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9484
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9495
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9505
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9515
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9525
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9535
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9545
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+1.7
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9554
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9564
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9573
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9582
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9591
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9599
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9608
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9616
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9625
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9633
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+1.8
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9641
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9649
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9656
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9664
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9671
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9678
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9686
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9693
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9699
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9706
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+1.9
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9713
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9719
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9726
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9732
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9738
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9744
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.975
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9756
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9761
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9767
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+2
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9772
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9778
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9783
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9788
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9793
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9798
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9803
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9808
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9812
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9817
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+2.1
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9821
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9826
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.983
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9834
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9838
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9842
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9846
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.985
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9854
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9857
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+2.2
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9861
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9864
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9868
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9871
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9875
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9878
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9881
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9884
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9887
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.989
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+2.3
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9893
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9896
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9898
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9901
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9904
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9906
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9909
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9911
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9913
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9916
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+2.4
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9918
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.992
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9922
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9925
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9927
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9929
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9931
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9932
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9934
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9936
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+2.5
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9938
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.994
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9941
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9943
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9945
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9946
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9948
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9949
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9951
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9952
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+2.6
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9953
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9955
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9956
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9957
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9959
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.996
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9961
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9962
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9963
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9964
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+2.7
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9965
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9966
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9967
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9968
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9969
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.997
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9971
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9972
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9973
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9974
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+2.8
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9974
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9975
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9976
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9977
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9977
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9978
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9979
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9979
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.998
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9981
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+2.9
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9981
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9982
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9982
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9983
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9984
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9984
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9985
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9985
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9986
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9986
+</p>
+</td>
+</tr>
+<tr class="ro1">
+<td class="ce2" style="text-align:right; width:0.889in; ">
+<p>
+3
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9987
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9987
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9987
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9988
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9988
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9989
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9989
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.9989
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.999
+</p>
+</td>
+<td class="ce3" style="text-align:right; width:0.889in; ">
+<p>
+0.999
+</p>
+</td>
+</tr>
+</table>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

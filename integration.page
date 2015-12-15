@@ -1,0 +1,96 @@
+---
+title: Integration
+categories: Calculus
+icon: /img/icons/single-integral.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Geometric Interpretation](/img/graphs/calculus/area-under-curve.png)
+
+In a geometric sense, integrating a function over a given interval $[a, b]$ represents the area (or negative area) of the 
+function between the curve $f(x)$, the $x$-axis, and the lines $x = a$ and $x = b$. It is also the direct analog of 
+[differentiation](), as noted by the [Fundamental Theorem of Calculus](fundamental_theorem_of_calculus). Note there
+are two separate usages of the term integration: as a means of evaluating the given area as described above or as 
+a general description of the antiderivative.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Definite Integral
+
+If $f$ is a function defined for $a \leq x \leq b$, we divide the interval $[a, b]$ into $n$ subintervals of equal 
+width $\Delta x = \frac{b-a}{n}$. We let $x_0 (=a), \inflate{x}{n} (=b)$ be the endpoints of these subintervals and we 
+let $\inflate{x^{*}}{n}$ be any **sample points** in these subintervals, so $x_i^{*}$ lies in the $\spscript{i}{th}$ 
+subinterval $[x_{i-1}, x_{i}]$. Then the **definite integral of $f$ from $a$ to $b$** is $$\int_a^bf(x)dx = \xlimit{n}
+{\infty}\sum_{i=1}^n f(x_i^{*})\Delta x$$ provided that this limit exists. If it does exist, we say that $f$ is 
+**integrable** on $[a, b]$.
+
+</section>
+
+<section class="primary">
+
+# Indefinite Integral
+
+An **indefinite integral** of a function $f$ is the antiderivative of $f$, denoted $$\int f(x)dx=F(x)$$ and 
+meaning $F'(x)=f(x)$.
+
+</section>
+
+<section class="primary">
+
+# Improper Integrals
+
+There exist two types of improper integrals as defined below. In both cases, the corresponding integral is called
+[convergent](convergence) if the limit exists and divergent otherwise.
+
+<section class="secondary">
+
+## Type One
+
+- If $\int_a^tf(x)dx$ exists for every number $t\geq a$, then $$ \int_a^{\infty}f(x)dx =
+  \xlimit{t}{\infty}\int_a^t f(x)dx $$ provided this limit exists (as a finite number).
+- If $\int_t^bf(x)dx$ exists for every number $t \leq b$, then $$ \int_{-\infty}^bf(x)dx =
+  \xlimit{t}{-\infty}f(x)dx $$ provided this limit exists (as a finite number).
+- If both $\int_a^tf(x)dx$ and $\int_t^af(x)dx$ are convergent, then we define $$ \int_{-\infty}^{\infty}f(x)dx=
+  \int_a^tf(x)dx + \int_t^af(x)dx\text{,} $$ where $a$ is any real number.
+
+</section>
+
+<section class="secondary">
+
+## Type Two
+
+- If $f$ is continuous on $[a, b)$ and is discontinuous at $b$, then
+  $$ \int_a^{b}f(x)dx = \xlimit[-]{t}{b}\int_a^t f(x)dx $$ if this limit exists (as a finite number).
+- If $f$ is continuous on $(a, b]$ and is discontinuous at $a$, then
+  $$ \int_a^bf(x)dx = \xlimit[+]{t}{a}\int_t^bf(x)dx $$ if this limit exists (as a finite number).
+- If $f$ has a discontinuity at $c$, where $a < c < b$, and both $\int_a^cf(x)dx$ and
+  $\int_c^bf(x)dx$ are convergent, then we define $$ \int_a^bf(x)dx = \int_a^cf(x)dx + \int_c^bf(x)dx\text{.} $$
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# See Other
+
+- [Integration Techniques](integration_techniques)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

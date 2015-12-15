@@ -1,0 +1,133 @@
+---
+title: Compact Sets
+categories: Analysis Stub
+icon: /img/icons/euclid.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Finite Subcovers](/img/diagrams/analysis/compact-spaces.png)
+
+Let $(X, d)$ be a metric space and $E \subset X$. An **open cover** of $E$ is a collection of $\{G_\alpha\}_{\alpha \in A}$,
+where each $G_\alpha \subset X$ is open and $E \subset \bigcup_{\alpha \in A} G_\alpha$. We say $E$ is **compact** if
+every open cover of $E$ has a finite subcover; that is, whenever $E \subset \bigcup_{\alpha \in A} G_\alpha$ where
+$G_\alpha$ is open, then there exists $\inflate{\alpha}{n}$ such that $E \subset (G_{\alpha_1} \cup \cdots \cup G_{\alpha_n})$.
+
+Intuitively speaking, we recognize that finite sets are very easy to work with. After all, they are very small, have no limit
+points, and the notion of infinity is often difficult to wrestle. But, in lieu of this, we can look at compact sets as being
+the next best thing. For instance, all finite sets are bounded, closed, and in $\bbr$, they contain their supremum and infimum. These all hold with compact sets as well.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Boundedness
+
+All compact sets are bounded.
+
+<div class="proof">
+
+Let $K$ be a compact set. Consider the collection of neighborhoods of radius $1$ around each point of set $K$. That is, for all points $p \in K$, we have a neighborhood $N_1(p)$ around $p$. Now the set $\{ N_1(p) \}_{p \in K}$ is an open cover of $K$. By compactness of $K$, there exists a finite subcover $\{ N_1(p_i) \}_{i=1}^n$ of $K$. Now let
+$$ R = \mathop{\text{max}}_{1 \leq i \leq n} \{ d(p_1, p_i) \}, $$
+which must exist because there is a finite number of pairwise distances. Then $N_{R + 2}(p_1)$
+contains all of $K$, so $K$ is bounded.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Closed
+
+Let $(X, d)$ be a metric space and $K \subset X$ be compact. Then $K$ is closed in $X$.
+Furthermore, suppose $E \subset K$ is a closed set. Then $E$ must be compact.
+
+<div class="proof">
+
+Choose $p \in K^C$. For each $q \in K$, choose 
+$$ V_q = N_{\frac{1}{4}d(p, q)}(p) \text{ and } W_q = N_{\frac{1}{4}d(p, q)}(q), $$ which
+are disjoint. So $\{W_q\}_{q \in K}$ is an open cover of $K$. Since $K$ is compact, we can reduce this set to a 
+finite subcover $\{W_{q_1}, \ldots, W_{q_N}\}$. Now, note that $$ V_q \cap W_q = \emptyset. $$ 
+Furthermore, the set of corresponding neighborhoods in $K^C$ is
+$\{ V_{q_1}, \ldots, V_{q_n} \}$, the intersection of which is simply the neighborhood 
+corresponding to the closest $q \in K$, according to our metric. Thus
+$$ \bigcap \{ V_{q_1}, \ldots, V_{q_n} \} $$ is open[^1], contains $p$, and is disjoint from 
+$\bigcup_{j=1}^N W_{q_j}$. Since this implies $K^C$ is open, we see that $K$ must be closed.
+
+*****
+
+Start with an open cover of $E$. That is, let $\{V_{\alpha}\}$ be an open cover of $E$. Now, $\{V_\alpha\} \cup E^C$
+must be an open cover of $K$. Thus there exists a finite collection of sets, $$ V_{\alpha_1}, \ldots, V_{\alpha_n}, E^C $$
+that covers $K$, since $K$ is compact. Thus, $V_{\alpha_1}, \ldots, V_{\alpha_n}$ covers $E$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Limit Points
+
+Let $(X, d)$ be a metric space and $K \subset X$ be compact. Also, let $E \subset K$ be infinite. Then $E$ has a 
+[limit point](metric_spaces#neighborhoods) in $K$.
+
+<div class="proof">
+
+Suppose $E$ has no limit point in $K$. Then for every $q \in K$, there exists a neighborhood $V_q$ containing $q$ such that
+$$ \left(V_q \backslash \{q\}\right) \cap E = \emptyset. $$ For each $q \in E$, we then have $V_q \cap E = \{q\}$.
+Now $\{V_q\}_{q \in K}$ is an open cover of $E$, but there cannot be a finite subcover of $E$ since $E$ is infinite
+and each neighborhood contains a single point. Therefore $\{V_q\}_{q \in K}$ is an open cover with no finite subcover,
+contradicting $K$'s compactness.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Finite Intersection Property
+
+Let $(X, d)$ be a metric space and $\{K_\alpha\}_{\alpha \in A}$ be a collection of compact sets, inside $X$. Suppose
+every finite subcollection has a nonempty intersection. Then $$ \bigcap_{\alpha \in A} K_\alpha \neq \emptyset. $$
+It then directly follows that if we have a decreasing sequence of compact sets, the intersection of these sets is nonempty.
+That is, if $\{K_n\}_{n=1}^{\infty}$ is a sequence of nonempty compact sets, with $K_{n+1} \subset K_n$ for all $n$, 
+then $$ \bigcap_{n=1}^{\infty} K_n \neq \emptyset. $$
+
+<div class="proof">
+
+Suppose, for the sake of contradiction, that $\cap_{\alpha \in A} K_{\alpha} = \emptyset$. Fix 
+$K_{\alpha_0} \in \{K_\alpha\}_{\alpha \in A}$. Then 
+$$ K_{\alpha_0} \cap \left(\bigcap_{\alpha \in A \backslash \{\alpha_0\}} K_\alpha \right) = \emptyset. $$
+Therefore 
+$$ 
+  K_{\alpha_0} \subset \left(\bigcap_{A \backslash \{\alpha_0\}} K_\alpha\right)^C 
+               = \bigcup_{A \backslash \{\alpha_0\}} K_{\alpha}^C. 
+$$
+Since each $K_\alpha$ is closed, the complements must be open meaning we have an open cover of $K_{\alpha_0}$.
+Since $K_{\alpha_0}$ is compact, there must exist a finite subcover such that
+$$ K_{\alpha_0} \subset K_{\alpha_1}^C \cup \cdots \cup K_{\alpha_n}^C = \left(\bigcap_{j=1}^n K_{\alpha_j}\right)^C. $$
+Therefore $$ K_{\alpha_0} \cap \left(\bigcap_{j=1}^n K_{\alpha_j}\right) = \emptyset, $$ which is a finite subcollection
+with an empty intersection, a contradiction.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Abott, Stephen (2001). Understanding Analysis (1st ed.). Springer. ISBN 978-0387950605.
+
+</section>
+
+<!-- Footnotes -->
+
+[^1]: [Open Neighborhoods](metric_spaces#open-neighborhoods)

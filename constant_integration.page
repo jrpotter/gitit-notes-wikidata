@@ -1,0 +1,35 @@
+---
+title: Constant Integration
+categories: Calculus
+icon: /img/icons/single-integral.png
+...
+
+<section class="primary">
+
+# Summary
+
+If $f'(x) = 0$ for all $x \in (a, b)$, then $f$ is constant on $(a, b)$. Furthermore, if $f'(x) = g'(x)$ for all $x \in (a, b)$, 
+then $f-g$ is constant on $(a, b)$; that is, $\;f(x)=g(x)+C$ for some constant $C$.
+
+<div class="proof">
+
+Let $x_1, x_2$ be any two numbers in $(a, b)$ with $x_1 < x_2$. Since $f$ is differentiable on
+$(a, b)$, it must be differentiable on $(x_1, x_2)$, and continuous on $[x_1, x_2]$. Then by
+the [Mean Value Theorem](mean_value_theorem), $\exists c \in (x_1, x_2)$ such that $f(x_2)-f(x_1) = f'(c)(x_2-x_1)$.
+Since $f'(x) = 0$ for all $x$, $f(x_2) - f(x_1) = 0 \Rightarrow f(x_2) = f(x_1)$. Therefore
+$f$ has the same value at any two numbers in $(a, b)$.
+
+Now, let $F(x) = f(x) - g(x)$. Then $F'(x) = f'(x) - g'(x) = 0$ for all $x \in (a, b)$. Thus
+$F$ is constant; that is, $f - g$ is constant.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

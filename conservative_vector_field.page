@@ -1,0 +1,163 @@
+---
+title: Conservative Vector Field
+categories: Calculus
+icon: /img/icons/analytic-geometry.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![A Closed Path](/img/diagrams/calculus/closed-curve.png)
+
+A vector field $\pmb{F}$ is called a **conservative vector field** if it is the [gradient](directional_derivatives) of some 
+scalar function, that is, if there exists a function $f$ such that $\pmb{F} = \nabla f$. In this situation $f$ is called a 
+**potential function** for $\pmb{F}$. An especially important property of a conservative vector field is that line integrals
+defined in said fields are independent of path. More precisely, for any two piecewise-smooth curves $C_1$ and $C_2$ starting
+and ending at the same points, then
+$$ \int_{C_1} \nabla f \cdot d\pmb{r} = \int_{C_2} \nabla f \cdot d\pmb{r} $$
+whenever $\nabla f$ is continuous, as explained by the 
+[Fundamental Theorem for Line Integrals](fundamental_theorem_of_calculus#line-integrals).
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Closed Paths
+
+A curve is called **closed** if its terminal point coincides with its initial point. We find that $\int_C \pmb{F} \cdot d\pmb{r}$
+is independent of path in $D$ if and only if $\int_C \pmb{F} \cdot d\pmb{r} = 0$ for every closed path $C$ in $D$.
+
+<div class="proof">
+
+If $\int_C \pmb{F} \cdot d\pmb{r}$ is independent of path in $D$ and $C$ is any closed path in $D$, then we can choose 
+any two points $A$ and $B$ on $C$ and regard $C$ as being composed of the path $C_1$ from $A$ to $B$ followed by the 
+path $C_2$ from $B$ to $A$. Then
+$$ 
+  \int_C \pmb{F} \cdot d\pmb{r} = \int_{C_1} \pmb{F} \cdot d\pmb{r} + \int_{C_2} \pmb{F} \cdot d\pmb{r}
+                                = \int_{C_1} \pmb{F} \cdot d\pmb{r} - \int_{-C_2} \pmb{F} \cdot d\pmb{r}
+                                = 0.
+$$
+Conversely, if it is true that $\int_C \pmb{F} \cdot d\pmb{r} = 0$ whenever $C$ is a closed path in $D$, then independence
+follows since any two paths $C_1$ and $C_2$ from some points $A$ to $B$ on the curve can be composed as
+$$ 
+  0 = \int_C \pmb{F} \cdot d\pmb{r}
+    = \int_{C_1} \pmb{F} \cdot d\pmb{r} + \int_{-C_2} \pmb{F} \cdot d\pmb{r}
+    = \int_{C_1} \pmb{F} \cdot d\pmb{r} - \int_{C_2} \pmb{F} \cdot d\pmb{r}.
+$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Classification
+
+<div class="block">
+
+![Sample Path](/img/diagrams/calculus/conservative-independence.png)
+
+It can actually be shown that the *only* vector fields that are independent of path are conservative. Suppose $\pmb{F}$ is
+a vector field that is continuous on an open connected region $D$. If $\int_C \pmb{F} \cdot d\pmb{r}$ is independent of
+path in $D$, then $\pmb{F}$ is a conservative vector field on $D$; that is, there exists a function $f$ such that
+$\nabla f = \pmb{F}$.
+
+</div>
+
+<div class="proof">
+
+Let $A(a, b)$ be a fixed point in $D$. We construct the desired potential function $f$ by defining
+$$ f(x, y) = \int_{(a, b)}^{(x, y)} \pmb{F} \cdot d\pmb{r} $$
+for any point $(x, y)$ in $D$. Since $\int_C \pmb{F} \cdot d\pmb{r}$ is independent of path, it does not matter which
+path $C$ from $(a, b)$ to $(x, y)$ is used to evaluate $f(x, y)$. Since $D$ is open, there exists a disk contained in $D$
+with center $(x, y)$. Choose any point $(x_1, y)$ in the disk with $x_1 < x$ and let $C$ consist of any path $C_1$ from
+$(a, b)$ to $(x_1, y)$ followed by the horizontal line segment $C_2$ from $(x_1, y)$ to $(x, y)$ (refer to the above
+figure). Then
+$$ 
+  f(x, y) = \int_{C_1} \pmb{F} \cdot d\pmb{r} + \int_{C_2} \pmb{F} \cdot d\pmb{r}
+          = \int_{(a, b)}^{(x_1, y)} \pmb{F} \cdot d\pmb{r} + \int_{C_2} \pmb{F} \cdot d\pmb{r}.
+$$
+
+Notice that the first of these integrals does not depend on $x$ so
+$$ \pleibniz{x} f(x, y) = 0 + \pleibniz{x} \int_{C_2} \pmb{F} \cdot d\pmb{r}. $$
+If we write $\pmb{F} = P\pmb{i} + Q\pmb{j}$, then
+$$ \int_{C_2} \pmb{F} \cdot d\pmb{r} = \int_{C_2} P\;dx + Q\;dy. $$
+On $C_2$, $y$ is constant, so $dy = 0$. Using $t$ as the parameter, where $x_1 \leq t \leq x$, we have
+$$ \pleibniz{x} f(x, y) = \pleibniz{x} \int_{C_2} P\;dx + Q\;dy = \pleibniz{x} \int_{x_1}^x P(t, y)\;dt = P(x, y) $$
+by the first part of the Fundamental Theorem of Calculus. Creating a vertical line segment similarly shows that
+$$ \pleibniz{y} f(x, y) = \pleibniz{y} \int_{C_2} P\;dx + Q\;dy = \pleibniz{y} \int_{y_1}^y Q(x, t)\;dt = Q(x, y). $$
+Thus
+$$ \pmb{F} = P\pmb{i} + Q\pmb{j} = \leibniz[f]{x}\pmb{i} + \pleibniz[f]{y}\pmb{j} = \nabla f, $$
+meaning $\pmb{F}$ is conservative.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Conservation
+
+It can be shown that, under certain conditions, a vector field is conservative. Let $\pmb{F} = P\pmb{i} + Q\pmb{j}$ be a
+vector field on an open simply-connected region $D$. Suppose that $P$ and $Q$ have continuous first-order derivatives and
+$$ \pleibniz[P]{y} = \pleibniz[Q]{x} $$
+throughout $D$. Then $\pmb{F}$ is conservative.
+Similarly, in three dimensional space, if $\pmb{F}$ is a vector field defined on all of $\bbr^3$ whose component functions
+have continuous partial derivatives and $\text{curl}\;\pmb{F} = \pmb{0}$, then $\pmb{F}$ is a conservative vector field.
+Note that in order for $\text{curl}\;\pmb{F}$ to be $0$, we are equivalently saying
+$$ \pleibniz[R]{y} = \pleibniz[Q]{z},\quad \pleibniz[P]{z} = \pleibniz[R]{x},\quad \pleibniz[Q]{x} = \pleibniz[P]{y}. $$
+
+<div class="proof">
+
+First off, in both cases, we equate each two component pair partially differentiated with respect to either $x$, $y$, or $z$
+(where $z = 0$ in the two-dimensional case), because [Clairaut's Theorem](clairauts_theorem) states that continuous
+partial derivatives can be applied in any order. If $\pmb{F}$ is indeed a conservative vector field, then
+$$ \pleibniz[f]{x} = P, \quad \pleibniz[f]{y} = Q, \quad \pleibniz[f]{z} = R $$
+where $\nabla f = \pmb{F} = P\pmb{i} + Q\pmb{j} + R\pmb{k}$, and the pairwise inequalities then follow.
+
+- Two-Dimensional:  
+:    We prove the two-dimensional case first. We're assuming that $\pmb{F} = P\pmb{i} + Q\pmb{j}$ is a vector field
+     on an open simply-connected region $D$, that $P$ and $Q$ have continuous first-order partial derivatives, and that
+     $$ \pleibniz[P]{y} = \pleibniz[Q]{x} $$
+     throughout $D$. If $C$ is any simple closed path in $D$ and $R$ is the region that $C$ encloses, then 
+     [Green's Theorem](greens_theorem) gives
+     $$ 
+       \oint_C \pmb{F} \cdot d\pmb{r} = \oint_C P\;dx + Q\;dy
+                                      = \iint_R \left(\pleibniz[Q]{x} - \pleibniz[P]{y}\right)\;dA
+                                      = \iint_R 0 \;dA
+                                      = 0.
+     $$
+     A curve that is not simple crosses itself at one or more points and can be broken up into a number of simple curves.
+     Thus $\int_C \pmb{F} \cdot d\pmb{r} = 0$ for any closed curve $C$ meaning $\int_C \pmb{F} \cdot d\pmb{r} = 0$ is
+     independent of path. It follows that $\pmb{F}$ is conservative.
+
+- Three-Dimensional:
+:    We note this is a direct analogue to the two dimensional case except using [Stoke's Theorem](stokes_theorem)
+     instead of [Green's Theorem](greens_theorem).
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Curl](curl)
+- [Divergence](divergence)
+- [Green's Theorem](greens_theorem)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.  
+
+</section>

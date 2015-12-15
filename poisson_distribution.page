@@ -1,0 +1,159 @@
+---
+title: Poisson Distribution
+categories: Statistics
+icon: /img/icons/random-variables.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Poisson Distribution](/img/graphs/statistics/poisson-distribution.png)
+
+Consider $n$ events, with $p_i$ equal to the probability that event $i$ occurs, $i=1,\ldots,n$.
+If all the $p_i$ are "small" and the trials are either independent or at most "weakly dependent,"
+then the number of these events that occur approximately has a Poisson distribution with mean $\sum_{i=1}^np_i$.
+Given a large enough $n$ and small enough $p_i$'s, we note this occurrence count is the expectation of a 
+binomial random distribution (namely $np$).
+
+Now a random variable $X$ that takes on one of the values $0, 1, 2, \ldots$ is said to be a
+**Poisson random variable** with parameter $\lambda$ if, for some $\lambda > 0$, 
+$$ p(i) = \bbps{X=i} = e^{-\lambda}\frac{\lambda^i}{i!}\quad i=0,1,2,\ldots $$
+
+The Poisson random variable may be used as an approximation for a binomial random variable with
+parameters $(n,p)$ when $n$ is large and $p$ is small enough so that $np$ is of moderate size.
+
+</div>
+
+<div class="proof">
+
+Suppose $X$ is a binomial random variable with parameters $(n,p)$, and let $\lambda = np$. Then
+
+$$\begin{align*}
+  \bbps{X=i} &= \binom{n}{i}p^i(1-p)^{n-i}                                                                  \\
+             &= \binom{n}{i}\left(\frac{\lambda}{n}\right)^i\left(1-\frac{\lambda}{n}\right)^{n-i}          \\
+             &= \frac{n(n-1)\cdots(n-i+1)}{n^i}\frac{\lambda^i}{i!}\frac{(1-\lambda/n)^n}{(1-\lambda/n)^i}.
+\end{align*}$$
+
+Now for $n$ large and $\lambda$ moderate
+$$
+  \left(1-\frac{\lambda}{n}\right)^n \approx e^{-\lambda},\quad
+  \frac{n(n-1)\cdots(n-i+1)}{n^i}\approx 1,\quad
+  \left(1-\frac{\lambda}{n}\right)^i \approx 1.
+$$
+        
+Where the first approximation derives from the definition of [Euler's Number](CC/eulers_number). 
+Hence, $$ \bbps{X=i} \approx e^{-\lambda}\frac{\lambda^i}{i!}. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Expectation
+
+Let $X$ be a Poisson variable. Then $$ E[X] = \lambda. $$
+
+<div class="proof">
+
+Consider the first derivative of the moment generating function:
+$$ M'(t) = \exp\{\lambda(e^t - 1)\}\lambda e^t. $$
+Then $$ E[X] = M'(0) = \lambda. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Variance
+
+Let $X$ be a Poisson variable. Then $$ \text{Var}(X) = \lambda. $$
+
+<div class="proof">
+
+By the proof of [expectation](#expectation) we know that $$ M'(t) = \exp\{\lambda(e^t - 1)\}\lambda e^t. $$
+Now $$ M''(t) = (\exp\{\lambda(e^t-1)\}\lambda e^t)(\lambda e^t) + (\exp\{\lambda(e^t-1)\})\lambda e^t. $$
+Therefore $$ \text{Var}(X) = M''(0) - (E[X])^2 = \lambda^2 + \lambda - \lambda^2 = \lambda. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Moment Generating Function
+
+If $X$ is a Poisson random variable with parameter $\lambda$, then moment generating function $M(t)$ is
+$$ M(t) = \exp\{\lambda(e^t - 1)\}. $$
+
+<div class="proof">
+
+Suppose $X$ is a Poisson random variable with parameter $\lambda$. Then
+$$\begin{align*}
+  M(t) &= E[e^{tX}]                                                 \\
+       &= \sum_{n=0}^\infty \frac{e^{tn}e^{-\lambda}\lambda^n}{n!}  \\
+       &= e^{-\lambda}\sum_{n=0}^\infty \frac{(\lambda e^t)^n}{n!}  \\
+       &= e^{-\lambda}e^{\lambda e^t}                               \\
+       &= \exp\{\lambda(e^t - 1)\}.
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Convolution
+
+The Poisson random variable is closed under convolution; that is, if $X$ and $Y$ are independent Poisson random variables
+with respective parameters $\lambda_1$ and $\lambda_2$, then the distribution of $X + Y$ is also a Poisson random 
+variable (coincidentally with parameter $\lambda_1 + \lambda_2$).
+
+<div class="proof">
+
+Note the event $\{X + Y = n\}$ may be written as the union of the disjoint events $\{X = k, Y = n - k\}$, 
+$0 \leq k \leq n$. Then
+$$\begin{align*}
+  \bbps{X + Y = n} 
+    &= \sum_{k=0}^n \bbps{X = k, Y = n - k}                                                               \\
+    &= \sum_{k=0}^n \bbps{X = k}\bbps{Y = n - k}                                                          \\
+    &= \sum_{k=0}^n e^{-\lambda_1}\frac{\lambda_1^k}{k!}e^{-\lambda_2}\frac{\lambda_2^{n-k}}{(n - k)!}    \\
+    &= e^{-(\lambda_1 + \lambda_2)}\sum_{k=0}^n \frac{\lambda_1^k\lambda_2^{n-k}}{k!(n-k)!}               \\
+    &= \frac{e^{-(\lambda_1 + \lambda_2)}}{n!} \sum_{k=0}^n \frac{n!}{k!(n-k)!}\lambda_1^k\lambda_2^{n-k} \\
+    &= \frac{e^{-(\lambda_1 + \lambda_2)}}{n!}(\lambda_1 + \lambda_2)^n
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Computation
+
+If $X$ is a Poisson with parameter $\lambda$, then $$ \bbps{X=i+1} = \frac{\lambda}{i+1}\bbps{X=i}. $$
+
+<div class="proof">
+
+Given Poisson $X$ with parameter $\lambda$, then
+$$
+  \frac{\bbps{X=i+1}}{\bbps{X=i}}
+    = \frac{e^{-\lambda}\lambda^{i+1}/(i+1)!}{e^{-\lambda}\lambda^i/i!}
+    = \frac{\lambda}{i+1}.
+$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

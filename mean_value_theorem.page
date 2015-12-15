@@ -1,0 +1,107 @@
+---
+title: Mean Value Theorem
+categories: Calculus
+icon: /img/icons/taking-derivatives.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Rotated Rolle's Theorem](/img/graphs/calculus/mean-value-theorem.png)
+
+Let $f$ be a function that satisfies:
+
+1. $f$ is continuous on the closed interval $[a, b]$.
+2. $f$ is differentiable on the open interval $(a, b)$.
+
+Then there is a number $c \in (a, b)$ such that 
+$$f'(c) = \frac{f(b)-f(a)}{b-a}, $$ 
+or, equivalently,
+$$ f(b)-f(a) = f'(c)(b-a). $$
+
+</div>
+
+<div class="proof">
+
+Let $A = (a, \;f(a))$ and $B = (b, \;f(b))$ be points on $f$. Define $h$ to be the difference between $f$ and the 
+secant line $AB$, which is $$ y - f(a) = \frac{f(b)-f(a)}{b-a}(x-a). $$ 
+Thus $h(x) = f(x)-f(a)-\frac{f(b)-f(a)}{b-a}(x-a)$. We note $h$ is continuous on $[a, b]$ and differentiable on $(a, b)$. 
+We also note 
+$$ h(a) = f(a)-f(a)-\frac{f(b)-f(a)}{b-a}(a-a) = 0 $$ 
+and
+$$\begin{align*}
+  h(b) &= f(b)-f(a)-\frac{f(b)-f(a)}{b-a}(b-a) \\
+       &= f(b)-f(a)-[f(b)-f(a)]                \\
+       &= 0
+\end{align*}$$
+meaning $h(a)=h(b)$. Therefore, by [Rolle's Theorem](rolles_theorem), 
+$$ 0 = h'(c) = f'(c) -\frac{f(b)-f(a)}{b-a}$$ so $$f'(c) = \frac{f(b)-f(a)}{b-a}. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Cauchy's Theorem
+
+The Mean Value Theorem can be generalized even further, as such:
+
+Suppose that the functions $f$ and $g$ are continuous on $[a, b]$ and differentiable on $(a, b)$, and $g'(x) \neq 0$ 
+for all $x \in (a, b)$. Then there is a number $c \in (a, b)$ such that 
+$$ \frac{f'(c)}{g'(c)} = \frac{f(b)-f(a)}{g(b)-g(a)}. $$
+
+<div class="proof">
+
+Let $A = (g(a), \;f(a)), B = (g(b), \;f(b))$ and $$ AB = f(a) + \frac{f(b)-f(a)}{g(b)-g(a)}[g(x)-g(a)]. $$
+This gives $$ h(x) = f(x)-f(a)-\frac{f(b)-f(a)}{g(b)-g(a)}[g(x)-g(a)] $$ and the rest follows in an argument similar
+to the original [Mean Value Theorem](#summary).
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Integral Variation
+
+If $f$ is continuous on $[a, b]$, then there exists a number $c$ in $[a, b]$ such that
+$$ f(c) = f_{\text{ave}} = \frac{1}{b-a}\int_a^b f(x)dx\text{,} $$ that is, 
+$$ \int_a^b f(x)dx = f(c)(b-a)\text{.} $$
+
+<div class="proof">  
+
+Let $f$ be continuous on an interval $[a, b]$, and define $F(x) = \int_a^x f(t)dt$. By the
+[Fundamental Theorem of Calculus](fundamental_theorem_of_calculus), we note $F(x)$ is continuous on $[a, b]$, 
+differentiable on $a, b$, and $F'(x) = f(x)$. Since $F$ is continuous on the given interval, by the 
+[Mean Value Theorem](#statement) there exists a $c \in (a, b)$ such that $F(b) - F(a) = F'(c)(b - a)$. This implies:
+$$\begin{align*}
+  & \qquad F(b) - F(a) = F'(c)(b - a)                        \\
+  &\Rightarrow \int_a^b f(t)dt - \int_a^a f(t)dt = f(c)(b-a) \\
+  &\Rightarrow \int_a^b f(t)dt = f(c)(b-a)
+\end{align*}$$
+completing the proof.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Critical Numbers](critical_numbers)
+- [Fundamental Theorem of Calculus](fundamental_theorem_of_calculus)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

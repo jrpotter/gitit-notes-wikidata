@@ -1,0 +1,54 @@
+---
+title: Extreme Value Theorem
+categories: Calculus
+icon: /img/icons/taking-derivatives.png
+...
+
+<section class="primary">
+
+# Statement
+
+<div class="block">
+
+![](/img/graphs/calculus/extreme-value-theorem.png)
+
+If $f$ is continuous on a closed interval $[a, b]$, then $f$ attains an absolute maximum value $f(c)$ and an 
+absolute minimum value $f(d)$ for $c,d \in [a, b]$. That is, there exist numbers $c$ and $d$ in $[a, b]$ such that
+$$ f(c) \geq f(x) \geq f(d) \text{ for all } x \in [a, b]\text{.} $$
+
+Note this is a relatively intuitive statement, but the proof is fairly difficult so is omitted. Nonetheless,
+this theorem is incredibly important; for example, it is a fundamental component of the proof of the
+[Fundamental Theorem of Calculus](fundamental_theorem_of_calculus).
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Generalization
+
+If $f$ is continuous on a closed, bounded set $D$ in $\bbr^2$, then $\;f$ attains an absolute maximum value
+$f(x_1, y_1)$ and an absolute minimum value $\;f(x_2, y_2)$ at some points $(x_1, y_1)$ and $(x_2, y_2)$ in $D$.
+
+Given the above, the general procedure in finding an absolute maximum and minimum of a continuous function $\;f$ on
+a closed, bounded set $D$ is to first find the values of $\;f$ at the critical points of $\;f$ in $D$, then find
+the extreme values of $\;f$ on the boundary of $D$, and lastly pick the largest and smallest of the collective values.
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Rolle's Theorem](rolles_theorem)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

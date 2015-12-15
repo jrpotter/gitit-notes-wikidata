@@ -1,0 +1,54 @@
+---
+title: Pigeonhole Principle
+categories: Combinatorics
+icon: /img/icons/counting.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![10 Pigeons in 9 Holes](/img/diagrams/combinatorics/pigeonhole-principle.png)
+
+In the simplest sense of the theorem, we state that if $n + 1$ objects are distributed into $n$ boxes, then at least
+one box contains two or more of the objects. Alternatively, we can state the principle in its strong form:
+Let $\inflate{q}{n}$ be positive integers. If $$ \inflatec[+]{q}{n} - n + 1 $$ objects are distributed into $n$ 
+boxes, then either the first box contains at least $q_1$ objects, or the second box contains at least $q_2$
+objects, $\ldots$, or the $\spscript{n}{th}$ box contains at least $q_n$ objects.
+
+</div>
+
+<div class="proof">
+
+To prove the simple statement, we note that if each of the $n$ objects contains at most one of the objects, then the 
+total number of objects is at most $1 + 1 + \cdots + 1 \;(n\; 1\text{s}) = n$. Since we distribute $n + 1$ objects, then this 
+yields a contradiction. Thus some box contains at least two of the objects.
+
+We now prove the strong statement. Suppose that we distribute $\inflatec[+]{q}{n} - n + 1$ objects among $n$ boxes.
+If for each $i = 1, 2, \ldots, n$ the $\spscript{i}{th}$ box contains fewer than $q_i$ objects, then the total number
+of objects in all boxes does not exceed $$ (q_1 - 1) + (q_2 - 1) + \cdots + (q_n - 1) = \inflatec[+]{q}{n} - n. $$
+Since this number is one less than the number of objects distributed, we conclude that for some $i = 1, 2, \ldots, n$
+the $\spscript{i}{th}$ box contains at least $q_i$ objects.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Chinese Remainder Theorem](chinese_remainder_theorem)
+- [Theory of Ramsey](theory_of_ramsey)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Brualdi, Richard A. (2009). Introductory Combinatorics (5th ed.). Pearson. ISBN 978-0136020400.
+
+</section>

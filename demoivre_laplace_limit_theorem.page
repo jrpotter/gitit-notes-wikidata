@@ -1,0 +1,54 @@
+---
+title: DeMoivre-Laplace Limit Theorem
+categories: Statistics
+icon: /img/icons/inferential-statistics.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Limit Demonstration](/img/diagrams/statistics/de-moivre-laplace.gif)
+
+When $n$ is large, it has been found that a binomial random variable with parameters $n$ and $p$ will
+have approximately the same distribution as a normal random variable with the same mean and variance
+as the binomial. By "standardizing" the binomial (first subtract the mean $np$ and divide by its
+standard deviation $\sqrt{np(1-p)}$), then the distribution function of this standardized random
+variable will converge to the standard normal distribution function as $n \rightarrow \infty$.
+
+That is, if $S_n$ denotes the number of successes that occur when $n$ independent trials, each resulting
+in a success with probability $p$, are performed, then, for any $a < b$,
+$$ \bbps{a \leq \frac{S_n - np}{\sqrt{np(1-p)}} \leq b} = \phi(b) - \phi(a) $$
+as $n \rightarrow \infty$.
+
+This result is a special case of the [Central Limit Theorem](central_limit_theorem), so the proof here
+is omitted.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Continuity Correction
+
+When applying a continuous approximation to a discrete distribution like that of the binomial, it is
+important to apply a **continuity correction** to account for this change. The correction should be
+applied as follows:
+
+If $k$ is an integer, then 
+$$ \bbps{X \leq k} \approx \bbps{Y \leq k + \frac{1}{2}}, $$
+where $Y$ is a normal with the same mean and variance as $X$. Note that the above implies therefore that
+$$ \bbps{X < k} = \bbps{X \leq k - 1} = \bbps{Y \leq k - 1 + \frac{1}{2}} = \bbps{Y \leq k - \frac{1}{2}}. $$
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

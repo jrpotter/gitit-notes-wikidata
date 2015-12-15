@@ -1,0 +1,27 @@
+---
+title: @Surface Integrals
+Categories: Calculus
+icon: /img/icons/surface-integrals.png
+...
+
+<section class="primary">
+
+# Gauss's Law
+
+For any *closed* surface enclosing total charge $Q_{\text{in}}$, the net electric flux through the surface is
+$$ \phi_e = \oint \vec{E} \cdot d\vec{A} = \frac{Q_{\text{in}}}{\epsilon_0}. $$
+Note that Gauss's Law tells us that charges create electric fields in just such a way that the net flux of the
+field is the same through *any* surface surrounding the charges, no matter what its size and shape may be.
+Also, a Gaussian surface is not a physical surface, and it need not coincide with the boundary of any
+physical object. All that is necessary is that we can guess the *shape* of the field and consequently devise
+a closed surface around the charge.
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

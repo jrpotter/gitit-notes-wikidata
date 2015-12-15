@@ -1,0 +1,77 @@
+---
+title: Divergence Theorem
+categories: Calculus
+icon: /img/icons/surface-integrals.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Divergence of Sphere over $\pmb{F}$](/img/diagrams/calculus/divergence-theorem.png)
+
+Let $E$ be a simple solid region (one that is simultaneously of types $1$, $2$, and $3$) and let $S$ be the boundary
+surface of $E$, given with positive (outward) orientation. Let $\pmb{F}$ be a vector field whose component functions have
+continuous partial derivatives on an open region that contains $E$. Then
+$$ \iint_S \pmb{F} \cdot d\pmb{S} = \iiint_E \text{div}\;\pmb{F}\;dV. $$
+Therefore the [flux](surface_integrals#vector-fields) of $\pmb{F}$ under the above conditions is equal to the
+triple integral of the divergence of $\pmb{F}$ over $E$. Note intuitively that this could be predicted by trying to find a 
+similar relationship between the line integral and the [divergence form of Green's Theorem](greens_theorem#divergence-form) 
+for higher dimensions. That is, since $$ \int_C \pmb{F} \cdot \pmb{n}\;ds = \iint_D \text{div}\;\pmb{F}(x, y)\;dA, $$
+we might expect the previous equation to hold.
+
+</div>
+
+<div class="proof">
+
+<div class="block">
+
+![Type 1 Region](/img/diagrams/calculus/type-1-region.png)
+
+Let $\pmb{F} = P\pmb{i} + Q\pmb{j} + R\pmb{k}$. Then
+$$ 
+  \iiint_E \text{div}\;\pmb{F}\;dV = \iiint_E \pleibniz[P]{x}\;dV 
+                                   + \iiint_E \pleibniz[Q]{y}\;dV
+                                   + \iiint_E \pleibniz[R]{z}\;dV.
+$$
+Now if we let $\pmb{n}$ be the unit outward normal of $S$, then
+$$\begin{align*}
+  \iint_S \pmb{F} \cdot d\pmb{S} 
+    &= \iint_S \pmb{F}\cdot\pmb{n}\;dS = \iint_S(P\pmb{i}+Q\pmb{j}+R\pmb{k})\cdot\pmb{n}\;ds                  \\
+    &= \iint_S P\pmb{i}\cdot\pmb{n}\;dS + \iint_S Q\pmb{j}\cdot\pmb{n}\;dS + \iint_S R\pmb{k}\cdot\pmb{n}\;dS
+\end{align*}$$
+
+We now show that $$ \iint_S R\pmb{k}\cdot\pmb{n}\;dS = \iiint_E \pleibniz[R]{z}\;dV $$ by expressing $E$ as a type $1$ region.
+The other two equivalences are proved by expressing $E$ as a type $2$ and $3$ region respectively. Since $E$ is a type $1$
+region, we find that
+$$ E = \{(x, y, z) : (x, y) \in D, u_1(x, y) \leq z \leq u_2(x, y) \} $$
+where $D$ is the projection of $E$ onto the $xy$-plane. Now note that
+$$ \iiint_E \pleibniz[R]{z}\;dV = \iint_D \left[\int_{u_1(x, y)}^{u_2(x, y)} \pleibniz[R]{z}(x, y, z) dz\right]dA $$
+so, by the [Fundamental Theorem of Calculus](fundamental_theorem_of_calculus), we get that
+$$ \iiint_E \pleibniz[R]{z}\;dV = \iint_D \left[R(x, y, u_2(x, y)) - R(x, y, u_1(x, y))\right]dA. $$
+The boundary surface consists of three pieces as labeled in the diagram, though $S_3$ may not necessarily appear (as in the
+case of a sphere). We note
+$$ \iint_{S_3} R\pmb{k} \cdot \pmb{n}\;dS = \iint_{S_3} 0\;dS = 0 $$
+since the normal is horizontal and $\pmb{k}$ is vertical. Now, since the normal of $S_2$ is upward, then
+$$ \iint_{S_2} R\pmb{k} \cdot \pmb{n}\;dS = \iint_D R(x, y, u_2(x, y))\;dA. $$
+Lastly, on $S_1$ the normal points downward so
+$$ \iint_{S_1} R\pmb{k} \cdot \pmb{n}\;dS = -\iint_D R(x, y, u_1(x, y))\;dA. $$
+Therefore
+$$ \iint_S R\pmb{k}\cdot\pmb{n}\;dS = \iint_D\left[R(x, y, u_2(x, y)) - R(x, y, u_1(x, y))\right]dA. $$
+Equating the two derivations, the proof follows.
+
+</div>
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.  
+
+</section>

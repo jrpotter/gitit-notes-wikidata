@@ -1,0 +1,93 @@
+---
+title: Euler's Number
+categories: Calculus Complex
+icon: /img/icons/limits.png
+...
+
+<section class="primary">
+
+# Definition
+
+<div class="block">
+
+![](/img/graphs/calculus/eulers-number.png)
+
+**Euler's number**, denoted $e$, represents the value which has a tangent line of slope $1$ in the function $f(x) = e^x$,
+with approximate value $2.7182818284$. Geometrically, this means that of the possible exponential functions $y = a^x$, 
+the function $f(x) = e^x$ is the one whose tangent line at $(0, 1)$ has a slope $f'(0)$ that is exactly $1$. Therefore
+
+$$\begin{align*}
+  1 = \xlimit{h}{0}\frac{f(0+h)-f(0)}{h} &= \xlimit{h}{0}\frac{f(h)-f(0)}{h} \\
+                                         &= \xlimit{h}{0}\frac{e^h-e^0}{h}   \\
+                                         &= \xlimit{h}{0}\frac{e^h-1}{h}{.} 
+\end{align*}$$
+
+Alternatively, the following is often considered the definition of $e$ and can be derived from the previous definition:
+
+$$ e = \xlimit{x}{0}(1+x)^{\frac{1}{x}} = \xlimit{n}{\infty}\left(1+\frac{1}{n}\right)^n. $$
+
+Furthermore, the above definition implies
+$$ e^a = \xlimit{n}{\infty}\left(1+\frac{a}{n}\right)^n. $$
+
+<div class="proof">
+  
+If $f(x) = \ln{x}$, then $f'(x) = \frac{1}{x} \Rightarrow f'(1) = 1$. Now
+$$\begin{align*}
+  f'(1) = 1 &= \xlimit{h}{0}\frac{f(1+h)-f(1)}{h}       \\
+            &= \xlimit{x}{0}\frac{\ln{(1+x)}-\ln{1}}{x} \\
+            &= \xlimit{x}{0}\frac{1}{x}\ln{(1+x)}       \\
+            &= \xlimit{x}{0}\ln{(1+x)}^{\frac{1}{x}}
+\end{align*}$$
+Then
+$$\begin{align*}
+  e = \exp{(1)} &= \exp{\left(\;\xlimit{x}{0}\left[\ln{(1+x)}^{\frac{1}{x}}\right]\right)} \\
+              &= \xlimit{x}{0}\left[\exp{\left(\ln({1+x})^{\frac{1}{x}}\right)}\right]     \\
+              &= \xlimit{x}{0}\;(1+x)^{\frac{1}{x}}
+\end{align*}$$
+
+Now if we were to set $x = \frac{1}{n}$ then
+$$ e = \xlimit{x}{0}(1+x)^{\frac{1}{x}} = \xlimit{n}{\infty}\left(1+\frac{1}{n}\right)^n. $$
+
+Lastly $$ e^a = \xlimit{x}{0}(1+x)^{\dfrac{a}{x}} $$
+and setting $x = \frac{a}{n}$ yields $$ e^a = \xlimit{n}{\infty}\left(1+\frac{a}{n}\right)^n. $$
+
+</div>
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Euler's Formula
+
+Euler's formula explains what it means to take the exponential of a complex number, in a manner that reduces 
+to the real exponential function when the exponent is real. Namely, if $z = x + iy$ is a complex number, then
+$$ e^z = e^x(\cos{y} + i\sin{y}). $$
+
+<div class="proof">
+
+Note the [Taylor series](taylor_series##common-series) of $e^x$ is
+$$ e^t = \sum_{n=0}^{\infty}\frac{t^n}{n!} \text{ for all } t. $$
+Then if we were to substitute in $iy$ for $t$ in the above equation, we find that
+$$\begin{align*}
+  e^{iy} &= \sum_{n=0}^{\infty} \frac{(iy)^n}{n!}                                                                     \\
+         &= \sum_{n=0}^{\infty} \frac{(-1)^ny^{2n}}{(2n)!} + i\sum_{n=1}^{\infty} \frac{(-1)^{n-1}y^{2n-1}}{(2n-1)!}, 
+\end{align*}$$
+where the sum is separated into its real and imaginary parts and powers of $i$ are simplified. The two summations
+are readily identified as the taylor series for $\cos{y}$ and $\sin{y}$ respectively. Thus
+$$ e^{iy} = \cos{y} + i\sin{y}. $$
+Therefore
+$$ e^z = e^{x+iy} = e^xe^{iy} = e^x(\cos{y} + i\sin{y}). $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

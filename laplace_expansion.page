@@ -1,0 +1,88 @@
+---
+title: Laplace Expansion
+categories: Linear Algebra
+icon: /img/icons/matrix-transformations.png
+...
+
+<section class="primary">
+
+# Summary
+
+**Laplace expansion** (or **cofactor expansion**) allows us to determine determinants of matrices by considering the 
+determinants of submatrices. Unlike Sarrus' Rule for finding determinants of $3 \times 3$ matrices, Laplace's expansion 
+works for $n \times n$ matrices, along any row or columns as follows:
+
+Expansion down the $\spscript{j}{th}$ column yields
+$$ \text{det}\;A = \sum_{i=1}^n (-1)^{i+j}a_{ij}\text{det}(A_{ij}) $$
+and expansion along the $\spscript{i}{th}$ row yields
+$$ \text{det}\;A = \sum_{j=1}^n (-1)^{i+j}a_{ij}\text{det}(A_{ij}) $$
+where $A_{ij}$ is the **minor** of $A$ obtained by omitting the $\spscript{i}{th}$ row and $\spscript{j}{th}$ column of $A$.
+
+<div class="proof">
+
+Consider a pattern $P$ in an $n \times n$ matrix $A$. For a fixed $j$, the pattern $P$ will contain exactly
+one entry $a_{ij}$ in the $\spscript{j}{th}$ column of $A$. Let $P_{ij}$ be the pattern in $A_{ij}$ that contains
+the same entries as $P$, except for the ommitted entry $a_{ij}$. Then $\text{prod}\;P = a_{ij}\text{prod}\;P_{ij}$. 
+In addition, we can show that $\text{sgn}\;P = (-1)^{i+j}\text{sgn}(P_{ij})$, by [signature of minors](#signature-of-minors).
+Thus $(\text{sgn}\;P)(\text{prod}\;P) = (-1)^{i+j}a_{ij}(\text{sgn}\;P_{ij})(\text{prod}\;P_{ij})$.
+Then we can compute the determinant of $A$ by collecting the patterns containing $a_{ij}$ for some fixed $j$
+and $1 \leq i \leq n$:
+
+$$\begin{align*}
+  \text{det}\;A &= \sum(\text{sgn}\;P)(\text{prod}\;P)                                         \\
+                &= \sum_{i=1}^n\sum_{P\text{ contains }a_{ij}} (\text{sgn}\;P)(\text{prod}\;P) \\
+                &= \sum_{i=1}^n\sum_{P\text{ contains }a_{ij}}
+                   (-1)^{i+j}a_{ij}(\text{sgn}\;P_{ij})(\text{prod}\;P_{ij})                   \\
+                &= \sum_{i=1}^n(-1)^{i+j}a_{ij}\sum_{P\text{ contains }a_{ij}} 
+                   (\text{sgn}\;P_{ij})(\text{prod}\;P_{ij})                                   \\
+                &= \sum_{i=1}^n (-1)^{i+j}a_{ij}\text{det}(A_{ij})
+\end{align*}$$
+
+Note that since $\text{det}\;A = \text{det}\;A^T$[^1], then we can expand down any row as well.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Signature of Minors
+
+Let $P$ be a pattern of the determinant of an $n \times n$ matrix $A$, and let $P_{ij}$ be the pattern with the
+entry at $ij$ omitted (in other words, the closest pattern to the minor $A_{ij})$. Then:
+
+$$ \text{sgn}\;P = (-1)^{i+j}\text{sgn}(P_{ij}). $$
+
+<div class="proof">
+
+First note if $(i + j)$ is even, then $i$ and $j$ are both odd or both even. Similarly, if $(i + j)$ is odd,
+then either $i$ or $j$ is odd and the other even. Consider a pattern $P$ with entry $a_{ij}$, and suppose we have
+$k$ entries in $P$ to the left and above $a_{ij}$. 
+
+Note $k$ is a value in between $0$ and $\text{min}\{i-1, j-1\} = \delta$, since only one entry of a pattern can exist in any 
+row and column. That is, $k$ is bound by the smaller of the rows and columns of the submatrix to the left and above $a_{ij}$.
+Similarly, consider the number of rows and columns that were not or could not contribute an entry to $P$; this value is bound
+by $\text{max}\{i-1, j-1\} = \delta'$.
+
+Thus $\delta - k$ represents the number of inversions to the left of $a_{ij}$ and $\delta' - k$ represents the number of inversions
+to the right of $a_{ij}$, for a total number of $(\delta + \delta') - 2k$ inversions. If $(i + j)$ is even, then $\delta$ and
+$\delta'$ must both be even or both be odd, so the number of inversions must be even. If $(i + j)$ is odd, then $\delta$ and
+$\delta'$ must be different parities, and thus the number of inversions is odd.
+
+Therefore $$ \text{sgn}\;P = (-1)^{i+j}\text{sgn}(P_{ij}). $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Bretscher, Otto (2008). Linear Algebra with Applications (4th ed.). Pearson. ISBN 978-0-13-600926-9.
+
+</section>
+
+<!-- Footnotes -->
+
+[^1]: [Determinants of Transpositions](determinants#matrix-transpositions)

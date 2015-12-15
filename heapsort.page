@@ -1,0 +1,87 @@
+---
+title: Heapsort
+categories: Algorithms Stub
+icon: /img/icons/binary-tree.png
+...
+
+<section class="primary">
+
+# Summary
+
+
+
+</section>
+
+<section class="primary">
+
+# Analysis
+
+
+</section>
+
+<section class="primary">
+
+# Implementation
+
+~~~ { .python }
+class BinaryHeap():
+    """
+    Takes in values and creates a heap out of them.
+    """
+    def __init__(self, values):
+        """
+        Builds heap.
+
+        Note to do this we must heapify starting from the bottom of the tree and moving upward. 
+        Afterwards, we can call the corresponding heapsort method.
+        """
+        self.heap = values
+        self.size = len(values)
+        for i in reversed(range(0, self.size)):
+            self._heapify(i)
+
+    def _swap(self, i, j):
+        """
+        Convenience method for swapping.
+        """
+        tmp = self.heap[i]
+        self.heap[i] = self.heap[j]
+        self.heap[j] = tmp
+
+    def _heapify(self, parent):
+        """
+        Sets the heap attribute (parent greater than children).
+        """
+        left_child = (parent + 1) * 2 - 1
+        right_child = left_child + 1
+
+        largest = parent
+        if left_child < self.size and self.heap[largest] < self.heap[left_child]:
+            largest = left_child
+        if right_child < self.size and self.heap[largest] < self.heap[right_child]:
+            largest = right_child
+  
+        if largest != parent:
+            self._swap(parent, largest)
+            self._heapify(largest)
+
+    def heapsort(self):
+        """
+        Continually appends largest element to end of heap.
+        """
+        while self.size > 0:
+            self.size -= 1
+            self._swap(0, self.size)
+            self._heapify(0)
+        self.size = len(self.heap)
+~~~
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Cormen, Thomas H. (2009). Introduction to Algorithms (3rd ed.). MIT Press. ISBN 978-0262033848.
+
+</section>

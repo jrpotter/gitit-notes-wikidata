@@ -1,0 +1,51 @@
+---
+title: Bucket Sort
+categories: Algorithms Stub
+icon: /img/icons/binary-tree.png
+...
+
+<section class="primary">
+
+# Summary
+
+</section>
+
+<section class="primary">
+
+# Analysis
+
+</section>
+
+<section class="primary">
+
+# Implementation
+
+~~~ { .python }
+import math
+
+def bucket_sort(values):
+    """
+    This is specifically for numbers from ranges [0, 10**n - 1] for some positive integer n.
+    """
+    buckets = [[] for _ in range(10)]
+    max_log = math.log10(max(values))
+    divisor = 10**(math.ceil(max_log))
+
+    for value in values:
+        pos = int(10 * value / divisor)
+        buckets[pos].append(value)
+    for bucket in buckets:
+        insertion_sort(bucket)
+
+    return [value for bucket in buckets for value in bucket]
+~~~
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Cormen, Thomas H. (2009). Introduction to Algorithms (3rd ed.). MIT Press. ISBN 978-0262033848.
+
+</section>

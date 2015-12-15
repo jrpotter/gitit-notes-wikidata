@@ -1,0 +1,47 @@
+---
+title: Cauchy-Schwarz Inequality
+categories: Linear Algebra
+icon: /img/icons/triangle-properties.png
+...
+
+<section class="primary">
+
+# Summary
+
+If $\vec{x}$ and $\vec{y}$ are vectors in $\bbr^n$, then 
+$$ \left|\dotp{x}{y}\right| \leq \norm{\vec{x}}\norm{\vec{y}}. $$ 
+This statement is an equality if and only if $\vec{x}$ and $\vec{y}$ are parallel.
+
+<div class="proof">
+
+Let $V$ be a one-dimensional subspace of $\bbr^n$ spanned by a nonzero vector $\vec{y}$.
+We introduce the unit vector $$ \vec{u} = \frac{1}{\norm{\vec{y}}}\vec{y} $$ in $V$. We know that
+$\text{proj}_V\vec{x} = (\dotp{x}{u})\vec{u}$ for any $\vec{x}$ in $\bbr^n$.[^1] Then, since
+$\norm{\text{proj}_V\vec{x}} \leq \norm{\vec{x}}$,[^2]
+$$ 
+  \norm{\vec{x}}\geq\norm{\text{proj}_V(\vec{x})}
+    = \norm{(\dotp{x}{u})\vec{u}}
+    = \left|\dotp{x}{u}\right|
+    =\left|\vec{x}\cdot\left(\frac{1}{\norm{\vec{y}}}\vec{y}\right)\right|
+    = \frac{1}{\norm{\vec{y}}}\left|\dotp{x}{y}\right|\text{.}
+$$
+
+Alternatively, we note 
+$$ \left|\dotp{x}{y}\right| = \big|\norm{x}\norm{y}\cos{\theta}\big| \leq \norm{x}\norm{y}. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Bretscher, Otto (2008). Linear Algebra with Applications (4th ed.). Pearson. ISBN 978-0-13-600926-9.
+
+</section>
+
+<!-- Footnotes -->
+
+[^1]: [Formula for Projection](orthogonal_projections#orthonormal-basis)
+[^2]: [Length of Projection](orthogonal_projections#length)

@@ -1,0 +1,70 @@
+---
+title: First Order Equations
+categories: Differential Calculus
+icon: /img/icons/first-order-diff-equations.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Sample First Order Equation](/img/graphs/diffeq/integral-curves-separable-2.png)
+
+First off, we note that differential equations have an order associated with them, as well as a classification of
+**ordinary** or **partial** depending on whether the derivatives in the given equation are ordinary derivatives
+or partial derivatives respectively. Furthermore, an equation may be linear or nonlinear. A first order equation is 
+one in which the order of the highest derivative is one; that is, no derivatives of derivatives are present in the equation.
+
+In general, a **first order linear equation** in standard form is
+$$ \leibniz[y]{t} + p(t)y = g(t), $$
+where $p$ and $g$ are given functions of the independent variable $t$.
+Straightforward integration can be achieved in some cases, though this does not always hold. Certain strategies are
+presented in the [additional notes](#see-also). An even more general model, one that encompasses nonlinear equations
+as well, is
+$$ \leibniz[y]{x} = f(x, y) $$
+where $y$ is a function of $x$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Interval of Validity
+
+The **interval of validity** of an initial value problem with conditions
+$$ y(t_0) = y_0 \;\text{ and/or }\; y^{k}(t_0) = y_k $$
+is the largest possible interval on which the solution is valid and contains $t_0$.
+
+</section>
+
+<section class="primary">
+
+# Existence and Uniqueness
+
+Let the functions $f$ and $\partial f / \partial y$ be continuous in some rectangle $\alpha < t < \beta$, 
+$\gamma < y < \delta$ containing the point $(t_0, y_0)$. Then, in some interval $t_0 - h < t < t_0 + h$ contained
+in $\alpha < t < \beta$, there is a unique solution $y = \phi(t)$ of the initial value problem
+$$ y' = f(t, y), \quad y(t_0) = y_0. $$
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Autonomous Equations](autonomous_equations)
+- [Integrating Factors](integrating_factors)
+- [Separable Equations](separable_equations)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Boyce W.E. & DiPrima R. C. (2010). Elementary Differential Equations (9th ed.). John Wiley & Sons, Inc. ISBN 978-0470554913.
+
+</section>

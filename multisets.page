@@ -1,0 +1,119 @@
+---
+title: Multisets
+categories: Combinatorics
+icon: /img/icons/counting.png
+...
+
+<section class="primary">
+
+# Summary
+
+A **multiset** is an abstraction of a set that keeps track of the number of each element in the set. That is
+repetition is allowed. More precisely, consider distinct elements $\inflate{a}{k}$ with repetition numbers
+$\inflate{n}{k}$, where each $n_i$ is nonnegative for $i = 1, \ldots, k$. Then the multiset containing these elements is
+$$ \{ n_1 \cdot a_1, n_2 \cdot a_2, \cdots, n_k \cdot a_k \}. $$
+As an aside, zero or more of the elements $\inflate{a}{k}$ could have repetition number $\infty$.
+
+</section>
+
+<section class="primary">
+
+# Permutations
+
+If $S$ is a multiset, an **$r$-permutation** of $S$ is an ordered arrangement of $r$ of the objects of $S$.
+If the total number of objects of $S$ is $n$, including repetitions, then an $n$-permutation of $S$ is also
+called a **permutation of $S$**.
+
+<section class="secondary">
+
+## Infinite Repetition
+
+Let $S$ be a multiset with objects of $k$ different types, where each object has an infinite repetition number.
+Then the number of $r$-permutations of $S$ is $k^r$.
+
+<div class="proof">
+
+When constructing an $r$-permutation, we can choose each item to be any one of the $k$ items. Thus there are
+$k$ possible selections for $r$ spots meaning there exist $k^r$ permutations.
+
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Finite Repetition
+
+Let $S$ be a multiset with objects of $k$ different types with finite repetition numbers $\inflate{n}{k}$
+respectively. Let the size of $S$ be $n = \inflatec[+]{n}{k}$. Then the number of permutations of $S$ equals
+$$ \frac{n!}{n_1!n_2!\cdots n_k!}. $$
+
+<div class="proof">
+
+We are given a multiset $S$ having objects of $k$ types, say $\inflate{a}{k}$ with repetition numbers
+$\inflate{n}{k}$ respectively, for a total of $n = \inflatec[+]{n}{k}$ objects. Then there are $n$ places
+for the first $n_1$ objects, $n - n_1$ places for the next $n_2$ objects, etc. Therefore the number of permutations
+of $S$ equals $$ \binom{n}{n_1}\binom{n-n_1}{n_2}\binom{n-n_1-n_2}{n_3}\cdots\binom{n-\inflatec[-]{n}{k-1}}{n_k}. $$
+Simplifying, we find that the above equals $$ \frac{n!}{n_1!n_2!\cdots n_k!}. $$
+
+</div>
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# Combinations
+
+If $S$ is a multiset, then an **$r$-combination** of $S$ is an unordered selection of $r$ of the objects of $S$. Thus, an
+$r$-combination of $S$ is itself a multiset, a **submultiset** of $S$ of size $r$.
+
+<section class="secondary">
+
+## Infinite Repetition
+
+Let $S$ be a multiset with objects of $k$ types, each with an infinite repetition number. Then the number of 
+$r$-combinations of $S$ equals $$ \binom{r+k-1}{r}. $$
+
+<div class="proof">
+
+Let the $k$ types of objects of $S$ be $\inflate{a}{k}$ so that
+$$ S = \{ \infty \cdot a_1, \infty \cdot a_2, \ldots, \infty \cdot a_k \}. $$
+Any $r$-combination of $S$ is of the form $\{x_1\cdot a_1, x_2\cdot a_2, \ldots, x_k\cdot a_k\}$, where $\inflate{x}{k}$
+are nonnegative integers and $\inflatec[+]{x}{k} = r$. We also note that every sequence $\inflate{x}{k}$ of nonnegative
+integers with $\inflatec[+]{x}{k} = r$ corresponds to an $r$-combination of $S$. Thus we want to find the number of
+solutions of the equation $$ \inflatec[+]{x}{k} = r. $$
+
+It can be shown that the number of solutions is the same as the number of permutations of the multiset
+$$ T = \{ r \cdot 1, (k-1) \cdot 0 \}, $$ that is, the set of binary strings constructed from the multiset.
+Any permutation of $T$ has the $r$ $1$s divided into $k$ groups by the $k - 1$ $0$s. Let 
+$x_i$ for $i = 1, \ldots, k-1$ denote the number of $1$s to the left of the $\spscript{i}{th}\;0$ and let
+$x_k$ denote the number of $1$s to the right of the last $0$. Then $\inflate{x}{k}$ are nonnegative integers
+with $\inflatec[+]{x}{k} = r$. Conversely, given a binary sequence such that the number of $1$s is $r$ and
+the number of $0$s is $k - 1$, we can construct a permutation of $T$. Thus, the number of $r$-combinations of the
+multiset $S$ equals the number of permutations of the multiset $T$, which is
+$$ \frac{(r+k-1)!}{r!(k-1)!} = \binom{r+k-1}{r}. $$
+
+</div>
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Combinations](combinations)
+- [Permutations](permutations)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Brualdi, Richard A. (2009). Introductory Combinatorics (5th ed.). Pearson. ISBN 978-0136020400.
+
+</section>

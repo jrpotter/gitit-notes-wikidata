@@ -1,0 +1,37 @@
+---
+title: @DeMoivre-Laplace Limit Theorem
+categories: Statistics
+icon: /img/icons/inferential-statistics.png
+...
+
+<section class="primary">
+
+# Coin Flips
+
+Let $X$ be the number of times that a fair coin flipped $40$ times lands on heads. Then the probability
+$$ \bbps{X = 20} \approx .1272 $$ by the DeMoivre-Laplace Limit Theorem, and is exactly
+$$ \bbps{X = 20} = \binom{40}{20}\left(\frac{1}{2}\right) \approx .1254 $$ by the 
+[binomial mass function](binomial_distribution).
+
+<div class="proof">
+
+By use of continuity correction, we see that
+$$\begin{align*}
+  \bbps{X = 20} &= \bbps{19.5 < X < 20.5}                                                                      \\
+                &= \bbps{\frac{19.5 - 20}{\sqrt{10}} < \frac{X - 20}{\sqrt{10}} < \frac{20.5 - 20}{\sqrt{10}}} \\
+                &= \bbps{-.16 < \frac{X - 20}{\sqrt{10}} < .16}                                                \\
+                &= \phi(.16) - \phi(-.16) \approx .1272
+\end{align*}$$
+as desired. The exact result is a direct consequence of the binomial mass function.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

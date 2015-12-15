@@ -1,0 +1,64 @@
+---
+title: Path Integrals
+categories: Calculus
+icon: /img/icons/line-integrals.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Geometrical Interpretation](/img/diagrams/calculus/path-integral.png)
+
+Path integrals are a generalization of the traditional integral applied over some parameterized curve $C$ instead of an interval 
+$[a, b]$. In particular, rather than dividing up an interval into $n$ equal subintervals, we instead divide up the parameter
+interval, yielding $n$ subintervals along the actual curve. If evaluating with respect to arc length, we can evaluate the integral
+at a given point within each subinterval, and multiply it by the length of the function. Summing up over arbitrarily many 
+subintervals yields an approximation over the curve in much the same manner as a traditional integral. 
+
+More precisely, if $\;f$ is a function defined on a smooth curve $C$ given by $x = x(t)$, $y = y(t)$ for $a \leq t \leq b$,
+then the **path integral of $\;f$ along $C$** is
+$$ \int_C \;f(x, y)\;ds = \xlimit{n}{\infty} \sum_{i=1}^n \;f(x_i^*, y_i^*) \Delta{s_i} $$
+if this limit exists.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Path Integrals In Space
+
+Suppose that $C$ is a smooth space curve given by the parametric equations
+$$ x = x(t), \quad y = y(t), \quad z = z(t) \quad a \leq t \leq b $$
+or by a vector equation $\pmb{r}(t) = s(t)\pmb{i} + y(t)\pmb{j} + z(t)\pmb{k}$. If $f$ is a function of three variables
+that is continuous on some region containing $C$, then we define the **path integral of $f$ along $C$** (with respect
+to arc length) in a manner similar to that for plane curves:
+$$ \int_C \;f(x, y, z)\;ds = \xlimit{n}{\infty} \sum_{i=1}^n \;f(x_i^*, y_i^*, z_i^*) \Delta{s_i} $$
+
+which can be evaluated as
+$$ 
+  \int_C \;f(x, y, z)\;ds = \int_a^b \;f(x(t), y(t), z(t)) \sqrt{
+    \left(\leibniz[x]{t}\right)^2 + \left(\leibniz[y]{t}\right)^2 + \left(\leibniz[z]{t}\right)^2}\;dt
+    = \int_a^b \pmb{F}(\pmb{r}(t)) \cdot \pmb{r}'(t)\;dt.
+$$
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Line Integrals](line_integrals)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.  
+
+</section>

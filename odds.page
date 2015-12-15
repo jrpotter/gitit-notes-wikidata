@@ -1,0 +1,35 @@
+---
+title: Odds
+categories: Statistics
+icon: /img/icons/inferential-statistics.png
+...
+
+<section class="primary">
+
+# Summary
+
+The **odds** of an event $A$ are defined by $$ \frac{\bbps{A}}{\bbps{A^c}}. $$ 
+That is, how much more likely it is event $A$ occurs than it is that it doesn't.
+Introducing evidence $E$ creates new odds as follows:
+$$ \frac{\bbps{H\;|\;E}}{\bbps{H^c\;|\;E}} = \frac{\bbps{H}\bbps{E\;|\;H}}{\bbps{H^c}\bbps{E\;|\;H^c}}. $$
+
+<div class="proof">
+
+Note the following:
+$$\begin{align*}
+  \bbps{H\;|\;E}   &= \frac{\bbps{E\;|\;H}\bbps{H}}{\bbps{E}}     \\
+  \bbps{H^c\;|\;E} &= \frac{\bbps{E\;|\;H^c}\bbps{H^c}}{\bbps{E}}.
+\end{align*}$$
+Divide two equations above for answer.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

@@ -1,0 +1,67 @@
+---
+title: Heine-Borel Theorem
+categories: Analysis Stub
+icon: /img/icons/euclid.png
+...
+
+<section class="primary">
+
+# Summary
+
+The Heine-Borel theorem relates compactness with closed and boundedness in a subset of $\bbr^k$. Note, in
+the following three equivalences, only the first two are actually part of the theorem. The third is merely included for
+convenience. Also note, that the equivalence of the first two statements are not true in every metric space, though the
+second and third are. Now, let $E \subset \bbr^k$. Then all are equivalent:
+
+1. $E$ is closed and bounded.
+2. $E$ is compact.
+3. Every infinite subset of $E$ has a limit point in $E$.
+
+<div class="proof">
+
+- Case $1 \Rightarrow 2$
+:    Suppose $E$ is a bounded subset of $\bbr^k$. That is, $E$ is contained within some $k$-cell. But every 
+     $k$-cell is compact[^1]. Since $E$ is a closed subset of a compact set, then $E$ must also be compact[^2].
+
+- Case $2 \Rightarrow 3$
+:    Suppose $E$ is compact. Then this follows exactly from the idea of [limit points](compact_sets#limit-points)
+     in compact sets.
+
+- Case $3 \Rightarrow 1$
+:    We argue by contraposition. That is, suppose $E$ is not closed or not bounded. Then we need to product an infinite
+     subset of $E$ without a limit point in $E$.<br />  
+     Assume $E$ is not bounded. Then we can construct a sequence $K = \{x_n\} \subset E$ so that for all $M > 0$,
+     there exists an $N \in \bbn$ such that for all $n \geq N$, $\abs{x_n} > M$ for all $M > 0$. We take this sequence
+     to be our infinite subset. All that remains is showing this sequence does not have a limit point in $E$. To do
+     this, fix $x \in \bbr^k$ and set $r = 1$. Then there exists an $M' > 0$ such that $N_1(x) \subset N_{M'}(0)$. Note
+     that $N_{M'}(0)$ contains a finite number of elements of our sequence, and consequently so does $N_1(x)$. Denote
+     these elements as $\inflate{x}{n}$. If we were to set
+     $$ r' = \frac{1}{2}\mathop{\text{min}}_{j = 1, \ldots, N} d(x, x_j), $$
+     we then see that $(N_{r'}(x) \cap E) \backslash \{x\} = \emptyset$ (remember the neighborhood refers only to elements
+     within $K$). Since this holds for all $x \in \bbr^k$, we are finished.<br />  
+     Next, suppose $E$ is not closed. Then there is some $x \in E' \cap E^C$, where $E'$ denotes the limit points of $E$.
+     Now, for all $n > 0$, it follows that $$ N_{n^{-1}}(x) \cap E \neq \emptyset. $$
+     Then choose $x_n \in N_{n^{-1}}(x) \cap E$ for all $n$ and establish a sequence of points $\{x_n\}$ with limit point $x$. 
+     If we can show $x$ is the only limit point of $\{x_n\}$, an infinite sequence, then, since $x \not\in E$, we are finished.
+     Therefore, suppose $p$ is a limit point of $\{x_n\}$ such that $p \neq x$. So $\abs{x - p} = \delta > 0$.
+     Choose $N$ such that $\frac{1}{N} < \delta$. So for $n > N$,
+     $$ \frac{1}{n} < \frac{1}{N} < \delta \Rightarrow \abs{x_n - x} < \delta. $$
+     This implies only a finite number of points exist in $N_{n^{-1}}(p)$, further implying there exists some radius $r$
+     such that $(N_r(p) \cap E) \backslash \{p\} = \emptyset$, a contradiction to the fact that $p$ is a limit point.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Abott, Stephen (2001). Understanding Analysis (1st ed.). Springer. ISBN 978-0387950605.
+
+</section>
+
+<!-- Footnotes -->
+
+[^1]: [$k$-cell Compactness](compact_sets#k-cell)
+[^2]: [Closed Subsets](compact_sets#closed)

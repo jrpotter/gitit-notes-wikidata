@@ -1,0 +1,94 @@
+---
+title: Dot Product
+categories: Linear Algebra Calculus
+icon: /img/icons/angles.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Geometrical Interpretation](/img/diagrams/linear/dot-product.png)
+
+Intuitively speaking, the dot product is a measure of how much a vector aligns with another. Geometrically speaking
+it represents the projection of the vector on the other. This can be seen in a variety of contexts, such as work (i.e.
+the physics quantity), orthogonality arguments, etc. Unlike the [cross product](cross_product), the dot product is
+defined in all vector spaces, besides $\bbr^3$. 
+
+More precisely, if $\vec{a} = \langle a_1, a_2, a_3 \rangle$ and $\vec{b} = \langle b_1, b_2, b_3 \rangle$, then the 
+**dot product** (or **scalar product** or **inner product**) of $a$ and $b$ is the number $a \cdot b$ given by
+$$ \vec{a} \cdot \vec{b} = a_1b_1 + a_2b_2 + a_3b_3. $$
+
+Note that the above is a *definition*. It is a quantity that arose in the Law of Cosines and has proven useful in a variety
+of other contexts. Alternatively, if $\vec{v}$ and $\vec{w}$ are two column vectors in $\bbr^n$, then $\dotp{v}{w} = \vec{v}^T\vec{w}$. 
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Properties
+
+If $\vec{a}, \vec{b}$, and $\vec{c}$ are vectors in $V_3$ and $k$ is a scalar, then:
+
+1. *Length:* $$ \vec{a} \cdot \vec{a} = \big|a\big|^2. $$
+2. *Commutativity:* $$ \dotp{a}{b} = \dotp{b}{a}. $$
+3. *Distributivity:* $$ \vec{a} \cdot (\vec{b} + \vec{c}) = \dotp{a}{b} + \dotp{a}{c}. $$
+4. *Scalar Multiplication:* $$ (k\vec{a})\cdot\vec{b} = c(\dotp{a}{b}) = a \cdot (k\vec{b}). $$
+5. *Nullity:* $$ \dotp{0}{a} = 0. $$
+
+</section>
+
+<section class="primary">
+
+# Angle Interpretation
+
+Often taken as the definition (especially in physics), the **angle $\theta$ between $\vec{a}$ and $\vec{b}$**, which
+is defined to be the angle between the representations of $\vec{a}$ and $\vec{b}$ that start at the origin where
+$0 \leq \theta \leq \pi$, is
+$$ \dotp{a}{b} = \norm{a}\norm{b}\cos{\theta}\text{.} $$
+
+<div class="proof">
+
+Consider triangle $OAB$ formed by $\vec{a} = OA$ and $\vec{b} = OB$. Applying the Law of Cosines, we get
+$$ \norm{AB}^2 = \norm{OA}^2 + \norm{OB}^2 - 2\norm{OA}\norm{OB}\cos{\theta}\text{.} $$
+Since $\norm{OA} = \norm{\vec{a}}, \norm{OB} = \norm{\vec{b}}$, and $\norm{AB} = \norm{\vec{a}-\vec{b}}$, then
+$$ \norm{\vec{a}-\vec{b}}^2 = \norm{a}^2 + \norm{\vec{b}}^2 - 2\norm{\vec{a}}\norm{\vec{b}}\cos{\theta}\text{.} $$
+
+By Properties 1, 2, and 3 of the dot product, we can rewrite the left side of this equation as
+$$\begin{align*}
+  \norm{\vec{a}-\vec{b}}^2 &= (\vec{a}-\vec{b}) \cdot (\vec{a} - \vec{b})           \\
+                           &= \dotp{a}{a} - \dotp{a}{b} - \dotp{b}{a} + \dotp{b}{b} \\
+                           &= \norm{a}^2 - 2(\dotp{a}{b}) + \norm{b}^2
+\end{align*}$$
+
+Therefore
+$$\begin{align*}
+  \norm{a}^2 - 2(\dotp{a}{b}) + \norm{b}^2 &= \norm{a}^2 + \norm{b}^2 - 2\norm{a}\norm{b}\cos{\theta} \Rightarrow \\
+                           -2(\dotp{a}{b}) &= -2\norm{a}\norm{b}\cos{\theta} \Rightarrow                          \\
+                               \dotp{a}{b} &= \norm{a}\norm{b}\cos{\theta}
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Transpositions](transpositions)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Bretscher, Otto (2008). Linear Algebra with Applications (4th ed.). Pearson. ISBN 978-0-13-600926-9.
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

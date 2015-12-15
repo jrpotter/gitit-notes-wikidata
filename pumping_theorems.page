@@ -1,0 +1,69 @@
+---
+title: Pumping Theorems
+categories: Computation
+icon: /img/icons/binary-tree.png
+...
+
+<section class="primary">
+
+# Statement
+
+Pumping theorems constitute a class of results, each of which assert the existence of certain points in strings
+were a substring can be repeatedly inserted without affecting the acceptability of the string. These are crucial
+in proving certain languages belong to a class (such as regular, context-free, etc.). In particular, it helps to
+consider pumping theorems with respect to the concrete structure associated with it. For instance, when considering
+regular languages, we should think about the equivalent finite automaton, and when considering context-free grammars,
+it helps to think about the corresponding parse tree.
+
+</section>
+
+<section class="primary">
+
+# Regular Languages
+
+Let $L$ be a regular language. There is an integer $n \geq 1$ such that any string $w \in L$ with $|w| \geq n$ can
+be rewritten as $w = xyz$ such that $y \neq e$, $|xy| \leq n$, and $xy^iz \in L$ for each $i \geq 0$. In this case,
+we can think of $n$ as being the number of states in the corresponding finite automaton. If a string has more
+letters than the number of states in the automaton and is still accepted, then there *must* be a part of the string
+that was duplicated, and could therefore be repeated an arbitrary number of times (including $0$).
+
+<div class="proof">
+
+Since $L$ is regular, $L$ is accepted by a deterministic finite automaton $M$. Suppose that $n$ is the number of states
+of $M$, and let $w$ be a string of length $n$ or greater. Consider now the first $n$ steps of the computation of $M$ on $w$:
+
+$$ (q_0, \inflate{w}{n}) \vdash_M (q_1, w_2\ldots w_n) \vdash_M \cdots \vdash_M (q_n, e), $$
+
+where $q_0$ is the initial state of $M$, and $\inflate{w}{n}$ are the first $n$ symbols of $w$.
+Since $M$ has only $n$ states, and there are $n + 1$ configurations $(q_i, w_{i+1}\cdots w_n)$ appearing in the
+computation above, the pigeonhole principle tells us there exists an $i$ and $j$, $0 \leq i < j \leq n$, such that
+$q_i = q_j$. That is, the string $y = w_iw_{i+1}\cdots w_j$ drives $M$ from state $q_i$ back to state $q_i$, and this
+string is nonempty since $i < j$.
+
+But then this string could be removed from $w$, or repeated any number of times in $w$ just after the $\spscript{j}{th}$
+symbol of $w$, and $M$ would still accept this string. That is, $M$ accepts $xy^iz \in L$ for each $i \geq 0$, where
+$x = w_1\ldots w_i$, and $z = w_{j+1}\ldots w_m$. Notice finally that the length of $xy$, the number we called $j$ above, is
+by definition at most $n$, as required.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Context-Free Grammars
+
+Let $G = (V, \Sigma, R, S)$ be a context-free grammar and define the **fanout** of $G$, denoted $\phi(g)$, to be the largest
+number of symbols on the right-hand side of any rule in $R$. Then any string $w \in L(g)$ of length greater than 
+$\phi(G)^{\left|V-\Sigma\right|}$ can be rewritten as $w = uvxyz$ in such a way that either $v$ or $y$ is nonempty and
+$uv^nxy^n$ is in $L(G)$ for every $n \geq 0$. Note in this case, our limiting factor is $\phi(G)^{\left|V-\Sigma\right|}$.
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Papadimitriou & Lewis (1998). Elements of the Theory of Computation (2nd ed.). Prentice-Hall. ISBN 0-13-262478-8
+
+</section>

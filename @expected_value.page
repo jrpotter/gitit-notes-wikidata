@@ -1,0 +1,42 @@
+---
+title: Expected Value
+categories: Statistics
+icon: /img/icons/inferential-statistics.png
+...
+
+<section class="primary">
+
+# Coupon-Collecting Problem
+
+Suppose that there are $N$ different types of coupons, and each time one obtains a coupon, it is equally likely
+to be any one of the $N$ types. Then the expected number of coupons, $X$, one need amass before obtaining a complete
+set of at least one of each type is
+$$ E[X] = N\left[ 1 + \cdots + \frac{1}{N-1} + \frac{1}{N} \right]. $$
+
+<div class="proof">
+
+Let $X$ denote the number of coupons collected before a complete set is attained. Define $X_i$, $i = 0, 1, 
+\ldots, N-1$ to be the number of additional coupons that need to be obtained after $i$ distinct types have
+been collected in order to obtain another distinct type. Then
+$$ X = X_0 + X_1 + \cdots + X_{N-1}. $$
+When $i$ distinct types of coupons have already been collected, a new coupon obtained will be of a distinct
+type with probability $(N-i)/N$. Therefore
+$$ \bbps{X_i = k} = \frac{N-i}{N}\left(\frac{i}{N}\right)^{k-1}, \quad k \geq 1, $$
+or, in other words, $X_i$ is a geometric random variable with parameter $(N-i)/N$.
+Hence, $$ E[X_i] = \frac{N}{N-i}, $$ implying that
+$$\begin{align*}
+  E[X] &= 1 + \frac{N}{N-1} + \frac{N}{N-2} + \cdots + \frac{N}{1} \\
+       &= N\left[ 1 + \cdots + \frac{1}{N-1} + \frac{1}{N} \right]. 
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

@@ -1,0 +1,56 @@
+---
+title: Integration by Parts
+categories: Calculus
+icon: /img/icons/single-integral.png
+...
+
+<section class="primary">
+
+# Summary
+
+For differentiable functions $f$ and $g$, $$ \int f(x)g'(x)dx = f(x)g(x) - \int g(x)f'(x)dx\text{.} $$
+
+<div class="proof">
+  
+The Product Rule states that if $f$ and $g$ are differentiable functions, then
+$$ \leibniz{x}\left[f(x)g(x)\right] = f(x)g'(x) + g(x)f'(x)\text{.} $$
+Therefore
+$$\begin{align*}
+  \int\left[\;f(x)g'(x)+g(x)f'(x)\right]dx &= f(x)g(x) \\
+  \int f(x)g'(x)dx + \int g(x)f'(x)dx &= f(x)g(x)
+\end{align*}$$
+which, upon rearranging, proves the theorem.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Definite Integration
+
+Assuming $f'$ and $g'$ are continuous, we find
+$$ \int_a^b f(x)g'(x)dx = f(x)g(x)\Big{\vert}_a^b - \int_a^b g(x)f'(x)dx\text{.} $$
+
+<div class="proof">
+  
+By the [Fundamental Theorem of Calculus](fundamental_theorem_of_calculus),
+$$ \int_a^b\left[\;f(x)g'(x)+g(x)f'(x)\right]dx = f(a)g(a) - f(b)g(b)\text{.} $$
+Therefore
+$$\begin{align*}
+  \int_a^b\left[\;f(x)g'(x)+g(x)f'(x)\right]dx &= f(x)g(x)\Big\vert_a^b \\
+  \int_a^b f(x)g'(x)dx + \int_a^b g(x)f'(x)dx &= f(x)g(x)\Big\vert_a^b
+\end{align*}$$
+Again, upon rearranging, we see the theorem holds.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

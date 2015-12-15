@@ -1,0 +1,90 @@
+---
+title: @Axioms of Probability
+categories: Statistics
+icon: /img/icons/inferential-statistics.png
+...
+
+<section class="primary">
+
+# Birthday Problem
+
+<div class="block">
+
+![Birthday Problem](/img/graphs/statistics/birthday_problem.png)
+
+In a group of $n$ people, we want to determine the probability in which two of them share the same birthday. 
+In particular, we find that if $n \geq 23$, the probability is greater than $\frac{1}{2}$.
+
+</div>
+
+<div class="proof">
+
+Suppose $n$ people are present in a room; as each person can celebrate his birthday on any one of $365$ days,
+there is a total of $(365)^n$ possible outcomes. For no two of them to share the same birthday constitutes
+probability
+$$ \frac{(365)(364)\cdots(365-n+1)}{(365)^n}. $$
+
+From the above chart, we see that at $n \geq 23$, the probability is greater than $\frac{1}{2}$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Matching Problem
+
+<div class="block">
+
+![Matching Problem](/img/graphs/statistics/matching-problem.png)
+
+Suppose that each of $N$ men at a party throws his hat into the center of the room. The hats are first mixed up,
+and then each man randomly selects a hat. The probability that none of the men selects his own hat is:
+
+$$ e^{-1} \approx .36788 $$
+
+</div>
+
+<div class="proof">
+
+First we calculate the complementary problem of at least one man selecting his own hat. Let us denote
+$E_i, i = 1, 2, \ldots, N$ as the event that the $\spscript{i}{th}$ man selects his own hat. By the
+[Inclusion/Exclusion Principle](CB/inclusion_exclusion_principle), we see that:
+$$ 
+  \bbps{\bigcup_{i=1}^N E_i} = \sum_{i=1}^N \bbps{E_i} - \sum_{i_1 < i_2} \bbps{E_{i_1}E_{i_2}} + \cdots
+                             + (-1)^{n+1} \sum_{\inflate[<]{i}{n}} \bbps{E_{i_1}E_{i_2}\cdots E_{i_n}}
+                             + \cdots + (-1)^{N+1}\bbps{\inflate[]{E}{N}}.
+$$
+If we regard the outcome of this experiment as a vector of $N$ numbers, where the $\spscript{i}{th}$ element
+is the number of the hat drawn by the $\spscript{i}{th}$ man, then there are $N!$ possible outcomes. 
+
+Furthermore, $E_{i_1}E_{i_2}\ldots E_{i_n}$, the event that each of the $n$ men $\inflate{i}{n}$ selects his 
+own hat, can occur in any of $(N-n)(N-n-1)\cdots 3 \cdot 2 \cdot 1 = (N-n)!$ possible ways; for, of the remaining 
+$N-n$ men, the first can select any of $N-n$ hats, the second can select any of $N - n - 1$ hats, etc.
+Assuming that all $N!$ possible outcomes are equally likely, we see that
+$$ \bbps{E_{i_1}E_{i_2}\cdots E_{i_n}} = \frac{(N-n)!}{N!}. $$
+
+Also, as there are $\binom{N}{n}$ terms in $\sum_{\inflate[<]{i}{n}}\bbps{E_{i_1}E_{i_2}\ldots E_{i_n}}$, it follows
+that
+$$
+  \sum_{\inflate[<]{i}{n}} \bbps{E_{i_1}E_{i_2}\ldots E_{i_n}} = \frac{N!(N-n)!}{(N-n)!n!N!} = \frac{1}{n!}.
+$$
+Thus,
+$$
+  \bbps{\bigcup_{i=1}^N E_i} = 1 - \frac{1}{2!} + \frac{1}{3!} - \cdots + (-1)^{N+1}\frac{1}{N!}.
+$$
+Hence, the probability that none of the men selects his own hat is
+$$ 1 - 1 + \frac{1}{2!} - \frac{1}{3!} + \cdots + (-1)^{N}\frac{1}{N!}, $$
+which is approximately $e^{-1} \approx .36788$ for $N$ large.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

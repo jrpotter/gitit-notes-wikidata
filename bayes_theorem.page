@@ -1,0 +1,26 @@
+---
+title: Bayes' Theorem
+categories: Statistics
+icon: /img/icons/inferential-statistics.png
+...
+
+<section class="primary">
+
+# Summary
+
+Bayes' Theorem allows one to reason off the occurrence of some condition, as opposed to an event itself.
+More specifically, let $\inflate{F}{n}$ be mutually exclusive, exhaustive events. Then given event $E$,
+$$
+  \bbps{F_j \;|\; E} = \frac{\bbps{EF_j}}{\bbps{E}}
+                     = \frac{\bbps{E \;|\; F_j}\bbps{F_j}}{\sum_{i=1}^n \bbps{E \;|\; F_i}\bbps{F_i}}.
+$$
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

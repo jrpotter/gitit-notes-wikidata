@@ -1,0 +1,39 @@
+---
+title: Indicator Variables
+categories: Statistics
+icon: /img/icons/inferential-statistics.png
+...
+
+<section class="primary">
+
+# Summary
+
+Often times **indicator variables** are employed in the context of expected value. We say that $I$ is an indicator variable 
+for the event $A$ if
+$$
+  I = \begin{cases}
+    1 &\text{if } A \text{ occurs} \\
+    0 &\text{if } A^c \text{ occurs}
+  \end{cases}
+$$
+Indicator variables may seem very simple, but prove to be very powerful. Oftentimes they are used to represent a series
+of Bernoulli trials (that is, those that either pass or fail) in a manner that is simple to manipulate.
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Expected Value](expected_value)
+- [Moments](moments)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

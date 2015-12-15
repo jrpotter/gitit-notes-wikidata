@@ -1,0 +1,73 @@
+---
+title: Cosets
+categories: Abstract Algebra
+icon: /img/icons/arithmetic.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Cosets of $(\bbz/8\bbz, +)$](/img/diagrams/abstract/cosets-z8z.png)
+
+Let $H$ be a subgroup of a group $G$. The subset $aH = \{ah : h \in H\}$ of $G$ is the **left coset** of
+$H$ containing $a$, while the subset $Ha = \{ha : h \in H\}$ is the **right coset** of $H$ containing $a$.
+Furthermore, note that each subset, while not equivalent to one another, do form equivalence classes; that is,
+$aH$ is equal to $bH$ if $b \in aH$. The same applies for right cosets.
+
+</div>
+
+<div class="proof">
+
+Let $H$ be a subgroup of $G$. Let the relation $\text{~}_L$ be defined on $G$ by $a~\text{~}_L~ b$ if and only if $a^{-1}b \in H$.
+Similarly, define the relation $\text{~}_R$ be defined on $G$ by $a~\text{~}_R~ b$ if and only if $ab^{-1} \in H$.
+We will prove that $\text{~}_L$ is an equivalence relation, with the understanding that $\text{~}_R$ is proven similarly.
+
+- *Reflexive:* 
+    Let $a \in G$. Then $a^{-1}a = e$ and $e \in H$ since $H$ is a subgroup. Thus $a~\text{~}_L~a$.
+- *Symmetric:* 
+    Suppose $a~\text{~}_L~b$. Then $a^{-1}b \in H$. Since $H$ is a subgroup, $(a^{-1}b)^{-1}$ is in $H$
+    meaning $b^{-1}a$ is in $H$ so $b~\text{~}_L~a$.
+- *Transitive:* 
+    Let $a~\text{~}_L~b$ and $b~\text{~}_L~c$. Then $a^{-1}b \in H$ and $b^{-1}c \in H$. Since $H$ is a subgroup,
+    $(a^{-1}b)(b^{-1}c) = a^{-1}c$ is in $H$, so $a~\text{~}_L~c$.
+
+Now suppose that $a \in G$. Then the cell containing $a$ consists of all $x \in G$ such that $a~\text{~}_L~x$
+meaning $a^{-1}x \in H$. This holds only if for some $h \in H$, $x = ah$. Thus the cell containing $a$ is
+$\{ah : h \in H\}$.
+                
+</div>
+
+</section>
+
+<section class="primary">
+
+# Indices
+
+If $H$ is a subgroup of a group $G$, the number of left cosets of $H$ in $G$ is the **index $(G:H)$ of 
+$H$ in $G$**. Furthermore, if $H$ and $K$ are subgroups of a group $G$ such that $K \leq H \leq G$, and
+$(H:K)$ and $(G:H)$ are both finite, then $(G:K)$ is finite, and $(G:K) = (G:H)(H:K)$.
+
+<div class="proof">
+
+Note that 
+$$ 
+  (G:K) = \frac{\big|G\big|}{\big|K\big|},\; 
+  (G:H) = \frac{\big|G\big|}{\big|H\big|}, \text{ and }
+  (H:K) = \frac{\big|H\big|}{\big|K\big|}.
+$$
+The theorem follows.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Fraleigh, John B. (2003). A First Course In Abstract Algebra (7th ed.). Pearson. ISBN 978-0201763904.
+
+</section>

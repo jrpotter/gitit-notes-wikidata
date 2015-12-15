@@ -1,0 +1,122 @@
+---
+title: Gauss-Jordan Elimination
+categories: Linear Algebra
+icon: /img/icons/matrix-transformations.png
+...
+
+<section class="primary">
+
+# Summary
+
+**Gauss-Jordan Elimination** converts a matrix $A$ to its **reduced row echelon form**, denoted $\text{rref}(A)$. This process
+involved a sequential application of one of the following three steps:
+
+1. Divide a row by a scalar $k$.
+2. Add/subtract a multiple of one row to another.
+3. Swap one row with another.
+
+This proves to be one of the most efficient means of converting a matrix into a usable form, as it will always complete
+within a finite amount of time (proportional to the number of rows in a given matrix), and the reduced row-echelon form
+conveys a lot of information. In addition, the only operations being applied are addition and scalar multiplication,
+which is very efficient in modern computers.
+
+</section>
+
+<section class="primary">
+
+# Determinants
+
+We consider each of the operations in obtaining a reduced row echelon form separately. Let $A$ and $B$ be matrices of the same size.
+
+<section class="secondary">
+
+## Scalar Division
+
+If $B$ is obtained from $A$ by dividing a row of $A$ by a scalar $k$, then 
+$$ \text{det}(B) = \frac{1}{k}\text{det}(A)\text{.} $$
+
+<div class="proof">
+
+If
+$$ 
+  A = \begin{bmatrix} -&\vec{v}_1&- \\ &\vdots& \\ -&\vec{v}_i&- \\ &\vdots& \\ -&\vec{v}_n&- \end{bmatrix} \text{ and }
+  B = \begin{bmatrix} -&\vec{v}_1&- \\ &\vdots& \\ -&\frac{\vec{v}_i}{k}&- \\ &\vdots& \\ -&\vec{v}_n&- \end{bmatrix}
+$$
+then $\text{det}(B) = \frac{1}{k}\text{det}(A)$ by [linearity](determinants#linearity) in the $\spscript{i}{th}$ row.
+
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Row Multiples
+
+If $B$ is obtained from $A$ by adding a multiple of a row of $A$ to another row, then $$ \text{det}(B) = \text{det}(A)\text{.} $$
+   
+<div class="proof">  
+
+Suppose $k$ is a scalar and 
+$$
+  A = \begin{bmatrix} &\vdots& \\ -&\vec{v}_i&- \\ &\vdots& \\ -&\vec{v}_j&- \\ &\vdots& \end{bmatrix} \text{ and }
+  B = \begin{bmatrix} &\vdots& \\ -&\vec{v}_i&- \\ &\vdots& \\ -&\vec{v}_j + k\vec{v}_i&- \\ &\vdots& \end{bmatrix}\text{.}
+$$
+   
+Then by linearity in the $\spscript{j}{th}$ row, we find that
+$$
+  \text{det}(B) = \text{det} \begin{bmatrix} &\vdots& \\ -&\vec{v}_i&- \\ &\vdots& \\ -&\vec{v}_j&- \\ &\vdots& \end{bmatrix}
+                + k\text{det} \begin{bmatrix} &\vdots& \\ -&\vec{v}_i&- \\ &\vdots& \\ -&\vec{v}_i&- \\ &\vdots& \end{bmatrix}
+                  \text{.}
+$$
+Now, any matrix $C$ with two identical rows has determinant $0$ since swapping these two rows to get matrix $D$ means 
+$$ \text{det}\;C = -\text{det}\;D \Rightarrow \text{det}\;C = -\text{det}\;C = 0\text{,} $$
+by the [alternating property](determinants#alternating-property) of determinants. Thus $\text{det}(B) = \text{det}(A)$.
+
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Row Swaps
+
+If $B$ is obtained from $A$ by a row swap, then $$ \text{det}(B) = -\text{det}(A)\text{.} $$
+
+<div class="proof">
+
+For each [pattern](determinants#definition) P in $A$,  we can consider the corresponding pattern $P_{\text{swap}}$ in $B$, 
+in which we note the number of inversions changes by $1$. Since swapping any two rows involves an odd number of adjacent 
+row swaps, by the [alternating property](determinants#alternating-property) of the determinant, $\text{det}\;B$ must 
+be the negation of $\text{det}\;A$.
+
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Calculation
+
+Note these operations can be used to calculate the determinant of a matrix, since we can count the number of row swaps, and 
+divisions used in calculating the reduced row echelon form. Since the determinant of an identity matrix is 1, we get
+$$ \text{det}\;A = (-1)^s k_1 k_2 \cdots k_r\text{.} $$
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Determinants](determinants)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Bretscher, Otto (2008). Linear Algebra with Applications (4th ed.). Pearson. ISBN 978-0-13-600926-9.
+
+</section>

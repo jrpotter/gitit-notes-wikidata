@@ -1,0 +1,38 @@
+---
+title: @Negative Binomial Distribution
+categories: Statistics
+icon: /img/icons/inferential-statistics.png
+...
+
+<section class="primary">
+
+# Banach Match Problem
+
+At all times, a pipe-smoking mathematician carries 2 matchboxes—1 in his left-hand pocket and 1 in his right-hand pocket. 
+Each time he needs a match, he is equally likely to take it from either pocket. Consider the moment when the mathematician
+first discovers that one of his matchboxes is empty. If it is assumed that both matchboxes initially contained $N$ matches,
+the the probability there are exactly $k$ matches, $k = 0, 1, \ldots, N$,  in the other box is
+$$ \binom{2N - k}{N}\left(\frac{1}{2}\right)^{2N-k}. $$
+
+<div class="proof">
+
+Let $E$ denote the event that the mathematician first discovers that the right-hand matchbox is empty and there
+are $k$ matches in the left-hand box at the time. This event will occur if and only if the $\spscript{(N+1)}{th}$
+choice of the right-hand matchbox is made at the $\spscript{(N + 1 + N - k)}{th}$ trial. Thus, by the negative
+binomial distribution with $p = \frac{1}{2}, r = N + 1$, and $n = 2N - k + 1$, we see that
+$$ \bbps{E} = \binom{2N - k}{N}\left(\frac{1}{2}\right)^{2N-k+1}. $$
+Since there is an equal probability that it is the left-hand box that is first discovered to be empty and
+there are $k$ matches in the right-hand box at that time, the desired result is 
+$$ 2\bbps{E} = \binom{2N - k}{N}\left(\frac{1}{2}\right)^{2N-k}. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

@@ -1,0 +1,100 @@
+---
+title: Sequence Limit Laws
+categories: Calculus Complex
+icon: /img/icons/limits.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Function Addition](/img/graphs/calculus/function-addition.png)
+
+Sequences parallel functions very closely; in fact, most limit laws that apply to functions of a single variable are analogous 
+to those of sequences. As a result, the proofs are omitted. Now, if $\{a_n\}$ and $\{b_n\}$ are convergent sequences and $c$ 
+is a constant, then
+
+1. *Addition*: $$ \xlimit{n}{\infty} (a_n + b_n) = \xlimit{n}{\infty} a_n + \xlimit{n}{\infty} b_n. $$
+2. *Scalar Multiplication:* $$ \xlimit{n}{\infty} ca_n = c \xlimit{n}{\infty}a_n. $$
+3. *Multiplication:* $$ \xlimit{n}{\infty} (a_nb_n) = \xlimit{n}{\infty} a_n \cdot \xlimit{n}{\infty} b_n. $$
+4. *Division:* $$ \xlimit{n}{\infty} \frac{a_n}{b_n} = \left(\xlimit{n}{\infty}a_n\right)\big/\left(\xlimit{n}{\infty}b_n\right) 
+   \text{ if } \xlimit{n}{\infty}b_n \neq 0. $$
+5. *Power:* $$ \xlimit{n}{\infty} a_n^p = \left[\xlimit{n}{\infty}a_n\right]^p \text{ if } p > 0 \text{ and } a_n > 0. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Absolute Limits
+
+Intuitively speaking, if the absolute value of a sequence converges to $0$, then we'd expect the original sequence
+to also converge. That is, $$ \text{if } \xlimit{n}{\infty}\left|a_n\right| = 0, \text{ then } \xlimit{n}{\infty} a_n = 0. $$
+
+<div class="proof"> 
+
+Let $\epsilon > 0$. Then $\exists N \in \bbn$ such that for all $n \geq N$, $\left|\left|a_n\right|-0\right| < \epsilon$, 
+meaning $-\epsilon < \left|a_n\right| < \epsilon$. Observing the right inequality, we see $\left|a_n\right| < \epsilon$ 
+implies $\left|a_n-0\right| < \epsilon$, completing the proof. Note the left inequality always holds true and can be disregarded.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Functional Limits
+
+As previously mentioned, sequences and functions are very closely integrated. The following two theorems provide
+a more concrete relationship between the two:
+
+- If $\xlimit{x}{\infty} f(x) = L$ and $f(n) = a_n$ when $n$ is an integer, then $\xlimit{n}{\infty} a_n = L$.<br />    
+  <div class="proof">
+  This merely follows from the definition of a limit in the continuous sense, but applied in a discrete sense.
+  </div><br />
+
+- If $\xlimit{n}{\infty} a_n = L$ and the function $f$ is continuous at $L$, then $\xlimit{n}{\infty}f(a_n) = f(L)$.<br />  
+  <div class="proof">  
+  Since $f$ is continuous, we note the limit does exist, and the $\delta-\epsilon$ definition holds; namely, 
+  $\xlimit{x}{a} f(x) = f(L)$ means for every $\epsilon > 0$, $\exists \delta > 0$ such that $0 < |x - a| < \delta$ 
+  implies $$ \left|\;f(x)-f(L)\right| < \epsilon\text{.} $$ Now, let $\epsilon > 0$ and take $\delta > 0$ to be the value that 
+  satisfies the above definition. By hypothesis, there exists an $N \in \bbn$ such that $\forall n \geq N$, $\left|a_n - L\right| 
+  < \delta$. But then $$ \left|\;f(a_n) - f(L)\right| < \epsilon $$ must also hold. 
+  Since $\epsilon$ is arbitrary, $\xlimit{n}{\infty} f(a_n) = f(L)$.
+  </div>
+
+</section>
+
+<section class="primary">
+
+# Complex Variables
+
+In the setting of complex variables, if $\{z_n\}$ and $\{w_n\}$ are convergent sequences of complex numbers with limits $A$
+and $B$ respectively, and $\lambda$ is a complex number, then 
+
+1. *Linear Combinations:* $$ \{z_n + \lambda w_n\} \rightarrow A + \lambda B. $$
+2. *Multiplication:* $$ \{z_nw_n\} \rightarrow AB. $$
+3. *Division:* $$ \left\{\frac{z_n}{w_n}\right\} \rightarrow \frac{A}{B} \text{ if } B \neq 0. $$
+
+Proofs are similar to the real analogue.
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Algebraic Limit Theorem](algebraic_limit_theorem)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

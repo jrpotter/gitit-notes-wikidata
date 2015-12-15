@@ -1,0 +1,52 @@
+---
+title: Cayley Graphs
+categories: Abstract Algebra
+icon: /img/icons/arithmetic.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Digraphs for $\bbz_6$ with $S = \{2, 3\}$](/img/diagrams/abstract/cayley-graph-z6.png)
+
+To visualize [generating sets](generating_sets), we employ the use of **Cayley Graphs** which consist of
+a set of arcs, corresponding to elements of a generating set, pointing to another element of the set. Note
+the graph is directed, and following an arc is the same as applying a given element by the element the
+arc represents *on the right*. Since in a group, going backwards along an arc represents multiplying on
+the right by the inverse of the arc. The one exception tends to be elements that are their own inverses;
+these are usually denoted by a dashed line with no arrowhead.
+
+Every group has a digraph with the following necessary properties (and, conversely, every digraph
+with these properties are by necessity a group):
+
+1. The digraph is connected.
+2. At most one arc goes from a vertex $g$ to a vertex $h$.
+3. Each vertex $g$ has exactly one arc of each type starting at $g$, and one of each type
+   ending at $g$.
+4. If two different sequences of arc types starting from vertex $g$ lead to the same vertex $h$,
+   then those same sequences of arc types starting from any vertex $u$ will lead to the same vertex
+   $v$.
+
+</div>
+
+<div class="proof">
+
+1. Every equation $gx = h$ has a solution in a group.
+2. The solution of $gx = h$ is unique.
+3. For $g \in G$ and each generator $b$ we can compute $gb$, and $(gb^{-1})b = g$.
+4. If $gq = h$ and $gr = h$, then $uq = ug^{-1}h = ur$. 
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Fraleigh, John B. (2003). A First Course In Abstract Algebra (7th ed.). Pearson. ISBN 978-0201763904.
+
+</section>

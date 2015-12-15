@@ -1,0 +1,225 @@
+---
+title: Trigonometric Identities
+categories: Calculus Trigonometry
+icon: /img/icons/circles.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Trigonometric Triangle](/img/diagrams/calculus/trigonometry-triangle.png)
+
+Trigonometry is the study of angles that are formed from triangles. This proves particularly useful since, upon varying
+the different legs of the triangle as shown in the right, one can describe shapes of various complexity and periodicity.
+Its development serves as the basis of much of all higher level math such as [calculus](single_calculus) or
+[complex variables](complex_variables), and is prevalent in the modeling of many physical phenomenon that conduct any 
+sort of wave properties.
+
+The periodicity displayed is especially helpful in construction of shapes of different coordinates systems; though polar
+coordinates are the most obvious, curves in parametric equations often employ the use of sines, cosines, and tangents, as
+well as the variations obtained by applying the basic arithmetic operations on each of these.
+
+Many identities involving these functions are immediately available upon inspection. Other, more careful identities, are
+included in later sections:
+
+<div style="width: 65%; margin: 0 auto;">
+
+| --------------------------------- | --------------------------------- | -------------------------------------- |
+| $\sin^2\theta + \cos^2\theta = 1$ | $\sin{(-\theta)} = -\sin{\theta}$ | $\sin{(\theta + 2\pi)} = \sin{\theta}$ |
+| $\sec^2\theta - \tan^2\theta = 1$ | $\cos{(-\theta)} = \cos{\theta}$  | $\cos{(\theta + 2\pi)} = \cos{\theta}$ |
+| $\csc^2\theta - \cot^2\theta = 1$ |                                   |                                        |
+
+</div>
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Law of Cosines
+
+If a triangle has sides with lengths $a, b$, and $c$, and $\theta$ is the angle between the sides
+with lengths $a$ and $b$, then $c^2 = a^2 + b^2 - 2ab\cos{\theta}$.
+
+<div class="proof">
+
+Let sides $A, B$, and $C$ be sides with lengths $a, b$, and $c$ respectively. Establish a coordinate
+system where $A$ and $B$ meet at the origin, and $\theta$ is the angle between $A$ and $B$. Also,
+suppose $P(x, y)$ is the point where $C$ meets $B$. Then we have a triangle with points $(0, 0), (a, 0)$,
+and $(x, y)$.
+
+- Case 1
+:    Suppose $x = a$.  
+     Then the angle formed between $A$ and $B$ is $\frac{\pi}{2}$ and so $-2ab\cos{\theta} = 0$,
+     yielding the Pythagorean Theorem which we note is true.
+
+- Case 2
+:    Suppose $0 < x < a$.  
+     \Then the line spanning $P$ to the $x$-axis forms two right triangles, and the triangle has height
+     $b\sin{\theta}$, and a leg of length $b\cos{\theta}$. Thus, by the Pythagorean Theorem,
+     $$\begin{align*}
+       c^2 &= (a-b\cos{\theta})^2 + (b\sin{\theta}^2)                         \\
+           &= a^2 - 2ab\cos^2{\theta} + b^2\cos^2{\theta} + b^2\sin^2{\theta} \\
+           &= a^2 - 2ab\cos^2{\theta} + b^2(\cos^2{\theta} + \sin^2{\theta})  \\
+           &= a^2 + b^2 - 2ab\cos^2{\theta}.
+     \end{align*}$$
+
+- Case 3
+:    Suppose $x \leq 0$ or $x > a$.  
+     Then we can transform (rotate, reflect, etc.) the triangle, relabel the sides, and then apply Case $2$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Subtraction Formulas
+
+<div class="block">
+
+![Difference of Angles](/img/diagrams/calculus/difference-formulas.png)
+
+1. *Sine:* $$ \sin{(x-y)} = \sin{x}\cos{y} - \cos{x}\sin{y}. $$
+2. *Cosine:* $$ \cos{(x-y)} = \cos{x}\cos{y} + \sin{x}\sin{y}. $$
+3. *Tangent:* $$ \tan{(x-y)} = \frac{\tan{x}-\tan{y}}{1+\tan{x}\tan{y}}. $$
+
+</div>
+
+<div class="proof"> 
+
+Note in the above figure that the distance $d$ is both circles are the same. Therefore
+$$ 
+  d = \sqrt{(\cos{\alpha} - \cos{\beta})^2 + (\sin{\alpha} - \sin{\beta})^2} 
+    = \sqrt{(\cos{(\alpha - \beta)-1})^2 + (\sin{(\alpha-\beta)}-0)^2}. 
+$$
+Therefore, equating the two, we find that
+$$\begin{align*}
+  (\cos{\alpha} - \cos{\beta})^2 + (\sin{\alpha} - \sin{\beta})^2 
+    &= (\cos{(\alpha - \beta)}-1)^2 + (\sin{(\alpha-\beta)}-0)^2                      \\ 
+  \cos^2\alpha - 2\cos\alpha\cos\beta + \cos^2\beta + \sin^2\alpha - 2\sin\alpha\sin\beta + \sin^2\beta
+    &= \cos^2(\alpha - \beta) - 2\cos(\alpha-\beta) + 1 + \sin^2(\alpha - \beta)      \\
+  (\cos^2\alpha + \sin^2\alpha) - 2(\cos\alpha\cos\beta + \sin\alpha\sin\beta) + (\cos^2\beta+\sin^2\beta)
+    &= (\cos^2(\alpha - \beta) + \sin^2(\alpha-\beta)) - 2\cos(\alpha - \beta) + 1    \\
+  2 - 2(\cos\alpha\cos\beta + \sin\alpha + \sin\beta) &= 2 - 2\cos(\alpha - \beta).
+\end{align*}$$
+
+Therefore $$ \cos(\alpha - \beta) = \cos\alpha\cos\beta + \sin\alpha\sin\beta. $$
+Next, replacing $\alpha$ by $\frac{\pi}{2} - \alpha$ yields
+$$ 
+  \cos\left(\frac{\pi}{2}-(\alpha-\beta)\right) 
+    = \cos\left(\frac{\pi}{2}-\alpha\right)\cos\beta
+    - \sin\left(\frac{\pi}{2}-\alpha\right)\sin\beta. 
+$$
+Thus, $$ \sin(\alpha - \beta) = \sin\alpha\cos\beta - \cos\alpha\sin\beta. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Addition Formulas
+
+1. *Sine:* $$ \sin{(x+y)} = \sin{x}\cos{y} + \cos{x}\sin{y}. $$
+2. *Cosine:* $$ \cos{(x+y)} = \cos{x}\cos{y} - \sin{x}\sin{y}. $$
+3. *Tangent:* $$ \tan{(x+y)} = \frac{\tan{x}+\tan{y}}{1-\tan{x}\tan{y}}. $$
+
+<div class="proof">
+
+Replace $y$ for $-y$ in the [Subtraction Formulas](#subtraction-formulas).
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Double-Angle Formulas
+
+1. *Sine:* $$ \sin{2x} = 2\sin{x}\cos{x}. $$
+2. *Cosine:* $$ \cos{2x} = \cos^2 x - \sin^2 x. $$
+
+<div class="proof"> 
+
+Replace $y$ for $x$ in the [Addition Formulas](#addition-formulas).
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Alternate Double-Angle Formulas
+
+1. *Sine:* $$ \cos{2x} = 1 - 2\sin^2 x. $$
+2. *Cosine:* $$ \cos{2x} = 2\cos^2 x - 1. $$
+
+<div class="proof"> 
+
+Use identity $\sin^2 x + \cos^2 x = 1$ in the [Double-Angle Formulas](#double-angle-formulas).
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Half-Angle Formulas
+
+1. *Sine:* $$ \sin^2 x = \frac{1}{2}(1 - \cos{2x}). $$
+2. *Cosine:* $$ \cos^2 x = \frac{1}{2}(1 + \cos{2x}). $$
+
+<div class="proof">
+
+Solve for $\cos^2 x$ and $\sin^2 x$ in the [Alternate Double-Angle Formulas](#alternate-double-angle-formulas).
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Product Formulas
+
+1. *Both:* $$ \sin{x}\cos{y} = \frac{1}{2}\left[\sin{(x+y)} + \sin{(x-y)}\right]. $$
+2. *Sine:* $$ \sin{x}\sin{y} = \frac{1}{2}\left[\cos{(x-y)} - \cos{(x+y)}\right]. $$
+3. *Cosine:* $$ \cos{x}\cos{y} = \frac{1}{2}\left[\cos{(x+y)} + \cos{(x-y)}\right]. $$
+
+<div class="proof">  
+
+Solve for respective products with respect to [Addition](#addition-formulas) and [Subtraction](#subtraction-formulas) formulas.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Complex Trigonometry](complex_trigonometry)
+- [Dot Product](dot_product)
+- [Pythagorean Theorem](pythagorean_theorem)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>
+
+<section class="primary">
+
+# External Links
+
+- [Difference Proof](http://pages.pacificcoast.net/~cazelais/173/idns-proof.pdf)
+
+</section>

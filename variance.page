@@ -1,0 +1,143 @@
+---
+title: Variance
+categories: Statistics
+icon: /img/icons/inferential-statistics.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Standard Deviation](/img/graphs/statistics/standard-deviation.png)
+
+If $X$ is a random variable with mean $\mu$, then the variance of $X$, denoted by $\text{Var}(X)$
+is defined by $$ \text{Var}(X) = E[(X-\mu)^2]. $$
+
+Because we expect $X$ to take on values around $E[X]$, a reasonable means of measuring variation would be
+$E[\left|X-\mu\right|]$, where $\mu = E[X]$. This ends up being inconvenient to work with though, so the square of the
+difference between $X$ and its mean is used instead.
+
+Alternatively, if $X$ is a random variable with mean $\mu$, then the variance of $X$, denoted by $\text{Var}(X)$
+is defined by $$ \text{Var}(X) = E[X^2]-(E[X])^2. $$
+
+</div>
+
+<div class="proof">
+
+$$\begin{align*}
+  \text{Var}(X) &= E[(X-\mu)^2]                                         \\
+                &= \sum_x(x-\mu)^2p(x)                                  \\
+                &= \sum_x(x^2-2\mu x+\mu^2)p(x)                         \\
+                &= \sum_x x^2p(x) - 2\mu\sum_x xp(x) + \mu^2\sum_x p(x) \\
+                &= E[X^2] - 2\mu^2 + \mu^2                              \\
+                &= E[X^2] - \mu^2
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Factors of Variance
+
+For random variable $X$ and constants $a$ and $b$, $$ \text{Var}(aX+b) = a^2\text{Var}(X). $$
+
+<div class="proof">
+
+Let $\mu = E[X]$ and note that $E[aX+b] = a\mu+b$[^1]. Therefore
+$$\begin{align*}
+  \text{Var}(aX+b) &= E[(aX+b-a\mu-b)^2] \\
+                   &= E[a^2(X-\mu)^2]    \\
+                   &= a^2E[(X-\mu)^2]    \\
+                   &= a^2\text{Var}(X)
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Linearity of Variance
+
+By the [properties of covariance](covariance#properties), we see that
+$$ \text{Var}\left(\sum_{i=1}^n X_i\right) = \sum_{i=1}^n \text{Var}(X_i) + 2\mathop{\sum\sum}_{i<j} \text{Cov}(X_i, X_j). $$
+If each $\inflate{X}{n}$ are pairwise independent, then we see that
+$$ \text{Var}\left(\sum_{i=1}^n X_i\right) = \sum_{i=1}^n\text{Var}(X_i). $$
+
+<div class="proof">
+
+The properties specifically are $2$ and $4$ as listed in [covariance](#covariance#properties). These imply that
+$$\begin{align*}
+  \text{Var}\left(\sum_{i=1}^n X_i\right) 
+    &= \text{Cov}\left(\sum_{i=1}^n X_i, \sum_{j=1}^n X_j\right)                       \\
+    &= \sum_{i=1}^n\sum_{j=1}^n \text{Cov}(X_i, X_j)                                   \\
+    &= \sum_{i=1}^n\text{Var}(X_i) + \mathop{\sum\sum}_{i \neq j}\text{Cov}(X_i, X_j).
+\end{align*}$$
+
+Since each pair of indices $i, j$ for $i \neq j$ appear twice in the double summation, we conclude that
+$$ \text{Var}\left(\sum_{i=1}^n X_i\right) = \sum_{i=1}^n \text{Var}(X_i) + 2\mathop{\sum\sum}_{i<j} \text{Cov}(X_i, X_j). $$
+
+If $\inflate{X}{n}$ are pairwise independent, then the covariance is $0$ for all $i$ and $j$, and thus
+$$ \text{Var}\left(\sum_{i=1}^n X_i\right) = \sum_{i=1}^n\text{Var}(X_i). $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Zero Variance
+
+If $\text{Var}(X) = 0$, then $$ \bbps{X = E[X]} = 1. $$ That is, the only random variables having variances equal to
+$0$ are those which are constant with probability $1$.
+
+<div class="proof">
+
+By [Chebyshev's Inequality](chebyshevs_inequality), we have for any $n \geq 1$,
+$$ \bbps{\abs{X - \mu} > \frac{1}{n}} = 0. $$ Letting $n \rightarrow \infty$ and using the continuity property
+of probability yields
+$$\begin{align*}
+  0 &= \xlimit{n}{\infty} \bbps{\abs{X - \mu} > \frac{1}{n}}                \\
+    &= \bbps{\xlimit{n}{\infty} \left\{\abs{X - \mu} > \frac{1}{n}\right\}} \\
+    &= \bbps{X \neq \mu}.
+\end{align*}$$
+Thus the chance for $X$ to be different from $\mu$ is $0$, proving our result.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Standard Deviation
+
+The square root of the $\text{Var}(X)$ is called the **standard deviation of $X$**, and is denoted by
+$\text{SD}(X)$. That is, $$ \text{SD}(X) = \sqrt{\text{Var}(X)}. $$
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Correlation](correlation)
+- [Covariance](covariance)
+- [Expected Value](expected_value)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>
+
+<!-- Footnotes -->
+
+[^1]: [Expectation Factors](expected_value#factors-of-expectation)

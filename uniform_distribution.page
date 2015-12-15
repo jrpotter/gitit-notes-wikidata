@@ -1,0 +1,173 @@
+---
+title: Uniform Distribution
+categories: Statistics
+icon: /img/icons/random-variables.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Uniform PDF](/img/graphs/statistics/uniform-distribution-pdf.png)
+
+A random variable is said to be **uniformly** distributed over the interval $(0, 1)$ if its probability
+density function is given by
+$$ f(x) = \begin{cases} 1, &0 < x < 1 \\ 0, &\text{otherwise} \end{cases} $$
+Here we see the probability that some random variable $X$ is in any particular subinterval of $(0, 1)$
+equals the length of the subinterval. Generalizing, we say that $X$ is a uniform random variable on the
+interval $(\alpha, \;\beta)$ if the probability density function of $X$ is given by
+$$ 
+  f(x) = \begin{cases} 
+    1/(\beta - \alpha) &\text{if }\alpha < x < \beta \\ 
+    0, &\text{otherwise} \end{cases} 
+$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Cumulative Distribution Function
+
+<div class="block">
+
+![Uniform CDF](/img/graphs/statistics/uniform-distribution-cdf.png)
+
+Since $F(c) = \int_{-\infty}^c \;f(x)\;dx$, it follows that the distribution function of a uniform
+random variable on the interval $(\alpha, \;\beta)$ is given by
+$$
+  F(c) = \begin{cases}
+    0                             &a \leq \alpha      \\
+    (c - \alpha)/(\beta - \alpha) &\alpha < c < \beta \\
+    1                             &a \geq \beta
+  \end{cases}
+$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Expected Value
+
+Let $X$ be uniformly distribution over $(\alpha, \beta)$. Then the expected value is
+$$ E[X] = \frac{\beta + \alpha}{2}. $$
+
+<div class="proof">
+
+The following shows the expected value is equal to the midpoint of the given interval:
+$$\begin{align*}
+  E[X] &= \int_{-\infty}^{\infty} xf(x)\;dx              \\
+       &= \int_\alpha^\beta \frac{x}{\beta - \alpha}\;dx \\
+       &= \frac{\beta^2 - \alpha^2}{2(\beta - \alpha)}   \\
+       &= \frac{\beta + \alpha}{2}
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Variance
+
+Let $X$ be uniformly distribution over $(\alpha, \beta)$. Then the variance is
+$$ \text{Var}(X) = \frac{(\beta + \alpha)^2}{12}. $$
+
+<div class="proof">
+
+To find $\text{Var}(X)$, we first calculate $E[X^2]$:
+$$\begin{align*}
+  E[X^2] &= \int_\alpha^\beta \frac{1}{\beta - \alpha}x^2\;dx \\
+         &= \frac{\beta^3 - \alpha^3}{3(\beta - \alpha)}      \\
+         &= \frac{\beta^2 + \alpha\beta + \alpha^2}{3}
+\end{align*}$$
+Hence,
+$$\begin{align*}
+  \text{Var}(X) &= \frac{\beta^2 + \alpha\beta + \alpha^2}{3} - \frac{(\alpha + \beta)^2}{4} \\
+                &= \frac{(\beta + \alpha)^2}{12}.
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Moment Generating Function
+
+Let $X$ be a uniform random variable over $(a, b)$. Then it has moment generating function
+$$ M(t) = \frac{e^{tb}-e^{ta}}{t(b - a)}. $$
+
+<div class="proof">
+
+Let $X$ be a uniform random variable over $(a, b)$. Then
+$$\begin{align*}
+  M(t) &= \int_a^b e^{tx}\frac{1}{b - a}                                  \\
+       &= \frac{1}{b - a}\int_a^b e^{tx}                                  \\
+       &= \frac{1}{b - a}\left[\frac{1}{t}e^{tx}\right]_a^b               \\
+       &= \frac{1}{b - a}\left[\frac{e^{tb}}{t} - \frac{e^{ta}}{t}\right] \\
+       &= \frac{e^{tb} - e^{ta}}{t(b - a)}.
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Convolution
+
+<div class="block">
+
+![Triangular Distribution](/img/graphs/statistics/triangular-distribution.png)
+
+If $X$ and $Y$ are independent random variables, both uniformly distributed on $(0, 1)$, then
+the probability density of $X + Y$ is
+$$ f_{X + Y}(a) = \int_0^a\;dy = a, \quad \text{ for } 0 \leq a \leq 1 $$
+and
+$$ f_{X + Y}(a) = \int_{a-1}^1\;dy = 2 - a, \quad \text { for } 1 < a < 2. $$
+We say the random variable $X + Y$ has a triangular distribution, as made clear by the diagram on
+the right.
+
+</div>
+
+<div class="proof">
+
+Note that 
+$$ f_X(a) = f_Y(a) = \begin{cases} 1 &0 < a < 1 \\ 0 &\text{otherwise} \end{cases}. $$
+Therefore, by the [convolution](convolution) formula, we find that
+$$ f_{X + Y}(a) = \int_0^1 f_X(a - y)\;dy. $$
+For $0 \leq a \leq 1$, this yields
+$$\begin{align*}
+  f_{X + Y}(a) &= \int_0^1 f_X(a - y)\;dy                              \\
+               &= -F_X(a - y)\big|_0^1 = -F_X(a - 1) + F_X(a)          \\
+               &= \int_0^{a-1} -f_X(x, y)\;dy + \int_0^a f_X(x, y)\;dy \\
+               &= \int_0^a f_X(x, y)\;dy                               \\
+               &= \int_0^a\;dy.
+\end{align*}$$
+For $1 < a < 2$, this yields
+$$\begin{align*}
+  f_{X + Y}(a) &= \int_0^1 f_X(a- y)\;dy                               \\
+               &= -F_X(a - y)\big|_0^1 = -F_X(a - 1) + F_X(a)          \\
+               &= -\int_0^{a-1} f_X(x, y)\;dy + \int_0^a f_X(x, y)\;dy \\
+               &= -\int_0^{a-1}\;dy + \int_0^1\;dy                     \\
+               &= \int_{a-1}^0\;dy + \int_0^1\;dy                      \\
+               &= \int_{a-1}^1\;dy
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

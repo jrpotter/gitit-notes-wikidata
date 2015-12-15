@@ -1,0 +1,56 @@
+---
+title: Convolution
+categories: Statistics
+icon: /img/icons/random-variables.png
+...
+
+<section class="primary">
+
+# Summary
+
+Let $X$ and $Y$ to be two independent random variables. Then the cumulative distribution function 
+$$ F_{X + Y}(a) = \int_{-\infty}^{\infty} F_X(a-y)f_Y(y)\;dy $$ 
+is called the **convolution** of the distribution functions $F_X$ and $F_Y$.
+Consequently, the probability density function $f_{X+Y}$ of $X + Y$ is given by
+$$ f_{X + Y}(a) = \int_{-\infty}^{\infty} f_X(a - y)f_Y(y)\;dy. $$
+
+<div class="proof">
+
+First we prove the convolution function:
+$$\begin{align*}
+  F_{X + Y}(a) &= \bbps{X + Y \leq a}                                               \\
+               &= \iint_{x + y \leq a} f_X(x)f_Y(y)\;dx\;dy                         \\
+               &= \int_{-\infty}^{\infty} \int_{-\infty}^{a-y} f_X(x)f_Y(y)\;dx\;dy \\
+               &= \int_{-\infty}^{\infty}f_Y(y)\int_{-\infty}^{a-y}f_X(x)\;dx\;dy   \\
+               &= \int_{-\infty}^{\infty} F_X(a - y)f_Y(y)\;dy.
+\end{align*}$$
+Then the probability density function is found by
+$$\begin{align*}
+  f_{X+Y}(a) &= \leibniz{a}\int_{-\infty}^{\infty} F_X(a - y)f_Y(y)\;dy   \\
+             &= \int_{-\infty}^{\infty} \leibniz{a} F_X(a - y)f_Y(y)\;dy \\
+             &= \int_{-\infty}^{\infty} f_X(a - y)f_Y(y)\;dy.
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Binomial Convolution](binomial_distribution#convolution)
+- [Gamma Convolution](gamma_distribution#convolution)
+- [Poisson Convolution](poisson_distribution#convolution)
+- [Normal Convolution](normal_distribution#convolution)
+- [Uniform Convolution](uniform_distribution#convolution)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

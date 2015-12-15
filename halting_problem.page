@@ -1,0 +1,54 @@
+---
+title: Halting Problem
+categories: Computation
+icon: /img/icons/binary-tree.png
+...
+
+<section class="primary">
+
+# Summary
+
+The halting problem is a particularly important diagonalization argument that shows that the class of recursive languages
+is a strict subset of the class of recursively enumerable languages. More precisely, suppose we had an algorithm that correctly 
+determines whether a program $P$ would halt on input $X$ or whether it would run forever. Name this algorithm *halts*$(P, X)$. 
+Consider another function defined as
+
+Diagonal($X$)
+:    $a$: if *halts*$(X, X)$ then goto $a$ else halt
+
+But this shows Diagonal(Diagonal) is a contradiction- it halts if and only if the call to *halts*$(P, X)$ doesn't halt.
+
+<div class="proof">
+
+Let $$ H = \{ \text{"}M\text{""}w\text{"} : \text{Turing machine } M \text{ halts on input string } w \}. $$
+Notice that $H$ is recursively enumerable, since it is exactly the language semidecided by a 
+[universal Turing machine](universal_turing_machine). That is, on input "$M$""$w$", $U$ halts precisely when the
+input is in $H$. Then all recursively enumerable languages are also Turing decidable if and only if $H$ is recursive.
+So, for the sake of contradiction, suppose $H$ is indeed recursive. Then
+$$ H_1 = \{\text{"}M\text{"}: \text{Turing machine } M \text{ halts on input string "}M\text{"} \} $$
+would also be recursive. Note that $H_1$ is the analogue to the *halts*$(P, X)$ program described in the summary. 
+Additionally, if $H_1$ were recursive, then its complement would also be recursive:
+$$ 
+  \overline{H_1} = \{w: \text{either }w\text{ is not the encoding of a Turing machine, or it is the encoding "}M
+  \text{" of a Turing machine }M\text{ that does not halt on "}M\text{"} \}. 
+$$
+Note that $\overline{H_1}$ is the analogue to the Diagonal function. But $\overline{H_1}$ cannot even be
+recursively enumerable, let alone recursive. For suppose $M^*$ were a Turing machine that semidecided $\overline{H_1}$.
+By definition of $\overline{H_1}$, "$M^*$" $\in \overline{H_1}$ if and only if $M^*$ does not accept input string
+"$M^*$". But $M^*$ is supposed to semidecide $\overline{H_1}$, so "$M^*$" $\in \overline{H_1}$ if and only if
+$M^*$ accepts "$M^*$". Thus $M*$ accepts "$M^*$" if and only if $M^*$ does not accept "$M^*$", a contradiction.
+
+Therefore $H_1$ isn't recursive and consequently $H$ isn't recursive, proving that not every recursively enumerable language
+is recursive. Thus the class of recursive languages is a strict subset of the class of recursively enumerable languages.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Papadimitriou & Lewis (1998). Elements of the Theory of Computation (2nd ed.). Prentice-Hall. ISBN 0-13-262478-8
+
+</section>

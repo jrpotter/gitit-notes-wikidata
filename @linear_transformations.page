@@ -1,0 +1,122 @@
+---
+title: @Linear Transformations
+categories: Linear Algebra
+icon: /img/icons/transformations.png
+...
+
+<section class="primary">
+
+# Scaling
+
+For any positive constant $k$, the matrix $\begin{bmatrix} k&0\\ 0&k \end{bmatrix}$ defines
+a scaling by $k$. This is a **dilation** for $k > 1$ and a **contraction** for $0 < k < 1$.
+
+</section>
+
+<section class="primary">
+
+# Orthogonal Projection
+
+The transformation $T(\vec{x}) = \vec{x}^{\parallel}$ from $\bbr^2$ to $\bbr^2$
+is called the **orthogonal projection** of $\vec{x}$ onto $L$, often denoted by $\text{proj}_{L}(\vec{x})$.
+We note
+$$ \text{proj}_{L}(\vec{x}) = \left(\frac{\dotp{x}{w}}{\dotp{w}{w}}\right)\vec{w} $$ 
+where $\vec{w}$ is a nonzero vector parallel to $L$, with matrix 
+$$ \frac{1}{w_1^2 + w_2^2} \begin{bmatrix} w_1^2&w_1w_2\\ w_1w_2&w_2^2 \end{bmatrix}. $$
+  
+<div class="proof">
+
+Let $\vec{w}$ be a nonzero vector parallel to $L$. Since $\vec{x}^{\parallel}$ is parallel to $\vec{w}$,
+$\vec{x}^{\parallel} = k\vec{w}$ for some scalar $k$. Now:
+$$ \vec{x}^{\perp} = \vec{x} - \vec{x}^{\parallel} = \vec{x} - k\vec{w} $$
+is perpendicular to $L$. Thus
+$$\begin{align*}
+  (\vec{x} - k\vec{w}) \cdot \vec{w} &= 0 \Rightarrow \dotp{x}{w} - k(\dotp{w}{w})        \\
+                                     &= 0 \Rightarrow k = \frac{\dotp{x}{w}}{\dotp{w}{w}}
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Reflection
+
+Consider a line $L$ in the coordinate plane, running through the origin, and let
+$\vec{x} = \vec{x}^{\parallel} + \vec{x}^{\perp}$ be a vector in $\bbr^2$. The linear transformation
+$T(\vec{x}) = \vec{x}^{\parallel} - \vec{x}^{\perp}$ is called the **reflection of $\vec{x}$ about $L$**,
+denoted $\text{ref}_{L}(\vec{x})$. We note
+$$ \text{ref}_{L}(\vec{x}) = \text{proj}_{L}(\vec{x}) - \vec{x}, $$ 
+yielding matrix of form
+$$ \begin{bmatrix} a&b\\ b&-a \end{bmatrix} $$ 
+where $a^2 + b^2 = 1$, if working with unit vectors.
+
+<div class="proof">
+
+Note the following:
+$$\begin{align*}
+  \text{ref}_{L}(\vec{x}) &= \vec{x}^{\parallel} - \vec{x}^{\perp}
+                           = \vec{x}^{\parallel} - (\vec{x} - \vec{x}^{\parallel})
+                           = 2\vec{x}^{\parallel} - \vec{x}
+                           = 2\text{proj}_{L}(\vec{x})- \vec{x}
+                           = (\frac{\dotp{x}{w}}{\dotp{w}{w}})\vec{w} - \vec{x}                                   \\
+                          &= \frac{x_1w_1 + x_2w_2}{w_1^2 + w_2^2} \begin{bmatrix} w_1 \\ w_2
+                             \end{bmatrix}-\begin{bmatrix} x_1 \\ x_2 \end{bmatrix}                               \\
+                          &= \frac{1}{w_1^2 + w_2^2}
+                             \begin{bmatrix} (w_1^2 - w_2^2) & 2w_1w_2 \\ 2w_1w_2 & (w_2^2 - w_1^2) \end{bmatrix}
+                             \begin{bmatrix} x_1 \\ x_2 \end{bmatrix}
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="secondary">
+
+# Rotation
+
+The matrix of a counterclockwise rotation in $\bbr^2$ through an angle $\theta$ is
+$\begin{bmatrix} \cos{\theta} & -\sin{\theta} \\ \sin{\theta} & \cos{\theta} \end{bmatrix}$
+where this matrix is of form $\begin{bmatrix} a & -b \\ b & a \end{bmatrix}$ and $a^2 + b^2 = 1$.
+
+<div class="proof">
+ 
+Consider
+$$
+  \vec{x} = \begin{bmatrix} x_1 \\ x_2 \end{bmatrix} \text{ and }
+  \vec{y} = \begin{bmatrix} -x_2 \\ x_1 \end{bmatrix} \text{,}
+$$
+obtained by rotating $\vec{x}$ by $\frac{\pi}{2}$. We see $T(\vec{x})$, the transformation that rotates $\vec{x}$ 
+by $\theta$, is $(\cos{\theta})\vec{x} + (\sin{\theta})\vec{y}$. Thus:
+$$\begin{align*}
+  T(\vec{x}) &= \cos{\theta} \begin{bmatrix}  x_1 \\ x_2 \end{bmatrix} +
+                \sin{\theta} \begin{bmatrix} -x_2 \\ x_1 \end{bmatrix} \\
+             &= \begin{bmatrix}
+                  \cos{\theta} & -\sin{\theta}           \\
+                  \sin{\theta} &  \cos{\theta}
+                \end{bmatrix}\text{,}
+\end{align*}$$
+and we note $cos^2\theta + sin^2\theta = 1$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Shearing
+    
+The matrix of a **horizontal shear** is of the form $\begin{bmatrix} 1 & k \\ 0 & 1 \end{bmatrix}$, 
+and the matrix of a **vertical shear** is of the form $\begin{bmatrix} 1 & 0 \\ k & 1 \end{bmatrix}$,
+where $k$ is an arbitrary constant.
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Bretscher, Otto (2008). Linear Algebra with Applications (4th ed.). Pearson. ISBN 978-0-13-600926-9.
+
+</section>

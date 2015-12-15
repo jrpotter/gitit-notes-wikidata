@@ -1,0 +1,108 @@
+---
+title: Multi-Variable Calculus
+categories: Calculus
+icon: /img/icons/triple-integral.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Isaac Newton](/img/portraits/newton.jpg)
+
+Multi-Variable Calculus refers to the subject focused on analyzing the change of a function of multiple variables with respect to 
+some limiting factor. It is an abstraction that builds on [Single-Variable Calculus](single_calculus). In fact, problems
+in multi-dimensional space are generally decomposed into their corresponding single dimensional components and processed in a manner
+much like that in single-variable calculus, but repeatedly. For instance, to handle a double integral requires iterated integration,
+a method employing the calculation of two single integrations of a function of just one variable. Differentiation of a two variable function involves partial differentiation in which only one variable is considered at a time. Both these, and most other concepts
+explored in this subject, extend in a likewise manner to $n$-dimensional space.
+
+One important distinction involves a higher emphasis on vector manipulation, which allows for an easier description of
+parametric surfaces. This becomes especially prevalent in the subject of [Vector Calculus](#vector-calculus), which serves
+as the basis of describing higher dimensions in a fairly intuitive manner. Incorporated in this emphasis is the shift away from
+integration of Cartesian coordinates of a single function to line integration over a vector field, allowing a more generalized
+notion of the summation of limiting differentials.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Geometrical Differentials
+
+<div class="extract" data-target="/lines">
+
+- [Lines](lines)
+- [Planes](planes)
+- [Curvature](curvature)
+- [TNB Frames](tnb_frames)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Differentiation
+
+<div class="extract" data-target="/directional_derivatives">
+
+- [Chain Rule](chain_rule)
+- [Clairaut's Theorem](clairauts_theorem)
+- [Directional Derivatives](directional_derivatives)
+- [Implicit Differentiation](implicit_differentiation)
+- [Lagrange Multipliers](lagrange_multipliers)
+- [Partial Derivatives](partial_derivatives)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Integration
+
+<div class="extract" data-target="/fubinis_theorem">
+
+- [Fubini's Theorem](fubinis_theorem)
+- [Jacobian](jacobian)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Vector Calculus
+
+<div class="extract" data-target="/path_integrals">
+
+- [Conservative Vector Field](conservative_vector_field)
+- [Cross Product](cross_product)
+- [Curl](curl)
+- [Divergence](divergence)
+- [Divergence Theorem](divergence_theorem)
+- [Dot Product](dot_product)
+- [Fundamental Theorem for Line Integrals](fundamental_theorem_of_calculus#line-integrals)
+- [Green's Theorem](greens_theorem)
+- [Line Integrals](line_integrals)
+- [Path Integrals](path_integrals)
+- [Stoke’s Theorem](stokes_theorem)
+- [Surface Area](surface_area)
+- [Surface Integrals](surface_integrals)
+- [Surface of Revolution](surface_of_revolution)
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.  
+
+</section>

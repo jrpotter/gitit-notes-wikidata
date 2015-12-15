@@ -1,0 +1,78 @@
+---
+title: Nested Interval Property
+categories: Analysis
+icon: /img/icons/sequences-2.png
+...
+
+<section class="primary">
+
+# Summary
+
+Let $I_n = [a_n, b_n] \subset \bbr$ be nonempty, finite interval for every $n$. Assume $I_{n+1} \subset I_n$ for all $n$.
+Then $\bigcap_{1}^{\infty} I_n$ is nonempty.
+
+<div class="proof">
+
+Note that we have not proven $I_n$ is compact, for if we did this would be a simple application of our above theorem.
+
+Let $E$ be the collection of left endpoints, $\{ a_n \}_{n=1}^\infty$. This is nonempty and bounded above by $b_1$.
+Let $x = \text{sup}\;E$. Then $a_n \leq x$ for all $n$. If we can show $x \leq b_n$ for all $n$, then we have
+successfully found an element in the intersection of all intervals. Thus, take $m, n \in \bbz^+$. We see that
+$$ a_n \leq a_{n+m} \leq b_{n+m} \leq b_m. $$
+Therefore each $b_m$ is an upper bound of $E$ and consequently $b_m \geq \text{sup}\;E$. Thus $x$ is indeed less
+than or equal to $b_n$ for all $n$.
+
+</div> 
+
+</section>
+
+<section class="primary">
+
+# $k$-Cell
+
+A set $[a_1, b_1] \times [a_2, b_2] \times \cdots \times [a_k, b_k] \subset \bbr^k$, $a_j \leq b_j$ with $a_j, b_j \in \bbr$
+is called a **$k$-cell**. Let $\{I_n\} \subset \bbr^k$ be a sequence of nonempty $k$-cells such that $I_{n+1} \subset I_n$
+for all $n$. Then $\bigcap \{I_n\} \neq \emptyset$. Furthermore, every $k$-cell in $\bbr^k$ is compact.
+
+<div class="proof">
+
+<div class="block">
+
+![$K$-Cell Induction](/img/diagrams/analysis/k-cell-induction.png)
+
+Let $I_n = [a_{n_1}, b_{n_1}] \times \cdots \times [a_{n_k}, b_{n_k}]$ and $I_{n_j} = [a_{n_j}, b_{n_j}]$ for
+$1 \leq j \leq k$ and $n = 1, 2, \ldots$ Now $I_{(n+1)_j} \subset I_{n_j}$. Therefore there exists an $x_j^*$ such
+that $x_j^* \in \bigcap_{n=1}^\infty I_{n_j}$. Thus, for each $j$, we get a point with $k$ components. Then
+$(x_1^*, \ldots, x_k^*) \subset \bigcap_1^\infty I_n$.
+
+We now show that a $k$-cell is compact. Let $I = [a_1, b_1] \times \cdots \times [a_k, b_k]$ be a $k$-cell. Letting
+$x, y \in I$ and $\delta = \sqrt{\sum_{j=1}^k (b_j - a_j)^2}$, we see that $\abs{x - y} \leq \delta$. Suppose that
+$\{G_\alpha\}_{\alpha \in A}$ is an open cover with no finite subcover. Next let
+$$ c_j = \frac{a_j + b_j}{2} $$ be the midpoints of each $I_{n_j}$ and use these points to determine $2^k$ subcells
+of $I$ in $\bbr^k$. Let $I_1$ be a subcell of diameter $\delta / 2$ for which no finite subcover exists (note this
+must be possible since $\{G_\alpha\}$ has no finite subcover). We can repeat this process for $I_1$ to get $I_2$
+with diameter $\delta/4$. Continuing indefinitely, we obtain the sequence $\{I_n\}$ such that:
+
+1. $I_{n+1} \subset I_n$
+2. $I_n$ cannot be covered by a finite subcollection of $\{G_\alpha\}$.
+3. If $(x, y) \in I_n$, then $\abs{x - y} \leq 2^{-n}\delta$.
+
+Thus, by our previous proposition, it must be the case that $\bigcap I_n \neq \emptyset$. If we let 
+$x^* \in \bigcap_1^{\infty} I_n$, then there exists an $\alpha^*$ such that $x^* \in G_{\alpha^*}$. But $G_{\alpha^*}$
+is open so there must exist an $r > 0$ such that $N_r(x^*) \subset G_{\alpha^*}$. Choose $n \in \bbn$ such that
+$2^{-n}\delta < r$. Since $x^* \in I_n$, then $I_n \subset N_r(x^*) \subset G_{\alpha^*}$ which is a contradiction, since
+we now have a finite subcover (of one set) containing $I_n$.
+
+</div>
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Abott, Stephen (2001). Understanding Analysis (1st ed.). Springer. ISBN 978-0387950605.
+
+</section>

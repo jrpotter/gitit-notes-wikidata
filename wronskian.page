@@ -1,0 +1,91 @@
+---
+title: Wronskian
+categories: Differential Calculus Linear Algebra
+icon: /img/icons/second-order-diff-equations.png
+...
+
+<section class="primary">
+
+# Summary
+
+When considering solutions to a [second order linear homogeneous equation](homogeneous_equation), we are often given
+initial values for $y$ and $y'$ so that we can solve for constants $c_1$ and $c_2$ in the equation
+$y = c_1y_1(t) + c_2y_2(t)$ where $y_1$ and $y_2$ are two solutions of $L[y] = y'' + p(t)y' + q(t)y = 0$.
+These initial conditions, which we'll denote $y_0$ and $y_0'$ respectively, enable the establishment of a system 
+of equations as follows:
+$$\begin{align*}
+  c_1y_1(t_0) + c_2y_2(t_0) &= y_0     \\
+  c_1y_1'(t_0) + c_2y_2'(t_0) &= y_0'.
+\end{align*}$$
+The [determinant](determinant) of coefficients of the system is called the **Wronskian** and is calculated as follows:
+$$ 
+  W = \left| \begin{array}{cc} y_1(t_0) & y_2(t_0) \\ y_1'(t_0) & y_2'(t_0) \end{array} \right|
+    = y_1(t_0)y_2'(t_0) - y_1'(t_0)y_2(t_0). 
+$$
+
+</section>
+
+<section class="primary">
+
+# System of Homogeneous Equations
+
+The idea of a Wronskian can be generalized to a [homogeneous linear system](homogeneous_linear_systems). Supposing we have
+$n$ first order equations, we can consider the [superposition](homogeneous_linear_systems#principle-of-superposition) of
+these $n$ solutions for another solution. These solutions $\pmb{x}^{(1)}, \ldots, \pmb{x}^{(n)}$ can be formed into a matrix
+$$ 
+  \pmb{X}(t) = \left(\begin{array}{ccc}
+    x_{11}(t) & \cdots & x_{1n}(t) \\
+    \vdots    &        & \vdots    \\
+    x_{n1}(t) & \cdots & x_{nn}(t)
+  \end{array}\right).
+$$
+The determinant of this matrix is also called the Wronskian, denoted
+$$ W\left[\pmb{x}^{(1)}, \ldots, \pmb{x}^{(n)}\right](t) = \text{det}\;\pmb{X}(t), $$
+the columns of which are linearly independent for a given value of $t$ if and only if the determinant for
+that value of $t$ is not $0$.
+
+</section>
+
+<section class="primary">
+
+# Fundamental Set Construction
+
+Consider the differential equation $L[y] = y'' + p(t)y' + q(t)y = 0$ whose coefficients $p$ and $q$ are continuous
+on some open interval $I$. Choose some point $t_0$ in $I$. Let $y_1$ be the solution of $L[y]$ that also satisfies the
+initial conditions $$ y(t_0) = 1 \;\text{ and }\; y'(t_0) = 0. $$ Additionally, let $y_2$ be the solution of $L[y]$ that 
+satisfies the initial conditions $$ y(t_0) = 0 \;\text{ and }\; y'(t_0) = 1. $$ Then $y_1$ and $y_2$ form a fundamental set
+of solutions of $L[y]$.
+
+<div class="proof">
+
+We note the existence of the functions $y_1$ and $y_2$ is ensured by [above](homogeneous_equations#existence-and-uniqueness).
+We also note their Wronskian at $t_0$ is
+$$ 
+  W(y_1, y_2)(t_0) = \left| \begin{array}{cc} y_1(t_0) & y_2(t_0) \\ y_1'(t_0) & y_2'(t_0) \end{array} \right|
+                   = \left| \begin{array}{cc} 1 & 0 \\ 0 & 1 \end{array} \right| = 1.
+$$
+Since the Wronskian is not zero at the point $t_0$, the functions $y_1$ and $y_2$ for a fundamental set of solutions[^1].
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Abel's Theorem](abels_theorem)
+- [Fundamental Set of Solutions](fundamental_set_of_solutions)
+- [Homogeneous Equations](homogeneous_equations)
+- [Nonhomogeneous Equations](nonhomogeneous_equations)
+- [System of First Order Linear Equations](system_of_first_order_linear_equations)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Boyce W.E. & DiPrima R. C. (2010). Elementary Differential Equations (9th ed.). John Wiley & Sons, Inc. ISBN 978-0470554913.
+
+</section>

@@ -1,0 +1,147 @@
+---
+title: Gamma Distribution
+categories: Statistics
+icon: /img/icons/random-variables.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Gamma PDF](/img/graphs/statistics/gamma-distribution.png)
+
+A random variable is said to have a **gamma distribution** with parameters $(\alpha, \lambda)$ where
+$\alpha > 0$ and $\lambda > 0$ if its density function is given by 
+$$
+  f(x) = \begin{cases}
+    \dfrac{\lambda e^{-\lambda x}(\lambda x)^{\alpha - 1}}{\Gamma(\alpha)} &x \geq 0 \\
+    0                                                                     &x < 0
+  \end{cases}
+$$
+where $\Gamma(\alpha)$, called the **gamma function**, is defined as
+$$ \Gamma(\alpha) = \int_0^\infty e^{-y}y^{\alpha - 1}\;dy. $$
+
+When $\alpha$ is a positive integer, say, $\alpha = n$, the gamma distribution with parameters 
+$(\alpha, \lambda)$ often arises as the distribution of the amount of time one has to wait until
+a total of $n$ events has occurred. 
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Recurrence
+
+For integral values of $\alpha$,
+$$ \Gamma(\alpha) = (\alpha - 1)\Gamma(\alpha - 1). $$
+
+<div class="proof">
+
+Integration of $\Gamma(\alpha)$ by parts yields
+$$\begin{align*}
+  \Gamma(\alpha) &= -e^{-y}y^{\alpha-1}\big|_0^\infty + \int_0^\infty e^{-y}(\alpha - 1)y^{\alpha - 2}\;dy \\
+                 &= (\alpha - 1)\int_0^\infty e^{-y}y^{\alpha - 2}\;dy                                    \\
+                 &= (\alpha - 1)\Gamma(\alpha - 1)
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Expected Value
+
+Let $X$ be a random gamma variable with parameters $(\alpha, \lambda)$. Then
+$$ E[X] = \frac{\alpha}{\lambda}. $$
+
+<div class="proof">
+
+Through the recursive property of the gamma function:
+
+$$\begin{align*}
+  E[X] &= \frac{1}{\Gamma(\alpha)} \int_0^\infty \lambda x e^{-\lambda x}(\lambda x)^{\alpha - 1}\;dx  \\
+       &= \frac{1}{\lambda\Gamma(\alpha)} \int_0^\infty \lambda e^{-\lambda x}(\lambda x)^{\alpha}\;dx \\
+       &= \dfrac{\Gamma(\alpha + 1)}{\lambda \Gamma(\alpha)}                                           \\
+       &= \frac{\alpha}{\lambda}
+\end{align*}$$
+Note the third equality follows by replacing $y$ in $\Gamma(\alpha + 1)$ with $\lambda x$. This means, by the 
+[Chain Rule](chain_rule), that $dy = \lambda dx$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Variance
+
+Let $X$ be a random gamma variable with parameters $(\alpha, \lambda)$. Then
+$$ \text{Var}(X) = \frac{\alpha}{\lambda^2}. $$
+
+<div class="proof">
+
+First, solve for $E[X^2]$ as follows:
+$$\begin{align*}
+  E[X^2] &= \frac{1}{\Gamma(\alpha)}\int_0^\infty \lambda x^2e^{-\lambda x}(\lambda x)^{\alpha - 1}\;dx         \\
+         &= \frac{1}{\lambda \Gamma(\alpha)}\int_0^\infty \lambda x e^{-\lambda x}(\lambda x)^\alpha \;dx       \\
+         &= \frac{1}{\lambda^2 \Gamma(\alpha)}\int_0^\infty \lambda e^{-\lambda x}(\lambda x)^{\alpha + 1}\;dx  \\
+         &= \frac{\Gamma(\alpha + 2)}{\lambda^2\Gamma(\alpha)}                                                  \\
+         &= \frac{\alpha(\alpha + 1)}{\lambda^2}.
+\end{align*}$$
+Therefore
+$$\begin{align*}
+  \text{Var}(X) &= E[X^2] - (E[X])^2                                                                \\
+                &= \frac{\alpha^2(\alpha + 1)}{\lambda^2} - \left(\frac{\alpha^2}{\lambda^2}\right) \\
+                &= \frac{\alpha}{\lambda^2}.
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Moment Generating Function
+
+Let $X$ be a random gamma variable with parameters $(\alpha, \lambda)$. Then its moment generating function is
+$$ M(t) = \left(\frac{\lambda}{\lambda - t}\right)^\alpha. $$
+
+</section>
+
+<section class="primary">
+
+# Convolution
+
+Gamma random variables are interestingly closed under convolutions. That is, if $X$ and $Y$ are 
+independent gamma random variables with respective parameters $(s, \lambda)$ and $(t, \lambda)$, then
+$X + Y$ is a gamma random variable with parameters $(s + t, \lambda)$.
+
+<div class="proof">
+
+By the formula for [convolution](convolution) we have
+$$\begin{align*}
+  f_{X + Y}(a) &= \frac{1}{\Gamma(s)\Gamma(t)} \int_0^a 
+                  \lambda e^{-\lambda(a - y)}[\lambda(a-y)]^{s-1} \lambda e^{-\lambda y}(\lambda y)^{t-1}\;dy \\
+               &= Ke^{-\lambda a}\int_0^a (a-y)^{s-1}y^{t-1}\;dy                                              \\
+               &= Ke^{-\lambda a}a^{s+t-1}\int_0^1 (1-x)^{s-1}x^{t-1}\;dx \text{ by letting } x = \frac{y}{a} \\
+               &= Ce^{-\lambda a}a^{s+t-1}
+\end{align*}$$
+where $C$ is a constant that does not depend on $a$. But, since the preceding is a density function and must
+integrate to $1$, the value of $C$ is determined and we have
+$$ f_{X+Y}(a) = \frac{\lambda e^{-\lambda a}(\lambda a)^{s+t-1}}{\Gamma(s + t)}. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

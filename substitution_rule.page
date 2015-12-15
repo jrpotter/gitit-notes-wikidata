@@ -1,0 +1,48 @@
+---
+title: Substitution Rule
+categories: Calculus
+icon: /img/icons/single-integral.png
+...
+
+<section class="primary">
+
+# Summary
+
+If $u=g(x)$ is a differentiable function whose range is an interval $I$ and $f$ is continuous
+on $I$, then $\int f(g(x))g'(x)dx = \int f(u)du$.
+
+<div class="proof">
+
+If $F'=f$, then $\int F'(g(x))g'(x)dx = F(g(x)) + C$, by the Chain Rule. Then setting
+$$ u = g(x), \;F(g(x)) + C = F(u) + C = \int F'(u)du\text{.} $$ Thus
+$$ \int f(g(x))g'(x)dx = \int f(u)du\text{.} $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Definite Integrals
+
+If $g'$ is continuous on $[a, b]$ and $f$ is continuous on the range $u=g(x)$, then
+$\int_a^b f(g(x))g'(x)dx = \int_{g(a)}^{g(b)} f(u)du$.
+
+<div class="proof">
+
+Let $F$ be an antiderivative of $f$. Then $F(g(x))$ is an antiderivative of $f(g(x))g'(x)$. So
+by the [Fundamental Theorem of Calculus](fundamental_theorem_of_calculus), 
+$$ \int_a^b f(g(x))g'(x)dx = F(g(b)) - F(g(a))\text{.} $$ Similarly
+$$ \int_{g(a)}^{g(b)} f(u)du = F(u)\big\vert_{g(a)}^{g(b)} = F(g(b))-F(g(a))\text{.} $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

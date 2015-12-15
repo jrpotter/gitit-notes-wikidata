@@ -1,0 +1,147 @@
+---
+title: Normal Subgroups
+categories: Abstract Algebra
+icon: /img/icons/arithmetic.png
+...
+
+<section class="primary">
+
+# Summary
+
+A subgroup $H$ of a group $G$ is **normal** if its left and right cosets coincide. Therefore it is immediately
+apparent that the [kernel](homomorphisms#kernel) of a homomorphism $\phi$ is normal as well as all abelian groups.
+Furthermore, the cosets of $H$ form a group $G/H$ under the binary operation $(aH)(bH) = (ab)H$ if and only
+if $H$ is a normal subgroup of $G$.
+
+<div class="proof">
+
+First, we must show that the left coset multiplication is well defined if and only if $H$ is normal.
+
+$\forward$ Suppose that left coset multiplication is well defined and let $a \in G$ and $x \in aH$. We can choose
+representatives $x \in aH$ and $a^{-1} \in a^{-1}H$, yielding $(xH)(a^{-1}H) = (xa^{-1})H$. We also note that choosing
+$a \in aH$ and $a^{-1} \in a^{-1}H$ yields $(aH)(a^{-1}H) = eH = H$. Since left coset multiplication is well defined,
+all elements in $aH$ should yield the same set obtained by multiplying $a$ and $a^{-1}$, so $xa^{-1} = h \in H$.
+This implies $x = ha$ and consequently $x \in Ha$ meaning $aH \subseteq Ha$. A similar proof yields $Ha \subseteq aH$.
+
+$\backward$ Suppose now that $H$ is normal and that we wish to compute $(aH)(bH)$. Choosing $a \in aH$ and $b \in bH$, 
+we obtain the coset $(ab)H$. Choosing different representatives $ah_1 \in aH$ and $bh_2 \in bH$, we obtain the coset
+$(ah_1bh_2)H$. Our proof concludes if we can show these two represent the same coset. Now $h_1b \in Hb = bH$ so 
+$h_1b = bh_3$ for some $h_3 \in H$. Thus
+$$ (ah_1)(bh_2) = a(h_1b)h_2 = a(bh_3)h_2 = (ab)(h_3h_2) $$
+which is indeed in $(ab)H$. Therefore, $ah_1bh_2 \in (ab)H$. 
+
+*****
+
+We must now show that the cosets of $H$ form a group $G/H$ 
+under this left coset multiplication operation. First off, associativity of $G/H$ follows from associativity in $G$. 
+Next, because $$ (aH)(eH) = (ae)H = aH = (ea)H = (eH)(aH), $$ we see that $eH = H$ is the identity element in $G/H$. Lastly,
+$$ (a^{-1}H)(aH) = (a^{-1}a)H = eH = (aa^{-1})H = (aH)(a^{-1}H), $$ showing that $a^{-1}H = (aH)^{-1}$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Alternative Characterizations
+
+The following are three equivalent conditions for a subgroup $H$ of a group $G$ to be a normal subgroup of $G$:
+ 
+1. $ghg^{-1} \in H$ for all $g \in G$ and $h \in H$.
+2. $gHg^{-1} = H$ for all $g \in G$.
+3. $gH = Hg$ for all $g \in G$.
+
+<div class="proof">
+
+We prove only that Property 1 is equivalent to Property 2 and 3, and thus omit the need to show Property 2 is the same as
+Property 3.
+
+- Case 2
+:    Suppose that $ghg^{-1} \in H$ for all $g \in G$ and $h \in H$. Now consider $$ gHg^{-1} = \{ ghg^{-1} : h \in H \}. $$
+     We note that, by hypothesis, each $ghg^{-1} \in gHg^{-1}$ is also in $H$. Thus $gHg^{-1} \subseteq H$. Next, we show
+     that $H \subseteq gHg^{-1}$. Given that $ghg^{-1} \in H$, we also know, by replacing $g$ with $g^{-1}$, that
+     $$ g^{-1}h(g^{-1})^{-1} = g^{-1}hg \in H. $$ Thus there exists an $h_1 \in H$ such that $h = gh_1g^{-1}$. Since this holds
+     for all $h \in H$ we have $H \subseteq gHg^{-1}$ as desired.
+
+- Case 3
+:    $\forward$ Suppose that $ghg^{-1} \in H$ for all $g \in G$ and $h \in H$. Then there exists some $h_1 \in H$ such that
+     $ghg^{-1} = h_1$. This implies that $gh = h_1g \in H$, and therefore $gH \subseteq Hg$. But we also note that 
+     $g^{-1}hg \in H$ implies that $hg = gh_1 \in H$ so $Hg \subseteq gH$. Thus $gH = Hg$ as desired.<br />  
+     $\backward$ Next suppose that $gH = Hg$. Then there exists an $h, h_1 \in H$ such that $gh = h_1g$. This implies
+     that $ghg^{-1} = h_1$. Since we can pick $h_1$ arbitrarily, we have $ghg^{-1} \in H$ for all $g \in G$ and $h \in H$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Image
+
+Let $\phi: G \rightarrow G'$ be a group homomorphism. If $N$ is a normal subgroup of $G$, then $\phi[N]$ is
+a normal subgroup of $\phi[G]$. Also, if $N'$ is a normal subgroup of $\phi[G]$, then $\phi^{-1}[N']$ is
+a normal subgroup of $G$. Note that this is more restrictive than the general 
+[image of a group homomorphism](homomorphisms#image); $\phi[N]$ is *not* necessarily a normal subgroup of $G'$.
+
+<div class="proof">
+
+First we prove that $\phi[N]$ is a normal subgroup of $\phi[G]$, noting $\phi[G]$ is indeed a group by the
+properties of the [image](homomorphisms#image) of a homomorphism. By hypothesis, $gng^{-1} \in N$ for all $g \in G$
+and $n \in N$. Thus $$ \phi(gng^{-1}) = \phi(g)\phi(n)\phi(g^{-1}) \in \phi[N]. $$ Since this holds for all 
+$\phi(g) \in \phi[G]$ and $\phi(n) \in \phi[N]$, we indeed see that $\phi[N]$ is a normal subgroup of $\phi[G]$. 
+
+Next we prove that $\phi^{-1}[N]$ is a normal subgroup of $G$. By the properties of the [preimage](homomorphisms#image) of a 
+homomorphism we know that $\phi^{-1}[N]$ is a group. All that remains is proving the preimage is normal. Note by hypothesis
+that $\phi(g)n\phi(g^{-1}) \in N'$ for all $\phi(g) \in \phi[G]$ and $n \in N'$. Thus, 
+$$ \phi^{-1}(\phi(g)n\phi(g^{-1})) = g(\phi^{-1}(n))g^{-1} \in \phi^{-1}[N'], $$
+for all $g \in G$ and $\phi^{-1}(n) \in \phi^{-1}[N']$. Thus $\phi^{-1}[N']$ is indeed normal.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Simple-Maximal
+
+We say a group is **simple** if it is nontrivial and has no proper nontrivial normal subgroups. For a 
+group $G$, we say a **maximal normal subgroup of a group $G$** is a normal subgroup $M$ not equal to
+$G$ such that there is no proper normal subgroup $N$ of $G$ properly containing $M$. With these definitions
+established, we find that $M$ is a maximal normal subgroup of $G$ if and only if $G/M$ is simple.
+
+<div class="proof">
+
+$\forward$ Suppose that $M$ is a maximal normal subgroup of group $G$ and consider the 
+[canonical homomorphism](fundamental_homomorphism_theorem#summary) $\gamma: G \rightarrow G/M$ defined by
+$\gamma(x) = xM$. For the sake of contradiction, suppose $G/M$ was not simple. Then there must exist a proper nontrivial
+normal subgroup of $G/M$, which we'll denote $N$, that must contain $M$ since $M$ is the identity of the 
+[factor group](factor_group). Note that $\gamma^{-1}[N]$ is a normal subgroup of $G$ by [preimage properties](#image).
+Additionally, because $N$ properly contains the coset $M$, the preimage must properly contain the elements of $M$.
+But $M$ is maximal, yielding a contradiction. Thus $G/M$ must be simple.
+
+$\backward$ Suppose $G/M$ is simple and again let $\gamma$ be the canonical homomorphism. For the sake of contradiction,
+suppose $M$ was not maximal. Then there exists a proper nontrivial normal subgroup of $G$, which we'll denote $N$, that
+contains $M$. Therefore $\gamma[N] \neq G/M$ and $\gamma[N] \neq M$ which implies that $G/M$ is not simple, a contradiction.
+Thus $M$ must be maximal.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Automorphisms](automorphisms)
+- [Homomorphisms](homomorphisms)
+- [Factor Groups](factor_groups)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Fraleigh, John B. (2003). A First Course In Abstract Algebra (7th ed.). Pearson. ISBN 978-0201763904.
+
+</section>

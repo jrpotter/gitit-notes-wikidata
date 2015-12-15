@@ -1,0 +1,79 @@
+---
+title: Orthogonal Complement
+categories: Linear Algebra
+icon: /img/icons/angles.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Orthogonal Plane](/img/diagrams/linear/orthogonal-projection.png)
+
+A vector $\vec{x}$ in $\bbr^n$ is said to be **orthogonal to a subspace $V$ of $\bbr^n$** if $\vec{x}$ is orthogonal to 
+all the vectors $\vec{v}$ in $V$, meaning that $\dotp{x}{v} = 0$ for all vectors $\vec{v}$ in $V$. Consider a subspace 
+$V$ of $\bbr^n$. The **orthogonal complement** $V^{\perp}$ of $V$ is the set of those vectors $\vec{x}$ in $\bbr^n$ 
+that are orthogonal to all vectors in $V$: 
+$$ V^{\perp} = \{\vec{x}\text{ in }\bbr^n:\dotp{v}{x}=0\text{, for all }\vec{v}\text{ in }V\}\text{.} $$
+Note that $V^{\perp}$ is the kernel of the orthogonal projection onto $V$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Properties
+
+Consider a subspace $V$ of $\bbr^n$.
+
+1. The orthogonal complement $V^{\perp}$ of $V$ is a subspace of $\bbr^n$.<br />  
+   <div class="proof">
+   If $T(\vec{x}) = \text{proj}_V(\vec{x})$, then $V^{\perp} = \text{ker}(T)$, a subspace of $\bbr^n$.
+   </div><br />
+
+2. The intersection of $V$ and $V^{\perp}$ consists of the zero vector alone: $V \cap V^{\perp} = \{\vec{0}\}$.<br />  
+   <div class="proof">
+   If a vector $\vec{x}$ is in $V$ as well as in $V^{\perp}$, then $\vec{x}$ is orthogonal to itself:
+   $\dotp{x}{x} = \norm{\vec{x}}^2 = 0$, so that $\vec{x}$ must equal $\vec{0}$, as claimed.
+   </div><br />
+
+3. $\text{dim}(V) + \text{dim}(V^{\perp}) = n$.<br />  
+   <div class="proof">
+   We can apply the Rank-Nullity Theorem  to the linear transformation $T(\vec{x}) = \text{proj}_V(\vec{x})$:
+   $$ n = \text{dim}(\text{im}\;T) + \text{dim}(\text{ker}\;T) = \text{dim}(V) + \text{dim}(V^{\perp})\text{.} $$
+   </div><br />
+
+4.  $(V^{\perp})^{\perp} = V$.<br />  
+    <div class="proof">
+    If $T(\vec{x}) = \text{proj}_{V^{\perp}}(\vec{x})$, then $\text{ker}(T) = (V^{\perp})^{\perp}$.
+    Now note that for all $\vec{v}$ in $V$ and $\vec{x}$ in $V^{\perp}$, $\dotp{v}{x} = 0$ by definition of an 
+    orthogonal complement. Then $V \subseteq (V^{\perp})^{\perp}$ since $\text{ker}(T) = \{ \vec{x}\text{ in }\bbr^n:
+    \dotp{v}{x}=0\text{, for all }\vec{v}\text{ in }V^{\perp} \}$. By (3) we note 
+    $$ \text{dim}(V) + \text{dim}(V^{\perp}) = n $$ and $$ \text{dim}(V^{\perp}) + \text{dim}((V^{\perp})^{\perp}) = n$$ 
+    implying $\text{dim}(V) = \text{dim}((V^{\perp})^{\perp})$. Thus $V = (V^{\perp})^{\perp}$.
+    </div><br />
+
+5. For any matrix $A$, $(\text{im}\;A)^{\perp} = \text{ker}(A^T)$.<br />  
+   <div class="proof">
+   Consider a subspace $V = \text{im}(A)$ of $\bbr^n$, where $A = \left[\vec{v}_1\:\vec{v}_2\:\cdots\:\vec{v}_m\right]$. Then:
+   $$\begin{align*}
+     V^{\perp} &= \{ \vec{x}\text{ in }\bbr^n: \dotp{v}{x} = 0,\text{ for all } \vec{v} \text{ in } V \} \\
+               &= \{ \vec{x}\text{ in }\bbr^n: \vec{v}_i\cdot x = 0,\text{ for } i = 1,\ldots,m \}       \\
+               &= \{ \vec{x}\text{ in }\bbr^n: \vec{v}_i^T\vec{x} = 0, \text{ for } i = 1, \ldots, m \}.
+   \end{align*}$$
+   Thus $V^{\perp} = (\text{im}\;A)^{\perp}$ is the kernel of the matrix
+   $$ A^T = \begin{bmatrix}- & \vec{v}_1^T & - \\ - & \vec{v}_2^T & - \\ & \vdots & \\ - & \vec{v}_m^T & - \end{bmatrix}. $$
+   </div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Bretscher, Otto (2008). Linear Algebra with Applications (4th ed.). Pearson. ISBN 978-0--13-600926-9.
+
+</section>

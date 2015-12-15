@@ -1,0 +1,34 @@
+---
+title: Languages
+categories: Computation
+icon: /img/icons/binary-tree.png
+...
+
+<section class="primary">
+
+# Summary
+
+An **alphabet** is a finite set of **symbols**. A **string** over an alphabet is a finite sequence of symbols from the
+alphabet. The **empty string**, denoted $e$, is a string with no symbols. The set of all strings, including the
+empty string, over an alphabet $\Sigma$ is denoted $\Sigma^*$.
+
+The **concatentation** of strings $x$ and $y$, denoted $x = y$ or $xy$, is the string $x$ followed by
+string $y$. A string $v$ is a **substring** of a string $w$ if and only if there are strings $x$ and $y$
+such that $w = xvy$. If $w = xv$, then $v$ is a **suffix** of $w$. If $w = vy$, then $v$ is a **prefix**.
+For each string $w$ and $i \in \bbn$, $w^0 = e$ and $w^{i+1} = w^i \circ w$ for each $i \geq 0$. The
+**reversal** of a string $w$ is denoted $w^R$.
+
+Any subset of $\Sigma^*$ over alphabet $\Sigma$ is a **language**. When a particular alphabet $\Sigma$ is
+understood from context, we write $\bar{A}$, the **complement** of $A$, instead of $\Sigma^*-A$. If $L_1$
+and $L_2$ are languages, their concatenation, denoted $L_1 \circ L_2$ or $L_1L_2$ is $\{w \in \Sigma^*:
+w = x \circ y\text{ for some }x \in L_1\text{ and }y \in L_2\}$.
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Papadimitriou & Lewis (1998). Elements of the Theory of Computation (2nd ed.). Prentice-Hall. ISBN 0-13-262478-8
+
+</section>

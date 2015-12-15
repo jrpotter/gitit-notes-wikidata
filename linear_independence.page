@@ -1,0 +1,61 @@
+---
+title: Linear Independence
+categories: Linear Algebra
+icon: /img/icons/alternate-bases.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Linear Independence in $\bbr^3$](/img/diagrams/linear/linear-independence.png)
+
+Consider vectors $\inflate{\vec{v}}{m} \in \bbr^n$. We say vector $\vec{v}_i$ in list $\inflate{\vec{v}}{m}$ is **redundant** 
+if $\vec{v}_i$ is a linear combination of preceding vectors $\inflate{\vec{v}}{i}$. The vectors are **linearly independent** 
+if none of them is redundant. Otherwise they are **linearly dependent**. 
+
+Similarly, consider elements $f_i$ of a linear space. We say that $f_i$ is redundant if it is a linear combination of 
+$\inflate{\;f}{i-1}$. The elements $\inflate{\;f}{n}$ are called linearly independent if none of them is redundant. 
+This is the case if the equation 
+$$ c_1f_1 + \cdots + c_nf_n = 0 $$ has only the trivial solution $$ c_1 = \cdots = c_n = 0. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Relations
+
+Consider the vectors $\inflate{\vec{v}}{m} \in \bbr^n$. An equation of the form $c_1\vec{v}_1 +
+\cdots + c_m\vec{v}_m = \vec{0}$ is called a **(linear) relation** among the vectors. There is always the 
+**trivial relation** $c_1 = \cdots = c_m = 0$. **Nontrivial relations** may or may not exist.
+
+We note the vectors $\inflate{\vec{v}}{m}$ in $\bbr^n$ are linearly dependent if and only if there
+are nontrivial relations among them.
+
+<div class="proof">
+
+$\forward$ Let $\vec{v}_i = c_1\vec{v}_1 + \cdots + c_{i-1}\vec{v}_{i-1}$ be a redundant vector. Then we can
+generate a nontrivial relation $\vec{0} = c_1\vec{v}_1 + \cdots + c_{i-1}\vec{v}_{i-1} - \vec{v}_i$.  
+$\backward$ Suppose a nontrivial relation $c_1\vec{v}_1 + \cdots + c_i\vec{v}_i + \ldots + c_m\vec{v}_m = \vec{0}$
+exists, where $i$ is the highest index where $c_i \neq 0$. Then $\vec{v}_i = -\frac{c_1}{c_i}\vec{v}_1
+- \cdots - \frac{c_{i-1}}{c_i}\vec{v}_{i-1}$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Bretscher, Otto (2008). Linear Algebra with Applications (4th ed.). Pearson. ISBN 978-0-13-600926-9.
+
+</section>
+
+<!-- Footnotes -->
+
+[^1]: [Nullity of 0](kernel#nullity-of-0)

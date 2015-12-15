@@ -1,0 +1,134 @@
+---
+title: Conditional Distributions
+categories: Statistics
+icon: /img/icons/random-variables.png
+...
+
+<section class="primary">
+
+# Summary
+
+Conditional distributions are a generalization of conditional probability, applied when multiple random variables are being
+analyzed at a time. In both the discrete and continuous case, the idea is to now consider certain probabilities with
+everything conditional on some event $Y$ when it takes on a certain value $y$. There are certain "gotchas" here
+that need to be considered. First off, note that one can [mix](#mixed-discretecontinuous) discrete and continuous conditions
+and still obtain a proper answer. Second, the expressions below for continuous probabilities are workable
+despite the fact that often the event we are conditioning upon (i.e. the event $\{Y = y\}$) has probability
+$0$.
+
+</section>
+
+<section class="primary">
+
+# Probability Mass Function
+
+If $X$ and $Y$ are discrete random variables, we define the conditional probability mass function of $X$ given that
+$Y = y$ by $$ p_{X|Y}(x\;|\;y) = \frac{p(x, y)}{p_Y(y)} $$ for all values of $y$ such that $p_Y(y) > 0$.
+Similarly, the conditional probability distribution function of $X$ given that $Y = y$ is defined for all $y$ such 
+that $p_Y(y) > 0$, by $$ F_{X|Y}(x\;|\;y) = \sum_{a \leq x} p_{X|Y}(a\;|\;y). $$
+If $X$ and $Y$ are independent, then the conditional probability mass functions are the same as the respective 
+unconditional ones.
+
+<div class="proof">
+
+If $X$ and $Y$ are discrete random variables then:
+
+- Mass Function
+:    For all values of $y$ such that $p_Y(y) > 0$,
+     $$
+       p_{X|Y}(x\;|\;y) = \bbpc{X = x}{Y = y}
+                        = \frac{\bbps{X = x, Y = y}}{\bbps{Y = y}}
+                        = \frac{p(x, y)}{p_Y(y)}.
+     $$
+
+- Distribution Function
+:    Given that $Y = y$ is defined for all $y$ such that $p_Y(y) > 0$, we find that
+     $$ F_{X|Y}(x\;|\;y) = \bbpc{X \leq x}{Y = y} = \sum_{a \leq x} p_{X|Y}(a\;|\;y). $$
+
+- Independence
+:    If $X$ and $Y$ are independent, then
+     $$ 
+       p_{X|Y}(x\;|\;y) = \bbpc{X = x}{Y = y} 
+                        = \frac{\bbps{X = x, Y = y}}{\bbps{Y = y}}
+                        = \frac{\bbps{X = x}\bbps{Y = y}}{\bbps{Y = y}}
+                        = \bbps{X = x}.
+     $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Probability Density Function
+
+If $X$ and $Y$ have a joint probability density function $\;f(x, y)$, then the conditional probability density function
+of $X$ given that $Y = y$ is defined for all values of $y$ such that $f_Y(y) > 0$ is
+$$ f_{X|Y}(x\;|\;y) = \frac{f(x, y)}{f_Y(y)}. $$
+
+Furthermore, the conditional cumulative distribution function of $X$ given that $Y = y$ is
+$$ F_{X|Y}(a\;|\;y) = \int_{-\infty}^a f_{X|Y}(x\;|\;y)\;dx. $$
+
+If $X$ and $Y$ are independent, then the conditional probability density functions are the same as the respective 
+unconditional ones.
+
+<div class="proof">
+
+If $X$ and $Y$ have a joint probability density function $\;f(x, y)$ then:
+
+- Density Function
+:    Given that $Y = y$ is defined for all values of $y$ such that $f_Y(y) > 0$, we find that
+     $$ 
+       f_{X|Y}(x\;|\;y) = \frac{f(x, y)}{f_Y(y)}
+                        = \frac{f(x, y)\;dx\;dy}{f_Y(y)\;dy}
+                        \approx \frac{\bbps{x \leq X \leq x + dx, y \leq Y \leq y + dy}}{\bbps{y \leq Y \leq y + dy}}
+                        = \bbpc{x \leq X \leq x + dx}{y \leq Y \leq y + dy}.
+     $$
+
+- Distribution Function
+:    If $X$ and $Y$ are jointly continuous, then for any set $A$
+     $$ \bbpc{X \in A}{Y = y} = \int_A f_{X|Y}(x\;|\;y)\;dx $$
+     meaning, for set $A = (-\infty, a]$, we have the conditional cumulative distribution function of $X$ given that $Y = y$ by
+     $$ F_{X|Y}(a\;|\;y) = \bbpc{X \leq a}{Y = y} = \int_{-\infty}^a f_{X|Y}(x\;|\;y)\;dx. $$
+
+- Independence
+:    If $X$ and $Y$ are independent continuous random variables, the conditional density of $X$ given that $Y = y$ is just
+     the unconditional density of $X$ since
+     $$ f_{X|Y}(x\;|\;y) = \frac{f(x, y)}{f_Y(y)} = \frac{f_X(x)f_Y(y)}{f_Y(y)} = f_X(x). $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Mixed Discrete/Continuous
+
+Suppose $X$ is a continuous random variable having probability density function $\;f$ and $N$ is a discrete
+random variable. Then the conditional distribution of $X$ given that $N = n$ is
+$$ f_{X|N}(x\;|\:n) = \frac{\bbpc{N = n}{X = x}}{\bbps{N = N}}f(x). $$
+
+<div class="proof">
+
+If $X$ is a continuous random variable having probability density function $\;f$ and $N$ is a discrete
+random variable then
+$$ 
+  \frac{\bbpc{x < X < x + dx}{N = n}}{dx} 
+    = \frac{\bbpc{N = n}{x < X < x + dx}}{\bbps{N = n}}
+      \frac{\bbps{x < X < x + dx}}{dx} 
+$$
+and letting $dx$ approach $0$ gives
+$$ \xlimit{dx}{0} \frac{\bbpc{x < X < x + dx}{N = n}}{dx} = \frac{\bbpc{N = n}{X = x}}{\bbps{N = n}}f(x). $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>
+    

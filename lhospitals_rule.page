@@ -1,0 +1,116 @@
+---
+title: L'Hospital's Rule
+categories: Calculus
+icon: /img/icons/taking-derivatives.png
+...
+
+<section class="primary">
+
+# Statement
+
+Suppose $f$ and $g$ are differentiable and $g'(x) \neq 0$ on an open interval $I$ that contains $a$ (except possibly at $a$). 
+Suppose that $\xlimit{x}{a}\;f(x) = 0$ and $\xlimit{x}{a}g(x) = 0$ or $\xlimit{x}{a}\;f(x) = \pm\infty$ and $\xlimit{x}{a}g(x) = 
+\pm\infty$. Then: $$ \xlimit{x}{a}\frac{f(x)}{g(x)} = \xlimit{x}{a}\frac{f'(x)}{g'(x)} $$ 
+if the limit of the right side of the equation exists or is $\pm\infty$.
+
+<div class="proof">
+
+Assume $$\xlimit{x}{a}\;f(x) = 0 \text{ and } \xlimit{x}{a}g(x) = 0\text{,}$$ and let 
+$$ L = \xlimit{x}{a}\frac{f'(x)}{g'(x)}\text{.}$$
+We want to show $$\xlimit{x}{a}\frac{f(x)}{g(x)} = L\text{.}$$ Define
+$$ 
+  F(x) = \begin{cases} f(x) &\text{ if } x \neq a\\ 0 &\text{ if } x = a \end{cases}\text{ and }
+  G(x) = \begin{cases} g(x) &\text{ if } x \neq a\\ 0 &\text{ if } x = a \end{cases}
+$$
+Then $F$ is continuous on $I$ since $f$ is continuous on $\{x \in I : x \neq a\}$, as is $F$. Let $x \in I$ and $x > a$. 
+Then $F$ and $G$ are continuous on $[a, x]$, differentiable on $(a, x)$ and $G' \neq 0$ there. Therefore, by 
+[Cauchy's Mean Value Theorem](mean_value_theorem#cauchys-theorem), $\exists y \in (a, x)$ such that 
+$$ \frac{F'(y)}{G'(y)} = \frac{F(x)-F(a)}{G(x)-G(a)} = \frac{F(x)}{G(x)}. $$ 
+Since $a < y < x$, as $x\rightarrow a^{+}, y\rightarrow a^{+}$ so
+$$\begin{align*}
+  \xlimit[+]{x}{a}\frac{f(x)}{g(x)} &= \xlimit[+]{x}{a}\frac{F(x)}{G(x)}           \\
+                                    &= \xlimit[+]{y}{a}\frac{F'(y)}{G'(y)}         \\
+                                    &= \xlimit[+]{y}{a}\frac{f'(y)}{g'(y)}.
+\end{align*}$$
+A similar argument holds for the left-hand limit so $\xlimit{x}{a}[f(x)/g(x)] = L\;$ when a is finite.
+If $a$ is infinite, let $t = \frac{1}{x} \Rightarrow t\rightarrow 0^{+}$ as $x\rightarrow \infty$. Then 
+$$\xlimit{x}{\infty}\frac{f(x)}{g(x)} = \xlimit[+]{t}{0}\frac{f(\frac{1}{t})}{g(\frac{1}{t})}.$$ 
+Applying L'Hospital's Rule for finite $a$,
+$$\begin{align*}
+  \xlimit[+]{t}{0}\frac{f'(\frac{1}{t})\left[-\frac{1}{t^2}\right]}
+                       {g'(\frac{1}{t})\left[-\frac{1}{t^2}\right]}
+    &= \xlimit[+]{t}{0}\frac{f'(\frac{1}{t})}{g'(\frac{1}{t})} \\
+    &= \xlimit{x}{\infty}\frac{f'(x)}{g'(x)}.
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Indeterminate Forms
+
+In order for L'Hospital's rule to apply, we need indeterminates of type
+$$ \frac{0}{0} \text{ or } \frac{\pm\infty}{\pm\infty}, $$
+but other types of indeterminates exist and can be calculated as follows:
+
+<section class="secondary">
+
+## Indeterminate Products
+
+Let $\xlimit{x}{a}\;f(x) = 0$ and $\xlimit{x}{a}g(x) = \pm\infty$. Then $\xlimit{x}{a}\;f(x)g(x)$ is an
+**indeterminate form of type $0 \cdot \infty$**. We can rewrite the product as a quotient:
+$$ fg = \frac{f}{1/g} \quad\text{ or }\quad fg = \frac{g}{1/f} $$
+and then apply L'Hospital's Rule to solve.
+
+</section>
+
+<section class="secondary">
+
+## Indeterminate Differences
+
+Let $\xlimit{x}{a}\;f(x) = \infty$ and $\xlimit{x}{a}g(x) = \infty$, then the limit
+$$ \xlimit{x}{a}[\;f(x)-g(x)] $$
+is called an **indeterminate form of type $\infty - \infty$**. In these cases, we try to 
+find a rationalization (perhaps by a common factor) of the components.
+
+</section>
+
+<section class="secondary">
+
+## Indeterminate Powers
+
+Several indeterminate forms arise from the limit $$ \xlimit{x}{a}\;[f(x)]^{g(x)} $$ listed below:
+
+1. $\xlimit{x}{a}\;f(x) = 0 \text{ and } \xlimit{x}{a}g(x) = 0$.
+
+2. $\xlimit{x}{a}\;f(x) = \infty \text{ and } \xlimit{x}{a}g(x) = 0$.
+
+3. $\xlimit{x}{a}\;f(x) = 1 \text{ and } \xlimit{x}{a}g(x) = \pm\infty$.
+
+Each of these can be treated by taking the natural logarithm:
+$$ \text{Let } y = [f(x)]^{g(x)}, \text{ then } \ln{y} = g(x)\ln(f(x)) $$
+or by writing the function as an exponential:
+$$ [f(x)]^{g(x)} = e^{g(x)\ln{f(x)}}\text{.} $$
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Differentiation](differentiation)
+- [Mean Value Theorem](mean_value_theorem)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

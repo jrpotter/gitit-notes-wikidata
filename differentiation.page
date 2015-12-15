@@ -1,0 +1,195 @@
+---
+title: Differentiation
+categories: Calculus
+icon: /img/icons/taking-derivatives.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Differentiation Example](/img/graphs/calculus/differentiation.png)
+
+The derivative of a function represents the slope of the function at a given point, provided the slope exists. It can be 
+interpreted in a variety of ways and in a variety of contexts, such as in optimization problems, modeling 
+(e.g. population growth), and net rate/growth. Notable instances in which differentiation are used include in physical 
+sciences where it relates position, velocity, acceleration, and time, or in economics where it relates supply and demand.
+
+Derivatives are used in many additional areas of interest including, but not limited to:
+
+- [Parametric Curves](parametric_curves)
+- [Polar Curves](polar_curves)
+- [Vector Spaces](vector_spaces)
+- [$n$-dimensional spaces](partial_derivatives)
+- [Complex Curves](/CV/complex_curves)
+
+They are the inverse operation of [integration](integration), as established by the 
+[Fundamental Theorem of Calculus](fundamental_theorem_of_calculus).
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Single Variable Functions
+
+The **derivative of a function $f$ at a number $a$**, denoted by $f'(a)$, is 
+$$ f'(a) = \xlimit{x}{0} \frac{f(a+h)-f(a)}{h}\text{,} $$ if this limit exists. Equivalently, 
+$$ f'(a) = \xlimit{x}{a} \frac{f(x)-f(a)}{x-a} $$.
+
+Note the derivative is limit of the slope of a [tangent line](tangent_lines) as it gets closer and
+closer to the given point.
+
+<section class="secondary">
+
+## Continuity
+
+Differentiable functions have the important property of being continuous. That is, given a function $\;f$ differentiable 
+at $a$, then $\;f$ is continuous at $a$. Similarly, if $\;f$ is differentiable over an interval $I$, then $\;f$ is
+continuous over $I$. *Note that a continuous function is not necessarily differentiable though!*
+
+<div class="proof">
+
+We must show $\xlimit{x}{a}\;f(x) = f(a)$. We do this by showing $f(x)-f(a)\rightarrow 0$ as $x \rightarrow a$. 
+We note by hypothesis that $$f'(a) = \xlimit{x}{a} \frac{f(x)-f(a)}{x-a}$$ exists. Therefore:
+$$\begin{align*}
+  \frac{f(x)-f(a)}{x-a}(x-a)  = f(x)-f(a) &\Rightarrow \xlimit{x}{a} [f(x)-f(a)] = \xlimit{x}{a} 
+                                \left[\frac{f(x)-f(a)}{x-a}(x-a)\right]                                   \\
+                             &= \xlimit{x}{a}\left[\frac{f(x)-f(a)}{x-a}\right] \cdot \xlimit{x}{a} (x-a) \\
+                             &= f'(a) \cdot 0                                                             \\
+                             &= 0\text{.}
+\end{align*}$$
+Thus
+$$\begin{align*}
+  \xlimit{x}{a} f(x) &= \xlimit{x}{a}[f(a) + (f(x)-f(a))]            \\
+                     &= \xlimit{x}{a}f(a) + \xlimit{x}{a}[f(x)-f(a)] \\
+                     &= f(a)\text{.}
+\end{align*}$$
+This proves $f$ is continuous at $a$.  
+
+</div>
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# Multi-variable Functions
+
+We note a derivative of a multi-variable function cannot be defined in the same manner as a single variable function.
+Generally, we apply a series of partial derivatives for analysis purposes. Nonetheless, by observing an arbitrarily
+small disc around a point, we can determine whether a function is differentiable or not. That is,
+
+If $z = f(x, y)$, then $\;f$ is **differentiable** at $(a, b)$ if $\Delta{z}$ can be expressed in the form
+$$ \Delta{z} = f_x(a, b)\Delta{x} + f_y(a, b)\Delta{y} + \epsilon_1\Delta{x} + \epsilon_2\Delta{y} $$
+where $\epsilon_1$ and $\epsilon_2 \rightarrow 0$ as $(\Delta{x}, \Delta{y}) \rightarrow (0, 0)$.
+
+We note the above is fairly heavy notation-wise, and another determination of differentiability would prove useful.
+Fortunately, if the partial derivatives $f_x$ and $f_y$ exist near $(a, b)$ are are continuous at $(a, b)$, then $f$
+is differentiable at $(a, b)$.
+
+<div class="proof">
+
+Let $$ \Delta{z} = f(a + \Delta{x}, b + \Delta{y}) - f(a, b) $$
+and note $$ \Delta{z} = [f(a + \Delta{x}, b + \Delta{y}) - f(a, b + \Delta{y})] + [f(a, b + \Delta{y}) - f(a, b)] \quad (1) $$
+
+Observe that the function of a single variable $g(x) = f(x, b + \Delta{y})$ is defined on the interval 
+$[a, a + \Delta{x}]$ and $g'(x) = f_x(x, b + \Delta{y})$. If we apply the Mean Value Theorem to $g$, we get
+
+$$\begin{align*}
+                                          g(a + \Delta{x}) - g(a) &= g'(u)\Delta{x}               \\
+  \Rightarrow f(a + \Delta{x}, b + \Delta{y}) - f(a, b+\Delta{y}) &= f_x(u, b+\Delta{y})\Delta{x}
+\end{align*}$$
+
+where $u$ is some number between $a$ and $a + \Delta{x}$. Next let $h(y) = f(a, y)$. Then $h$ is a function of a 
+single variable defined on the interval $[b, b + \Delta{y}]$ and $h'(y) = f_y(a, y)$. A second application of the 
+Mean Value Theorem then gives
+
+$$\begin{align*}
+                    h(b + \Delta{y}) - h(b) &= h'(v)\Delta{y}      \\
+  \Rightarrow f(a, b + \Delta{y}) - f(a, b) &= f_y(a, v)\Delta{y}.
+\end{align*}$$
+
+where $v$ is some number between $b$ and $b + \Delta{y}$.
+
+Substituting into $(1)$ we get
+$$\begin{align*}
+  \Delta{z} &= f_x(u, b + \Delta{y})\Delta{x} + f_y(a, v)\Delta{y}                                 \\
+            &= f_x(a, b)\Delta{x} + [f_x(u, b+\Delta{y}) - f_x(a, b)]\Delta{x}
+             + f_y(a, b)\Delta{y} + [f_y(a, v) - f_y(a, b)]\Delta{y}                               \\
+            &= f_x(a, b)\Delta{x} + f_y(a, b)\Delta{y} + \epsilon_1\Delta{x} + \epsilon_2\Delta{y}
+\end{align*}$$
+where
+$$\begin{align*}
+  \epsilon_1 &= f_x(u, b + \Delta{y}) - f_x(a, b) \\
+  \epsilon_2 &= f_y(a, v) - f_y(a, b).
+\end{align*}$$
+
+Since $(u, b + \Delta{y}) \rightarrow (a, b)$ and $(a, v) \rightarrow (a, b)$ as $(\Delta{x}, \Delta{y}) \rightarrow (0, 0)$
+and since $f_x$ and $f_y$ are continuous at $(a, b)$, we see that $\epsilon_1 \rightarrow 0$ and $\epsilon_2 \rightarrow 0$
+as $(\Delta{x}, \Delta{y}) \rightarrow (0, 0)$. Therefore $\;f$ is differentiable at $(a, b)$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Parametric Curves
+
+Let $x = f(t)$ and $y = g(t)$ such that the conditions for [conversion](parametric_curves#conversion) are satisfied 
+(in a piecewise manner if necessary). Then $y$ can be written as $y = F(x)$, for some function $F$ obtained by eliminating
+the $t$ parameter and $$ F'(x) = \frac{g'(t)}{f'(t)}\text{.} $$
+
+<div class="proof">  
+
+Note $y = F(x)$ can be written as $g(t) = F(f(t))$ and so, if $f, F,$ and $f$ are differentiable,
+the [Chain Rule](rules_of_differentiation#chain-rule) gives 
+$$ g'(t) = F'(f(t))f'(t) = F'(x)f(t)\text{.} $$ 
+Thus, if $f'(t) \neq 0$, we can solve for $F'(x)$: $$ F'(x) = \frac{g'(t)}{f'(t)}. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Polar Curves
+
+Note polar curves are a more specific type of parametric curve; as a result, we also expect a means
+of differentiation to exist. For polar curve $r = f(\theta)$,
+$$
+  \leibniz[y]{x} = \frac{\leibniz[y]{\theta}}{\leibniz[x]{\theta}}
+                 = \frac{\leibniz[r]{\theta}\sin{\theta} + r\cos{\theta}}{\leibniz[r]{\theta}\cos{\theta} 
+                 - r\sin{\theta}}\text{.}
+$$
+
+<div class="proof">  
+
+Regard $\theta$ as a parameter and write its [parametric equations](parametric_equations) as
+$$ x = r\cos{\theta} = f(\theta)\cos{\theta},\quad y = r\sin{\theta} = f(\theta)\sin{\theta}. $$
+Then apply [parametric differentiation](#parametric-curves).
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Rules of Differentiation](rules_of_differentiation)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.  
+
+</section>

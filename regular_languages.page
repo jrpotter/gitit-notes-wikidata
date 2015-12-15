@@ -1,0 +1,115 @@
+---
+title: Regular Languages
+categories: Computation
+icon: /img/icons/binary-tree.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![$a(ba)^*$](/img/diagrams/computation/dfa.png)
+
+The **regular expressions** over an alphabet $\Sigma^*$ are all strings over the alphabet 
+$\Sigma \cup \{\pmb{(}, \pmb{)}, \pmb{\emptyset}, \pmb{\cup}, \pmb{*}\}$ that can be obtained as follows:
+
+1. $\pmb{\emptyset}$ and each member of $\Sigma$ is a regular expression.
+2. If $\alpha$ and $\beta$ are regular expressions, then so is $(\alpha\beta)$.
+3. If $\alpha$ and $\beta$ are regular expressions, then so is $(\alpha\;\pmb{\cup}\;\beta)$.
+4. If $\alpha$ is a regular expression, then so is $\alpha^{\pmb{*}}$.
+5. Nothing is a regular expression unless it follows from (1) to (4).
+
+The relation between regular expressions and the languages they represent is established by the function
+**$\mathcal{L}$** defined as follows:
+
+1. $\mathcal{L}(\pmb{\emptyset}) = \emptyset$ and $\mathcal{L}(a)=\{a\}$ for each $a \in \Sigma$.
+2. If $\alpha$ and $\beta$ are regular expressions, then
+   $\mathcal{L}(\pmb{(}\alpha\beta\pmb{)}) = \mathcal{L}(\alpha)\mathcal{L}(\beta)$.
+3. If $\alpha$ and $\beta$ are regular expressions, then
+   $\mathcal{L}(\pmb{(}\alpha\;\pmb{\cup}\;\beta\pmb{)}) = \mathcal{L}(\alpha)\cup\mathcal{L}(\beta)$.
+4. If $\alpha$ is a regular expressoin, then $\mathcal{L}(\alpha^{\pmb{*}}) = \mathcal{L}(\alpha)^*$.
+
+The class of **regular languages** over an alphabet $\Sigma$ is defined to consist of all languages $L$ such
+that $L = \mathcal{L}(\alpha)$ for some regular expression $\alpha$ over $\Sigma$. Lastly, the **Kleene star** of a 
+language $L$, denoted $L^*$, is the set of all strings obtained by concatenating zero or more strings from $L$ and the 
+**closure of $L$ under concatenation**, denoted $L^+$, is the language $LL^*$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Automaton Equivalence
+
+One of the unifying themes in computation theory is the equivalence of seemingly different types of structures. In particular,
+there exists an equivalent deterministic finite automata for every regular language. In fact, a language is regular if and 
+only if it is accepted by a [finite automaton](deterministic_finite_automaton).
+
+<div class="proof">
+
+$\forward$ Note the class of regular languages is the closure of the empty set $\emptyset$ and singletons $a$ under union,
+concatenation, and Kleene star. By Thompson's Construction Algorithm (a constructive proof), we note this must hold.
+
+$\backward$ Let $M = (K, \Sigma, \Delta, s, F)$ be a finite automaton, not necessarily deterministic. We shall construct a 
+regular expression $R$ such that $L(R) = L(M)$. Let $K = \{\inflate{q}{n}\}$ and $s = q_1$. For $i, j = 1, 2, \ldots, n$ 
+and $k = 0, 1, \ldots, n$, we define $R(i, j, k)$ as the set of all strings in $\Sigma^*$ that may drive $M$ from state
+$q_i$ to $q_j$ without passing through any intermediate state numbered $k+1$ or greater. Therefore, when $k=n$,
+$$ R(i,j,n) = \{ w \in \Sigma^*: (q_i, x) \vdash_M^* (q_j, e) \}\text{.} $$ 
+Therefore $$ L(M) = \bigcup\{R(1,j,n): q_j \in F\}\text{.} $$
+We note that each of these sets $R(i,j,k)$ are regular by the following inductive argument on $k$:
+
+- *Basis*: For $k=0$, $R(i,j,0)$ is either $\{a \in \Sigma \;\cup\: \{e\}: (q_i, a, q_j) \in \Delta\}$ if $i \neq j$, or 
+  it is $\{e\} \:\cup\: \{a \in \Sigma \cup \{e\}: (q_i, a, q_j) \in \Delta\}$ if $i = j$. Each of these sets if finite and 
+  therefore regular.
+
+- *Induction Hypothesis*: For all $k \geq 0$, $R(i, j, k)$ is regular for all $i, j$.
+
+- *Induction Step*: Consider set $R(i,j,k+1)$. Note it can be defined as follows
+  $$ R(i,j,k+1) = R(i,j,k) \cup R(i,k+1,k)R(k+1,k+1,k)^*R(k+1,j,k)\text{.} $$
+  Since each $R(i,j,k)$ is regular, so must $L(M)$, since it is the union of a finite number of regular languages.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Context-Free Grammars
+
+<div class="block">
+
+![$S\rightarrow aS, S\rightarrow bA, \\A\rightarrow aB, A\rightarrow bA, \\B\rightarrow aS, B\rightarrow bA, B\rightarrow e$](/img/diagrams/computation/regex_to_cfg.png)
+
+As it turns out, there are a variety of different ways to show that a regular language is also context-free. That is
+one can always construct a context-free grammar out of a regular language. This is very obvious when we
+realize that a pushdown automata, which is an equivalent expression of a [context-free grammar](context_free_grammar), 
+is a generalization of finite automata, which is an equivalent expression of a regular language. By making sure one doesn't 
+use the stack, we have essentially a finite automata.
+
+Alternatively, and as proven below, we can also directly construct a context-free grammar from a regular language.
+
+</div>
+
+<div class="proof">
+
+Consider the regular language accepted by the deterministic finite automaton $M = (K, \Sigma, \delta, s, F)$. The
+same language is generated by the grammar $G(M) = (V, \Sigma, R, S)$, where $V = K \cup \Sigma$, $S = s$, and $R$
+consists of these rules:
+$$ R = \{q \rightarrow ap: \delta(q, a) = p\} \cup \{q \rightarrow e: q \in F\}. $$
+That is, the nonterminals are the states of the automaton and for each transition from $q$ to $p$ on input $a$ we have
+in $R$ the rule $q \rightarrow ap$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Papadimitriou & Lewis (1998). Elements of the Theory of Computation (2nd ed.). Prentice-Hall. ISBN 0-13-262478-8
+
+</section>

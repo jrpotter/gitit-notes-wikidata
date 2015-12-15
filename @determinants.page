@@ -1,0 +1,85 @@
+---
+title: @Determinants
+categories: Linear Algebra
+icon: /img/icons/matrix-transformations.png
+...
+
+<section class="primary">
+
+# Inscribed Ellipses
+
+<div class="block">
+
+![Inscribed Circle in an Equilateral Triangle](/img/graphs/linear/inscribed-ellipses.png)
+
+We note we can find the areas of the largest ellipses in inscribed triangles by noting that a linear 
+transformation can be applied to an equilateral triangle to create a scalene one. In particular,
+consider the triangle with side lengths $3$, $4$, and $5$. The area of the largest ellipse we can inscribe
+into this triangle is
+$$ T(\Omega) = \frac{\pi\sqrt{3}}{3}. $$
+
+</div>
+
+<div class="proof">
+
+<div class="page-block">
+
+Consider a circle with radius $r$ inscribed in an equilateral triangle. We note that an equilateral triangle can
+be divided into $4$ triangles of equal size, with one inscribed in the circle as shown in the diagram. Note that
+the larger triangle has side length $2$ times that of the smaller triangle. If $O$ is the center of the circle, 
+and $P$, $Q$ are two corners of the smaller triangle, then $OP$, $OQ$ and $PQ$ form an isosceles triangle with
+base $s$ where
+$$ 
+  \frac{\sin\left(\frac{2\pi}{3}\right)}{s} 
+    = \frac{\sin\left(\frac{1}{2}\left[\pi-\frac{2\pi}{3}\right]\right)}{r} 
+    = \frac{\sin\left(\frac{\pi}{6}\right)}{r}, 
+$$
+by the Law of Sines. Therefore $$ \frac{\sqrt{3}}{2s} = \frac{1}{2r} \Rightarrow r\sqrt{3} = s $$
+and thus the length of a side of the outer triangle is $2r\sqrt{3}$. By the Pythagorean Theorem, we also know 
+the height of the triangle is $3r$.
+
+![Transformed Span](/img/LA/inscribed_ellipses_span.png)
+
+Consider the equilateral triangle of side length $3$. Then the radius and area of the inscribed circle is 
+$$ \frac{3}{2\sqrt{3}} \;\text{ and }\; \Omega = \pi\left(\frac{3}{2\sqrt{3}}\right)^2 = \frac{3}{4}\pi $$
+respectively. Furthermore, let $\vec{w}_1$ and $\vec{w}_2$ be the vectors that span the two legs of the triangle; 
+that is,
+$$ 
+  \vec{w}_1 = \begin{bmatrix} 3 \\ 0 \end{bmatrix}, \text{ and } \vec{w}_2 
+            = \frac{3}{2} \begin{bmatrix} 1 \\ \sqrt{3} \end{bmatrix}.
+$$
+
+Our target triangle is the right scalene with sides $3$, $4$, and $5$; thus, let $T(\vec{x})$ be the transformation
+from $\bbr^2$ to $\bbr^2$ that takes an equilateral triangle of side $3$ to this scalene. Thus we want $A$ such that
+$$ 
+  A\begin{bmatrix} 3 \\ 0 \end{bmatrix} = \begin{bmatrix} 4 \\ 0 \end{bmatrix} \text{ and } 
+  A\left(\frac{3}{2}\begin{bmatrix}1 \\ \sqrt{3}\end{bmatrix}\right) = \begin{bmatrix} 0 \\ 3 \end{bmatrix}.
+$$
+
+By brute calculation, we see that
+$$ 
+  A = \frac{1}{3}\begin{bmatrix} 4 & -\frac{4\sqrt{3}}{3} \\ 0 & 2\sqrt{3} \end{bmatrix} \text{ and } 
+  \left|\text{det}\;A\right| = \frac{4\sqrt{3}}{9}. 
+$$
+
+Therefore, by [expansion factors](determinants#expansion-factors), the area of the transformed ellipse that
+is inscribed in the new scalene triangle is 
+$$ 
+  (\text{area of }\Omega)\left|\text{det}\;A\right| 
+    = \frac{3}{4}\pi \cdot \frac{4\sqrt{3}}{9} 
+    = \frac{\pi\sqrt{3}}{3}.
+$$
+
+</div>
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Bretscher, Otto (2008). Linear Algebra with Applications (4th ed.). Pearson. ISBN 978-0-13-600926-9.
+
+</section>

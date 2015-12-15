@@ -1,0 +1,67 @@
+---
+title: Squeeze Theorem
+categories: Calculus
+preamble: all
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![](/img/graphs/calculus/squeeze-theorem.png)
+
+The Squeeze Theorem (or Pinch Theorem) applies to both continuous functions and infinite series, relaying 
+information regarding the convergence (or divergence) of a function/series. Intuitively, if a function
+or series lies between two others that converge to the same value, then the given function
+must converge to the same value. It is locked in between the two, both of which come together.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Continuous Functions
+
+If $f(x) \leq g(x) \leq h(x)$ when $x$ is near $a$ (except possibly at $a$) and $\xlimit{x}{a}\;f(x) = 
+\xlimit{x}{a}\;h(x) = L$, then $\xlimit{x}{a}\;g(x) = L$.
+
+<div class="proof"> 
+Let $\epsilon > 0$ be given. Since $\xlimit{x}{a}\;f(x) = L$, there is a number $\delta_1 > 0$ such that
+$$ \text{if } 0 < |x-a| < \delta_1 \text{ then } |\;f(x) - L| < \epsilon\text{.} $$
+
+Since $\xlimit{x}{a}\;h(x) = L$, there is a number $\delta_2 > 0$ such that
+$$ \text{if } 0 < |x-a| < \delta_2 \text{ then } |\;h(x) - L| < \epsilon\text{.} $$
+
+Let $\delta = \text{min}\{\delta_1, \delta_2\}$. If $0 < |x-a| < \delta$, then $0 < |x-a| < \delta_1$ and 
+$0 < |x-a| < \delta_2$. Therefore:
+$$ L - \epsilon < f(x) \leq g(x) \leq h(x) < L + \epsilon. $$
+
+Thus $|\;g(x)-L| < \epsilon$. Therefore $\xlimit{x}{a}g(x) = L$.  
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Series
+
+If $a_n \leq b_n \leq c_n$ for $n \geq n_0$ and $\xlimit{n}{\infty}\;a_n = \xlimit{n}{\infty}\;c_n = L$, then 
+$\xlimit{n}{\infty}\;b_n = L$.
+
+<div class="proof">  
+Analogous to that of functions.
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

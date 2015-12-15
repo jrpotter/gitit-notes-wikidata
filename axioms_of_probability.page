@@ -1,0 +1,93 @@
+---
+title: Axioms of Probability
+categories: Statistics
+icon: /img/icons/inferential-statistics.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Normal PDF](/img/graphs/statistics/normal-distribution.png)
+
+Consider an experiment whose sample space is $S$. For each event $E$ of the sample space $S$, we assume
+\that a number $\bbps{E}$ is defined and satisfies the following three axioms:
+
+1. $0 \leq \bbps{E} \leq 1$.
+2. $\bbps{S} = 1$.
+3. For any sequence of mutually exclusive events $E_1, E_2, \ldots$ (that is, events for which $E_iE_j = \emptyset$ 
+   when $i \neq j$), $$ \bbps{\bigcup_{i=1}^{\infty} E_i} = \sum_{i=1}^{\infty}\bbps{E_i}. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Conditional Satisfiability
+
+Given a condition to weigh upon, it is intuitively logical that the axioms of probability are still satisfied. That is,
+if an event occurs and we consider the probability of additional events given that the event occurred, the axioms should
+still be satisfied.
+
+1. $0 \leq \bbps{E\;|\;F} \leq 1$.<br />  
+   <div class="proof">
+   Note $0 \leq \bbps{E\;|\;F}$ is obvious. Now $$ \bbps{E\;|\;F} = \frac{\bbps{EF}}{\bbps{F}} $$ and note
+   $EF \subset F$. Thus $\bbps{EF} \leq \bbps{F}$.
+   </div><br />
+
+2. $\bbps{S\;|\;F} = 1$.<br />  
+   <div class="proof">
+   Note that
+   $$ \bbps{S\;|\;F} = \frac{\bbps{SF}}{\bbps{F}} = \frac{\bbps{F}}{\bbps{F}} = 1. $$
+   </div><br />
+
+3. If $E_i, i = 1, \ldots$, are mutually exclusive events, then 
+   $\bbp\left(\bigcup_{1}^{\infty}E_i\;|\;F\right) = \sum_{1}^{\infty}\bbps{E_i\;|\;F}$.<br />  
+   <div class="proof">
+   Note that
+   $$
+     \bbps{\bigcup_{1}^{\infty} E_i\;|\;F} 
+       = \frac{\bbps{\left[\bigcup_{1}^{\infty} E_i\right]F}}{\bbp[F]}
+       = \frac{\bbps{\bigcup_{1}^{\infty}E_iF}}{\bbp[F]}.
+   $$ 
+   This in turn is
+   $$ \frac{\sum_{1}^{\infty} \bbps{E_iF}}{\bbps{F}} = \sum\limits_{1}^{\infty} \frac{\bbps{E_iF}}{\bbps{F}}. $$
+   </div>
+
+</section>
+
+<section class="primary">
+
+# Complements
+
+We denote the **complement** of an event $E$ by $$ \bbps{E^c} = 1 - \bbps{E}. $$
+This is the change of an event not occurring- it is often easier to determine a probability by considering
+the complement and employing the subtraction principle.
+
+</section>
+
+<section class="primary">
+
+# Subsets
+
+Given an event $E$ and $F$, if $E \subset F$, then $$ \bbps{E} \leq \bbps{F}. $$
+
+<div class="proof">
+
+Since $E \subset F$, it follows that $F = E \cup E^cF$. Hence, because $E$ and $E^cF$ are mutually
+exclusive, $$ \bbps{F} = \bbps{E} + \bbps{E^cF}. $$ Yet $\bbps{E^cF} \geq 0$ so $\bbps{F} \geq \bbps{E}$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

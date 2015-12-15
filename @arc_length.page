@@ -1,0 +1,191 @@
+---
+title: @Arc Length
+categories: Calculus
+icon: /img/icons/single-integral.png
+...
+
+<section class="primary">
+
+# Fat Circles
+
+<div class="block">
+
+![](/img/graphs/calculus/fat-circles.png)
+
+The curves with equations $x^n + y^n = 1$ for $n = 4, 6, 8, \ldots$ are called **fat circles**. 
+
+Here we note as $n \rightarrow \infty$, the circle appears to get closer and closer to a square. That is,
+we expect the length $L_{2k}$ of the fat circle with $n = 2k$ to be
+$$\xlimit{k}{\infty} L_{2k} = 8\text{,} $$ 
+the perimeter of a square with side length 2. This does in fact hold.
+
+</div>
+
+<div class="proof">
+
+To begin with, we want to convert the given equations to polar coordinates as follows:
+
+$$\begin{align*}
+  x^n + y^n = 1 &\Rightarrow r^n\cos^n\theta + r^n\sin^n\theta = 1            \\
+                &\Rightarrow r^n(\cos^n\theta + \sin^n\theta) = 1             \\
+                &\Rightarrow r^n = (\cos^n\theta + \sin^n\theta)^{-1}         \\
+                &\Rightarrow r = (\cos^n\theta + \sin^n\theta)^{-\frac{1}{n}}
+\end{align*}$$
+
+Referring to the arc length of polar equations:
+
+$$ L = \int_a^b \sqrt{r^2 + \left(\leibniz[r]{\theta}\right)^2}d\theta\text{,} $$
+
+we find
+
+$$ r^2 = (\cos^n\theta + \sin^n\theta)^{-\frac{2}{n}} $$
+
+and 
+
+$$\begin{align*}
+  \left(\leibniz[r]{\theta}\right) 
+    &= -\frac{1}{n}\left[\cos^n(\theta) + \sin^n(\theta)\right]^{-\frac{1+n}{n}}
+       \left[n\cos^{n-1}(\theta)(-\sin{\theta}) + n\sin^{n-1}(\theta)(\cos{\theta})\right]     \\
+    &= -\frac{1}{n}\left[\cos^n(\theta) + \sin^n(\theta)\right]^{-\frac{1+n}{n}}
+       \left[n\cos(\theta)\sin(\theta)(\cos^{n-2}(\theta)+\sin^{n-2}(\theta))\right]           \\
+    &= -\cos(\theta)\sin(\theta)\left[\cos^n(\theta) + \sin^n(\theta)\right]^{-\frac{1+n}{n}}
+       \left[\cos^{n-2}(\theta)+\sin^{n-2}(\theta)\right]                                      \\
+  \Rightarrow \left(\leibniz[r]{\theta}\right)^2
+    &= \cos^2(\theta)\sin^2(\theta)\left[\cos^n(\theta) + \sin^n(\theta)\right]^{-2\left(\frac{1+n}{n}\right)}
+       \left[\cos^{n-2}(\theta)+\sin^{n-2}(\theta)\right]^2
+\end{align*}$$
+
+Now we note that a fat circle is symmetric, so we can evaluate the arc length from $-\pi/4$ to $\pi/4$ and multiply
+the result by 4. Substituting $n$ with $2k$ for $k \in \bbn$ such that $k \geq 2$:
+
+$$\begin{align*}
+  &\Rightarrow 4\int_{-\pi/4}^{\pi/4} 
+     \sqrt{\left(\cos^{2k}(\theta)+\sin^{2k}(\theta)\right)^{\frac{-1}{k}} + \left[
+       \cos^2(\theta)\sin^2(\theta)\left(\cos^{2k}(\theta)+\sin^{2k}(\theta)\right)^{\frac{-1-2k}{k}}
+       \left(\cos^{2k-2}(\theta) + \sin^{2k-2}(\theta)\right)^2
+       \right]}\;d\theta                                                                              \\\\
+  &= 4\int_{-\pi/4}^{\pi/4} 
+     \sqrt{\left(\cos^{2k}(\theta)+\sin^{2k}(\theta)\right)^{\frac{-1}{k}} + \left[ 
+       \cos^2(\theta)\sin^2(\theta)\left(\cos^{2k}(\theta)+\sin^{2k}(\theta)\right)^{\frac{-1}{k}}
+       \left(\cos^{2k}(\theta)+\sin^{2k}(\theta)\right)^{\frac{-2k}{k}}
+       \left(\cos^{2k-2}(\theta) + \sin^{2k-2}(\theta)\right)^2
+       \right]}\;d\theta                                                                              \\\\
+  &= 4\int_{-\pi/4}^{\pi/4} 
+       \sqrt{\left(\cos^{2k}(\theta)+\sin^{2k}(\theta)\right)^{\frac{-1}{k}} \left[ 1 +
+         \cos^2(\theta)\sin^2(\theta)\left(\cos^{2k}(\theta)+\sin^{2k}(\theta)\right)^{-2}
+         \left(\cos^{2k-2}(\theta)+\sin^{2k-2}(\theta)\right)^{2}
+         \right]}\;d\theta\text{.}
+\end{align*}$$
+
+Considering the parts under the radical and noting $\left|\tan{\theta}\right| \leq 1$ 
+for $-\pi/4 \leq \theta \leq \pi/4$, we see that
+
+$$\begin{align*}
+  \xlimit{k}{\infty} \left[\cos^2(\theta)\sin^2(\theta)(\cos^{2k}(\theta) + 
+  \sin^{2k}(\theta))^{-2}(cos^{2k-2}(\theta) + \sin^{2k-2}(\theta))^2\right]
+    &= \xlimit{k}{\infty} \left(\frac{\cos(\theta)\sin(\theta)(\cos^{2k-2}(\theta) + 
+             \sin^{2k-2}(\theta))}{\cos^{2k}(\theta) + \sin^{2k}(\theta)}
+       \right)^2                                                                      \\
+    &= \xlimit{k}{\infty} \left(\frac{\cos^{2k-1}(\theta)\sin(\theta) + 
+             \cos(\theta)\sin^{2k-1}(\theta)}{\cos^{2k}(\theta) + \sin^{2k}(\theta)}
+       \right)^2                                                                      \\
+    &= \xlimit{k}{\infty} \left(\frac{\sin(\theta) + \tan^{2k-1}(\theta)\cos(\theta)}
+       {\cos(\theta) + \tan^{2k-1}(\theta)\sin(\theta)}
+       \right)^2                                                                      \\
+    &= \tan^2(\theta)
+\end{align*}$$
+
+and
+
+$$\begin{align*}
+  \xlimit{k}{\infty} (\cos^{2k}(\theta) + \sin^{2k}(\theta)^{\frac{-1}{k}} 
+    &= \xlimit{k}{\infty} \left[\cos^{2k}(\theta)(1 + \tan^{2k}(\theta))\right]^{\frac{-1}{k}} \\
+    &= \xlimit{k}{\infty} \cos^{-2}(\theta)(1 + \tan^{2k}(\theta))^{\frac{-1}{k}}              \\
+    &= \sec^2(\theta)\text{.}
+\end{align*}$$
+
+Therefore the integral is:
+
+$$\begin{align*}
+  4 \int_{-\pi/4}^{\pi/4} \sqrt{\sec^2(\theta)\left[1+tan^2(\theta)\right]}\;d\theta
+    &= 4 \int_{-\pi/4}^{\pi/4} \sqrt{\sec^4(\theta)}\;d\theta \\
+    &= 4 \int_{-\pi/4}^{\pi/4} \sec^2(\theta)\;d\theta        \\
+    &= 8 \text{.}
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Cycloids
+
+<div class="block">
+
+![Cycloid Arch](/img/graphs/calculus/cycloid-arch.png)
+
+A **cycloid** is a curve traced out by a point $P$ on the circumference of a circle as the circle rolls along
+a straight line. If the circle has radius $r$ and rolls along the $x$-axis with one position of $P$ at the origin,
+it has parametric equations
+$$ x = r(\theta - \sin{\theta}), \; y = r(1 - \cos{\theta}), \quad \theta \in \bbr\text{.}$$
+
+Given these, we can determine the length of one arch of a cycloid to be eight times the radius of the generating
+circle, that is,
+$$ L = 8r\text{.} $$
+
+</div>
+
+<div class="proof">
+
+We first determine the length along the $x$-axis that constitutes an arch. As can be seen by the diagram,
+this appears to be when the slope of the tangent is vertical. We consider when $\theta = 2n\pi$, where it
+appears vertical tangents exist.
+
+Note 
+$$ 
+  \leibniz[y]{x} = \frac{dy/d\theta}{dx/d\theta} 
+                 = \frac{r\sin{\theta}}{r(1-\cos{\theta})} 
+                 = \frac{\sin{\theta}}{1 - \cos{\theta}},
+$$
+and so, by an application of [L'Hospital's Rule](lhospitals_rule),
+$$
+  \xlimit[+]{\theta}{2n\pi} \leibniz[y]{x} = \xlimit[+]{\theta}{2n\pi} \frac{\sin{\theta}}{1 - \cos{\theta}}
+                                           = \xlimit[+]{\theta}{2n\pi} \frac{\cos{\theta}}{\sin{\theta}}
+                                           = \infty\text{.}
+$$
+A similar computation shows $dy/dx \rightarrow -\infty$ as $\theta \rightarrow 2n\pi^{-}$ so vertical
+tangents do exist at multiples of $2\pi$.
+
+Now we can evaluate the arc length. Recalling
+$$ L = \int_a^b \sqrt{\left(\leibniz[x]{\theta}\right)^2 + \left(\leibniz[y]{\theta}\right)^2}\;d\theta\text{,} $$
+our desired integral is
+$$\begin{align*}
+  L &= \int_0^{2\pi} \sqrt{r^2(1-\cos{\theta})^2 + r^2\sin^2\theta}\;d\theta            \\
+    &= \int_0^{2\pi} \sqrt{r^2(1-2\cos{\theta} + \cos^2\theta + \sin^2\theta)}\;d\theta \\
+    &= r\int_0^{2\pi} \sqrt{2(1-\cos{\theta})}\;d\theta\text{.}
+\end{align*}$$
+
+Using identity $\sin^2x = \frac{1}{2}(1 - \cos{2x})$ with $\theta = 2x$, we get $1 - \cos{\theta} = 2\sin^2(\theta/2)$.
+Since $0 \leq \theta \leq 2\pi$, we have $0 \leq \theta/2 \leq \pi$ and so $\sin(\theta/2) \geq 0$. Therefore
+
+$$ \sqrt{2(1-\cos{\theta})} = \sqrt{4\sin^2(\theta/2)} = 2\left|\sin(\theta/2)\right| = 2\sin(\theta/2) $$
+
+and 
+
+$$\begin{align*}
+  L &= 2r\int_0^{2\pi} \sin(\theta/2)d\theta = 2r\big[-2\cos(\theta/2)\big]_0^{2\pi} \\
+    &= 2r[2 + 2] = 8r\text{.}
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

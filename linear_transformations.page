@@ -1,0 +1,268 @@
+---
+title: Linear Transformations
+categories: Linear Algebra
+icon: /img/icons/transformations.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Transformation Series](/img/diagrams/linear/transformation-series.png)
+
+In the context of [vector spaces](vector_spaces), a function $T$ from $\bbr^m$ to $\bbr^n$ is called a **linear transformation** 
+if there exists an $n \times m$ matrix $A$ such that $T(\vec{x}) = A\vec{x}$, for all $\vec{x} \in \bbr^m$. Similarly, consider 
+two linear spaces $V$ and $W$. A function $T$ from $V$ to $W$ is also called a **linear transformation** if 
+$$ T(f+g) = T(f) + T(g)\text{ and }T(kf) = kT(f) $$ 
+for all elements $f$ and $g$ of $V$ and for all scalars $k$. We note that finite dimensional linear spaces of dimension 
+$n$ is isomorphic to $\bbr^n$ by the [coordinate transformation](coordinate_transformation).
+
+Given a linear transformation $T$ as described above, the matrix of $T$ is:
+$$
+  A =
+    \begin{bmatrix}
+      \vert  & \vert  &        & \vert  \\
+      T(e_1) & T(e_2) & \ldots & T(e_m) \\
+      \vert  & \vert  &        & \vert
+    \end{bmatrix},\text{ where } e_{i} = \begin{bmatrix} 0 \\ \vdots \\ 1 \\ \vdots \\ 0 \end{bmatrix}
+$$
+and $1$ takes the $i^{\text{th}}$ component of $\vec{e}_i$.
+
+</div>
+
+<div class="proof">
+
+Consider linear transformation $T$ such that $T(\vec{x}) = A\vec{x}$ for matrix $A$. Note that
+$T(\vec{e}_1)$ is the first column of A, $T(\vec{e}_2)$ is the second column, etc.  
+In general, the $i^{\text{th}}$ column of A is $T(\vec{e}_i)$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Linear Systems
+
+A vector $\vec{b}$ in $\bbr^m$ is called a **linear combination** of the vectors $\inflate{\vec{v}}{m}$ in 
+$\bbr^n$ if there exist scalars $x_1, \ldots, x_m$ such that $\vec{b} = x_1\vec{v}_1 + \ldots + x_m\vec{v}_m$.
+
+A linear system consists of a grouping of linear combinations ordered together with the expectation that
+this grouping has a single, infinite, or no solutions. They can be written as an **augmented matrix**
+in which the coefficients of the equations are aligned on the left side, and the right side consists
+of the values each equation equates to. 
+
+More specifically, consider the linear transformation $T: \bbr^m \rightarrow \bbr^n$, with 
+underlying system $A\vec{x} = \vec{b}$ where $A$ is an $m \times n$ matrix and $\vec{b}$ is in $\bbr^n$. Then we can write
+$$\begin{bmatrix} 
+  a_{11} & a_{12} & \cdots & a_{1m} & \vert & b_1    \\
+  a_{21} & a_{22} & \cdots & a_{2m} & \vert & b_2    \\
+  \vdots & \vdots &        & \vdots & \vert & \vdots \\
+  a_{n1} & a_{n2} & \cdots & a_{nm} & \vert & b_n
+\end{bmatrix}$$
+
+</section>
+
+<section class="primary">
+
+# Spans
+
+Consider the vectors $\inflate{\vec{v}}{m}\in\bbr^n$. The set of all linear combinations $c_1\vec{v}_1 +
+c_2\vec{v}_2 + \ldots, c_m\vec{v}_m$ of the vectors $\inflate{\vec{v}}{m}$ is called their **span**:
+
+$$ \text{span}(\inflate{\vec{v}}{m}) = \{c_1\vec{v}_1+c_2\vec{v}_2+\ldots+c_m\vec{v}_m:c_1,\ldots,c_m\in\bbr\}. $$
+
+Similarly, consider the elements $\inflate{\;f}{n}$ in a linear space $V$.
+We say that $\inflate{\;f}{n}$ **span** $V$ if every $f$ in $V$ can be expressed as a linear combination of $\inflate{\;f}{n}$.
+
+</section>
+
+<section class="primary">
+
+# Linearity
+
+A transformation $T$ from $\bbr^m$ to $\bbr^n$ is linear if and only if:
+
+1. $T(\vec{v} + \vec{w}) = T(\vec{v}) + T(\vec{w})$, for all $\vec{v}, \vec{w} \in \bbr^m$, and
+2. $T(k\vec{v}) = kT(\vec{v})$, for all $\vec{v} \in \bbr^m$ and all scalars $k$.
+
+<div class="proof">
+
+$\forward$ First, suppose $T$ is a linear transformation. Then $T(\vec{v} + \vec{w}) = A(\vec{v} + \vec{w})
+= A\vec{v} + A\vec{w} = T(\vec{v}) + T(\vec{w})$. Also, $T(k\vec{v}) = A(k\vec{v}) = kA(\vec{v}) = kT(\vec{v})$.
+
+$\backward$ Now, suppose $T: \bbr^m \rightarrow \bbr^n$ is a transformation that satisfied (1) and (2). We must 
+show a matrix $A$ exists such that $T(\vec{x}) = A\vec{x}$, for all $\vec{x} \in \bbr^m$. Let $\vec{e_1}, \vec{e_2},
+\ldots, \vec{e_m}$ be the standard vectors. Then
+$$\begin{align*}
+  T(\vec{x}) &= T(x_1\vec{e}_1 + x_2\vec{e}_2 + \ldots + x_m\vec{e}_m)                                   \\
+             &= T(x_1\vec{e}_1) + T(x_2\vec{e}_2) + \ldots + T(x_m\vec{e}_m)\quad\text{by property (1)}  \\
+             &= x_1T(\vec{e}_1) + x_2T(\vec{e}_2) + \ldots + x_mT(\vec{e}_m)\quad\text{by property (2).} 
+\end{align*}$$
+Thus
+$$ A = \begin{bmatrix}
+  \vert        & \vert        &        & \vert       \\
+  T(\vec{e}_1) & T(\vec{e}_2) & \ldots & T(\vec{e}_m)\\
+  \vert        & \vert        &        & \vert       
+\end{bmatrix}\text{,} $$
+proving a matrix exists.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Orthogonal Transformations
+
+A linear transformation  $T$ from $\bbr^n$ to $\bbr^n$ is called **orthogonal** if it preserves the length of vectors:
+$$ \norm{T(\vec{x})} = \norm{\vec{x}},\text{ for all }\vec{x}\text{ in }\bbr^n. $$
+If $T(\vec{x}) = A\vec{x}$ is an orthogonal transformation, we say $A$ is an **orthogonal matrix**.
+
+We note a linear transformation $T$ from $\bbr^n$ to $\bbr^n$ is orthogonal if and only if vectors $T(\vec{e}_1),
+T(\vec{e}_2), \ldots, T(\vec{e}_n)$ form an orthonormal basis of $\bbr^n$. Furthermore, an $n\times n$ matrix $A$ 
+is orthogonal if and only if its columns form an orthonormal basis of $\bbr^n$.
+
+<div class="proof">
+
+$\forward$ If $T$ is an orthogonal transformation, then, by definition, $T(\vec{e}_i)$ are unit vectors (since
+$T$ preserves length), and by [angle preservation](#angle-preservation), they are orthogonal.
+
+$\backward$ Suppose the $T(\vec{e}_i)$ form an orthonormal basis. Consider a vector 
+$\vec{x} = x_1\vec{e}_1 + x_2\vec{e}_2 + \cdots + x_n\vec{e}_n$ in $\bbr^n$. 
+Then, by the [Pythagorean Theorem](pythagorean_theorem),
+$$\begin{align*}
+  \norm{T(\vec{x})}^2 &= \norm{x_1T(\vec{e}_1) + x_2T(\vec{e}_2) + \cdots + x_nT(\vec{e}_n)}^2                   \\
+                      &= \norm{x_1T(\vec{e}_1)}^2 + \norm{x_2T(\vec{e}_2)}^2 + \cdots + \norm{x_nT(\vec{e}_n)}^2 \\
+                      &= x_1^2 + x_2^2 + \cdots + x_n^2                                                          \\
+                      &= \norm{\vec{x}}^2\text{.}
+\end{align*}$$
+
+We note the $\spscript{i}{th}$ column of $A$ can be formed by applying the transformation $T$ on each $\vec{e}_i$. 
+Thus the columns must form an orthonormal basis for $T$ to be orthogonal.
+
+</div>
+
+<section class="secondary">
+
+## Products
+
+The product $AB$ of two orthogonal $n \times n$ matrices $A$ and $B$ is orthogonal.
+
+<div class="proof">
+
+The linear transformation $T(\vec{x}) = AB\vec{x}$ preserves length since
+ $$ \norm{T(\vec{x})} = \norm{A(B\vec{x})} = \norm{B\vec{x}} = \norm{x}. $$
+
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Inverses
+
+The inverse $A^{-1}$ of an orthogonal $n \times n$ matrix $A$ is orthogonal.
+
+<div class="proof">
+
+The linear transformation $T(\vec{x}) = A^{-1}\vec{x}$ preserves length since
+$$ \norm{A^{-1}\vec{x}} = \norm{A(A^{-1}\vec{x})} = \norm{AA^{-1}(\vec{x})} = \norm{\vec{x}}. $$
+
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Determinants
+
+The determinant of an orthogonal matrix is $1$ or $-1$.
+
+<div class="proof">
+
+Let $A$ be an $n \times n$ orthogonal matrix. Then $A^TA = I_n$. Then
+$$ \text{det}(A^TA) = \text{det}(A^T)\cdot\text{det}(A) = (\text{det}\;A)^2 = \text{det}\;I_n = 1. $$
+Thus $\text{det}\;A = 1$ or $\text{det}\;A = -1$.
+
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Transpositions
+
+Consider an $n \times n$ matrix $A$. The matrix $A$ is orthogonal if and only if $A^TA = I_n$ or, equivalently,
+if $A^{-1} = A^T$.
+
+<div class="proof">
+
+Let $A$ be an $n \times n$ matrix as follows:
+$$ A = \begin{bmatrix} \vert & \vert & & \vert \\ \vec{v}_1 & \vec{v}_2 & & \vec{v}_n \\ \vert & \vert & & \vert \end{bmatrix} $$
+Then
+$$
+  A^TA = \begin{bmatrix}- & \vec{v}_1^T & - \\ - & \vec{v}_2^T & - \\ & \vdots & \\  - & \vec{v}_n^T & -\end{bmatrix}
+         \begin{bmatrix} \vert & \vert & & \vert \\ \vec{v}_1 & \vec{v}_2 & & \vec{v}_n \\ \vert & \vert & & \vert \end{bmatrix}
+       = \begin{bmatrix}
+           \vec{v}_1\cdot\vec{v}_1 & \vec{v}_1\cdot\vec{v}_2 & & \vec{v}_1\cdot\vec{v}_n\\
+           \vec{v}_2\cdot\vec{v}_1 & \vec{v}_2\cdot\vec{v}_2 & & \vec{v}_2\cdot\vec{v}_n\\
+           \vdots & \vdots & & \vdots                                                   \\
+           \vec{v}_n\cdot\vec{v}_1 & \vec{v}_n\cdot\vec{v}_2 & & \vec{v}_n\cdot\vec{v}_n
+         \end{bmatrix}.
+$$
+
+Noting a linear transformation $T$ from $\bbr^n$ to $\bbr^n$ is orthogonal if and only if vectors $T(\vec{e}_1),
+T(\vec{e}_2), \ldots, T(\vec{e}_n)$ form an orthonormal basis of $\bbr^n$, we see this product is $I_n$ if and only 
+if $A$ is orthogonal.
+
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Angle Preservation
+
+Consider an orthogonal transformation $T$ from $\bbr^n$ to $\bbr^n$. If the vectors $\vec{v}$ and $\vec{w}$ in
+$\bbr^n$ have a nonzero angle $\theta$ between them, then so does $L(\vec{v})$ and $L(\vec{w})$.
+
+<div class="proof"> 
+
+Suppose $L$ is an orthogonal transformation. Consider the angle $\theta$ between vectors $\vec{v}$ and $\vec{w}$
+in $\bbr^n$. Then
+$$
+  \measuredangle (L(\vec{v}), L(\vec{w})) = \arccos{\frac{L(\vec{v})\cdot L(\vec{w})}{\norm{L(\vec{v})}\norm{L(\vec{w})}}}
+                                          = \arccos{\frac{\dotp{v}{w}}{\norm{\vec{v}}\norm{\vec{w}}}}
+$$
+where we note $L(\vec{v})\cdot L(\vec{w}) = \dotp{v}{w}$ since
+$$
+  \dotp{v}{w} = \norm{v}\norm{w}\cos{\theta} 
+              = \norm{L(\vec{v})}\norm{L(\vec{w})}\cos{\theta} 
+              = L(\vec{v})\cdot L(\vec{w}),
+$$
+
+</div>
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Bases](bases)
+- [Coordinates](coordinates)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Bretscher, Otto (2008). Linear Algebra with Applications (4th ed.). Pearson. ISBN 978-0-13-600926-9.
+
+</section>

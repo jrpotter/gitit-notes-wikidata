@@ -1,0 +1,84 @@
+---
+title: Central Limit Theorem
+categories: Statistics
+icon: /img/icons/inferential-statistics.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Increasing Summations](/img/diagrams/statistics/central-limit-theorem-summations.png)
+
+The Central Limit Theorem states that given a sum of large number of independent random variables, the distribution
+is approximately normal. Let $X_1, X_2, \ldots$ be a sequence of independent and identically distributed random 
+variables, each having mean $\mu$ and variance $\sigma^2$. Then, for $-\infty < a < \infty$,
+$$ 
+  \bbps{\frac{\inflatec[+]{X}{n} - n\mu}{\sigma\sqrt{n}} \leq a} \rightarrow 
+  \frac{1}{\sqrt{2\pi}}\int_{-\infty}^a e^{-x^2/2}\;dx \text{ as } n \rightarrow \infty. 
+$$
+
+</div>
+
+<div class="proof">
+
+Before proceeding, we claim the following without proof: Let $Z_1, Z_2, \ldots$ be a sequence of random variables having
+distribution functions $F_{Z_n}$ and moment generating functions $M_{Z_n}$, $n \geq 1$; and let $Z$ be a random variable
+having distribution function $F_Z$ and moment generating function $M_Z$. If $M_{Z_n} \rightarrow M_Z(t)$ for all $t$,
+then $F_{Z_n}(t) \rightarrow F_Z(t)$ for all $t$ at which $F_Z(t)$ is continuous.
+
+Assume that $M(t)$ is the moment generating function of the $X_i$ and that it is finite. Initially, suppose
+$\mu = 0$ and $\sigma^2$ for each of the $X_i$ and let $$ L(t) = \ln{M(t)}. $$ Then we see that 
+$$\begin{align*}
+  L(0) &= \ln{E[e^{(0)X_i}]} = \ln{E[1]} = 0                                                           \\
+  L'(0) &= \frac{E[X_ie^{(0)X_i}]}{E[e^{(0)X_i}]} = E[X_i] = 0                                         \\
+  L''(0) &= \frac{E[e^{(0)X_i}]E[X_i^2e^{(0)X_i}] - E[X_ie^{(0)X_i}]E[X_ie^{(0)X_i}]}{E[e^{(0)X_i}]^2} \\
+         &= E[X_i^2]                                                                                   \\
+         &= 1.
+\end{align*}$$
+
+Next, consider the moment generating function of $X_i / \sqrt{n}$, given by
+$$ E\left[\exp\left\{\frac{tX_i}{\sqrt{n}}\right\}\right] = M\left(\frac{t}{\sqrt{n}}\right). $$
+Then the moment generating function of 
+$$ \sum_{i=1}^n \frac{X_i}{\sqrt{n}} \;\text{ is }\; \left[M\left(\frac{t}{\sqrt{n}}\right)\right]^n. $$
+
+To prove our desired result, we need to show that $[(M(t/\sqrt{n})]^n \rightarrow e^{t^2/2}$, the moment generating
+function of the standard normal variable, as $n \rightarrow \infty$. We note proving this is sufficient by our
+given lemma, which implies that if $M_{Z_n}(t) \rightarrow e^{t^2/2}$ as $n \rightarrow \infty$, then
+$F_{Z_n}(t) \rightarrow \phi(t)$ as $n \rightarrow \infty$. Equivalently, we show that $nL(t/\sqrt{n}) \rightarrow t^2 / 2$
+as $n \rightarrow \infty$. By repeated applications of [L'Hospital's Rule](lhospitals_rule), we see that
+
+$$\begin{align*}
+  \xlimit{n}{\infty} \frac{L(t / \sqrt{n}}{n^{-1}}
+    &= \xlimit{n}{\infty} \frac{-L'(t/\sqrt{n})n^{-3/2}t}{-2n^{-2}}       \\
+    &= \xlimit{n}{\infty} \frac{L'(t/\sqrt{n})t}{2n^{-1/2}}               \\
+    &= \xlimit{n}{\infty} \frac{-L''(t/\sqrt{n})n^{-3/2}t^2}{-2n^{-3/2}}  \\
+    &= \xlimit{n}{\infty} L''\left(\frac{t}{\sqrt{n}}\right)\frac{t^2}{2} \\
+    &= \frac{t}{\sqrt{n}}.
+\end{align*}$$
+
+This proves the case for when $\mu = 0$ and $\sigma^2 = 1$. The result now follows in the general case by considering the
+standardized random variables $X_i^* = (X_i - \mu)/\sigma$ and applying the preceding result.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Demoivre-Laplace Limit Theorem](demoivre_laplace_limit_theorem)
+- [Normal Distribution](normal_distribution)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

@@ -1,0 +1,54 @@
+---
+title: Counting Sort
+categories: Algorithms Stub
+icon: /img/icons/binary-tree.png
+...
+
+<section class="primary">
+
+# Summary
+
+
+</section>
+
+<section class="primary">
+
+# Analysis
+
+
+</section>
+
+<section class="primary">
+
+# Implementation
+
+~~~ { .python }
+def counting_sort(values):
+    """
+
+    """
+    # Accumulate Counts
+    A = [0] * (max(values) + 1)
+    for value in values:
+        A[value] += 1
+    for i in range(1, len(A)):
+        A[i] += A[i-1]
+
+    # Sort Values
+    C = [0] * len(values)
+    for value in values:
+        C[A[value] - 1] = value
+        A[value] -= 1
+
+    return C
+~~~
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Cormen, Thomas H. (2009). Introduction to Algorithms (3rd ed.). MIT Press. ISBN 978-0262033848.
+
+</section>

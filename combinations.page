@@ -1,0 +1,96 @@
+---
+title: Combinations
+categories: Abstract Algebra Combinatorics
+icon: /img/icons/bar-graph.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+Let $S$ be a set of $n$ elements. A **combination** of a set $S$ is a term usually used to denote an unordered
+selection of the elements of $S$. If $r$ is a nonnegative integer, then an **$r$-combination** of a set $S$ of
+$n$ elements is a subset of $S$ consisting of $r$ of the $n$ objects of $S$. We note the number of combinations
+for $0 \leq r \leq n$ is
+$$ \binom{n}{r} = \frac{n!}{r!(n-r)!}. $$
+
+</div>
+
+<div class="proof">
+
+Let $S$ be an $n$-element set. Each $r$-permutation of $S$ arises in exactly one way as a result of 
+carrying out the following two tasks:
+
+1. Choose $r$ elements from $S$.
+2. Arrange the chosen $r$ elements in some order.
+
+The number of ways to carry out the first task is, by definition, the number $\binom{n}{r}$. The number
+of ways to carry out the second task is $P(r, r) = r!$, where $P$ is defined in same manner as 
+[permutations](permutations). By the multiplication principle, we have $$ P(n, r) = r!\binom{n}{r}. $$
+Therefore $$ \binom{n}{r} = \frac{P(n, r)}{r!} = \frac{n!}{r!(n-r)!}. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Pascal's Formula
+
+For all integers $n$ and $k$ with $1 \leq k \leq n - 1$,
+$$ \binom{n}{k} = \binom{n-1}{k} + \binom{n-1}{k-1}. $$
+
+<div class="proof">
+
+Let $S$ be a set of $n$ elements. We distinguish one of the elements of $S$ and denote it by $x$.
+Let $S \backslash \{x\}$ be the set obtained from $S$ by removing the element $x$. We partition the
+set $X$ of $k$-subsets of $S$ into two parts, $A$ and $B$. In $A$ we put all the $k$-subsets which do
+not contain $x$. In $B$ we put all the $k$-subsets which do contain $x$. The size of $X$ is
+$$ \big|X\big| = \binom{n}{k} $$
+so, by the addition principle,
+$$ \binom{n}{k} = \big|A\big| + \big|B\big|. $$
+The $k$-subsets in $A$ are exactly the $k$-subsets of the set $S \backslash \{x\}$ of $n-1$ elements;
+thus the size of $A$ is
+$$ \big|A\big| = \binom{n-1}{k}. $$
+A $k$-subset in $B$ can always be obtained by adjoining the element $x$ to a $(k-1)$-subset of 
+$S \backslash \{x\}$. Hence, the size of $B$ satisfies
+$$ \big|B\big| = \binom{n-1}{k-1}. $$
+Therefore $$ \binom{n}{k} = \binom{n-1}{k} + \binom{n-1}{k-1}. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Powersets
+
+For $n \geq 0$,
+$$ \binom{n}{0} + \binom{n}{1} + \binom{n}{2} + \cdots + \binom{n}{n} = 2^n, $$
+and the common value equals the number of subsets of an $n$-element set.
+
+<div class="proof">
+
+First observe that every subset of $S$ is an $r$-combination of $S$ for some $r = 0, 1, \ldots, n$.
+Since $\binom{n}{r}$ equals the number of $r$-subsets of $S$, it follows from the addition principle
+that $$ \binom{n}{0} + \binom{n}{1} + \binom{n}{2} + \cdots + \binom{n}{n} $$
+equals the number of subsets of $S$.
+Now, when counting the number of subsets of $S$, we can break down any choice into $n$ tasks. Let the
+elements of $S$ be $\inflate{x}{n}$. In choosing a subset of $S$, we have two choices to make for
+each of the $n$ elements: each $x_i$ for $i = 1,\ldots,n$ either goes into the subset or it doesn't.
+Thus, by the multiplication principle, there are $2^n$ ways we can form a subset of $S$.
+Equating these results yields the proof.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Brualdi, Richard A. (2009). Introductory Combinatorics (5th ed.). Pearson. ISBN 978-0136020400.
+
+</section>

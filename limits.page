@@ -1,0 +1,136 @@
+---
+title: Limits
+categories: Calculus Complex
+icon: /img/icons/limits.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Multiple Limit Types](/img/graphs/calculus/infinite-limits.png)
+
+The limit, in an intuitive sense, is the value a mathematical object (such as a function, integral, sequence, etc.)
+seemingly takes the closer it gets to a point. Note this may be independent of the actual value at the point; for
+example given some function $f$ defined on an open interval around a point $a$, it is not necessary for the point $a$ to exist.
+
+The notion of a limit serves as the foundation upon which differential and integral calculus is built on. It enables 
+one to differentiate and integrate a variety of different curves through the employment of [tangent lines](tangent_lines) 
+and Riemann sums respectively. Under this context of functions, if the point at a certain limit does exist 
+and equals the limit, then the function is said to be [continuous](Continuity), implying additional properties for
+manipulation.
+
+Under the context of sequences and series it allows reasoning about infinite sums, which initially seems impossible
+to calculate, and construction of equivalent [power series](power_series) expansions of familiar functions equivalent in value.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Single Variable Functions
+
+<div class="block">
+
+![One-Sided Limits](/img/graphs/calculus/one-sided-limits.png)
+
+Because of the generalized notion of a limit, a variety of possible definitions exist. These exist in forms such as 
+purely algebraic, purely topological, etc. What follows it the $\epsilon-\delta$ form of the definition. We write 
+$$\xlimit{x}{a}\;f(x)=L$$ and say, **the limit of $f(x)$, as $x$ 
+approaches $a$, equals $L$** if we can make the values of $f(x)$ arbitrarily close to $L$ by taking $x$ to be sufficiently 
+close to, but not equal to, $a$. 
+More precisely, let $\;f$ be a function defined on some open interval that contains the number $a$, except possibly $a$ itself. 
+Then we say that the **limit of $\;f(x)$ as $x$ approaches $a$ is $L$** and we write $\xlimit{x}{a}\;f(x) = L$ if for 
+every number $\epsilon > 0$ there is a number $\delta > 0$ such that if 
+$$ 0 < \left|x - a\right| < \delta \text{ then } \left|\;f(x)-L\right| < \epsilon. $$
+
+</div>
+
+<section class="secondary">
+
+## Complex Functions
+
+Suppose $\;f$ is a function defined on a subset $S$ of the complex plane. Let $z_0$ be a point either in $S$ or in the boundary
+of $S$. We say that $\;f$ has **limit** $L$ at the point $z_0$, and we write
+$$ \xlimit{z}{z_0} \;f(z) = L $$
+if, given $\epsilon > 0$, there is a $\delta > 0$ such that
+$$ \norm{\;f(z) - L} < \epsilon \text{ whenever } z \in S \text{ and } \norm{z - z_0} < \delta. $$
+Note the similarity with [Multi-variable limits](#multi-variable-functions).
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# Multi-variable Functions
+
+<div class="block">
+
+![Multi-Variable Limit](/img/graphs/calculus/multi-variable-limit.png)
+
+Let $f$ be a function of two variables whose domain $D$ includes points arbitrarily close to $(a, b)$. 
+Then we say that the **limit of $f(x, y)$ as $(x, y)$ approaches $(a, b)$** is $L$ and we write
+$$ \xlimit{(x, y)}{(a, b)}\; f(x, y) = L $$
+if for every number $\epsilon > 0$ there is a corresponding number $\delta > 0$ such that if $(x, y) \in D$ and
+$0 < \sqrt{(x - a)^2 + (y - b)^2} < \delta$ then $\left|\;f(x, y) - L\right| < \epsilon$. Generalizing further, 
+if $f$ is defined on a subset $D$ of $\bbr^n$, then 
+$$ \xlimit{\pmb{x}}{\pmb{a}}\;f(\pmb{x}) = L $$ 
+means that for every number $\epsilon > 0$, there is a corresponding number $\delta > 0$ such that if $\pmb{x} \in D$ and
+$0 < \left|\pmb{x} - \pmb{a}\right| < \delta$, then $\left|\;f(\pmb{x})-L\right| < \epsilon$. 
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Sequences
+
+<div class="block">
+
+![Monotonic Sequence Theorem](/img/graphs/calculus/monotonic-sequence-theorem.png)
+
+Let $\{a_n\}$ be a sequence of real numbers. We write that $\{a_n\}$ has the **limit** L
+$$ \xlimit{n}{\infty}a_n = L \text{ or } a_n \rightarrow L\text{ as } n \rightarrow \infty $$
+if for every $\epsilon > 0$, there is a corresponding integer $N$ such that if $n > N$  then $\left|a_n - L\right| < \epsilon$.
+
+</div>
+
+<section class="secondary">
+
+## Complex Sequences
+
+Similarly, let $\{z_n\} = \{x_n + iy_n\}$ be a sequence of complex numbers. Then we say $\{z_n\}$ approaches the limit 
+$L = s + it$ if for every positive number $\epsilon$, there is an integer $N$ such that
+$$ \norm{z_n - A} < \epsilon \quad \text{ for all } n \geq N. $$
+Alternatively, we say $\{z_n\}$ approaches $L$ if and only if $x_n \rightarrow s$ and $y_n \rightarrow t$. 
+This is a direct consequence of the fact that
+$$ 
+  \abs{x_n - s} \leq \abs{z_n - A}, \quad 
+  \abs{y_n - t} \leq \abs{z_n - A}, \; \text{ and } \;
+  \abs{z_n - A} \leq \abs{x_n - s} + \abs{y_n - t}. 
+$$
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Squeeze Theorem](squeeze_theorem)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

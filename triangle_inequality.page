@@ -1,0 +1,106 @@
+---
+title: Triangle Inequality
+categories: Algebra Complex Linear
+icon: /img/icons/triangle-properties.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Triangle Diagram](/img/diagrams/linear/triangle-inequality.png)
+
+Given vectors $\vec{v}, \vec{w} \in \bbr^n$, the following holds: 
+$$ \norm{\vec{v}+\vec{w}} \leq \norm{\vec{v}} + \norm{\vec{w}}. $$
+
+</div>
+
+<div class="proof">
+
+Note the following:
+$$\begin{align*}
+  \norm{\vec{v}+\vec{w}}^2 &= (\vec{v}+\vec{w})\cdot(\vec{v}+\vec{w})                                \\
+                           &= \dotp{v}{v} + \dotp{v}{w} + \dotp{w}{v} + \dotp{w}{w}                  \\
+                           &\leq \norm{\vec{v}}^2 + 2\left|\dotp{v}{w}\right| + \norm{\vec{w}}^2     \\
+                           &\leq \norm{\vec{v}}^2 + 2\norm{\vec{v}}\norm{\vec{w}} + \norm{\vec{w}}^2
+                                 \text{ by Cauchy-Schwarz Inequality}                                \\
+                           &= \left(\norm{\vec{v}} + \norm{\vec{w}}\right)^2
+\end{align*}$$
+Square rooting both sides yields the desired inequality.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Complex Variables
+
+If we let $z$ and $w$ represent two complex numbers, we also find that
+$$ \norm{z + w} \leq \norm{z} + \norm{w}. $$
+
+<div class="proof">
+
+We could note that complex numbers represent a vector in the complex plane[^1], but we choose to prove it directly instead.
+Let $z = x + iy$ and $w = s + it$ be two complex numbers. Then
+$$\begin{align*}
+  \norm{z + w}^2 &= (x + s)^2 + (y + t)^2                          \\
+                 &= x^2 + s^2 + y^2 + t^2 + 2(xs + yt)             \\
+                 &= \norm{z}^2 + \norm{w}^2 + 2\text{Re}(z\bar{w}) \\
+                 &\leq \norm{z}^2 + \norm{w}^2 + 2\norm{z\bar{w}}  \\
+                 &= \norm{z}^2 + \norm{w}^2 + 2\norm{z}\norm{w}    \\
+                 &= (\norm{z} + \norm{w})^2.
+\end{align*}$$
+Taking the square root of both sides yields our inequality.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Reverse Triangle Inequality
+
+We consider the following formulation in terms of vectors, with the understanding that equivalent formulations in other
+settings (i.e. [complex variables](#complex-variables)) can be derived similarly:
+$$ \abs{\norm{\vec{v}} - \norm{\vec{w}}} \leq \norm{\vec{v} - \vec{w}}. $$
+That is, the magnitude of the difference between two legs of a triangle will always be less than or equal to the magnitude
+of the third leg. Or, equivalently, any side of a triangle is greater than the difference between the other two sides.
+
+<div class="proof">
+
+Let $\vec{v}$ and $\vec{w}$ be two vectors and let $\vec{x} = \vec{v} - \vec{w}$ and $\vec{y} = \vec{w} - \vec{v}$.
+Then, by the [Triangle Inequality](#summary), we find that
+$$\begin{align*}
+  \norm{\vec{x} + \vec{w}} &\leq \norm{\vec{x}} + \norm{\vec{w}} \Rightarrow \\
+  \norm{\vec{v}} &\leq \norm{\vec{v}-\vec{w}} + \norm{\vec{w}} \Rightarrow   \\
+  \norm{\vec{v}} - \norm{\vec{w}} &\leq \norm{\vec{v}-\vec{w}}.
+\end{align*}$$
+Similarly,
+$$\begin{align*}
+  \norm{\vec{y} + \vec{v}} &\leq \norm{\vec{y}} + \norm{\vec{v}} \Rightarrow \\
+  \norm{\vec{w}} &\leq \norm{\vec{w}-\vec{v}} + \norm{\vec{v}} \Rightarrow   \\
+  \norm{\vec{w}} - \norm{\vec{v}} &\leq \norm{\vec{w}-\vec{v}} \Rightarrow   \\
+  -\norm{\vec{v}-\vec{w}} &\leq \norm{\vec{v}} - \norm{\vec{w}}.
+\end{align*}$$
+
+Therefore $$ \abs{\norm{\vec{v}} - \norm{\vec{w}}} \leq \norm{\vec{v} - \vec{w}}. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Bretscher, Otto (2008). Linear Algebra with Applications (4th ed.). Pearson. ISBN 978-0-13-600926-9.
+- Fisher, Stephen D. (1999). Complex Variables (2nd ed.). Dover Publications Inc. ISBN 0-48-640679-2
+
+</section>
+
+<!-- Footnotes -->
+
+[^1]: [Vector Representation](complex_numbers#summary)

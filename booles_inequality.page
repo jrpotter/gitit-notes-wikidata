@@ -1,0 +1,38 @@
+---
+title: Boole's Inequality
+categories: Statistics
+icon: /img/icons/random-variables.png
+...
+
+<section class="primary">
+
+# Summary
+
+Let $\inflate{A}{n}$ denote some arbitrary events. Then Boole's Inequality states
+$$ \bbps{\bigcup_{i=1}^n A_i} \leq \sum_{i=1}^n \bbps{A_i}. $$
+That is, the odds of one or more events occurring is less than the sum of each event's probability.
+
+<div class="proof">
+
+Define [indicator variables](indicator_variables) $X_i$ for $i = 1, \ldots, n$ by
+$$ X_i = \begin{cases} 1 &\text{if } A_i \text{ occurs} \\ 0 &\text{otherwise}. \end{cases} $$
+Let $$ X = \sum_{i=1}^n X_i, $$ meaning $X$ denotes the number of the events $A_i$ that occur. Finally, let
+$$ Y = \begin{cases} 1 &\text{if } X \geq 1 \\ 0 &\text{otherwise}, \end{cases} $$
+meaning $Y$ is equal to $1$ if at least one of the $A_i$ occurs. This implies $X \geq Y$ so $E[X] \geq E[Y]$.
+But we also note by [linearity](expected_value#linearity-of-expectation) that
+$$ E[X] = \sum_{i=1}^n E[X_i] = \sum_{i=1}^n \bbps{A_i} $$ 
+and
+$$ E[Y] = \bbps{\text{at least one of the } A_i \text{ occur}} = \bbps{\bigcup_{i=1}^n A_i}, $$
+so the inequality follows.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

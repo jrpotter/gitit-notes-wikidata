@@ -1,0 +1,187 @@
+---
+title: Planes
+categories: Calculus
+icon: /img/icons/geometric-constructions.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Sample Plane](/img/graphs/calculus/sample-plane.png)
+
+The plane serves as the logical "equivalent" of a line in three-dimensional space. In particular, when considering
+functions of two variables, the [tangent plane](#tangent-plane) demonstrates minimums and maximums as opposed to a
+tangent line in a function of just one variable. Planes require additional information to specify its direction, as opposed 
+to just a single vector in the case of a line. This additional information comes in the form of a **normal vector** orthogonal 
+to the plane.
+
+Let $P(x, y, z)$ be an arbitrary point in the plane, and let $\vec{r}_0$ and $\vec{r}$ be the position vectors
+of some $P_0$ and $P$. Then the vector $\vec{r} - \vec{r}_0$ is represented by $\overrightarrow{P_0P}$. Since the normal vector 
+$\vec{n}$ is orthogonal to every vector in the given plane, we have
+
+$$ \vec{n} \cdot (\vec{r} - \vec{r}_0) $$
+
+denoted the **vector equation of the plane**. 
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Equations
+
+To obtain a the **scalar equation of the plane through $P_0(x_0, y_0, z_0)$ 
+with normal vector $\vec{n} = \lrangle{a, b, c}$**, we write $\vec{n} = \lrangle{a, b, c}$, $\vec{r} = \lrangle{x, y, z}$, 
+and $\vec{r}_0 = \lrangle{x_0, y_0, z_0}$. Thus we have
+
+$$ \lrangle{a, b, c} \cdot \lrangle{x - x_0, y - y_0, z - z_0} = 0 $$
+
+or
+
+$$ a(x - x_0) + b(y - y_0) + c(z - z_0) = 0. $$
+
+By collecting terms of the scalar equation, we can rewrite the above as 
+
+$$ ax + by + cz + d = 0 $$
+
+where $d = -(ax_0 + by_0 + cz_0)$, called the **linear equation**. If $a$, $b$, and $c$ are not all $0$, then the 
+linear equation represents a plane with normal vector $\vec{n} = \lrangle{a, b, c}$.
+
+<div class="proof">
+
+Suppose $a \neq 0$. Then the scalar equation can be rewritten as
+$$ a\left(x + \frac{d}{a}\right) + b(y - 0) + c(z - 0) = 0\text{.} $$
+But this is just
+$$ \langle a, b, c \rangle \cdot \langle x - \frac{d}{a}, y - 0, z - 0 \rangle = 0 $$
+meaning $\langle a, b, c \rangle$ is orthogonal to the line described by $\vec{PQ}$ where
+$P = \langle \frac{d}{a}, 0, 0 \rangle$ and $Q = \langle x, y, z \rangle$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Tangent Planes
+
+<div class="block">
+
+![Sample Tangent Plane](/img/graphs/calculus/sample-tangent-plane.png)
+
+A tangent plane is a plane that meets (is tangent to) a surface $S$ with equation $z = f(x, y)$ in three dimensional space. 
+Given a point $P$ and two curves $C_1$ and $C_2$ obtained by intersecting the surface with planes $y = y_0$ and $x = x_0$,
+we define the **tangent plane** to the be the plane that contains both tangent lines of the curves $C_1$ and $C_2$. Note 
+these [tangent lines](tangent_lines) can be found in a similar manner in two dimensionalspace if the partial derivatives 
+of $f$ are taken. More precisely, 
+
+Suppose $f$ has continuous partial derivatives. An equation of the tangent plane to the surface $z = f(x, y)$ at the
+point $P(x_0, y_0, z_0)$ is 
+
+$$ z - z_0 = f_x(x_0, y_0)(x - x_0) + f_y(x_0, y_0)(y - y_0). $$
+
+</div>
+
+<div class="proof">
+
+By the equation of a [plane](/GM/planes), any plane passing through $P$ has equation of the form
+$$ A(x - x_0) + B(y - y_0) + C(z - z_0) = 0. $$
+
+Dividing this equation by $C$ and letting $a = -A/C$ and $b = -B/C$, we can rewrite the equation in the form
+$$ z - z_0 = a(x - x_0) + b(y - y_0). $$
+
+If this equation represents the tangent plane at $P$, then its intersection with the plane $y = y_0$ must be a
+tangent line $T_1$ yielding
+
+$$ z - z_0 = a(x - x_0), \quad y = y_0 $$
+
+which is a point-slope form of a line with slope $a$; therefore $a = f_x(x_0, y_0)$. Similarly, 
+$b = f_y(x_0, y_0)$. 
+
+</div>
+
+<section class="secondary">
+
+## Parametric Surfaces
+
+<div class="block">
+
+![Tangent Vectors](/img/diagrams/calculus/tangent-plane-parametric.png)
+
+As a generalization, we con consider the tangent plane to a parametric surface $S$ traced out by a vector function
+$$ \pmb{r}(u, v) = x(u, v)\pmb{i} + y(u, v)\pmb{j} + z(u, v)\pmb{k} $$
+at a point $P_0$ with position vector $\pmb{r}(u_0, v_0)$. We can find the tangent vectors to the grid curves $C_1$
+and $C_2$ that meet at the given point by the tangent vectors at the point. That is, then tangent plane at point $P_0$
+is the plane that contains the tangent vectors $\pmb{r}_u$ and $\pmb{r}_v$ and has normal vector $\pmb{r}_u \times \pmb{r}_v$
+where
+$$ \pmb{r}_u = \pleibniz[x]{u}\pmb{i} + \pleibniz[y]{u}\pmb{j} + \pleibniz[z]{u}\pmb{k} $$
+and
+$$ \pmb{r}_v = \pleibniz[x]{v}\pmb{i} + \pleibniz[y]{v}\pmb{j} + \pleibniz[z]{v}\pmb{k}.\; $$
+
+</div>
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# Linearization
+
+The **linear approximation** or **tangent plane approximation** of $f$ at $(a, b)$ is
+
+$$ f(x, y) \approx f(a, b) + f_x(a, b))(x - a) + f_y(a, b)(y - b). $$
+
+Note this is just a reformulation of the tangent plane, with $z = f(a, b)$. The tangent plane whose equation
+is that of above is the **linearization** of $f$ at $(a, b)$. An alternative means of visualizing linearization is 
+through the use of **differentials** as follows:
+
+$$ dz = f_x(x, y)dx + f_y(x, y)dy = \pleibniz[z]{x}dx + \pleibniz[z]{y}dy, $$
+
+where both $dx$ and $dy$ are independent variables.
+
+</section>
+
+<section class="primary">
+
+# Level Surfaces
+
+The tangent plane to a level surface $F(x, y, z) = k$ at $P(x_0, y_0, z_0)$ is the plane that passes through $P$ and has
+normal vector $\nabla F(x_0, y_0, z_0)$. Using the standard equation of a plane, we can write the equation of this
+tangent plane as
+$$ F_x(x_0, y_0, z_0)(x - x_0) + F_y(x_0, y_0, z_0)(y - y_0) + F_z(x_0, y_0, z_0)(z - z_0) = 0. $$
+
+<div class="proof">
+
+Suppose $S$ is a surface with equation $F(x, y, z) = k$, that is, it is a level surface of a function $F$ of three variables.
+Let $P(x_0, y_0, z_0)$ be a point on $S$. Let $C$ be any curve that lines of the surface $S$ and passes through the point $P$.
+We note the curve $C$ is described by a continuous vector function $\pmb{r}(t) = \lrangle{x(t), y(t), z(t)}$.[^1] 
+Letting $t_0$ be the parameter value corresponding to $P$ such that $\pmb{r}(t_0) = \lrangle{x_0, y_0, z_0}$. Since
+$C$ lies on $S$, any point $(x(t), y(t), z(t))$ must satisfy the equation of $S$, that is,
+$$ F(x(t), y(t), z(t)) = k. $$
+If $x$, $y$, and $z$ are differentiable functions of $t$ and $F$ is also differentiable, then we can use the
+[Chain Rule](chain_rule) to differentiate both sides of the above equation as follows:
+$$ \pleibniz[F]{x}\leibniz[x]{t} + \pleibniz[F]{y}\leibniz[y]{t} + \pleibniz[F]{z}\leibniz[z]{t} = 0, $$
+which can be written as
+$$ \nabla F \cdot \pmb{r}'(t) = 0 $$
+given that $\nabla F$ is the [gradient vector](directional_derivative#gradient-vector). In particular, when $t = t_0$
+we have $\pmb{r}(t_0) = \lrangle{x_0, y_0, z_0}$, so
+$$ \nabla F(x_0, y_0, z_0) \cdot \pmb{r}'(t_0) = 0. $$
+Thus the gradient vector at $P$, $\nabla F(x_0, y_0, z_0)$, is perpendicular to the tangent vector $\pmb{r}'(t_0)$ to
+any curve $C$ on $S$ that passes through $P$. Therefore we can define the tangent plane to the level surface as the plane
+that passes through $P$ and has normal vector $\nabla F(x_0, y_0, z_0)$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

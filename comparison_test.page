@@ -1,0 +1,59 @@
+---
+title: Comparison Test
+categories: Calculus
+icon: /img/icons/sequences-2.png
+...
+
+<section class="primary">
+
+# Summary
+
+Suppose that $\sum a_n$ and $\sum b_n$ are series with positive terms. Then
+
+1. If $\sum b_n$ is convergent and $a_n \leq b_n$ for all $n$. then $\sum a_n$ is also convergent.<br />  
+2. If $\sum b_n$ is divergent and $a_n \geq b_n$ for all $n$, then $\sum a_n$ is also divergent.<br />  
+
+<div class="proof">
+
+- Case 1
+:    Let $$ s_n = \sum_{i=1}^n a_i, t_n = \sum_{i=1}^n b_i, \text{ and } t = \sum_{n=1}^{\infty}b_n. $$
+     Since both series have positive terms, the sequences $\{s_n\}$ and $\{t_n\}$ are increasing. Also 
+     $t_n \rightarrow t$, so $t_n \leq t$ for all $n$. Since $a_i \leq b_i$, we have $s_n \leq t_n$. Thus $s_n \leq t$ for 
+     all $n$. This means that $\{s_n\}$ is increasing and bounded above and therefore converges by the 
+     [Monotonic Sequence Theorem](monotonic_sequence_theorem). Thus $\sum a_n$ converges.
+
+- Case 2
+:    If $\sum b_n$ is divergent, then $t_n \rightarrow \infty$. But $a_i \geq b_i$ so $s_n \geq t_n$. Thus
+     $s_n \rightarrow \infty$. Therefore $\sum a_n$ diverges.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Limit Comparison Test
+
+Suppose that $\sum a_n$ and $\sum b_n$ are series with positive terms. If
+$$ \xlimit{n}{\infty} \frac{a_n}{b_n} = c $$ where $c$ is a finite number and $c > 0$, then either both
+series converge or both diverge.
+
+<div class="proof">
+
+Let $m$ and $M$ be positive numbers such that $m < c < M$. Because $a_n/b_n$ is close to $c$ for large $n$,
+there is an integer $N$ such that $$ m < \frac{a_n}{b_n} < M,\quad \text{when }n > N $$ and so
+$$ mb_n < a_n < Mb_n,\quad \text{when }n > N\text{.} $$ 
+If $\sum b_n$ converges, so does $\sum Mb_n$. Thus $\sum a_n$ converges by part (1) of the Comparison Test.
+If $\sum b_n$ diverges, so does $\sum mb_n$ and part (2) of the Comparison Test shows that $\sum a_n$ diverges. 
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

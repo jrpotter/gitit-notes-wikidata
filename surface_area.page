@@ -1,0 +1,66 @@
+---
+title: Surface Area
+categories: Calculus
+icon: /img/icons/solids-of-revolution.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Patch Approximation](/img/diagrams/calculus/jacobian-approximation.png)
+
+If a smooth parametric surface $S$ is given by the equation
+$$ \pmb{r}(u, v) = x(u, v)\pmb{i} + y(u, v)\pmb{j} + z(u, v)\pmb{k} \quad (u, v) \in D\; $$
+and $S$ is convered just once as $(u, v)$ ranges throughout the parameter domain $D$, then the **surface area**
+of $S$ is
+$$ A(S) = \iint_D \left| \pmb{r}_u \times \pmb{r}_v \right| dA $$
+where
+$$ 
+  \pmb{r}_u = \pleibniz[x]{u}\pmb{i} + \pleibniz[y]{u}\pmb{j} + \pleibniz[z]{u}\pmb{k} 
+  \;\text{ and }\;
+  \pmb{r}_v = \pleibniz[x]{v}\pmb{i} + \pleibniz[y]{v}\pmb{j} + \pleibniz[z]{v}\pmb{k}.
+$$
+Note the similarities between this and the derivation of the [Jacobian](jacobian). This will arise again in
+the evaluation of [surface integrals](surface_integrals) as well.
+
+</div>
+
+<div class="proof">
+
+Consider a surface whose parameter domain $D$ is a rectangle and divide it into subrectangles $R_{ij}$. Choose
+$(u_i^*, v_i^*)$ to be the lower left corner of $R_{ij}$. The part $S_{ij}$ of the surface $S$ that corresponds to 
+$R_{ij}$ is called a **patch** and has the point $P_{ij}$ with position vector $\pmb{r}(u_i^*, v_i^*)$ as one of
+its corners. Let
+$$ \pmb{r}_u^* = \pmb{r}_u(u_i^*, v_j^*) \;\text{ and }\; \pmb{r}_v^* = \pmb{r}_v(u_i^*, v_j^*) $$
+be the tangent vectors at $P_{ij}$. Then, in the same manner as when solving for the Jacobian, we see that
+the area of the parallelogram spanned by the tangents can be approximated by
+$$ 
+  \left|(\Delta{u}\pmb{r}_u^*) \times (\Delta{v}\pmb{r}_v^*)\right| 
+    = \left|\pmb{r}_u^* \times \pmb{r}_v^*\right|\Delta{u}\Delta{v} 
+$$
+and thus an approximation to the area of $S$ is
+$$ \xlimit{m}{\infty}\xlimit{n}{\infty}\sum_{i=1}^m\sum_{j=1}^n \left|\pmb{r}_u^* \times \pmb{r}_v^*\right|\Delta{u}\Delta{v}. $$
+Recognizing this as a Riemann sum completes the derivation/proof.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Area of Curves](area_of_curves)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

@@ -1,0 +1,85 @@
+---
+title: Homogeneous Equations
+categories: Differential Calculus Linear
+icon: /img/icons/second-order-diff-equations.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Sample Graph](/img/graphs/diffeq/linear-homogeneous-sample.png)
+
+A second order linear equation is said to by **homogeneous** if the term $g(t)$ in
+$$ y'' + p(t)y' + q(t)y = g(t), $$
+is $0$ for all $t$. Otherwise the equation is called **nonhomogeneous**. If we can solve a homogeneous equation, then
+it is always possible to solve the corresponding nonhomogeneous equation (or at least express it in terms of an integral).
+When discussing general properties of linear differential equations, differential operation notation is introduced. More
+precisely, let $p$ and $q$ be continuous functions on an open interval $I$. Then, for any function $\phi$ that is twice
+differentiable on $I$, the differential operator $L$ is defined by
+$$ L[\phi] = \phi'' + p\phi' + q\phi $$
+and the value of $L[\phi]$ at a point $t$ is
+$$ L[\phi](t) = \phi''(t) + p(t)\phi'(t) + q(t)\phi(t). $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Existence and Uniqueness
+
+Consider the initial value problem
+$$ y'' + p(t)y' + q(t)y = g(t), \quad y(t_0) = y_0, \quad y'(t_0) = y'_0, $$
+where $p$, $q$, and $g$ are continuous on an open interval $I$ that contains the point $t_0$. Then there is exactly one solution
+$y = \phi(t)$ of this problem, and the solution exists throughout the interval $I$. Note the above is written in the form of
+a nonhomogeneous equation (though of course this includes homogeneous equations).
+
+</section>
+
+<section class="primary">
+
+# Principle of Superposition
+
+If $y_1$ and $y_2$ are two solutions of the differential equation
+$$ L[y] = y'' + p(t)y' + q(t)y = 0 $$
+then the linear combination $c_1y_1 + c_2y_2$ is also a solution for any values of the constants $c_1$ and $c_2$.
+
+<div class="proof">
+
+Note that
+$$\begin{align*}
+  L[c_1y_1 + c_2y_2] &= [c_1y_1 + c_2y_2]'' + p[c_1y_1 + c_2y_2]' + q[c_1y_1 + c_2y_2] \\
+                     &= c_1y_1'' + c_2y_2'' + c_1py_1' + c_2py_2' + c_1qy_1 + c_2qy_2  \\
+                     &= c_1[y_1'' + py_1' + qy_1] + c_2[y_2'' + py_2' + qy_2]          \\
+                     &= c_1L[y_1] + c_2L[y_2]. 
+\end{align*}$$
+Since $L[y_1] = 0$ and $L[y_2] = 0$, the proof follows.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Constant Coefficients](constant_coefficients)
+- [Nonhomogeneous Equations](nonhomogeneous_equations)
+- [Wronskian](wronskian)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Boyce W.E. & DiPrima R. C. (2010). Elementary Differential Equations (9th ed.). John Wiley & Sons, Inc. ISBN 978-0470554913.
+
+</section>
+
+<!-- Footnotes -->
+
+[^1]: [Fundamental Set of Solutions](wronskian#fundamental-set-of-solutions)

@@ -1,0 +1,139 @@
+---
+title: Moments
+categories: Statistics
+icon: /img/icons/inferential-statistics.png
+...
+
+<section class="primary">
+
+# Summary
+
+The expected value of a random variable $X, E[X]$, is also referred to as the **mean** or the **first moment
+of $X$**. The quantity $E[X^n], n\geq 1$, is called the **$\spscript{n}{th}$ moment of $X$**.
+Generalizing further, for discrete random variable $X$, 
+$$ E[X^n] = \sum_{x:p(x)>0}x^np(x). $$
+
+</section>
+
+<section class="primary">
+
+# Generating Functions
+
+The **moment generating function** $M(t)$ of the random variable $X$ is defined for all real values of $t$ by
+$$ 
+  M(t) = E[e^{tX}] = \begin{cases} 
+    \displaystyle\sum_x e^{tx}p(x) &\text{if } X \text{ is discrete with mass function } p(x),                   \\
+    \displaystyle\int_{-\infty}^{\infty} e^{tx}\;f(x)\;dx &\text{if } X \text{ is continuous with density }f(x).
+  \end{cases}
+$$
+These are called moment generating functions because all of the moments of $X$ can be obtained by successively 
+differentiating $M(t)$ and then evaluating the result at $t = 0$.
+
+<div class="proof">
+
+Under the assumption that the interchange of differentiation and the expectation operator is legitimate, we have that
+$$\begin{align*}
+  M'(t) &= \leibniz{t}E\left[e^{tX}\right]              \\
+        &= E\left[\leibniz{t}\left(e^{tX}\right)\right] \\
+        &= E\left[Xe^{tX}\right],
+\end{align*}$$
+Therefore $M'(0) = E[X]$. Generalizing, we see that the $\spscript{n}{th}$ deriviative of $M(t)$ is given by
+$$ M^{(n)}(t) = E\left[X^ne^{tX}\right]\quad n \geq 1 $$
+implying that $$ M^{(n)}(0) = E[X^n]\quad n \geq 1. $$
+
+</div>
+
+<section class="secondary">
+
+## Sum of Random Variables
+
+Let $\inflate{X}{n}$ be independent and identically distributed random variables. Then
+$$ M_{\inflatec[+]{X}{n}}(t) = [M(t)]^n $$
+where $M(t) = M_{X_j}(t)$ is the common moment generating function of the $X_j$'s.
+
+<div class="proof">
+
+Consider just the case of two independent, identically distributed random variables $X$ and $Y$. Then,
+by [expectation of independent variables](expected_value#independent-variables), we have that
+$$ E\left[e^{t(X + Y)}\right] = E\left[e^{tX}e^{tY}\right] = E\left[e^{tX}\right]E\left[e^{tY}\right] = M_X(t)M_Y(t). $$
+This is easily generalized to $n$ variables, completing the proof.
+
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Sum of Random Number of Random Variables
+
+Let $X_1, X_2, \ldots$ be a sequence of independent and identically distributed random variables, and let $N$ be
+a nonnegative, integer-valued random variable that is independent of the sequence $X$, $i \geq 1$. Then the moment
+generating function of $$ Y = \sum_{i=1}^N X_i $$ is $$ M_Y(t) = E\left[(M_X(t))^N\right] $$
+where $M_X(t) = E[e^{tX_i}]$.
+
+<div class="proof">
+
+By properties of [expectation via conditioning](conditional_expectation#expectation-via-conditioning), we can first condition
+on $N$ as follows:
+$$
+  E\left[\exp\left\{t\sum_1^N X_i\right\} \big|\; N = n \right]
+    = E\left[\exp\left\{t\sum_1^n X_i\right\}\right]
+    = \left[M_X(t)\right]^n
+$$
+where $M_X(t) = E[e^{tX_i}]$. Therefore
+$$ M_Y(t) = E\left[E\left[e^{tY} \;|\; N\right]\right] = E\left[(M_X(t))^n\right]. $$ 
+
+</div>
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# Moments of Event Occurrences
+
+For given events $\inflate{A}{n}$, finding $E[X]$, where $X$ is the number of $k$ pairings of the given events that occur, 
+amounts to $$ E\left[\binom{X}{k}\right] = \sum_{\inflatec[<]{i}{k}} \bbps{A_{i_1}A_{i_2}\cdots A_{i_k}}. $$
+The above can be used to evaluate the moments of expectation, by evaluating $\binom{X}{k}$ and solving for $E[X^k]$.
+
+<div class="proof">
+
+Define the indicator variable $I_i$ for event $A_i$ as
+$$
+  I = \begin{cases}
+    1 &\text{if } A_i \text{ occurs} \\
+    0 &\text{otherwise}.
+  \end{cases}
+$$
+Then $$ E[X] = E\left[\sum_{i=1}^n I_i\right] = \sum_{i=1}^n E[I_i] = \sum_{i=1}^n \bbps{A_i}. $$
+Similarly, if interested in the number of *pairs* of events that occur, we consider $I_iI_j$ which equals $1$
+if both $A_i$ and $A_j$ occur and $0$ otherwise. Since $X$ is the number of events that occur, our desired
+random variable is $$ \binom{X}{2} = \sum_{i < j}I_iI_j $$ and we find that
+$$ E\left[\binom{X}{2}\right] = \sum_{i < j} E[I_iI_j] = \sum_{i < j} \bbps{A_iA_j}. $$
+Extrapolating to distinct subsets of $k$ events that all occur, we find that
+$$
+  E\left[\binom{X}{k}\right] = \sum_{\inflatec[<]{i}{k}} E[I_{i_1}I_{i_2}\cdots I_{i_k}]
+                             = \sum_{\inflatec[<]{i}{k}} \bbps{A_{i_1}A_{i_2}\cdots A_{i_k}}. 
+$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Expected Value](expected_value)
+- [Indicator Variables](indicator_variables)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

@@ -1,0 +1,95 @@
+---
+title: Congruence Equations
+categories: Abstract Algebra
+icon: /img/icons/arithmetic.png
+...
+
+<section class="primary">
+
+# Summary
+
+We define the group $G_n$ to be the set of nonzero elements of $\bbz_n$ that are not $0$ divisors. Note the order
+of this group, by definition, is $\phi(n)$, where $\phi$ is [Euler's phi-function](eulers_theorem). This group
+is incredibly useful in not only the eventual derivation of Euler's Theorem, but also in analyzing solutions of
+congruence equations.
+
+<div class="proof">
+
+First off, we must show the set $G_n$ of nonzero elements of $\bbz_n$ that are not $0$ divisors forms a group under
+multiplication modulo $n$. Let $a, b \in G_n$. For the sake of contradiction, suppose that $ab \not\in G_n$. Then
+there must exist $c \neq 0$ such that $(ab)c = 0$. But this means $a(bc) = 0$, and since $b \in G_n$ and $c \neq 0$,
+we have $bc \neq 0$ by definition of $G_n$. Thus this implies $a(bc) = 0$, or that $a \not\in G_n$, a contradiction.
+Thus $G_n$ is closed under multiplication modulo $n$.
+
+Now, multiplication modulo $n$ is associative and $1 \in G_n$. Lastly, if $a \in G_n$, there exists a $b \in G_n$
+such that $ab = 1$ since for $1, a_1, \ldots, a_r$ the elements $a1, aa_1, \ldots, aa_r$ are all different.
+This is because if $aa_i = aa_j$, then $a(a_i - a_j) = 0$, and since $a \in G_n$ is not a divisor of $0$,
+$a_i - a_j = 0$ or $a_i = a_j$. Thus either $a_1 = 1$ or some $aa_i$ must be $1$ meaning $a$ has a multiplicative inverse.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Relatively Prime
+
+Let $m$ be a positive integer and let $a \in \bbz_m$ be relatively prime to $m$. Then for each $b \in \bbz_m$, the
+equation $ax = b$ has a unique solution in $\bbz_m$. Interpreting this theorem in terms of congruences, we then see
+that if $a$ and $m$ are relatively prime integers, then for any integer $b$, the congruence $ax \equiv b \;(\text{mod}\;m)$
+has as solutions all integers in precisely one residue class modulo $m$.
+
+<div class="proof">
+
+Since $a$ is relatively prime to $m$, it is a member of the group $G_m$. Thus $a$ has an inverse, and is therefore a
+unit in $\bbz_m$. Multiplying both sides of $ax = b$ on the left by $a^{-1}$, we see our only solution is $x = a^{-1}b$.
+Since $x$ is a unique solution, and noting that $\bbz_m$ is isomorphic to $\bbz/m\bbz$, we get that all solutions are
+integers in exactly one residue class modulo $m$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# General Solutions
+
+Let $m$ be a positive integer, $a, b \in \bbz_m$, and $d$ be the $\text{gcd}$ of $a$ and $m$. First, the equation
+$ax = b$ has a solution in $\bbz_m$ if and only if $d$ divides $b$. When $d$ divides $b$, the equation has exactly
+$d$ solutions in $\bbz_m$. 
+
+We can also interpret this theorem in terms of congruences, in a manner that parallels that of the 
+[section above](#relatively-prime). That is, let $d$ be the $\text{gcd}$ of positive integers $a$ and $m$. Then
+the congruence $ax \equiv b \;(\text{mod}\;m)$ has a solution if and only if $d$ divides $b$. When this is the
+case, the solutions are the integers in exactly $d$ distinct residue classes modulo $m$.
+
+<div class="proof">
+
+First we show a solution exists only if $d$ divides $b$. Suppose $s \in \bbz_m$ is a solution. Then
+$as - b = qm$ in $\bbz$, so $b = as - qm$. But, by hypothesis, $d$ divides both $a$ and $m$ so $d$ must
+divide $b$. Thus a solution $s$ can exist only if $d$ divides $b$.
+
+Next we show that this equation has exactly $d$ solutions in $\bbz_m$. So, suppose $d$ divides $b$. Then, by hypothesis,
+$d$ divides $a$, $b$, and $m$. Let $$ a = a_1d, \; b = b_1d, \; \text{and} \; m = m_1d. $$
+Again letting $s$ represent a solution of our congruence, we see that $as - b = qm$ in $\bbz$, which can be rewritten
+as $d(a_1s - b_1) = dqm_1$. Therefore $as - b$ is a multiple of $m$ if and only if $a_1s - b_1$ is a multiple of $m_1$,
+and the solutions $s$ of $ax = b$ in $\bbz_m$ are precisely the elements that, read modulo $m_1$, yield solutions of
+$a_1x = b_1$ in $\bbz_{m_1}$.
+
+Now, $a_1$ and $m_1$ must be relatively prime, since if they were not, $d$ would be larger than what it actually is.
+Thus, because the two are [relatively prime](#relatively-prime), we can let $s \in \bbz_{m_1}$ be the *unique* solution
+of $a_1x = b_1$ in $\bbz_{m_1}$. Therefore, the numbers in $\bbz_m$ that reduce to $s$ modulo $m_1$ are precisely those
+that can be computed in $\bbz_m$ as
+$$ s, s + m_1, s + 2m_1, s + 3m_1, \ldots, s + (d-1)m_1. $$
+
+</div> 
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Fraleigh, John B. (2003). A First Course In Abstract Algebra (7th ed.). Pearson. ISBN 978-0201763904.
+
+</section>

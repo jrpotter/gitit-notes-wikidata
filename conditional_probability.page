@@ -1,0 +1,41 @@
+---
+title: Conditional Probability
+categories: Statistics
+icon: /img/icons/inferential-statistics.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Conditional Diagram](/img/diagrams/statistics/conditional-probability.png)
+
+Conditional probability takes into account the new probability given the information that another event
+has already occurred. Note the conditional probability of an event is the same as the probability of said
+event if it is [independent](independence) from the event it is being conditioned on.
+
+More specifically, the probability of an event $E$ given the occurrence of an event $F$ where $\bbps{F} > 0$ is
+$$ \bbps{E\;|\;F} = \frac{\bbps{EF}}{\bbps{F}}. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Event Intersection
+
+If events are dependent, we see by the definition of conditional probability that
+$$ \bbps{\inflate[]{E}{n}} = \bbps{E_1}\bbps{E_2\;|\;E_1}\ldots\bbps{E_n\;|\;\inflate[]{E}{n-1}}. $$
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

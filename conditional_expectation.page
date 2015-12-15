@@ -1,0 +1,83 @@
+---
+title: Conditional Expectation
+categories: Statistics
+icon: /img/icons/inferential-statistics.png
+...
+
+<section class="primary">
+
+# Summary
+
+We define the conditional expectation of $X$ given that $Y = y$, for all values of $y$ such that $p_Y(y) > 0$, by 
+$$ E\left[X \;|\; Y = y\right] = \sum_x xp_{X|Y}(x\;|\;y). $$
+That is, we're considering the expectation with respect to the [conditional distribution](conditional_distributions) of 
+$X$ given $Y = y$. Similarly, if $X$ and $Y$ are jointly continuous with a joint probability density function $\;f(x, y)$,
+then the conditional expectation of $X$, given that $Y = y$, is defined for all values of $y$ such that
+$f_Y(y) > 0$ by $$ E\left[X\;|\;Y = y\right] = \int_{-\infty}^{\infty} xf_{X|Y}(x\;|\;y)\;dx. $$
+Note that the properties of [expectation](expected_value) encountered also apply to the setting of conditional expectations.
+
+</section>
+
+<section class="primary">
+
+# Expectation via Conditioning
+
+Supposing $X$ and $Y$ are random variables, we denote $E[X\;|\;Y = y]$ by $E[X\;|\;Y]$. Then we find that 
+$$ E[X] = E[E[X\;|\;Y]]. $$ That is, if $Y$ is a discrete random variable, $$ E[X] = \sum_y E[X\;|\;Y = y]\bbps{Y = y}, $$ 
+and if $Y$ is continuous with density $\;f_Y(y)$, we have $$ E[X] = \int_{-\infty}^{\infty} E[X\;|\;Y = y]\;f_Y(y)\;dy. $$
+
+<div class="proof">
+
+We prove just the discrete case $$ E[X] = \sum_y E[X\;|\;Y = y]\bbps{Y = y} $$ as follows:
+$$\begin{align*}
+  \sum_y E[X\;|\;Y = y]\bbps{Y = y} &= \sum_y\sum_x x\bbpc{X=x}{Y=y}\bbps{Y=y}                    \\
+                                    &= \sum_y\sum_x x\frac{\bbps{X=x, Y=y}}{\bbps{Y=y}}\bbps{Y=y} \\
+                                    &= \sum_y\sum_x x\bbps{X = x, Y = y}                          \\
+                                    &= \sum_x x \sum_y \bbps{X=x, Y=y}                            \\
+                                    &= \sum_x x\bbps{X=x}                                         \\
+                                    &= E[X].
+\end{align*}$$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Predictions
+
+Let $g(X)$ be a function that takes in a random variable $X$ and, on the basis of the observed value, attempts to predict
+the value of a second random variable $Y$. That is, if $X$ is observed to equal $x$, then $g(x)$ is our prediction for
+the value of $Y$. Following a least squares model, we choose $g$ so as to minimize $E[(Y - g(X))^2]$. Under this model,
+the best possible predictor of $Y$ is $g(X) = E[Y\;|\;X]$. That is, $$ E[(Y - g(X))^2] \geq E[(Y - E[Y\;|\;X])^2]. $$
+
+<div class="proof">
+
+Consider the following:
+$$\begin{align*}
+  E[(Y - g(X))^2 \;|\; X] &= E[(Y - E[Y\;|\;X] + E[Y\;|\;X] - g(X))^2\;|\;X]             \\
+                          &= E[(Y - E[Y\;|\;X])^2\;|\;X] + E[(E[Y\;|\;X] - g(X))^2\;|\;X]
+                           + 2E[(Y - E[Y\;|\;X])(E[Y\;|\;X] - g(X))\;|\;X].
+\end{align*}$$
+Since we are given the value of $X$, $E[Y\;|\;X] - g(X)$ can be treated as a constant (since it is a function of $X$). 
+Thus,
+$$\begin{align*}
+  E[(Y - E[Y\;|\;X])(E[Y\;|\;X] - g(X))\;|\;X] 
+    &= (E[Y\;|\;X] - g(X))E[Y - E[Y\;|\;X]\;|\;X]   \\
+    &= (E[Y\;|\;X] - g(X))(E[Y\;|\;X] - E[Y\;|\;X]) \\
+    &= 0                                         
+\end{align*}$$
+Therefore $$ E[(Y - g(X))^2\;|\;X] \geq E[(Y - E[Y\;|\;X])^2\;|\;X], $$ from which the desired result is reached
+by taking the expectation on both sides.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Ross, Sheldon (2010). A First Course in Probability (8th ed.). Pearson. ISBN 978-0-13-603313-4.
+
+</section>

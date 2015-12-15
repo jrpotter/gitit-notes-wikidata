@@ -1,0 +1,87 @@
+---
+title: Transpositions
+categories: Linear Algebra
+icon: /img/icons/matrix-transformations.png
+...
+
+<section class="primary">
+
+# Disambiguation
+
+Not to be confused with the following:
+
+- ([Abstract Algebra](abstract_algebra)) [Transpositions](cycles#transpositions) of cycles.
+
+</section>
+
+<section class="primary">
+
+# Summary
+
+Consider an $m \times n$ matrix $A$. The **transpose** $A^T$ of $A$ is the $n \times m$ matrix whose $\spscript{ij}{th}$
+entry is the $\spscript{ji}{th}$ entry of $A$: the roles of rows and columns are reversed. Note the dot product can be
+defined in terms of a transposition and resulting matrix product, and, as such, provide different insights inherent in 
+these substitutions.
+
+1. If $A$ is an $n \times p$ matrix and $B$ a $p \times m$ matrix, then $(AB)^T = B^TA^T$.<br />  
+   <div class="proof">
+   We simply compare entries between the two:
+   $$\begin{align*}
+     \spscript{ij}{th}\text{ entry of }(AB)^T &= \spscript{ji}{th}\text{ entry of }AB       \\
+                                              &= (\spscript{j}{th}\text{ row of }A) \cdot
+                                                 (\spscript{i}{th}\text{ column of } B)     \\
+     \spscript{ij}{th}\text{ entry of }B^TA^T &= (\spscript{i}{th}\text{ row of }B^T)\cdot
+                                                 (\spscript{j}{th}\text{ column of }A^T     \\
+                                              &= (\spscript{i}{th}\text{ column of }B)\cdot
+                                                 (\spscript{j}{th}\text{ row of }A)
+                                                 \text{.}
+   \end{align*}$$
+   </div><br />
+
+2. If an $n \times n$ matrix $A$ is invertible, then so is $A^T$, and $(A^T)^{-1} = (A^{-1})^T$.<br />    
+   <div class="proof">
+   Note that $AA^{-1} = I_n$. Transposing both sides and using part (\romannumeral 1), we find that
+   $$ (AA^{-1})^T = (A^{-1})^TA^T = I_n\text{.} $$ Multiplying both sides by $(A^T)^{-1}$ completes the proof.
+   </div><br />
+
+3. For any matrix $A$, $\text{rank}(A) = \text{rank}(A^T)$.<br />  
+   <div class="proof">
+   Consider the row space of $A$ (i.e., the span of the rows of $A$). We note the dimension of this space is $\text{rank}(A)$.
+   Thus:
+   $$\begin{align*}
+     \text{rank}(A^T) &= \text{dimension of the span of the columns of }A^T \\
+                      &= \text{dimension of the span of the rows of }A      \\
+                      &= \text{rank}(A)\text{.}
+   \end{align*}$$
+   </div><br />
+
+4. If $A$ is an $n \times m$ matrix, then $\text{ker}(A) = \text{ker}(A^TA)$.<br />  
+   <div class="proof">
+   First note that $\text{ker}(A) \subseteq \text{ker}(A^TA)$ since for all $\vec{x}\in\text{ker}(A)$, 
+   $A^TA\vec{x} = A^T\vec{0} = \vec{0}$. Now consider a vector $\vec{x}$ in the kernel of $A^TA$ such that $A^TA\vec{x}=0$. 
+   Then $A\vec{x}$ is in the image of $A$ and in the kernel of $A^T$. Since the intersection of $V$ and $V^{\perp}$ consists 
+   of the zero vector alone[^1], and $\text{ker}(A^T)$ is the orthogonal complement of $\text{im}(A)$[^2], 
+   $$ A\vec{x} = \vec{0}. $$
+   Therefore $\vec{x}$ is in the kernel of $A$.
+   </div><br />
+
+5. If $A$ is an $n \times m$ matrix with $\text{ker}(A) = \{\vec{0}\}$, then $A^TA$ is invertible.<br />  
+   <div class="proof">
+   Note that $A^TA$ is an $m \times m$ matrix. By part (4), $\text{ker}(A^TA) = \{\vec{0}\}$, and the square 
+   matrix $A^TA$ is invertible.
+   </div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Bretscher, Otto (2008). Linear Algebra with Applications (4th ed.). Pearson. ISBN 978-0-13-600926-9.
+
+</section>
+
+<!-- Footnotes -->
+
+[^1]: [Orthogonal Complements: Property 2](orthogonal_complement#properties)
+[^2]: [Orthogonal Complements: Property 5](orthogonal_complement#properties)

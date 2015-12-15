@@ -1,0 +1,194 @@
+---
+title: Eigenspaces
+categories: Linear Algebra
+icon: /img/icons/vector-spaces.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Blue Arrow is an Eigenvector](/img/diagrams/linear/eigenvector.png)
+
+Let $A$ be an $n \times n$ matrix $A$. A nonzero vector $\vec{v}$ in $\bbr^n$ is called an **eigenvector** of $A$ if 
+$A\vec{v}$ is a scalar multiple of $\vec{v}$, that is, if
+$$ A\vec{v} = \lambda\vec{v}, $$
+for some scalar $\lambda$. This scalar $\lambda$ is the **eigenvalue** associated with the eigenvector $\vec{v}$.
+Similar definitions exist for linear transformations from $V$ to $V$, where $V$ is a linear space. Now consider an 
+eigenvalue $\lambda$ of an $n \times n$ matrix $A$. Then the kernel of the matrix $A - \lambda I_n$ is called the 
+**eigenspace** associated with $\lambda$, denoted by $E_\lambda$:
+
+$$ E_\lambda = \text{ker}(A - \lambda I_n) = \{ \vec{v} \in \bbr^n: A\vec{v} = \lambda\vec{v} \}. $$
+
+Note that the eigenvectors with eigenvalue $\lambda$ are the nonzero vectors in the eigenspace $E_\lambda$.
+A similar definition holds for linear spaces.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Characteristic Equation
+
+Consider an $n \times n$ matrix $A$ and a scalar $\lambda$. Then $\lambda$ is an eigenvalue of $A$ if (and only if)
+$$ \text{det}(A - \lambda I_n) = 0. $$
+This is called the **characteristic equation** of matrix $A$.
+
+<div class="proof">
+
+Consider an $n \times n$ matrix $A$ and a scalar $\lambda$. $\lambda$ is an eigenvalue of $A$ if there exists
+a nonzero vector $\vec{v}$ in $\bbr^n$ such that
+$$\begin{align*}
+  &\quad A\vec{v} = \lambda\vec{v}                      \\
+  &\Rightarrow A\vec{v} - \lambda\vec{v} = \vec{0}      \\
+  &\Rightarrow A\vec{v} - \lambda I_n \vec{v} = \vec{0} \\
+  &\Rightarrow (A - \lambda I_n)\vec{v} = \vec{0}.
+\end{align*}$$
+Then by definition of the kernel, this means
+$$ \text{ker}(A - \lambda I_n) \neq \{\vec{0}\}. $$
+
+This is the case if and only if the matrix $A - \lambda I_n$ fails to be invertible, which means that
+$$ \text{det}(A - \lambda I_n) = 0. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Characteristic Polynomial
+
+If $A$ is an $n \times n$ matrix, then $\text{det}(A - \lambda I_n)$ is a polynomial of degree $n$, of the form
+$$ (-\lambda)^n + (\text{tr}\;A)(-\lambda)^{n-1} + \cdots + \text{det}\;A. $$
+This is called the **characteristic polynomial** of $A$, denoted by $f_A(\lambda)$.
+
+<div class="proof">
+
+$$ 
+  f_A(\lambda) = \text{det}(A - \lambda I_n) = \text{det}
+  \begin{bmatrix} 
+    a_{11} - \lambda & a_{12}           & \cdots & a_{1n}           \\
+    a_{21}           & a_{22} - \lambda & \cdots & a_{2n}           \\
+    \vdots           & \vdots           &        & \vdots           \\
+    a_{n1}           & a_{n2}           & \cdots & a_{nn} - \lambda
+  \end{bmatrix}.
+$$
+
+The product associated with any pattern in the matrix $A - \lambda I_n$ is a polynomial of degree less than or
+equal to $n$. This implies that $\text{det}(A - \lambda I_n)$ is a polynomial of degree less than or equal to $n$.
+More precisely, the diagonal pattern gives the product:
+
+$$ \begin{align*}
+  &\quad (a_{11} - \lambda)(a_{22} - \lambda)\cdots(a_{nn} - \lambda)                                                \\
+  &= (-\lambda)^n + (a_{11} + a_{22} + \cdots + a_{nn})(-\lambda)^{n-1} + (\text{a polynomial of degree} \leq n - 2) \\
+  &= (-\lambda)^n + (\text{tr}\;A)(-\lambda)^{n-1} + (\text{a polynomial of degree} \leq n - 2).
+\end{align*}$$
+
+Any other pattern involves at least two scalars off the diagonal and its product is therefore a polynomial of
+degree less than or equal to $n - 2$. This implies that
+
+$$ f_A(\lambda) = (-\lambda)^n + (\text{tr}\;A)(-\lambda)^{n-1} + (\text{a polynomial of degree} \leq n - 2). $$
+
+The constant term is $f_A(0) = \text{det}(A)$.
+
+</div>
+
+<section class="secondary">
+
+## Determinant and Trace
+
+The above implies that if an $n \times n$ matrix $A$ has the eigenvalues $\inflate{\lambda}{n}$ listed with their
+algebraic multiplicites, then 
+$$ \text{det}\;A = \inflatec[]{\lambda}{n}, $$
+and
+$$ \text{tr}\;A = \inflatec[+]{\lambda}{n}. $$
+
+<div class="proof">
+
+Since the characteristic polynomial factors completely in the above case, we can write
+$$ f_A(\lambda) = \text{det}(A - \lambda I_n) = (\lambda_1 - \lambda)(\lambda_2 - \lambda)\cdots(\lambda_n - \lambda). $$
+Now
+$$ f_A(0) = \text{det}\;A = \inflatec[]{\lambda}{n}, $$
+as claimed. Similarly, the second coefficient of the characteristic polynomial is the trace of $A$ and the
+second coefficient of $\text{det}(A - \lambda I_n)$ is the summation of eigenvalues. Thus
+$$ \text{tr}\;A = \inflatec[+]{\lambda}{n}. $$
+
+</div>
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# Algebraic Multiplicity
+
+We say that an eigenvalue $\lambda_0$ of a square matrix $A$ has **algebraic multiplicity $k$** if $\lambda_0$
+is a root of multiplicity $k$ of the characteristic polynomial $f_A(\lambda)$, meaning that we can write
+$$ f_A(\lambda) = (\lambda_0 - \lambda)^k g(\lambda) $$
+for some polynomial $g(\lambda)$ with $g(\lambda_0) \neq 0$.
+
+The above immediately implies that an $n \times n$ matrix has at most $n$ real eigenvalues, even if counted with
+their algebraic multiplicities since the characteristic polynomial is of order $n$. If $n$ is odd, then an
+$n \times n$ matrix has at least one real eigenvalue by the [Intermediate Value Theorem](intermediate_value_theorem).
+
+</section>
+
+<section class="primary">
+
+# Geometric Multiplicity
+
+Consider an eigenvalue $\lambda$ of an $n \times n$ matrix $A$. The dimension of eigenspace
+$E_\lambda = \text{ker}(A - \lambda I_n)$ is called the **geometric multiplicity** of eigenvalue $\lambda$.
+Thus the geometric multiplicity is the nullity of matrix $A - \lambda I_n$, or $n - \text{rank}(A - \lambda I_n)$.
+
+We note the geometric multiplicity of an eigenvalue $\lambda$ is less than or equal to the algebraic multiplicity of $\lambda$.
+
+<div class="proof">
+
+Suppose $\lambda_0$ is an eigenvalue of an $n \times n$ matrix $A$, with geometric multiplicity $m$, meaning that
+the dimension of eigenspace $E_{\lambda_0}$ is $m$. Let $\inflate{\vec{v}}{m}$ be a basis of $E_{\lambda_0}$, and
+consider an invertible $n \times n$ matrix $S$ whose first $m$ columns are $\inflate{\vec{v}}{m}$. Let 
+$B = S^{-1}AS$, a matrix similar to $A$. Now compute $B\vec{e}_i$, for $i = 1, \ldots, m$, keeping in mind that
+$S\vec{e}_i = \vec{v}_i$, and therefore $S^{-1}\vec{v}_i = \vec{e}_i$.
+Thus
+$$ 
+  (\spscript{i}{th}\text{ column of } B) = B\vec{e}_i 
+                                         = S^{-1}AS\vec{e}_i 
+                                         = S^{-1}A\vec{v}_i 
+                                         = S^{-1}(\lambda_0\vec{v}_i)
+                                         = \lambda_0 (S^{-1}\vec{v}_i)
+                                         = \lambda_0 \vec{e}_i.
+$$
+
+Thus the first $m$ columns of $B$ look like those of $\lambda_0 I_n$ and 
+$$ B = \begin{bmatrix} \lambda_0 I_n & P \\ 0 & Q \end{bmatrix} $$
+for some arbitrary block matrices $P$ and $Q$. Since $B$ is similar to $A$[^1], we have
+$$ f_A(\lambda) = f_B(\lambda) = \text{det}(B - \lambda I_n) = (\lambda_0 - \lambda)^m f_Q(\lambda), $$
+showing that the algebraic multiplicity of eigenvalue $\lambda_0$ is at least $m$, as claimed. Note the first equality follows 
+from [similar matrices](similar_matrices#eigenvectors) and the last follows from the 
+[determinant of block matrices](block_matrices#determinant).
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Diagonalization](change_of_basis#diagonalization)
+- [Eigenbases](bases#eigenbases)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Bretscher, Otto (2008). Linear Algebra with Applications (4th ed.). Pearson. ISBN 978-0-13-600926-9.
+
+</section>

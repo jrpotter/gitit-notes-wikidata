@@ -1,0 +1,217 @@
+---
+title: Homomorphisms
+categories: Abstract Algebra
+icon: /img/icons/arithmetic.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block excerpt">
+
+![Group Homomorphism](/img/diagrams/abstract/homomorphism.png)
+
+A homomorphism is a reduction of the isomorphism property by removing the set-theoretic constructs 
+(i.e. injectivity and surjectivity). We note that despite this relaxation of restrictions, we are able to determine a 
+lot of different structural properties such as commutativity (proof omitted). That is, a homomorphism $\phi$ from groups or rings
+$G$ to $H$ relay the preservation of different properties. Furthermore, each element of each coset in $G$ is mapped to a single element in $H$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Group Homomorphisms
+
+A map $\phi$ of a group $G$ into a group $G'$ is a **homomorphism** if the homomorphism property
+$$ \phi(ab) = \phi(a)\phi(b) $$ holds for all $a, b \in G$.
+
+<section class="secondary">
+
+## Kernel
+
+Let $\phi: G \rightarrow G'$ be a homomorphism of groups. The subgroup $\phi^{-1}[\{e'\}] = \{x \in G : \phi(x) = e'\}$
+is the **kernel of $\phi$**, denoted by $\text{Ker}(\phi)$. Furthermore, let $H = \text{Ker}(\phi)$ and $a \in G$.
+Then the set $$ \phi^{-1}[\{\phi(a)\}] = \{x \in G : \phi(x) = \phi(a)\} $$ is the left coset $aH$ of $H$,
+and is also the right coset $Ha$ of $H$. Consequently, the two partitions of $G$ into left cosets and into
+right cosets of $H$ are the same.
+
+<div class="proof">
+
+$\forward$ Suppose that $\phi(x) = \phi(a)$. Then $$ \phi(a^{-1})\phi(x) = \phi(a^{-1}x) = e'. $$ Therefore $a^{-1}x \in H$
+meaning there exists some $h \in H$ such that $x = ah$. Thus, $$ \phi^{-1}[\{\phi(a)\}] \subseteq aH. $$
+
+$\backward$ For all $y \in aH$ there exists some $h \in H$ such that, $$ \phi(y) = \phi(ah) = \phi(a)\phi(h) = \phi(a). $$
+Thus, $$ aH \subseteq \phi^{-1}[\{\phi(a)\}]. $$
+
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Image
+
+Let $\phi$ be a mapping of a set $X$ into a set $Y$, and let $A \subseteq X$ and $B \subseteq Y$. The **image
+$\phi[A]$ of $A$ in $Y$ under $\phi$** is $\{ \phi(a) : a \in A\}$. The set $\phi[X]$ is the **range of $\phi$**.
+The **inverse image $\phi^{-1}[B]$ of $B$ in $X$** is $\{ x \in X : \phi(x) \in B \}$. Letting $\phi$ be a homomorphism
+of a group $G$ into a group $G'$, we see that
+
+1. If $e$ is the identity element in $G$, then $\phi(e)$ is the identity element $e'$ in $G'$.
+2. If $a \in G$, then $\phi(a^{-1}) = \phi(a)^{-1}$.
+3. If $H$ is a subgroup of $G$, then $\phi[H]$ is a subgroup of $G'$.
+4. If $K'$ is a subgroup of $G'$, then $\phi^{-1}[K']$ is a subgroup of $G$.
+
+<div class="proof">
+
+- Case 1
+:    Let $e \in G$ be the identity element. Then $\phi(a) = \phi(ae) = \phi(a)\phi(e)$. Thus, multiplying both sides
+     by $\phi(a)^{-1}$, we see that $e' = \phi(e)$ meaning $\phi(e)$ is the identity element $e'$ in $G'$.
+
+- Case 2
+:    We know that $\phi(aa^{-1}) = \phi(e)$ and $\phi(aa^{-1}) = \phi(a)\phi(a^{-1})$. Thus $\phi(e) = \phi(a)\phi(a^{-1})$
+     implying they are inverse elements. Thus $\phi(a^{-1}) = \phi(a)^{-1}$.
+
+- Case 3
+:    Let $H$ be a subgroup of $G$. Suppose $\phi(a)$ and $\phi(b)$ are two elements of $\phi[H]$. Then $\phi(a)\phi(b) = \phi(ab)$
+     is also an element of $H$ so $\phi[H]$ is closed under the group operation of $G'$. We also note that $\phi(e)$ is the 
+     identity and inverses exist according to property 2. Lastly, associativity follows by associtativity of $G$ since
+     $$ \phi(a)[\phi(b)\phi(c)] = \phi(a)\phi(bc) = \phi(abc) = \phi(ab)\phi(c) = [\phi(a)\phi(b)]\phi(c). $$
+
+- Case 4
+:    Let $K'$ be a subgroup of $G'$. Suppose $a$ and $b$ are in $\phi^{-1}[K']$. Since $K'$ is a group, $\phi(a)\phi(b) \in K'$, 
+     and thus $\phi(a)\phi(b) = \phi(ab)$ shows that $ab \in \phi^{-1}[K']$. Therefore $\phi^{-1}[K']$ is closed under the group
+     operation of $G$. Since $e' \in K'$, by property 1 we have that $e' = \phi(e)$ so $e \in \phi^{-1}[K']$. In addition, if
+     $a \in \phi^{-1}[K']$, then $\phi(a) \in K'$ implying that $\phi(a)^{-1} = \phi(a^{-1}) \in K'$. Thus 
+     $a^{-1} \in \phi^{-1}[K']$, proving $K'$ is a group (note associativity follows by associativity of $K'$).
+
+</div>
+
+<section class="tertiary">
+
+### Cardinality
+
+We can also disprove a function is a homomorphism based on the cardinality of the image. Letting $\phi: G \rightarrow G'$ 
+be a group homomorphism, we find that:
+
+1. If $\abs{G}$ is finite, then $\abs{\phi[G]}$ is finite and is a divisor of $\abs{G}$.
+2. If $\abs{G'}$ is finite, then $\abs{\phi[G]}$ is finite and is a divisor of $\abs{G'}$.
+
+<div class="proof">
+
+- Case 1
+:    Suppose $\abs{G}$ is finite. Then $\abs{\phi[G]} \leq \abs{G}$ and thus $\phi[G]$ is also finite. We note there
+     exists a one-to-one correspondence between the elements of $\phi[G]$ and the cosets of the kernel via the 
+     [canonical isomorphism](homomorphisms#fundamental-homomorphism-theorem). Thus 
+     $\abs{\phi[G]} = \abs{G}/\abs{\text{Ker}(\phi)}$, so $\abs{\phi[G]}$ divides $\abs{G}$.
+
+- Case 2
+:    Suppose $\abs{G'}$ is finite. Then, since $\phi[G] \subseteq G'$, it must be the case that $\abs{\phi[G]} \leq \abs{G'}$.
+     Thus $\abs{\phi[G]}$ is finite. Furthermore, since $\phi[G]$ is a subgroup of $G'$ by [Property 3 of images](#image), 
+     by the [Theorem of Lagrange](theorem_of_lagrange) we have that $\abs{\phi[G]}$ is a divisor of $\abs{G'}$.
+
+</div>
+
+</section>
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# Ring Homomorphisms
+
+For rings $R$ and $R'$, a map $\phi: R \rightarrow R'$ is a **homomorphism** if the following two conditions
+are satisfied for all $a, b \in R$:
+
+- $\phi(a + b) = \phi(a) + \phi(b)$,
+- $\phi(ab) = \phi(a)\phi(b)$.
+
+Note that by the first property, $\phi$ is also a [group homomorphism](#group-homomorphisms), and all results
+regarding group homomorphisms are therefore valid for the additive structure of the rings.
+
+<section class="secondary">
+
+## Kernel Analogue
+
+Let $\phi: R \rightarrow R'$ be a ring homomorphism, and let $H = \text{Ker}(\phi)$. That is, 
+$H = \phi^{-1}[0'] = \{ r \in R : \phi(r) = 0' \}$. Let $a \in R$. Then
+$$ \phi^{-1}[\{\phi(a)\}] = \{ x \in R : \phi(x) = \phi(a) \} = a + H = H + a, $$ 
+where $a + H = H + a$ is the coset containing $a$ of the commutative additive group $\lrangle{H, +}$. Note
+the kernel is the same as that of the group homomorphism of $\lrangle{R, +}$ into $\lrangle{R', +}$ given
+by $\phi$.
+
+<div class="proof">
+
+The proof is very similar to that found under [kernel](#kernel). Thus we omit the proof here.
+
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Image Analogue
+
+Let $\phi$ be a homomorphism of a ring $R$ into a ring $R'$.
+
+1. If $0$ is the additive identity in $R$, then $\phi(0) = 0'$ is the additive identity in $R'$.
+2. If $a \in R$, then $\phi(-a) = -\phi(a)$.
+3. If $S$ is a subring of $R$, then $\phi[S]$ is a subring of $R'$.
+4. If $S'$ is a subring of $R'$, then $\phi^{-1}[S']$ is a subring of $R$.
+5. If $R$ has unity $1$, then $\phi(1)$ is unity for $\phi[R]$.
+
+<div class="proof">
+
+- Case 1
+:    Suppose $0$ is the additive identity in $R$. But we note $\lrangle{R, +}$ is a group and the identity of $R$
+     is mapped to the identity of $\lrangle{R', +}$. Thus $\phi(0) = 0'$ is the additive identity in $R'$.
+
+- Case 2
+:    Again realizing $\lrangle{R, +}$ is a group, we note $-a$ is the additive inverse of $a$. Thus, by the properties
+     of a [group homomorphism](#image), we see that $\phi(-a) = \phi(a^{-1}) = \phi(a)^{-1} = -\phi(a)$.
+
+- Case 3
+:    Suppose $S$ is a subring of $R$. We already note by the group analogue that $\phi[S]$ consists of an additive 
+     abelian group. Additionally, if elements $\phi(s_1)$ and $\phi(s_2)$ are two elements of $\phi[S]$, then
+     $$ \phi(s_1)\phi(s_2) = \phi(s_1s_2) $$ and $\phi(s_1s_2) \in \phi[S]$, meaning $\phi[S]$ is closed under 
+     multiplication. Associativity follows though since the elements of $\phi[S]$ belong to the elements of $R'$. 
+     Next let $a, b, c \in R$. Then $$ \phi(a \cdot (b + c)) = \phi(a)\phi(b + c) = \phi(a)[\phi(b) + \phi(c)]. $$ 
+     Similarly, $$ \phi((a + b) \cdot c) = \phi(a + b)\phi(c) = [\phi(a) + \phi(b)]\phi(c). $$
+
+- Case 4
+:    Let $S'$ be a subring of $R'$. In a manner similar to Case 3, it follows that $\phi^{-1}[S']$ is a subring of $R$.
+     This all follows noting that for any two elements $\phi(a), \phi(b) \in S'$, $$ \phi(ab) = \phi(a)\phi(b), $$
+     implying that if $a, b \in \phi^{-1}[S']$, then $ab \in \phi^{-1}[S']$ and thus $\phi^{-1}[S']$ is closed under
+     multiplication.
+
+- Case 5
+:    For all $r \in R$, we see that $$ \phi(r) = \phi(1r) = \phi(1)\phi(r). $$ Thus, by right multiplication with
+     $\phi(r)^{-1}$, we get $$ 1 = \phi(1). $$
+
+</div>
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Factor Groups](factor_groups)
+- [Fundamental Homomorphism Theorem](fundamental_homomorphism_theorem)
+- [Normal Subgroups](normal_subgroups)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Fraleigh, John B. (2003). A First Course In Abstract Algebra (7th ed.). Pearson. ISBN 978-0201763904.
+
+</section>

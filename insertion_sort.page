@@ -1,0 +1,68 @@
+---
+title: Insertion Sort
+categories: Algorithms Stub
+icon: /img/icons/binary-tree.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Insertion Sort](/img/diagrams/algorithms/insertion-sort.png)
+
+Insertion sort works by regarding an empty array and taking each element from the given array, one by one, inserting
+each value into the correct position of the empty array. Note this does not actually require a separate array to manage.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Analysis
+
+</section>
+
+<section class="primary">
+
+# Implementation
+
+~~~ { .python }
+def insertion_sort(values):
+    """
+    Insertion sort in Python. Consider loop invariants when analyzing.
+    """
+    for i in range(len(values)):
+        to_insert = values[i]
+        for j in range(i):
+            if to_insert < values[j]:
+                tmp = values[j]
+                values[j] = to_insert
+                to_insert = tmp
+        values[i] = to_insert
+
+
+def insertion_sort_backwards(values):
+    """
+    A more efficient implementation that only checks necessary indices.
+    """
+    for i in range(1, len(values)):
+        j = i - 1
+        while j > -1 and values[j+1] < values[j]:
+            tmp = values[j]
+            values[j] = values[j+1]
+            values[j+1] = tmp
+            j -= 1
+~~~
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Cormen, Thomas H. (2009). Introduction to Algorithms (3rd ed.). MIT Press. ISBN 978-0262033848.
+
+</section>

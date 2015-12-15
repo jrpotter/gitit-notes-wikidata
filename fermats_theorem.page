@@ -1,0 +1,77 @@
+---
+title: Fermat's Theorem
+categories: Calculus
+icon: /img/icons/taking-derivatives.png
+...
+
+<section class="primary">
+
+# Statement
+
+<div class="block">
+
+![](/img/graphs/calculus/fermats-theorem.png)
+
+If $f$ has a local maximum or minimum at $c$, and if $f'(c)$ exists, then $f'(c) = 0$.
+
+Note this states that at a local minimum or maximum, the tangent line is horizontal. These points are
+called [critical numbers](critical_numbers) and denotes where the derivatives change from positive to
+negative or negative to positive[^1].
+
+Note Fermat's Theorem can be generalized to other curves. In particular, consider [vector functions](vector_functions)
+which can be considered a component at a time (the projection on the respective standard planes are plane curves).
+Thus one can find where the curve has a "bend" away and towards the origin or towards and then away from the origin[^2]. 
+
+</div>
+
+<div class="proof">
+
+Suppose $f$ has a local maximum at $c$. Then $f(c) \geq f(x)$ for all $x$ sufficiently close to $c$. 
+Then $f(x)\geq f(c+h)$ for some $h$ sufficiently close to $c$, implying $f(c+h)-f(c)\leq 0$. Thus 
+$$ \xlimit[+]{h}{0} \frac{f(c+h)-f(c)}{h} \leq \xlimit[+]{h}{0} 0 = 0 $$ 
+and 
+$$ \xlimit[-]{h}{0} \frac{f(c+h)-f(c)}{h} \geq \xlimit[-]{h}{0} 0 = 0. $$ 
+Therefore $f'(c)=0$; a similar proof holds for local minimums.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Generalization
+
+Let $f$ be a function of two variables. Then if $f$ has a local maximum or minimum at $(a, b)$ and the first
+order partial derivatives of $f$ exist there, then $f_x(a, b) = 0$ and $f_y(a, b) = 0$.
+
+<div class="proof">
+
+Let $g(x) = f(x, b)$. If $f$ has a local maximum (or minimum) at $(a, b)$, then $g$ has a local maximum
+(or minimum) at $a$, so $g'(a) = 0$ by Fermat's Theorem. But $g'(a) = f_x(a, b)$ and so $f_x(a, b) = 0$.
+Similarly, by applying Fermat's Theorem to the function $G(y) = f_(a, y)$, we obtain $f_y(a, b) = 0$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Rolle's Theorem](rolles_theorem)
+- [Mean Value Theorem](mean_value_theorem)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>
+
+<!-- Footnotes -->
+
+[^1]: [First Derivative Tests](critical_number#first-derivative-tests)
+[^2]: [TNB Frames](/GM/tnb_frames)

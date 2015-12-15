@@ -1,0 +1,52 @@
+---
+title: Cayley's Theorem
+categories: Abstract Algebra
+icon: /img/icons/bar-graph.png
+...
+
+<section class="primary">
+
+# Summary
+
+Note that, given any group table, the columns and rows are permutations of one another. This is not a coincidence;
+Cayley's Theorem states that every group is isomorphic to a group of permutations. Thus if we were looking for
+a counterexample of some theory regarding groups, we can search in the permutation space. This does not 
+necessarily makes things easier, but it does provide a concrete set of groups to work with.
+
+<div class="proof">
+
+Let $G$ be a group. Then all we need to do is define a one-to-one function $\phi: G \rightarrow S_G$ such
+that $\phi(xy) = \phi(x)\phi(y)$ for all $x, y \in G$[^1]. For $x \in G$, let $\lambda_x: G \rightarrow G$
+be defined by $\lambda_x(g) = xg$ for all $g \in G$. We see that for all $c \in G$, $\lambda_x(x^{-1}c) = c$
+so $\lambda_x$ maps $G$ onto $G$. Furthermore, if $\lambda_x(a) = \lambda_x(b)$, then $xa = xb$ and by left
+cancellation, $a = b$. Thus $\lambda_x$ is also one to one, and therefore a permutation of $G$.
+
+Now define $\phi: G \rightarrow S_G$ as $\phi(x) = \lambda_x$ for all $x \in G$. $\phi$ is clearly one-to-one
+since if $\phi(x) = \phi(y)$, then $\lambda_x(e) = \lambda_y(e)$ and so $xe = x = y = ye$. We also see that
+$\lambda_{xy} = \lambda_x\lambda_y$ since $\lambda_{xy}(g) = (xy)g$ and 
+$$ (\lambda_x\lambda_y)(g) = \lambda_x(\lambda_y(g)) = x(yg) = (xy)g. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Permutation Groups](permutations#permutation-groups)
+- [Subgroup Isomorphisms](groups#isomorphisms)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Fraleigh, John B. (2003). A First Course In Abstract Algebra (7th ed.). Pearson. ISBN 978-0201763904.
+
+</section>
+
+<!-- Footnotes -->
+
+[^1]: [Subgroup Isomorphism](groups#isomorphisms)

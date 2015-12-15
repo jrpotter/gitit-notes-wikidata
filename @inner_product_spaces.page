@@ -1,0 +1,33 @@
+---
+title: @Inner Product Spaces
+categories: Linear Algebra
+icon: /img/icons/matrix-transformations.png
+...
+
+<section class="primary">
+
+# Continuous Dot Product
+
+We note integration can be seen as a continuous form of the dot product. In particular, consider the linear space $C[a, b]$ 
+consisting of all continuous functions whose domain is the closed interval $[a, b]$, where $a < b$. For functions $f$ and $g$ in 
+$C[a, b]$, we define $$\iprod{\;f}{g} = \int_a^b\;f(t)g(t)dt\text{.}$$
+
+Since the Riemann integral $\int_a^b\;f(t)g(t)dt$ is the limit of the Riemann sum $\sum_{i=1}^m\;f(t_k)g(t_k)\Delta{t}$, where 
+the $t_k$ can be chosen as equally spaced points on the interval $[a, b]$, it follows that
+$$ 
+  \iprod{\;f}{g} = \int_a^b\;f(t)g(t)dt \approx \sum_{k=1}^m\;f(t_k)g(t_k)\Delta{t}
+                 = \left(\begin{bmatrix}f(t_1)\\f(t_2)\\\vdots\\f(t_m)\end{bmatrix} \cdot
+                         \begin{bmatrix}g(t_1)\\g(t_2)\\\vdots\\g(t_m)\end{bmatrix}\right)
+                         \Delta{t}
+$$
+for large $m$.
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Bretscher, Otto (2008). Linear Algebra with Applications (4th ed.). Pearson. ISBN 978-0-13-600926-9.
+
+</section>

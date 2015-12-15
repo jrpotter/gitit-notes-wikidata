@@ -1,0 +1,67 @@
+---
+title: Greatest Common Divisor
+categories: Abstract Algebra
+icon: /img/icons/arithmetic.png
+...
+
+<section class="primary">
+
+# Summary
+
+The **greatest common divisor** of two integers $r$ and $s$ is the largest divisor of both numbers. Because subgroups of 
+$\bbz$ under addition are the groups $n\bbz$ under addition for $n \in \bbz$[^1], we can also describe the greatest common 
+divisor to be the positive generator $d$ of the cyclic group $$ H = \{ nr + ms : n, m \in \bbz \} $$ under addition. 
+As an aside, **Bezout's Identity** states that if $d$ is the $\text{gcd}$ of $r$ and $s$, then there exist integers
+$m$ and $n$ such that $nr + ms = d$. This is a direct consequence of the definition above.
+
+<div class="proof">
+
+First we show that $H$ is indeed a subgroup of $\bbz$ under the induced addition operation. We note $H$ is closed
+since for any $nr + ms$ and $pr + qs$ in $H$, $nr + ms + pr + qs = (n + p)r + (m + q)s$, which is also in $H$.
+We note it is clearly associative, since addition is associative, and the inverse of any element in $H$ is simply the
+negation of the element (that is, $-nr - ms$ is the inverse of $nr + ms$). Lastly, the identity element is represented
+by $0 = 0r + 0s$ which is in $H$.
+
+Now that we know $H$ is a subgroup, we note it must be of the form $n\bbz$ and be cyclic, since any subgroup of a cyclic
+group must be cyclic and all subgroups of $\bbz$ take on this form. Therefore the positive generator is a divisor of all
+numbers in the group including $r$ and $s$ (given that $r = 1r + 0s \in H$ and $s = 0r + 1s \in H$). Additionally,
+it must be the greatest divisor since $d$ in $H$ means $d = nr + ms$ for some integers $n$ and $m$; written in this form, it 
+becomes immediately clear that every integer dividing both $r$ and $s$ must also divide $d$. Therefore $d$ is indeed the largest
+number dividing both $r$ and $s$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Prime Relativity
+
+Two positive integers are called **relatively prime** if their gcd is $1$; that is, they have no other factors
+in common. Given this, we note that if $r$ and $s$ are relatively prime and if $r$ divides $sm$, then $r$
+must divide $m$.
+
+<div class="proof">
+
+If $r$ and $s$ are relatively prime, then we may write
+$$ 1 = ar + bs \text{ for some } a, b \in \bbz. $$
+Multiplying by $m$, we obtain
+$$ m = arm + bsm. $$
+Now $r$ divides both $arm$ and $bsm$ since $r$ divides $sm$. Thus $r$ is a divisor of the right-hand side
+of this equation, meaning $r$ must divide $m$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Fraleigh, John B. (2003). A First Course In Abstract Algebra (7th ed.). Pearson. ISBN 978-0201763904.
+
+</section>
+
+<!-- Footnotes -->
+
+[^1]: [Cyclic Subgroups](cyclic_groups#cyclicality)

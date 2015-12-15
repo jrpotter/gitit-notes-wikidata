@@ -1,0 +1,159 @@
+---
+title: Subspaces
+categories: Linear Algebra
+icon: /img/icons/vector-spaces.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Kernel and Image](/img/diagrams/linear/kernel-image.png)
+
+A subset $W$ of the vector space $\bbr^n$ is called a **(linear) subspace of $\bbr^n$** if it
+has the following properties:
+
+- $W$ contains the zero vector in $\bbr^n$,
+- $W$ is closed under addition and scalar multiplication.
+
+We note, generally speaking, we can always work in terms of subspaces since the coordinate transformation allows
+us to reason that linear spaces are isomorphic to some subset of a vector space $\bbr^n$ (where $n$ is determined
+by the [dimension](dimension) of the linear space in question).
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Image
+
+The **image** of a function consists of all the values the function takes in its target space. If $f$ is a function from 
+$X$ to $Y$, then $$ \text{im}(f) = \{f(x): x \in X\} = \{ b \in Y : b = f(x) \text{ for some } x \in X\}. $$
+If the image of $T$ is finite (dimensional or otherwise), then $\text{dim}(\text{im}\;T)$ is called the **rank** of $T$.
+We note the image of a linear transformation is a (linear) subspace.
+
+<div class="proof">
+
+Note the zero vector $\vec{0} \in \bbr^n$ is the image of $T$ since $\vec{0} = A\vec{0} = T(\vec{0})$. 
+Additionally, $\text{im}\;T$ is closed under addition since if there exist $\vec{w}_1, \vec{w}_2 \in \bbr^m$ such 
+that $T(\vec{w}_1) = \vec{v}_1$ and $T(\vec{w}_2) = \vec{v}_2$, then 
+$$ T(\vec{w}_1 + \vec{w}_2) = T(\vec{w}_1) + T(\vec{w}_2) = \vec{v}_1 + \vec{v}_2. $$
+Lastly $\text{im}\;T$ is closed under scalar multiplication since if there exist $\vec{w} \in \bbr^m$ such that 
+$T(\vec{w}) = \vec{v}$, then $$ T(k\vec{w}) = kT(\vec{w}) = k\vec{v} $$ for some arbitrary scalar $k$.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Kernel
+
+The **kernel** of a linear transformation $T(\vec{x}) = A\vec{x}$ from $\bbr^m$ to $\bbr^n$ consists of all zeros of the 
+transformation, that is, the solutions of the equation $T(\vec{x}) = A\vec{x} = \vec{0}$. If the kernel of $T$ is finite 
+(dimensional or otherwise), then $\text{dim}(\text{ker}\;T)$ is the **nullity** of $T$.
+We note the kernel of a linear transformation is a (linear) subspace.
+
+<div class="proof">
+
+Note the zero vector $\vec{0}$ in $\bbr^m$ is in the kernel of $T$ since $T(\vec{0}) = A\vec{0} = \vec{0}$.
+The kernel is closed under addition and scalar multiplication since if we let $\vec{v}_1, \vec{v}_2 \in \text{ker}(A)$
+and $k$ be an arbitrary scalar, then 
+$$ T(\vec{v}_1 + \vec{v}_2) = T(\vec{v}_1) + T(\vec{v}_2) = \vec{0} + \vec{0} = \vec{0} $$
+and 
+$$ T(k\vec{v}) = kT(\vec{v}) = k\vec{0} = \vec{0}. $$
+
+</div>
+
+<section class="secondary">
+
+## Linear Independence
+
+The vectors in the kernel of an $n \times m$ matrix $A$ correspond to the linear relations among the column
+vectors of $A$. The equation $A\vec{x} = \vec{0}$ implies $x_1\vec{v}_1 + \ldots + x_m\vec{v}_m = \vec{0}$.
+In particular, the column vectors of $A$ are linearly independent iff $\text{ker}(A) = \{\vec{0}\}$, which
+implies $m \leq n$. Thus we can find at most $n$ linearly independent vectors in $\bbr^n$.
+
+<div class="proof">
+ 
+Let $\inflate{\vec{v}}{m}$ be the column vectors of an $n \times m$ matrix $A$. Then $\text{ker}(A)
+=$ all $\vec{x}$ such that $A\vec{x} = x_1\vec{v}_1 + \ldots + x_m\vec{v}_m = \vec{0}$.
+
+$\forward$ Suppose the column vectors are linearly independent. Then only the trivial relation is a solution. 
+Thus $\text{ker}(A) = \{\vec{0}\}$.  
+$\backward$ If $\text{ker}(A) = \{\vec{0}\}$, then only $\vec{0}$ is a solution to $A\vec{x} = \vec{0}$. Thus only
+the trivial relation works, and the column vectors are linearly independent.
+
+We also know $\text{ker}(A) = \{\vec{0}\} \Rightarrow m \leq n$ by the properties listing below. Thus we can find at most $n$
+linearly independent vectors.
+
+</div>
+
+</section>
+
+<section class="secondary">
+
+## Other Properties
+
+Let $A$ be an $n \times m$ matrix and $B$ an $n \times n$ square matrix. Then:
+
+1. $\text{ker}\;A = \{\pmb{0}\}$ if and only if $\text{rank}\;A = m$.
+2. $\text{ker}\;A = \{\pmb{0}\}$ if and only if $m \leq n$.
+3. $\text{ker}\;B = \{\pmb{0}\}$ if and only if $B$ is invertible.
+
+<div class="proof">
+
+- Property 1:
+:    $\forward$ Suppose $\text{ker}\;A = \{\pmb{0}\}$. Let $C = \text{rref}\;A$. Note that $A\vec{x} = \pmb{0}$ yields
+     $C\vec{x} = \pmb{0}$ by elementary row operations, so the kernels of $A$ and $C$ are identical. Since the kernel of $C$
+     is $\{\pmb{0}\}$, only the trivial relation exists amongst the columns of $C$ and thus they must be linearly independent.
+     Therefore $\text{rank}\;C = m$ implying $\text{rank}\;A = m$.<br />  
+     $\backward$ If $\text{rank}\;A = m$, the columns of $A$ are linearly independent. Therefore, if we denote the columns
+     of $A$ as $\inflate{\vec{v}}{n}$, we find that only the trivial relation exists among $x_1\vec{v}_1 \cdots x_n\vec{v}_n$.
+     Therefore $\text{ker}\;A = \{\pmb{0}\}$.
+
+- Property 2:
+:    $\forward$ Suppose $\text{ker}\;A = \{\pmb{0}\}$. Then the columns of $A$ are linearly independent, implying no
+     free variables exist in the given system. Thus $m \leq n$.<br />  
+     $\backward$ Suppose $m > n$. Then free variables exist in the given system. Let $\inflate{\vec{v}}{m}$ denote the column 
+     vectors of $A$ and let $\vec{x}$ be such that entries $\inflate{x}{n}$ are arbitrary, and entries $x_{n+2}, \ldots, x_m$ 
+     are $0$. This yields the relation $x_1\vec{v}_1 + \cdots + x_n\vec{v}_n + x_{n+1}\vec{v}_{n+1} = \pmb{0}$.
+     Solving for $x_{n+1}\vec{v}_{n+1}$ (which we note is redundant), we get that 
+     $x_{n+1}\vec{v}_{n+1} = -(x_1\vec{v_1} + \cdots + x_n\vec{v}_n)$ meaning
+     other nonzero vectors exist in the kernel of $A$.   
+
+- Property 3:
+:    $\forward$ Suppose $\text{ker}\;B = \{\pmb{0}\}$. We need to show that $B$ is one-to-one and onto. Note 
+     $x_1\vec{v}_1 + \cdots + x_n\vec{v}_n = \pmb{0}$ has only the trivial solution. Suppose $B\vec{x} = B\vec{y}$.
+     Then $$ x_1\vec{v}_1 + \cdots + x_n\vec{v}_n = y_1\vec{v}_1 + \cdots + y_n\vec{v}_n. $$
+     This implies $$ (x_1-y_1)\vec{v}_1 + \cdots + (x_n-y_n)\vec{v}_n = \pmb{0}. $$ Since only the trivial solution exists,
+     it must be the case that $x_1 = y_1, x_2 = y_2, \ldots, x_n = y_n$ proving injectivity. Next note that by property $1$,
+     $\text{rank}\;B = n$, which means $\text{im}\;B = \bbr^n$. Thus $B$ is also surjective, and as a result must be 
+     invertible. <br />  
+     $\backward$ Suppose $B$ is invertible. Then there exists a unique solution to the system $B\vec{x} = \{\pmb{0}\}$. We
+     note $\vec{x} = \pmb{0}$ is a solution, and therefore the only one. So $\text{ker}\;B = \{\pmb{0}\}$.
+
+</div>
+
+</section>
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Eigenspaces](eigenspaces)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Bretscher, Otto (2008). Linear Algebra with Applications (4th ed.). Pearson. ISBN 978-0-13-600926-9.
+
+</section>

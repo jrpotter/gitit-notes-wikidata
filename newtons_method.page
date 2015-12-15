@@ -1,0 +1,42 @@
+---
+title: Newton's Method
+categories: Calculus
+icon: /img/icons/taking-derivatives.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Visualization](/img/graphs/calculus/newtons-method.gif)
+
+Newton's method is an approximating means of finding roots of an equation that are difficult to find otherwise. By employing a
+sequence of [linearizations](tangent_lines#linearization), one can get closer and closer to the true value of a root. Note
+though this can be difficult to approximate- taking too small of steps for subsequent linearizations may take much too long,
+and taking too large of steps can yield oscillating patterns of lines or even divergent sequences.
+
+Given an initial point $x_1$, close to the root $r$ we are trying to find, we can hope the tangent line at $f(x_1)$ intersects 
+the $x$-axis closer to $r$, yielding $x_2$. In general, we have 
+$$ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)} \;\text{ and hope that }\; \xlimit{n}{\infty}x_n = r. $$
+
+</div>
+
+<div class="proof">
+
+Consider a point $x_1$ close to $r$. Its tangent line is $$ y - f(x_1) = f'(x_1)(x - x_1), $$ which intersects the $x$-axis 
+when $y = 0$. Thus $$ 0 - f(x) = f'(x_1)(x-x_1) $$ implying $$ x = x_1 - \frac{f(x_1)}{f'(x_1)}, $$ which we label $x_2$. 
+We repeat this process indefinitely, in the hopes of reaching $r$ as $$ \xlimit{n}{\infty}x_n. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>

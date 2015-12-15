@@ -1,0 +1,51 @@
+---
+title: Universal Turing Machines
+categories: Computation
+icon: /img/icons/binary-tree.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Universal Turing Machine (UTM)](/img/diagrams/computation/universal-turing-machine.png)
+
+The **universal Turing machine** is a Turing machine that interprets a description of other Turing machines. That is, we can convert
+any Turing machine into an equivalent string representation- a universal Turing machine will then read in this string and perform
+the computation of the given Turing machine being represented. Intuitively speaking, a universal Turing machine $U$ takes two
+arguments, a description of a machine $M$, "$M$", and a description of an input string $w$, "$w$". Furthermore, $U$ halts on
+input "$M$""$w$" if and only if $M$ halts on input $w$. Thus $$ U(\text{"}M\text{""}w\text{"}) = \text{"}M(w)\text{"}. $$
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Encoding
+
+Let $M = (K, \Sigma, \delta, s, H)$ be a Turing machine, and let $i$ and $j$ be the smallest integers such that
+$2^i \geq \abs{K}$, and $2^j \geq \abs{\Sigma} + 2$. Then each state in $K$ will be represented as a $q$ followed by
+a binary string of length $i$; each symbol in $\Sigma$ will be represented as the letter $a$ followed by a string of $j$
+bits (where the $+2$ term follows from the addition of $\leftarrow$ and $\rightarrow$ as symbols). Note this description
+is necessary since the universal Turing machine needs to work over a finite alphabet, and any Turing machine can have
+an arbitrary number of states and symbols.
+
+Additionally, we fix the representations of the special symbols $\sqcup$, $\triangleright$, $\leftarrow$, and
+$\rightarrow$ to be the lexicographically four smallest symbols respectively. That is, $\sqcup$ as $a0^j$,
+$\triangleright$ as $a0^{j-1}1$, $\leftarrow$ as $a0^{j-2}10$, and $\rightarrow$ as $a0^{j-2}11$. Similarly the start
+state will always be represented as the lexicographically first state, $q0^i$. The representation of this whole Turing
+machine $M$ is then "$M$", which consists of the transition table $\delta$, with transitions separated by commas and
+included in parentheses. 
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Papadimitriou & Lewis (1998). Elements of the Theory of Computation (2nd ed.). Prentice-Hall. ISBN 0-13-262478-8
+
+</section>

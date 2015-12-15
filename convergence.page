@@ -1,0 +1,72 @@
+---
+title: Convergence
+categories: Calculus
+icon: /img/icons/limits.png
+...
+
+<section class="primary">
+
+# Summary
+
+<div class="block">
+
+![Convergent Sequence](/img/graphs/calculus/monotonic-sequence-theorem.png)
+
+The use of convergence and divergence apply in a variety of different settings, such as functions, sequences, 
+and integrals, etc. Though definitions are slightly different depending on context, convergence generally tends
+to mean values become closer and closer to some specified limit, and divergence tends to mean the contextual
+object in question is not converging.
+
+</div>
+
+</section>
+
+<section class="primary">
+
+# Functions
+
+Let $f$ be a function defined on some interval $(a, \infty)$. Then $$ \xlimit{x}{\infty}\;f(x) = L $$ means
+that for every $\epsilon > 0$ there is a corresponding number $N$ such that if $x > N$ then $|\;f(x)-L| < \epsilon$.
+We say this function **converges**. 
+
+Similarly, $$ \xlimit{x}{\infty}\;f(x)=\infty $$ means that for every positive number $M$ there is a corresponding 
+positive number $N$ such that if $x > N$ then $f(x) > M$. We say this function **diverges**.
+
+</section>
+
+<section class="primary">
+
+# Sequences and Series
+
+There are many types of sequences and series, and their convergence (or lack thereof) can be determined in a variety of
+ways. For example, given a geometric sequence, we can determine its convergence by the ratio being exponentiated. More
+precisely:
+
+The sequence $\{r^n\}$ is convergent if $-1 < r \leq 1$ and divergent for all other values of $r$:
+$$
+  \xlimit{n}{\infty} r^n = \begin{cases}
+    0 &\text{ if } -1 < r < 1 \\
+    1 &\text{ if } r = 1
+  \end{cases}
+$$
+
+Other sequence and series convergence/divergence concepts are discussed under [series](series).
+
+</section>
+
+<section class="primary">
+
+# See Also
+
+- [Limits](limits)
+- [Monotonic Sequence Theorem](monotonic_sequence_theorem)
+
+</section>
+
+<section class="primary">
+
+# Notes
+
+- Stewart, James (2008). Calculus: Early Transcendentals (6th ed.). Brooks/Cole. ISBN 0-495-01166-5.
+
+</section>
